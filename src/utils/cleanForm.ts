@@ -1,0 +1,17 @@
+export const LimparCampos = () => ({
+  idade: "",
+  profissional: "",
+  status: "",
+  telefone: "",
+  cidade: "",
+  email: "",
+  vaga_100_presencial_porto_real_rj: "",
+  vaga_100_presencial_goiana_pe: "",
+  vaga_100_presencial_betim_mg: "",
+  vaga_hibrida_betim: "",
+  home_office: "",
+  ultima_empresa: "",
+  ultimo_salario: "",
+  target_clt: "",
+  conhecimento_ingles: "",
+});
