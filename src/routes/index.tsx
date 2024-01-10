@@ -5,7 +5,7 @@ import { App } from "../App";
 import Curriculum from "../pages/curriculum";
 import { Register } from "../pages/register";
 import { NotFound } from "../pages/notFound";
-import { Header } from "../components/header";
+import ModalErroCamposVazios from "../components/modal";
 
 const RoutesApp = () => {
   return (
@@ -15,7 +15,7 @@ const RoutesApp = () => {
         <Route path="/" element={<Register />} />
         <Route path="/candidates" element={<Candidate />} />
         <Route path="/curriculum/:id" element={<Curriculum />} />
-        <Route path="/header" element={<Header />} />
+        <Route path="/modal" element={<ModalErroCamposVazios />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

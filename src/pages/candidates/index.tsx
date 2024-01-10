@@ -14,7 +14,7 @@ interface Candidate {
 
 const Candidate = () => {
   const { data } = useAxiosCandidate("http://localhost:3000/v1/candidate");
-  console.log(data);
+  
 
   const navigate = useNavigate();
 

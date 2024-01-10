@@ -18,7 +18,7 @@ export const Linhaa = styled.div`
   border-bottom: 1px solid #cc1616;
   box-shadow: 2px 5px 10px 0px #000;
   width: 1200px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
 `;
 
 export const ContentButton = styled.div`
