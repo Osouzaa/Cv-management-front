@@ -5,11 +5,13 @@ import { Candidate } from "../types/candidate.types";
 const useAxiosCandidate = (url: string, id?: string) => {
   const [data, setData] = useState<Candidate>();
   const [post, setPost] = useState(null);
-  const [error, setError] = useState(null); // Adicionando estado de erro
+  const [error, setError] = useState<any>(null);
 
-  const httpConfig = (data: any) => {
-    setPost(data);
+  const httpConfig = (itemData: any) => {
+    setPost(itemData);
   };
+
+  
 
   useEffect(() => {
     if (url) {
@@ -20,8 +22,7 @@ const useAxiosCandidate = (url: string, id?: string) => {
           setData(response.data);
         })
         .catch((error: any) => {
-          console.log("Erro na solicitação:", error);
-          setError(error); // Armazenando o erro no estado de erro
+          console.error("Erro na solicitação:", error);
           if (error.response) {
             console.error("Detalhes da resposta:", error.response.data);
           }
@@ -37,15 +38,15 @@ const useAxiosCandidate = (url: string, id?: string) => {
           const result = await axios.get(url);
           setData(result.data);
         } catch (error: any) {
-          console.error("Erro na solicitação:", error);
-          setError(error.response.data.message); 
+          console.error("Erro na solicitação POST: ", error );
+          setError(error.response.data.message);
         }
       }
     };
     postData();
   }, [url, post]);
 
-  return { httpConfig, data, error }; 
+  return { httpConfig, data, error };
 };
 
 export { useAxiosCandidate };

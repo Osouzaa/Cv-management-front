@@ -7,7 +7,7 @@ export const Container = styled.div`
   justify-content: space-between;
   height: 80px;
   align-items: center;
-  margin: 0 1em;
+  /* margin: 0 1em; */
 
   img {
     cursor: pointer;
@@ -17,7 +17,7 @@ export const Container = styled.div`
 export const Linhaa = styled.div`
   border-bottom: 1px solid #cc1616;
   box-shadow: 2px 5px 10px 0px #000;
-  width: 1200px;
+  width: 1000px;
   margin-bottom: 20px;
 `;
 

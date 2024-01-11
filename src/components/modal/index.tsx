@@ -9,7 +9,6 @@ const ModalErroCamposVazios: React.FC<ModalErroCamposVaziosProps> = ({
   onClose,
   newCadidate,
 }) => {
-  console.log(newCadidate);
   return (
     <C.ModalOverlay>
       <C.ModalContent>

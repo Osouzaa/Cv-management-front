@@ -8,7 +8,7 @@ const Curriculum = () => {
   const url = `http://localhost:3000/v1/candidate/${id}`;
   const { data } = useAxiosCandidate(url);
 
-  console.log(data)
+ 
 
   return (
     <C.Container>
