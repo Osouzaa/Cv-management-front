@@ -7,6 +7,8 @@ import { initialState } from "../../utils/initialState";
 import { DadosInfo } from "../../components/dadosInfo";
 import { format } from "date-fns";
 import Loading from "../../components/loading";
+import axios from "axios";
+import { formatCPF } from "../../utils/regex";
 
 const InfoCandidate = () => {
   const { id } = useParams();
@@ -15,7 +17,6 @@ const InfoCandidate = () => {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [editedData, setEditedData] = useState(initialState);
 
-  console.log(editedData);
   useEffect(() => {
     if (data) {
       setEditedData((prevData) => ({
@@ -29,21 +30,34 @@ const InfoCandidate = () => {
     setShowProjectForm(!showProjectForm);
   };
 
-  const handleSave = () => {
-    // Implemente aqui a lógica para salvar os dados editados
-    // Pode utilizar uma requisição axios ou outra abordagem dependendo da sua implementação
-    // Exemplo: axios.put(url, { profissional: editedProfissional, idade: editedIdade });
-    // Lembre-se de lidar com erros e atualizar o estado conforme necessário
-    // Após salvar, você pode definir setShowProjectForm(false) para ocultar o formulário
+  const handleChangeCPF = (e: { target: { value: string } }) => {
+    const formattedCPF = formatCPF(e.target.value);
+    setEditedData({ ...editedData, cpf: formattedCPF });
+  };
+
+  const handleSave = async () => {
+    try {
+      const response = await axios.patch(
+        `${import.meta.env.VITE_API_URL}${id}`,
+        editedData
+      );
+      toggleEditForm();
+      window.location.reload();
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
     <C.Container>
       <C.ContentTitle>
         <C.Title>Informações Candidato</C.Title>
-        <button onClick={toggleEditForm}>
-          {!showProjectForm ? "Editar Dados" : "Salvar Dados"}
-        </button>
+        {!showProjectForm && (
+          <button onClick={toggleEditForm}>
+            {!showProjectForm ? "Editar Dados" : "Salvar Dados"}
+          </button>
+        )}
+        {showProjectForm && <button onClick={handleSave}> ola</button>}
       </C.ContentTitle>
 
       <C.ContainerGeneral>
@@ -61,13 +75,28 @@ const InfoCandidate = () => {
                   <DadosInfo name="Última Empresa" info={data.ultima_empresa} />
                   <DadosInfo name="Último Salário" info={data.ultimo_salario} />
                   <DadosInfo name="Target CLT" info={data.target_clt} />
-                  <DadosInfo name="Vaga 100% Presencial Porto Real/ RJ" info={data.vaga_100_presencial_porto_real_rj}/>
-                  <DadosInfo name="Vaga 100% Presencial Goiana/ PE" info={data.vaga_100_presencial_goiana_pe}/>
-                  <DadosInfo name="Vaga 100% Presencial Betim/ MG" info={data.vaga_100_presencial_betim_mg}/>
+                  <DadosInfo
+                    name="Vaga 100% Presencial Porto Real/ RJ"
+                    info={data.vaga_100_presencial_porto_real_rj}
+                  />
+                  <DadosInfo
+                    name="Vaga 100% Presencial Goiana/ PE"
+                    info={data.vaga_100_presencial_goiana_pe}
+                  />
+                  <DadosInfo
+                    name="Vaga 100% Presencial Betim/ MG"
+                    info={data.vaga_100_presencial_betim_mg}
+                  />
                   <DadosInfo name="Home Office" info={data.home_office} />
-                  <DadosInfo name="Vaga Híbrida Betim" info={data.vaga_hibrida_betim} />
-                  <DadosInfo name="Conhecimento em inglês" info={data.conhecimento_ingles}/>
-                  
+                  <DadosInfo
+                    name="Vaga Híbrida Betim"
+                    info={data.vaga_hibrida_betim}
+                  />
+                  <DadosInfo
+                    name="Conhecimento em inglês"
+                    info={data.conhecimento_ingles}
+                  />
+
                   <DadosInfo
                     name="Registrado em"
                     info={
@@ -108,9 +137,7 @@ const InfoCandidate = () => {
                 <InputField
                   label="CPF"
                   value={editedData.cpf}
-                  onChange={(e) =>
-                    setEditedData({ ...editedData, cpf: e.target.value })
-                  }
+                  onChange={handleChangeCPF}
                   className="InfoCandidate"
                 />
                 <InputField
