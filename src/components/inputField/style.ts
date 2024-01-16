@@ -5,11 +5,15 @@ export const InputWrapper = styled.div`
   margin-bottom: 15px;
   margin-left: 2em;
   /* width: 45%; */
+
+  &.InfoCandidate {
+    width: 80%;
+  }
 `;
 
 export const Label = styled.label`
   display: block;
-  font-size: 16px;
+  font-size: 14px;
   margin-bottom: 5px;
   color: #333;
   width: 100%;

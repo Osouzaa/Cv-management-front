@@ -7,10 +7,11 @@ interface InputFieldProps {
   type?: string;
   options?: string[]; // Adicionando propriedade para as opções no caso de input do tipo "radio" ou "select"
   onChange?: (e: ChangeEvent<HTMLInputElement | HTMLSelectElement>) => void;
+  className?: string;
 }
 
-const InputField = ({ label, value, type, onChange }: InputFieldProps) => (
-  <C.InputWrapper>
+const InputField = ({ label, value, type, onChange, className }: InputFieldProps) => (
+  <C.InputWrapper className={className}>
     <C.Label>{label}</C.Label>
       <C.Input value={value} type={type} onChange={onChange} />
   </C.InputWrapper>
