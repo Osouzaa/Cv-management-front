@@ -5,7 +5,9 @@ import { App } from "../App";
 import Curriculum from "../pages/curriculum";
 import { Register } from "../pages/register";
 import { NotFound } from "../pages/notFound";
-import ModalErroCamposVazios from "../components/modal";
+import { InfoCandidate } from "../pages/infoCandidate";
+
+
 
 const RoutesApp = () => {
   return (
@@ -15,7 +17,7 @@ const RoutesApp = () => {
         <Route path="/" element={<Register />} />
         <Route path="/candidates" element={<Candidate />} />
         <Route path="/curriculum/:id" element={<Curriculum />} />
-        {/* <Route path="/modal" element={<ModalErroCamposVazios />} /> */}
+        <Route path="/register/:id" element={<InfoCandidate />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
