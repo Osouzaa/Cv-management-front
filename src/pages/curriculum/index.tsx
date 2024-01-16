@@ -6,9 +6,10 @@ import { useParams } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
 
+
 const Curriculum = () => {
   const { id } = useParams();
-  const url = `http://localhost:3000/v1/candidate/${id}`;
+  const url = `${import.meta.env.VITE_API_URL}${id}`;
   const { data } = useAxiosCandidate(url);
 
   return (
