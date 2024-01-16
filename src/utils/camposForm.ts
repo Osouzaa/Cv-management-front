@@ -21,4 +21,6 @@ export const fields: Field[] = [
   { label: "Último Salário", field: "ultimo_salario" },
 
   { label: "Target CLT", field: "target_clt" },
+
+  {label: "Observação", field: 'observacao'}
 ];

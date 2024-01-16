@@ -14,7 +14,7 @@ export const Content = styled.div`
   height: 246px;
   border-radius: 20px;
   background-color: #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Adiciona uma sombra */
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
 `;
 
 export const LogoImage = styled.img`
@@ -59,7 +59,7 @@ export const ContentInfo = styled.div`
 `;
 
 export const InfoCandidate = styled.div`
-  color: #5A5A5A;
+  color: #5a5a5a;
 
   font-family: Poppins;
   font-size: 13px;
@@ -79,25 +79,27 @@ export const Button = styled.button`
   bottom: 1em;
   right: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease; /* Adicionando transição suave na mudança de cor */
+  transition: background-color 0.3s ease; 
 
   &:hover {
-    background-color: #6b2323; /* Nova cor de fundo ao passar o mouse */
+    background-color: #6b2323; 
   }
 `;
 
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 1em;
+  margin-top: .5em;
+  gap: 7px;
 `;
 
 export const PageButton = styled.button<{ active?: boolean }>`
-  margin: 0 0.5em;
-  padding: 0.5em;
+  width: 30px;
+  height: 31px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? "#3498db" : "#fff")};
-  color: ${(props) => (props.active ? "#fff" : "#3498db")};
-  border: 1px solid #3498db;
+  background-color: ${(props) => (props.active ? "#B67070" : "#fff")};
+  color: #000;
   border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
 `;

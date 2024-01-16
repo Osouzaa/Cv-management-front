@@ -49,8 +49,8 @@ export const Content = styled.div`
   position: relative;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 6px; /* Aumentei o espaçamento entre os itens */
-  justify-content: center; /* Centralizei os itens */
+  gap: 6px; 
+  justify-content: center; 
 `;
 
 export const Form = styled.form`
@@ -94,6 +94,34 @@ export const ContentMessage = styled.div`
     &.Sucess {
       color: #008000;
       font-weight: 600;
+    }
+  }
+`;
+
+export const FileInputContainer = styled.div`
+  margin: 0 0 20px 34px;
+
+  label {
+    display: block;
+    font-size: 16px;
+    margin-bottom: 3px;
+    color: #333;
+  }
+
+  input {
+    display: none;
+  }
+
+  .custom-file-upload {
+    border: 1px solid #ccc;
+    display: inline-block;
+    padding: 10px 12px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+
+    &:hover {
+      background-color: #e3e3e3;
     }
   }
 `;

@@ -11,6 +11,7 @@ interface Candidate {
   email: string;
   telefone: string;
   cidade: string;
+  createdAt: Date;
 }
 
 const Candidate = () => {
@@ -28,8 +29,6 @@ const Candidate = () => {
     data.slice(indexOfFirstItem, Math.min(indexOfLastItem, data.length));
 
   const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
-
-  console.log(currentData);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -56,7 +55,7 @@ const Candidate = () => {
                   </C.InfoCandidate>
                   <C.InfoCandidate>
                     <span>Cidade: </span>
-                    {candidate.cidade}
+                    {candidate.cidade}       
                   </C.InfoCandidate>
                 </C.ContentInfo>
                 <C.Button
@@ -74,7 +73,7 @@ const Candidate = () => {
           <C.PageButton
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            active={currentPage === index + 1}
+            active={currentPage === index + 1 ? "true" : "false"} // Correção aqui
           >
             {index + 1}
           </C.PageButton>

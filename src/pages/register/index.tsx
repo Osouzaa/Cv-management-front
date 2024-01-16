@@ -18,6 +18,7 @@ const Register: React.FC = () => {
   const [newCandidate, setNewCandidate] = useState<Candidate>({
     idade: "",
     profissional: "",
+    observacao: "",
     cpf: "",
     status: "",
     telefone: "",
@@ -38,6 +39,8 @@ const Register: React.FC = () => {
   const [showVagaOptions, setShowVagaOptions] = useState<boolean>(false);
   const [showModal, setShowModal] = useState<boolean>(false);
   const [errorPost, setErrorPost] = useState(null);
+  const [message, setMessage] = useState("");
+  const [upload, setUpload] = useState<File | undefined>(undefined);
 
   const handleChangeTelefone = (e: { target: { value: string } }) => {
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
@@ -79,7 +82,10 @@ const Register: React.FC = () => {
     const camposValidos = validarDados(newCandidate);
 
     if (!camposValidos) {
-      console.log("Por favor, preencha todos os campos antes de enviar.");
+      setMessage("Por favor, preencha todos os campos antes de enviar.");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
       return;
     }
 
@@ -88,21 +94,37 @@ const Register: React.FC = () => {
 
   const handleCadastro = async () => {
     try {
+      const formData = new FormData();
+      formData.append("data", JSON.stringify(newCandidate));
+
+      if (upload) {
+        formData.append("curriculo", upload);
+      }
+
+      const newDataWithUpload = {
+        ...newCandidate,
+        curriculo: upload,
+      };
       const response = await axios.post(
         "http://localhost:3000/v1/candidate",
-        newCandidate
+        newDataWithUpload,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
       );
       setSuccessMessage("Cadastro realizado com sucesso!");
       setTimeout(() => {
         setSuccessMessage(null);
-      }, 2000);
+      }, 3000);
       handleLimparCampos();
       setShowVagaOptions(false);
     } catch (error: any) {
       setErrorPost(error.response.data.message);
       setTimeout(() => {
         setErrorPost(null);
-      }, 2000);
+      }, 3000);
       setShowVagaOptions(false);
     }
   };
@@ -116,34 +138,58 @@ const Register: React.FC = () => {
             <img src={Menos} alt="" onClick={handleToggleVagaOptions} />
           </C.Search>
           <C.ContentMessage>
+            {message && <p className="Err"> {message}</p>}
             {errorPost && <p className="Err">Erro ao cadastrar: {errorPost}</p>}
             <p className="Sucess">{successMessage}</p>
           </C.ContentMessage>
           <img src={Borracha} alt="" onClick={() => handleLimparCampos()} />
         </C.ContentTitle>
         <C.Content>
-          {!showVagaOptions &&
-            fields.map((fieldInfo) => (
-              <InputField
-                key={fieldInfo.field}
-                label={fieldInfo.label}
-                value={newCandidate[fieldInfo.field]}
-                type={fieldInfo.type}
-                onChange={(
-                  e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-                ) => {
-                  if (fieldInfo.label === "Telefone") {
-                    handleChangeTelefone(e);
-                  } else if (fieldInfo.label === "CPF") {
-                    handleChangeCPF(e);
-                  } else if (fieldInfo.label === "Último Salário") {
-                    handleChangeUltimoSalario(e);
-                  } else {
-                    handleInputChange(fieldInfo.field, e.target.value);
-                  }
-                }}
-              />
-            ))}
+          {!showVagaOptions && (
+            <>
+              {fields.map((fieldInfo) => (
+                <InputField
+                  key={fieldInfo.field}
+                  label={fieldInfo.label}
+                  value={newCandidate[fieldInfo.field]}
+                  type={fieldInfo.type}
+                  onChange={(
+                    e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                  ) => {
+                    if (fieldInfo.label === "Telefone") {
+                      handleChangeTelefone(e);
+                    } else if (fieldInfo.label === "CPF") {
+                      handleChangeCPF(e);
+                    } else if (fieldInfo.label === "Último Salário") {
+                      handleChangeUltimoSalario(e);
+                    } else {
+                      handleInputChange(fieldInfo.field, e.target.value);
+                    }
+                  }}
+                />
+              ))}
+              <C.FileInputContainer>
+                <label htmlFor="upload-curriculo">Anexe seu currículo</label>
+                <input
+                  type="file"
+                  id="upload-curriculo"
+                  onChange={(e) => {
+                    const files = e.target.files;
+                    if (files && files.length > 0) {
+                      setUpload(files[0]);
+                    }
+                  }}
+                  accept=".pdf"
+                />
+                <label
+                  className="custom-file-upload"
+                  htmlFor="upload-curriculo"
+                >
+                  Escolher Arquivo
+                </label>
+              </C.FileInputContainer>
+            </>
+          )}
         </C.Content>
         <C.Search className={showVagaOptions === true ? "TitleTwo" : ""}>
           <C.Title>Especificações da vaga</C.Title>

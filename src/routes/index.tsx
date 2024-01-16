@@ -15,7 +15,7 @@ const RoutesApp = () => {
         <Route path="/" element={<Register />} />
         <Route path="/candidates" element={<Candidate />} />
         <Route path="/curriculum/:id" element={<Curriculum />} />
-        <Route path="/modal" element={<ModalErroCamposVazios />} />
+        {/* <Route path="/modal" element={<ModalErroCamposVazios />} /> */}
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
