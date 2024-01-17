@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 1000px;
-  height: 608px;
+  height: 700px;
   margin: 20px auto;
 
   border-radius: 8px;
@@ -30,17 +30,17 @@ export const ContentTitle = styled.div`
 
     color: #fff;
     font-size: 14px;
-    letter-spacing: 0.5px; 
-    transition: background 0.3s ease; 
+    letter-spacing: 0.5px;
+    transition: background 0.3s ease;
 
     &:hover {
-      background-color: #932725; 
+      background-color: #932725;
     }
   }
 `;
 export const Title = styled.h2`
   position: relative;
-  left: 15em;
+  left: 12em;
   color: #9b3f39;
 
   text-align: center;
@@ -49,6 +49,10 @@ export const Title = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+
+  &.InfoCandidate {
+    left: 14.7em;
+  }
 `;
 
 export const Content = styled.div`
