@@ -1,21 +1,23 @@
 import { useParams } from "react-router-dom";
 import * as C from "./style";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
-import { useState, useEffect } from "react";
+import { useState, useEffect, ChangeEvent } from "react";
 import InputField from "../../components/inputField";
 import { initialState } from "../../utils/initialState";
 import { DadosInfo } from "../../components/dadosInfo";
 import { format } from "date-fns";
 import Loading from "../../components/loading";
-import axios from "axios";
-import { formatCPF } from "../../utils/regex";
+import { formatCPF, formatPhoneNumber } from "../../utils/regex";
+import { Fields, renderInfoDetails } from "../../utils/camposEdit";
+import { Candidate } from "../../types/candidate.types";
 
 const InfoCandidate = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
-  const { data } = useAxiosCandidate(url);
+  const { data, patchConfig, errorAxios } = useAxiosCandidate(url);
   const [showProjectForm, setShowProjectForm] = useState(false);
-  const [editedData, setEditedData] = useState(initialState);
+  const [editedData, setEditedData] = useState<Candidate>(initialState);
+  const [message, setMessage] = useState("");
 
   useEffect(() => {
     if (data) {
@@ -30,6 +32,48 @@ const InfoCandidate = () => {
     setShowProjectForm(!showProjectForm);
   };
 
+  const handleInputChange = (field: keyof Candidate, value: string): void => {
+    setEditedData({
+      ...editedData,
+      [field]: value,
+    });
+  };
+
+  const handleChangeUltimoSalario = (e: { target: { value: string } }) => {
+    const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
+    const salarioNumerico = Number(salarioSemFormato);
+    const salarioFormatado = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    }).format(salarioNumerico / 100);
+
+    setEditedData((prevData) => ({
+      ...prevData,
+      ultimo_salario: salarioFormatado,
+    }));
+  };
+
+  const handleChangeTargetCLT = (e: { target: { value: string } }) => {
+    const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
+    const salarioNumerico = Number(salarioSemFormato);
+    const salarioFormatado = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    }).format(salarioNumerico / 100);
+
+    setEditedData((prevData) => ({
+      ...prevData,
+      target_clt: salarioFormatado,
+    }));
+  };
+
+  const handleChangeTelefone = (e: { target: { value: string } }) => {
+    const formattedPhoneNumber = formatPhoneNumber(e.target.value);
+    setEditedData({ ...editedData, telefone: formattedPhoneNumber });
+  };
+
   const handleChangeCPF = (e: { target: { value: string } }) => {
     const formattedCPF = formatCPF(e.target.value);
     setEditedData({ ...editedData, cpf: formattedCPF });
@@ -37,27 +81,32 @@ const InfoCandidate = () => {
 
   const handleSave = async () => {
     try {
-      const response = await axios.patch(
-        `${import.meta.env.VITE_API_URL}${id}`,
-        editedData
-      );
+      editedData.updatedAt = new Date();
+      patchConfig(editedData);
+      setMessage("Candidato editado com sucesso!");
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
       toggleEditForm();
-      window.location.reload();
     } catch (error) {
-      console.log(error);
+      console.log("error", error);
+      console.log("Error: ", errorAxios);
     }
   };
 
   return (
     <C.Container>
       <C.ContentTitle>
-        <C.Title>Informações Candidato</C.Title>
-        {!showProjectForm && (
-          <button onClick={toggleEditForm}>
-            {!showProjectForm ? "Editar Dados" : "Salvar Dados"}
-          </button>
+        {!message ? (
+          <C.Title className={!message ? "InfoCandidate" : ""}>
+            Informações Candidato
+          </C.Title>
+        ) : (
+          <C.Title>{message}</C.Title>
         )}
-        {showProjectForm && <button onClick={handleSave}> ola</button>}
+        <button onClick={showProjectForm ? handleSave : toggleEditForm}>
+          {showProjectForm ? "Salvar Dados" : "Editar Dados"}
+        </button>
       </C.ContentTitle>
 
       <C.ContainerGeneral>
@@ -66,88 +115,47 @@ const InfoCandidate = () => {
             {!showProjectForm ? (
               <div>
                 <C.Content>
-                  <DadosInfo name="Profissional" info={data.profissional} />
-                  <DadosInfo name="CPF" info={data.cpf} />
-                  <DadosInfo name="E-mail" info={data.email} />
-                  <DadosInfo name="Idade" info={data.idade} />
-                  <DadosInfo name="Telefone" info={data.Telefone} />
-                  <DadosInfo name="Status" info={data.status} />
-                  <DadosInfo name="Última Empresa" info={data.ultima_empresa} />
-                  <DadosInfo name="Último Salário" info={data.ultimo_salario} />
-                  <DadosInfo name="Target CLT" info={data.target_clt} />
-                  <DadosInfo
-                    name="Vaga 100% Presencial Porto Real/ RJ"
-                    info={data.vaga_100_presencial_porto_real_rj}
-                  />
-                  <DadosInfo
-                    name="Vaga 100% Presencial Goiana/ PE"
-                    info={data.vaga_100_presencial_goiana_pe}
-                  />
-                  <DadosInfo
-                    name="Vaga 100% Presencial Betim/ MG"
-                    info={data.vaga_100_presencial_betim_mg}
-                  />
-                  <DadosInfo name="Home Office" info={data.home_office} />
-                  <DadosInfo
-                    name="Vaga Híbrida Betim"
-                    info={data.vaga_hibrida_betim}
-                  />
-                  <DadosInfo
-                    name="Conhecimento em inglês"
-                    info={data.conhecimento_ingles}
-                  />
-
-                  <DadosInfo
-                    name="Registrado em"
-                    info={
-                      data.createdAt
-                        ? format(
-                            new Date(data.createdAt),
-                            "dd/MM/yyyy HH:mm:ss"
-                          )
-                        : "Não disponível"
-                    }
-                  />
-                  <DadosInfo
-                    name="Ultima Atualização"
-                    info={
-                      data.updatedAt
-                        ? format(
-                            new Date(data.updatedAt),
-                            "dd/MM/yyyy HH:mm:ss"
-                          )
-                        : "Não disponível"
-                    }
-                  />
+                  {renderInfoDetails.map((detail) => (
+                    <DadosInfo
+                      key={detail.key}
+                      name={detail.name}
+                      info={
+                        detail.format
+                          ? format(new Date(data[detail.key]), detail.format)
+                          : data[detail.key]
+                      }
+                    />
+                  ))}
                 </C.Content>
               </div>
             ) : (
               <C.Content>
-                <InputField
-                  label="Profissional"
-                  value={editedData.profissional}
-                  onChange={(e) =>
-                    setEditedData({
-                      ...editedData,
-                      profissional: e.target.value,
-                    })
-                  }
-                  className="InfoCandidate"
-                />
-                <InputField
-                  label="CPF"
-                  value={editedData.cpf}
-                  onChange={handleChangeCPF}
-                  className="InfoCandidate"
-                />
-                <InputField
-                  label="E-mail"
-                  value={editedData.email}
-                  onChange={(e) =>
-                    setEditedData({ ...editedData, email: e.target.value })
-                  }
-                  className="InfoCandidate"
-                />
+                <>
+                  {Fields.map((field) => (
+                    <InputField
+                      key={field.field}
+                      label={field.label}
+                      value={editedData[field.field]}
+                      onChange={(
+                        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                      ) => {
+                        if (field.label === "Telefone") {
+                          handleChangeTelefone(e);
+                        } else if (field.label === "CPF") {
+                          handleChangeCPF(e);
+                        } else if (field.label === "Último Salário") {
+                          handleChangeUltimoSalario(e);
+                        } else if (field.label === "Target CLT") {
+                          handleChangeTargetCLT(e);
+                        } else {
+                          handleInputChange(field.field, e.target.value);
+                        }
+                      }}
+                      disabled={field.label === "CPF"}
+                      className="InfoCandidate"
+                    />
+                  ))}
+                </>
               </C.Content>
             )}
           </div>
