@@ -16,7 +16,7 @@ interface Candidate {
 }
 
 const Candidate = () => {
-  const { data } = useAxiosCandidate("http://localhost:3000/v1/candidate");
+  const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
 
   const navigate = useNavigate();
 
