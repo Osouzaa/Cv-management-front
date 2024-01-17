@@ -5,13 +5,17 @@ import { Candidate } from "../types/candidate.types";
 const useAxiosCandidate = (url: string, id?: string) => {
   const [data, setData] = useState<Candidate>();
   const [post, setPost] = useState(null);
-  const [error, setError] = useState<any>(null);
+  const [patch, setPatch] = useState(null);
+  const [errorAxios, setError] = useState<any>(null);
 
   const httpConfig = (itemData: any) => {
     setPost(itemData);
   };
 
-  
+  const patchConfig = (itemData: any) => {
+    setPatch(itemData);
+    console.log("PATCH", itemData);
+  };
 
   useEffect(() => {
     if (url) {
@@ -22,13 +26,13 @@ const useAxiosCandidate = (url: string, id?: string) => {
           setData(response.data);
         })
         .catch((error: any) => {
-          console.error("Erro na solicitação:", error);
+          console.error("Erro na solicitação GET:", error);
           if (error.response) {
             console.error("Detalhes da resposta:", error.response.data);
           }
         });
     }
-  }, [url]);
+  }, [url, id]);
 
   useEffect(() => {
     const postData = async () => {
@@ -38,15 +42,38 @@ const useAxiosCandidate = (url: string, id?: string) => {
           const result = await axios.get(url);
           setData(result.data);
         } catch (error: any) {
-          console.error("Erro na solicitação POST: ", error );
-          setError(error.response.data.message);
+          console.error("Erro na solicitação POST: ", error);
+          setError(error.response?.data?.message || "Erro desconhecido");
         }
       }
     };
     postData();
   }, [url, post]);
 
-  return { httpConfig, data, error };
+  useEffect(() => {
+    const patchData = async () => {
+      if (patch) {
+        try {
+          await axios.patch(url, patch, {
+            headers: {
+              "Content-Type": "application/json",
+            },
+          });
+
+          const result = await axios.get(url);
+          console.log(result.data);
+          setData(result.data);
+        } catch (error: any) {
+          console.error("Erro na solicitação PATCH: ", error);
+          setError(error.response?.data?.message || "Erro desconhecido");
+        }
+      }
+    };
+
+    patchData();
+  }, [url, patch]);
+
+  return { httpConfig, patchConfig, data, errorAxios };
 };
 
 export { useAxiosCandidate };
