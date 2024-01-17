@@ -17,6 +17,4 @@ export const initialState = {
     ultimo_salario: "",
     target_clt: "",
     conhecimento_ingles: "",
-    createdAt: "",
-    updatedAt: "",
   };
