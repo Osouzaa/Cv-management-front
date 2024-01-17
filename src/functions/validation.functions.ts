@@ -42,7 +42,5 @@ export const validarDados = (dados: any) => {
     return false;
   }
 
-  // Adicione outras validações conforme necessário, como validar o formato do email, telefone, etc.
-
-  return true; // Todos os dados estão preenchidos, retorna verdadeiro
+  return true; 
 };
