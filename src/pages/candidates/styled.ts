@@ -14,7 +14,7 @@ export const Content = styled.div`
   height: 246px;
   border-radius: 20px;
   background-color: #ffffff;
-  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); 
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
 export const LogoImage = styled.img`
@@ -79,17 +79,17 @@ export const Button = styled.button`
   bottom: 1em;
   right: 1em;
   cursor: pointer;
-  transition: background-color 0.3s ease; 
+  transition: background-color 0.3s ease;
 
   &:hover {
-    background-color: #6b2323; 
+    background-color: #6b2323;
   }
 `;
 
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: .5em;
+  margin-top: 0.5em;
   gap: 7px;
 `;
 
@@ -97,8 +97,8 @@ export const PageButton = styled.button<{ active?: boolean }>`
   width: 30px;
   height: 31px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? "#B67070" : "#fff")};
-  color: #000;
+  background-color: ${(props) => (props.active ? "#b67070" : "#fff")};
+  color: ${(props) => (props.active ? "#fff" : "#333")};
   border-radius: 5px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;

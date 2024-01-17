@@ -105,15 +105,11 @@ const Register: React.FC = () => {
         ...newCandidate,
         curriculo: upload,
       };
-      const response = await axios.post(
-        "http://localhost:3000/v1/candidate",
-        newDataWithUpload,
-        {
-          headers: {
-            "Content-Type": "multipart/form-data",
-          },
-        }
-      );
+      await axios.post(import.meta.env.VITE_API_URL, newDataWithUpload, {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      });
       setSuccessMessage("Cadastro realizado com sucesso!");
       setTimeout(() => {
         setSuccessMessage(null);

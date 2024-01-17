@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import Logo from "../../image/logoTecnocar .png";
 import { useState } from "react";
+import Loading from "../../components/loading";
 
 interface Candidate {
   id: string;
@@ -15,7 +16,7 @@ interface Candidate {
 }
 
 const Candidate = () => {
-  const { data } = useAxiosCandidate("http://localhost:3000/v1/candidate");
+  const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
 
   const navigate = useNavigate();
 
@@ -33,11 +34,12 @@ const Candidate = () => {
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
   };
+
   return (
     <>
       <C.Container>
         <C.ContainerGrid>
-          {currentData &&
+          {currentData ? (
             currentData.map((candidate: Candidate) => (
               <C.Content key={candidate.id}>
                 <C.LogoImage src={Logo} alt="" />
@@ -55,17 +57,20 @@ const Candidate = () => {
                   </C.InfoCandidate>
                   <C.InfoCandidate>
                     <span>Cidade: </span>
-                    {candidate.cidade}       
+                    {candidate.cidade}
                   </C.InfoCandidate>
                 </C.ContentInfo>
                 <C.Button
-                  onClick={() => navigate(`/curriculum/${candidate.id}`)}
+                  onClick={() => navigate(`/register/${candidate.id}`)}
                   style={{ marginLeft: "2em" }}
                 >
                   Ver Mais
                 </C.Button>
               </C.Content>
-            ))}
+            ))
+          ) : (
+            <Loading />
+          )}
         </C.ContainerGrid>
       </C.Container>
       <C.Pagination>
@@ -73,7 +78,7 @@ const Candidate = () => {
           <C.PageButton
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            active={currentPage === index + 1 ? "true" : "false"} // Correção aqui
+            active={currentPage === index + 1} // Correção aqui
           >
             {index + 1}
           </C.PageButton>
