@@ -9,6 +9,11 @@ export const InputWrapper = styled.div`
   &.InfoCandidate {
     width: 80%;
   }
+
+  &.column-two {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
 `;
 
 export const Label = styled.label`
