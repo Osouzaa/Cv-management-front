@@ -2,6 +2,7 @@ export interface Candidate {
   [x: string]: any;
   idade: string;
   cpf: string;
+  codigoCandidate: string;
   observacao: string;
   profissional: string;
   status: string;
