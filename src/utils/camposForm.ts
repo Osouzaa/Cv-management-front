@@ -4,10 +4,12 @@ interface Field {
   label: string;
   field: keyof Candidate;
   type?: string;
+  class?: string;
 }
 
 export const fields: Field[] = [
   { label: "Profissional", field: "profissional" },
+  { label: "Código do Profissional", field: "codigoCandidate" },
   { label: "CPF", field: "cpf" },
 
   { label: "E-mail", field: "email" },
@@ -22,5 +24,5 @@ export const fields: Field[] = [
 
   { label: "Target CLT", field: "target_clt" },
 
-  {label: "Observação", field: 'observacao'}
+  { label: "Observação", field: "observacao", class: "column-two", type: 'textearea' },
 ];

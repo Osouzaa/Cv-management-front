@@ -112,10 +112,16 @@ export const FileInputContainer = styled.div`
     display: none;
   }
 
+  &.Teste {
+    position: absolute;
+    bottom: 5.1em;
+    right: 29.8%;
+  }
+
   .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
-    padding: 10px 12px;
+    padding: 8px 12px;
     cursor: pointer;
     background-color: #f9f9f9;
     border-radius: 4px;

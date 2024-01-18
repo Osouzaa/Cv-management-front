@@ -10,7 +10,6 @@ import { formatCPF, formatPhoneNumber } from "../../utils/regex";
 import { handleKeyDown } from "../../functions/handleKeyDown.fucntions";
 import { camposRadio } from "../../utils/campoRadio";
 import InputRadio from "../../components/inputRadio";
-import ModalErroCamposVazios from "../../components/modal";
 import axios from "axios";
 import { validarDados } from "../../functions/validation.functions";
 
@@ -18,6 +17,7 @@ const Register: React.FC = () => {
   const [newCandidate, setNewCandidate] = useState<Candidate>({
     idade: "",
     profissional: "",
+    codigoCandidate: "",
     observacao: "",
     cpf: "",
     status: "",
@@ -34,10 +34,8 @@ const Register: React.FC = () => {
     target_clt: "",
     conhecimento_ingles: "",
   });
-
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [showVagaOptions, setShowVagaOptions] = useState<boolean>(false);
-  const [showModal, setShowModal] = useState<boolean>(false);
   const [errorPost, setErrorPost] = useState(null);
   const [message, setMessage] = useState("");
   const [upload, setUpload] = useState<File | undefined>(undefined);
@@ -61,6 +59,17 @@ const Register: React.FC = () => {
       minimumFractionDigits: 2,
     }).format(salarioNumerico / 100);
     setNewCandidate({ ...newCandidate, ultimo_salario: salarioFormatado });
+  };
+  const handleChangeTargetCLT = (e: { target: { value: string } }) => {
+    const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
+    const salarioNumerico = Number(salarioSemFormato);
+    const salarioFormatado = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    }).format(salarioNumerico / 100);
+
+    setNewCandidate({ ...newCandidate, target_clt: salarioFormatado });
   };
 
   const handleInputChange = (field: keyof Candidate, value: string): void => {
@@ -94,7 +103,14 @@ const Register: React.FC = () => {
 
   const handleCadastro = async () => {
     try {
+      // Função para adicionar data antes da informção da observação.
+      // newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
+      //   newCandidate.observacao
+      // }`;
+      // console.log(newCandidate.observacao);
+
       const formData = new FormData();
+
       formData.append("data", JSON.stringify(newCandidate));
 
       if (upload) {
@@ -125,6 +141,19 @@ const Register: React.FC = () => {
     }
   };
 
+  const handleChangeProfissional = (e: { target: { value: string } }) => {
+    const profissionalValue = e.target.value;
+    const codigoFormatado = profissionalValue
+      .split(" ")
+      .map((word) => word.charAt(0).toUpperCase())
+      .join("");
+    setNewCandidate({
+      ...newCandidate,
+      profissional: profissionalValue,
+      codigoCandidate: codigoFormatado,
+    });
+  };
+
   return (
     <C.Container>
       <C.Form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown}>
@@ -149,6 +178,7 @@ const Register: React.FC = () => {
                   label={fieldInfo.label}
                   value={newCandidate[fieldInfo.field]}
                   type={fieldInfo.type}
+                  className={fieldInfo.class}
                   onChange={(
                     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                   ) => {
@@ -158,13 +188,19 @@ const Register: React.FC = () => {
                       handleChangeCPF(e);
                     } else if (fieldInfo.label === "Último Salário") {
                       handleChangeUltimoSalario(e);
+                    } else if (fieldInfo.label === "Profissional") {
+                      handleChangeProfissional(e);
+                    } else if (fieldInfo.label === "Target CLT") {
+                      handleChangeTargetCLT(e);
                     } else {
                       handleInputChange(fieldInfo.field, e.target.value);
                     }
                   }}
+                  disabled={fieldInfo.label === "Código do Profissional"}
                 />
               ))}
-              <C.FileInputContainer>
+
+              <C.FileInputContainer className="Teste">
                 <label htmlFor="upload-curriculo">Anexe seu currículo</label>
                 <input
                   type="file"
@@ -225,13 +261,6 @@ const Register: React.FC = () => {
           </C.SubmitButton>
         </C.ContentButton>
       </C.Form>
-
-      {showModal && (
-        <ModalErroCamposVazios
-          onClose={() => setShowModal(false)}
-          newCadidate={newCandidate}
-        />
-      )}
     </C.Container>
   );
 };

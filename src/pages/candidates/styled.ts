@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface PageButtonProps {
+  $active: boolean;
+}
+
 export const ContainerGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -93,12 +97,12 @@ export const Pagination = styled.div`
   gap: 7px;
 `;
 
-export const PageButton = styled.button<{ active?: boolean }>`
+export const PageButton = styled.button<PageButtonProps>`
   width: 30px;
   height: 31px;
   cursor: pointer;
-  background-color: ${(props) => (props.active ? "#b67070" : "#fff")};
-  color: ${(props) => (props.active ? "#fff" : "#333")};
+  background-color: ${(props) => (props.$active ? "#b67070" : "#fff")};
+  color: ${(props) => (props.$active ? "#fff" : "#333")};
   border-radius: 5px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;

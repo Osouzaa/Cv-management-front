@@ -1,9 +1,10 @@
 export const LimparCampos = () => ({
   idade: "",
   profissional: "",
+  codigoCandidate: "",
   observacao: "",
   cpf: "",
-  obs:"",
+  obs: "",
   status: "",
   telefone: "",
   cidade: "",

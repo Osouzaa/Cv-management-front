@@ -12,6 +12,8 @@ export const Container = styled.div`
   img {
     cursor: pointer;
   }
+
+ 
 `;
 
 export const Linhaa = styled.div`

@@ -2,8 +2,9 @@ import * as C from "./styled";
 import { useNavigate } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import Logo from "../../image/logoTecnocar .png";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Loading from "../../components/loading";
+import { ModalExcel } from "../../components/modalExcel";
 
 interface Candidate {
   id: string;
@@ -12,22 +13,30 @@ interface Candidate {
   email: string;
   telefone: string;
   cidade: string;
-  createdAt: Date;
 }
 
 const Candidate = () => {
   const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
+  const [modal, setModal] = useState(false);
 
   const navigate = useNavigate();
 
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentData =
-    data &&
-    data.slice(indexOfFirstItem, Math.min(indexOfLastItem, data.length));
+  const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
+
+  useEffect(() => {
+    if (data) {
+      const indexOfLastItem = currentPage * itemsPerPage;
+      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+      const updatedCurrentData = data.slice(
+        indexOfFirstItem,
+        Math.min(indexOfLastItem, data.length)
+      );
+      setCurrentData(updatedCurrentData);
+    }
+  }, [data, currentPage, itemsPerPage]);
 
   const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
 
@@ -35,9 +44,15 @@ const Candidate = () => {
     setCurrentPage(newPage);
   };
 
+  const toggleModal = () => {
+    setModal(!modal);
+  };
+
   return (
     <>
       <C.Container>
+        {/* <ExportToExcelButton data={currentData} fileName="dados_candidatos.xlsx" /> */}
+
         <C.ContainerGrid>
           {currentData ? (
             currentData.map((candidate: Candidate) => (
@@ -78,12 +93,15 @@ const Candidate = () => {
           <C.PageButton
             key={index}
             onClick={() => handlePageChange(index + 1)}
-            active={currentPage === index + 1} // Correção aqui
+            $active={currentPage === index + 1}
           >
             {index + 1}
           </C.PageButton>
         ))}
       </C.Pagination>
+
+      <button onClick={toggleModal}> Abrir Excel </button>
+      {modal && <ModalExcel classname="Date" dataToExport={currentData} onClose={toggleModal} />}
     </>
   );
 };
