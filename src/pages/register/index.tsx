@@ -8,37 +8,53 @@ import Menos from "../../image/menos.png";
 import { LimparCampos } from "../../utils/cleanForm";
 import { formatCPF, formatPhoneNumber } from "../../utils/regex";
 import { handleKeyDown } from "../../functions/handleKeyDown.fucntions";
-import { camposRadio } from "../../utils/campoRadio";
-import InputRadio from "../../components/inputRadio";
+import {
+  camposDisponibilidadeForm,
+  camposRadioLocalizacao,
+  camposSelect,
+} from "../../utils/campoForms";
 import axios from "axios";
 import { validarDados } from "../../functions/validation.functions";
+import InputSelect from "../../components/inputSelect";
+import SelectUF from "../../components/select";
 
 const Register: React.FC = () => {
   const [newCandidate, setNewCandidate] = useState<Candidate>({
-    idade: "",
     profissional: "",
-    codigoCandidate: "",
-    observacao: "",
+    data_de_nascimento: "",
     cpf: "",
-    status: "",
-    telefone: "",
     cidade: "",
+    uf: "",
+    telefone: "",
     email: "",
+    esta_empregado: "",
+    empresa_atual: "",
+    experiencia_ramo_automotivo: "",
+    modalidade_atual: "",
+    tipo_desejado_linkedin: "",
+    nivel_funcao: "",
+    formacao: "",
+    interesse_imediato: "",
+    entrevista_online: "",
+    teste_tecnico: "",
+    conhecimento_ingles: "",
+    pretensao_salarial: "",
+    pretensao_pj: "",
+    cnpj: "",
+    tipo_cnpj: "",
     vaga_100_presencial_porto_real_rj: "",
     vaga_100_presencial_goiana_pe: "",
     vaga_100_presencial_betim_mg: "",
+    vaga_internacional: "",
     vaga_hibrida_betim: "",
     home_office: "",
-    ultima_empresa: "",
-    ultimo_salario: "",
-    target_clt: "",
-    conhecimento_ingles: "",
+    observacao: "",
   });
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
-  const [showVagaOptions, setShowVagaOptions] = useState<boolean>(false);
   const [errorPost, setErrorPost] = useState(null);
   const [message, setMessage] = useState("");
   const [upload, setUpload] = useState<File | undefined>(undefined);
+  const [view, setView] = useState(0);
 
   const handleChangeTelefone = (e: { target: { value: string } }) => {
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
@@ -50,17 +66,7 @@ const Register: React.FC = () => {
     setNewCandidate({ ...newCandidate, cpf: formattedCPF });
   };
 
-  const handleChangeUltimoSalario = (e: { target: { value: string } }) => {
-    const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
-    const salarioNumerico = Number(salarioSemFormato);
-    const salarioFormatado = new Intl.NumberFormat("pt-BR", {
-      style: "currency",
-      currency: "BRL",
-      minimumFractionDigits: 2,
-    }).format(salarioNumerico / 100);
-    setNewCandidate({ ...newCandidate, ultimo_salario: salarioFormatado });
-  };
-  const handleChangeTargetCLT = (e: { target: { value: string } }) => {
+  const handleChangeSalary = (e: { target: { value: string } }) => {
     const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
     const salarioNumerico = Number(salarioSemFormato);
     const salarioFormatado = new Intl.NumberFormat("pt-BR", {
@@ -69,7 +75,7 @@ const Register: React.FC = () => {
       minimumFractionDigits: 2,
     }).format(salarioNumerico / 100);
 
-    setNewCandidate({ ...newCandidate, target_clt: salarioFormatado });
+    setNewCandidate({ ...newCandidate, pretensao_salarial: salarioFormatado });
   };
 
   const handleInputChange = (field: keyof Candidate, value: string): void => {
@@ -83,31 +89,35 @@ const Register: React.FC = () => {
     setNewCandidate(LimparCampos());
   };
 
-  const handleToggleVagaOptions = () => {
-    setShowVagaOptions(!showVagaOptions);
-  };
-
   const handleCheckFields = () => {
     const camposValidos = validarDados(newCandidate);
 
-    if (!camposValidos) {
-      setMessage("Por favor, preencha todos os campos antes de enviar.");
+    if (typeof camposValidos === "string") {
+      setMessage(camposValidos);
       setTimeout(() => {
         setMessage("");
       }, 3000);
       return;
     }
 
-    handleCadastro();
+    const camposVaziosString = camposValidos.join(", ");
+    setMessage(`Os seguintes campos estão vazios: ${camposVaziosString}`);
+    setTimeout(() => {
+      setMessage("");
+    }, 3000);
+
+    if (camposValidos.length === 0) {
+      handleCadastro();
+    }
   };
 
   const handleCadastro = async () => {
     try {
       // Função para adicionar data antes da informção da observação.
-      // newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
-      //   newCandidate.observacao
-      // }`;
-      // console.log(newCandidate.observacao);
+      newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
+        newCandidate.observacao
+      }`;
+      console.log(newCandidate.observacao);
 
       const formData = new FormData();
 
@@ -131,36 +141,24 @@ const Register: React.FC = () => {
         setSuccessMessage(null);
       }, 3000);
       handleLimparCampos();
-      setShowVagaOptions(false);
+      setView(0);
     } catch (error: any) {
       setErrorPost(error.response.data.message);
       setTimeout(() => {
         setErrorPost(null);
       }, 3000);
-      setShowVagaOptions(false);
+      setView(0);
     }
   };
 
-  const handleChangeProfissional = (e: { target: { value: string } }) => {
-    const profissionalValue = e.target.value;
-    const codigoFormatado = profissionalValue
-      .split(" ")
-      .map((word) => word.charAt(0).toUpperCase())
-      .join("");
-    setNewCandidate({
-      ...newCandidate,
-      profissional: profissionalValue,
-      codigoCandidate: codigoFormatado,
-    });
-  };
-
+  console.log(newCandidate)
   return (
     <C.Container>
       <C.Form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown}>
         <C.ContentTitle>
           <C.Search>
-            <C.Title>Cadastro de Candidato</C.Title>
-            <img src={Menos} alt="" onClick={handleToggleVagaOptions} />
+            <C.Title>Informações Candidato</C.Title>
+            <img src={Menos} alt="" onClick={() => setView(0)} />
           </C.Search>
           <C.ContentMessage>
             {message && <p className="Err"> {message}</p>}
@@ -170,7 +168,7 @@ const Register: React.FC = () => {
           <img src={Borracha} alt="" onClick={() => handleLimparCampos()} />
         </C.ContentTitle>
         <C.Content>
-          {!showVagaOptions && (
+          {view === 0 && (
             <>
               {fields.map((fieldInfo) => (
                 <InputField
@@ -179,83 +177,178 @@ const Register: React.FC = () => {
                   value={newCandidate[fieldInfo.field]}
                   type={fieldInfo.type}
                   className={fieldInfo.class}
+                  placeholder={fieldInfo.placeholder}
                   onChange={(
                     e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                   ) => {
-                    if (fieldInfo.label === "Telefone") {
+                    if (fieldInfo.label === "Contato") {
                       handleChangeTelefone(e);
                     } else if (fieldInfo.label === "CPF") {
                       handleChangeCPF(e);
-                    } else if (fieldInfo.label === "Último Salário") {
-                      handleChangeUltimoSalario(e);
-                    } else if (fieldInfo.label === "Profissional") {
-                      handleChangeProfissional(e);
-                    } else if (fieldInfo.label === "Target CLT") {
-                      handleChangeTargetCLT(e);
                     } else {
                       handleInputChange(fieldInfo.field, e.target.value);
                     }
                   }}
-                  disabled={fieldInfo.label === "Código do Profissional"}
                 />
               ))}
-
-              <C.FileInputContainer className="Teste">
-                <label htmlFor="upload-curriculo">Anexe seu currículo</label>
-                <input
-                  type="file"
-                  id="upload-curriculo"
-                  onChange={(e) => {
-                    const files = e.target.files;
-                    if (files && files.length > 0) {
-                      setUpload(files[0]);
-                    }
-                  }}
-                  accept=".pdf"
+              <C.AddressFields>
+                <InputField
+                  label="Cidade"
+                  value={newCandidate.cidade}
+                  onChange={(e) =>
+                    setNewCandidate({ ...newCandidate, cidade: e.target.value })
+                  }
+                  placeholder="Cidade"
                 />
-                <label
-                  className="custom-file-upload"
-                  htmlFor="upload-curriculo"
-                >
-                  Escolher Arquivo
-                </label>
-              </C.FileInputContainer>
+                <SelectUF
+                  label="UF"
+                  selectedUF={newCandidate.uf}
+                  onChange={(value) => handleInputChange("uf", value)}
+                  className="UF"
+                />
+              </C.AddressFields>
             </>
           )}
         </C.Content>
-        <C.Search className={showVagaOptions === true ? "TitleTwo" : ""}>
-          <C.Title>Especificações da vaga</C.Title>
-          <img src={Menos} alt="" onClick={handleToggleVagaOptions} />
+        <C.Search>
+          <C.Title>Situação Profissisional Atual</C.Title>
+          <img src={Menos} alt="" onClick={() => setView(1)} />
         </C.Search>
-        <C.Content>
-          {showVagaOptions && (
+        <C.Content className="situacao">
+          {view === 1 && (
             <>
-              {camposRadio.map((radiosButton) => (
-                <InputRadio
-                  key={radiosButton.field}
-                  label={radiosButton.label}
-                  value={newCandidate[radiosButton.field]}
-                  options={
-                    radiosButton.label === "Conhecimento em inglês"
-                      ? ["Básico", "Intermediário", "Avançado"]
-                      : radiosButton.type === "radio"
-                      ? ["Sim", "Não"]
-                      : undefined
-                  }
-                  onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                    handleInputChange(
-                      radiosButton.field as keyof Candidate,
-                      e.target.value
-                    )
-                  }
-                />
+              {camposSelect.map((campo, index) => (
+                <div key={index}>
+                  {campo.type === "select" && (
+                    <>
+                      <InputSelect
+                        label={campo.label}
+                        options={campo.options}
+                        onChange={(
+                          e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                        ) => handleInputChange(campo.field, e.target.value)}
+                        value={newCandidate[campo.field]}
+                      />
+                    </>
+                  )}
+                </div>
               ))}
             </>
           )}
+          {newCandidate.esta_empregado === "Sim" && view === 1 && (
+            <InputField
+              label="Nome da empresa atual"
+              value={newCandidate.empresa_atual}
+              onChange={(e) =>
+                handleInputChange("empresa_atual", e.target.value)
+              }
+              className="situacao"
+            />
+          )}
         </C.Content>
-        <C.ContentButton
-          className={showVagaOptions === true ? "contentTwo" : ""}
-        >
+        <C.Search>
+          <C.Title>Disponibilidade e Pretensão</C.Title>
+          <img src={Menos} alt="" onClick={() => setView(2)} />
+        </C.Search>
+        {view === 2 && (
+          <C.Content className="disponibilidade">
+            {camposDisponibilidadeForm.map((campo, index) => (
+              <div key={index}>
+                {campo.type === "select" && (
+                  <>
+                    <InputSelect
+                      label={campo.label}
+                      options={campo.options}
+                      onChange={(
+                        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                      ) => handleInputChange(campo.field, e.target.value)}
+                      value={newCandidate[campo.field]}
+                    />
+                  </>
+                )}
+              </div>
+            ))}
+            {view === 2 && (
+              <>
+                <InputField
+                  label="Pretensão salarial no regime CLT "
+                  value={newCandidate.pretensao_salarial}
+                  onChange={(e) => handleChangeSalary(e)}
+                />
+                <InputField
+                  label="Pretensão PJ, valor hora"
+                  value={newCandidate.pretensao_pj}
+                  onChange={(e) =>
+                    handleInputChange("pretensao_pj", e.target.value)
+                  }
+                />
+              </>
+            )}
+          </C.Content>
+        )}
+
+        <C.Search className="localizacao">
+          <C.Title>Localização e Anexos</C.Title>
+          <img src={Menos} alt="" onClick={() => setView(3)} />
+        </C.Search>
+        {view === 3 && (
+          <C.Content className="localizacao">
+            <>
+              {camposRadioLocalizacao.map((campo, index) => (
+                <div key={index}>
+                  {campo.type === "select" && (
+                    <>
+                      <InputSelect
+                        label={campo.label}
+                        options={campo.options}
+                        onChange={(
+                          e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                        ) => handleInputChange(campo.field, e.target.value)}
+                        value={newCandidate[campo.field]}
+                      />
+                    </>
+                  )}
+                </div>
+              ))}
+              {view === 3 && (
+                <>
+                  <C.FileInputContainer>
+                    <label htmlFor="upload-curriculo">
+                      Anexe seu currículo
+                    </label>
+                    <input
+                      type="file"
+                      id="upload-curriculo"
+                      onChange={(e) => {
+                        const files = e.target.files;
+                        if (files && files.length > 0) {
+                          setUpload(files[0]);
+                        }
+                      }}
+                      accept=".pdf"
+                    />
+                    <label
+                      className="custom-file-upload"
+                      htmlFor="upload-curriculo"
+                    >
+                      Escolher Arquivo
+                    </label>
+                  </C.FileInputContainer>
+                  <InputField
+                    label="Observação"
+                    className="inputObs"
+                    value={newCandidate.observacao}
+                    onChange={(e) =>
+                      handleInputChange("observacao", e.target.value)
+                    }
+                  />
+                </>
+              )}
+            </>
+          </C.Content>
+        )}
+
+        <C.ContentButton className="ContentButton">
           <C.SubmitButton onClick={() => handleCheckFields()}>
             Cadastrar
           </C.SubmitButton>
