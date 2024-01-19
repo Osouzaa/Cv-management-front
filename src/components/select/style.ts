@@ -4,9 +4,6 @@ export const InputWrapper = styled.div`
   position: relative;
   margin-bottom: 15px;
   margin-left: 2em;
-
-  &.UF {
-  }
 `;
 
 export const Label = styled.label`

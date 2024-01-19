@@ -132,7 +132,7 @@ const InfoCandidate = () => {
               <C.Content>
                 <>
                   {Fields.map((field) => (
-                    <InputField
+                    <InputField 
                       key={field.field}
                       label={field.label}
                       value={editedData[field.field]}
