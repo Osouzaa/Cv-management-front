@@ -15,7 +15,7 @@ const SelectUF = ({
   className,
 }: SelectUFProps) => {
   const ufs = [
-    { value: "", label: "-- UF --" },
+    { value: "-- UF --", label: "" },
     { value: "AC", label: "Acre" },
     { value: "AL", label: "Alagoas" },
     { value: "AP", label: "Amapá" },
@@ -61,7 +61,7 @@ const SelectUF = ({
         >
           {ufs.map((uf) => (
             <option key={uf.value} value={uf.value}>
-              {uf.label}
+              {uf.value}
             </option>
           ))}
         </select>
