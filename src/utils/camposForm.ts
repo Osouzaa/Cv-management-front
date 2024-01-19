@@ -5,24 +5,13 @@ interface Field {
   field: keyof Candidate;
   type?: string;
   class?: string;
+  placeholder?: string;
 }
 
 export const fields: Field[] = [
-  { label: "Profissional", field: "profissional" },
-  { label: "Código do Profissional", field: "codigoCandidate" },
-  { label: "CPF", field: "cpf" },
-
-  { label: "E-mail", field: "email" },
-
-  { label: "Idade", field: "idade" },
-  { label: "Telefone", field: "telefone" },
-  { label: "Cidade", field: "cidade" },
-  { label: "Status", field: "status" },
-
-  { label: "Ultima Empresa", field: "ultima_empresa" },
-  { label: "Último Salário", field: "ultimo_salario" },
-
-  { label: "Target CLT", field: "target_clt" },
-
-  { label: "Observação", field: "observacao", class: "column-two", type: 'textearea' },
+  { label: "Profissional", field: "profissional", placeholder: "Informe seu nome" },
+  { label: "Data de Nascimento", field: "data_de_nascimento", type: "Date", placeholder: "Informe sua data de nascimento", class:"data"},
+  { label: "CPF", field: "cpf", placeholder: "Informe seu CPF" },
+  { label: "E-mail", field: "email", placeholder: "Informe seu e-mail" },
+  { label: "Contato", field: "telefone", placeholder: "Informe seu número de telefone" },
 ];

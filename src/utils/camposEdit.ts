@@ -9,7 +9,7 @@ export const renderInfoDetails = [
 
   { name: "Última Empresa", key: "ultima_empresa" },
   { name: "Último Salário", key: "ultimo_salario" },
-  { name: "Target CLT", key: "target_clt" },
+  { name: "Pretensão Salarial", key: "pretensao_salarial" },
   { name: "Observação", key: "observacao" },
   {
     name: "Vaga 100% Presencial Porto Real/ RJ",
