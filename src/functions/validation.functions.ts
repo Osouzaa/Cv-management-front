@@ -1,46 +1,75 @@
 export const validarDados = (dados: any) => {
   const {
-    idade,
     profissional,
-    status,
-    telefone,
+    data_de_nascimento,
+    cpf,
     cidade,
+    uf,
+    telefone,
     email,
+    esta_empregado,
+    empresa_atual,
+    experiencia_ramo_automotivo,
+    modalidade_atual,
+    tipo_desejado_linkedin,
+    nivel_funcao,
+    formacao,
+    interesse_imediato,
+    entrevista_online,
+    teste_tecnico,
+    conhecimento_ingles,
+    pretensao_salarial,
+    pretensao_pj,
+    cnpj,
+    tipo_cnpj,
     vaga_100_presencial_porto_real_rj,
     vaga_100_presencial_goiana_pe,
     vaga_100_presencial_betim_mg,
+    vaga_internacional,
     vaga_hibrida_betim,
     home_office,
-    ultima_empresa,
-    ultimo_salario,
-    target_clt,
-    conhecimento_ingles,
+    observacao,
   } = dados;
 
   const camposVazios = [];
 
-  if (!idade) camposVazios.push("idade");
   if (!profissional) camposVazios.push("profissional");
-  if (!status) camposVazios.push("status");
-  if (!telefone) camposVazios.push("telefone");
+  if (!data_de_nascimento) camposVazios.push("data_de_nascimento");
+  if (!cpf) camposVazios.push("cpf");
   if (!cidade) camposVazios.push("cidade");
+  if (!uf) camposVazios.push("uf");
+  if (!telefone) camposVazios.push("telefone");
   if (!email) camposVazios.push("email");
+  if (!esta_empregado) camposVazios.push("esta_empregado");
+  if (!empresa_atual) camposVazios.push("empresa_atual");
+  if (!experiencia_ramo_automotivo)
+    camposVazios.push("experiencia_ramo_automotivo");
+  if (!modalidade_atual) camposVazios.push("modalidade_atual");
+  if (!tipo_desejado_linkedin) camposVazios.push("tipo_desejado_linkedin");
+  if (!nivel_funcao) camposVazios.push("nivel_funcao");
+  if (!formacao) camposVazios.push("formacao");
+  if (!interesse_imediato) camposVazios.push("interesse_imediato");
+  if (!entrevista_online) camposVazios.push("entrevista_online");
+  if (!teste_tecnico) camposVazios.push("teste_tecnico");
+  if (!conhecimento_ingles) camposVazios.push("conhecimento_ingles");
+  if (!pretensao_salarial) camposVazios.push("pretensao_salarial");
+  if (!pretensao_pj) camposVazios.push("pretensao_pj");
+  if (!cnpj) camposVazios.push("cnpj");
+  if (!tipo_cnpj) camposVazios.push("tipo_cnpj");
   if (!vaga_100_presencial_porto_real_rj)
     camposVazios.push("vaga_100_presencial_porto_real_rj");
   if (!vaga_100_presencial_goiana_pe)
     camposVazios.push("vaga_100_presencial_goiana_pe");
   if (!vaga_100_presencial_betim_mg)
     camposVazios.push("vaga_100_presencial_betim_mg");
+  if (!vaga_internacional) camposVazios.push("vaga_internacional");
   if (!vaga_hibrida_betim) camposVazios.push("vaga_hibrida_betim");
   if (!home_office) camposVazios.push("home_office");
-  if (!ultima_empresa) camposVazios.push("ultima_empresa");
-  if (!ultimo_salario) camposVazios.push("ultimo_salario");
-  if (!target_clt) camposVazios.push("target_clt");
-  if (!conhecimento_ingles) camposVazios.push("conhecimento_ingles");
+  if (!observacao) camposVazios.push("observacao");
 
-  if (camposVazios.length > 0) {
-    return false;
+  if (camposVazios.length > 10) {
+    return "Preencha todos os campos.";
   }
 
-  return true; 
+  return camposVazios;
 };
