@@ -22,7 +22,7 @@ const InputField = ({
   placeholder,
 }: InputFieldProps) => (
   <C.InputWrapper className={className}>
-    <C.Label>{label}</C.Label>
+    <C.Label   className={className}>{label}</C.Label>
     <C.Input
       value={value}
       type={type}

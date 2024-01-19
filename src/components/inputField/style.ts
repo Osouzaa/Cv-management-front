@@ -7,9 +7,10 @@ export const InputWrapper = styled.div`
 
   &.situacao {
     position: absolute;
-    left: 30em;
+    left: 30.8em;
     top: -0.35em;
   }
+
 
   /* &.aaaa {
     grid-column: span 2;
@@ -21,6 +22,11 @@ export const Label = styled.label`
   margin: 5px 0px;
   color: #333;
   width: 100%;
+  
+  &.inputObs {
+    margin-left: .67em;
+    width:93%;
+  }
 `;
 
 export const Input = styled.input`
@@ -57,5 +63,10 @@ export const Input = styled.input`
 
   &.InfoCandidate {
     width: 87%;
+  }
+
+  &.inputObs {
+    margin-left: .67em;
+    width:93%;
   }
 `;
