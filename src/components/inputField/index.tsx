@@ -9,7 +9,6 @@ interface InputFieldProps {
   className?: string;
   disabled?: boolean;
   placeholder?: string;
-  
 }
 
 const InputField = ({
@@ -22,7 +21,7 @@ const InputField = ({
   placeholder,
 }: InputFieldProps) => (
   <C.InputWrapper className={className}>
-    <C.Label   className={className}>{label}</C.Label>
+    <C.Label className={className}>{label}</C.Label>
     <C.Input
       value={value}
       type={type}

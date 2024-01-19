@@ -113,11 +113,11 @@ const Register: React.FC = () => {
 
   const handleCadastro = async () => {
     try {
-      // Função para adicionar data antes da informção da observação.
-      newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
-        newCandidate.observacao
-      }`;
-      console.log(newCandidate.observacao);
+      // // Função para adicionar data antes da informção da observação.
+      // newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
+      //   newCandidate.observacao
+      // }`;
+      // console.log(newCandidate.observacao);
 
       const formData = new FormData();
 
@@ -274,6 +274,7 @@ const Register: React.FC = () => {
                   label="Pretensão salarial no regime CLT "
                   value={newCandidate.pretensao_salarial}
                   onChange={(e) => handleChangeSalary(e)}
+                  className="pretensao"
                 />
                 <InputField
                   label="Pretensão PJ, valor hora"
@@ -281,6 +282,7 @@ const Register: React.FC = () => {
                   onChange={(e) =>
                     handleInputChange("pretensao_pj", e.target.value)
                   }
+                  className="pretensao"
                 />
               </>
             )}

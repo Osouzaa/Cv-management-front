@@ -11,10 +11,6 @@ export const InputWrapper = styled.div`
     top: -0.35em;
   }
 
-
-  /* &.aaaa {
-    grid-column: span 2;
-  } */
 `;
 export const Label = styled.label`
   display: block;
@@ -22,9 +18,13 @@ export const Label = styled.label`
   margin: 5px 0px;
   color: #333;
   width: 100%;
-  
+
   &.inputObs {
     margin-left: .67em;
+    width:93%;
+  }
+  &.pretensao {
+    margin-left: .7em;
     width:93%;
   }
 `;
@@ -67,6 +67,11 @@ export const Input = styled.input`
 
   &.inputObs {
     margin-left: .67em;
+    width:93%;
+  }
+  
+  &.pretensao {
+    margin-left: .7em;
     width:93%;
   }
 `;
