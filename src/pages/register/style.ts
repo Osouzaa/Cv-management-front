@@ -9,6 +9,19 @@ export const ContentTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  
+
+  img {
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+  }
+`;
+
+export const Search = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 15px;
   margin-bottom: 20px;
 
   img {
@@ -16,27 +29,8 @@ export const ContentTitle = styled.div`
     height: 30px;
     cursor: pointer;
   }
-`;
-
-export const ContentM = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 0.5em;
-`;
-
-export const Search = styled.div`
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  grid-column: span 2;
-  &.TitleTwo {
-    margin-bottom: 2em;
-  }
-
-  img {
-    width: 30px;
-    height: 30px;
-    cursor: pointer;
+  &.localizacao {
+    margin-top: 1em;
   }
 `;
 
@@ -48,9 +42,29 @@ export const Title = styled.h2`
 export const Content = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 6px; 
-  justify-content: center; 
+  grid-template-columns: 1fr; /* Uma coluna por padrão */
+  gap: 6px;
+  justify-content: center;
+  width: 100%;
+
+  &.situacao{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.disponibilidade{
+    grid-template-columns: 1fr 1fr;
+  }
+
+  &.localizacao {
+    grid-template-columns: 1fr 1fr;
+  }
+`;
+
+export const AddressFields = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Duas colunas para cidade e UF */
+  gap: 6px;
+  justify-content: center;
 `;
 
 export const Form = styled.form`
@@ -59,17 +73,15 @@ export const Form = styled.form`
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   background-color: #ffffff;
 `;
-
 export const ContentButton = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
 
-  &.contentTwo {
+  &.ContentButton {
     margin-top: 1em;
   }
 `;
-
 export const SubmitButton = styled.button`
   background-color: #9f3a3e;
   color: #fff;
@@ -83,7 +95,6 @@ export const SubmitButton = styled.button`
     background-color: #932725;
   }
 `;
-
 export const ContentMessage = styled.div`
   p {
     &.Err {
@@ -97,7 +108,6 @@ export const ContentMessage = styled.div`
     }
   }
 `;
-
 export const FileInputContainer = styled.div`
   margin: 0 0 20px 34px;
 
