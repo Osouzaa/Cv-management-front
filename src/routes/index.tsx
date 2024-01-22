@@ -7,18 +7,39 @@ import { Register } from "../pages/register";
 import { NotFound } from "../pages/notFound";
 import { InfoCandidate } from "../pages/infoCandidate";
 import { Login } from "../pages/login";
-
+import { PrivateRoute } from "./privateRoute";
 
 const RoutesApp = () => {
   return (
     <BrowserRouter>
       <App />
       <Routes>
-        <Route path="/" element={<Register />} />
-        <Route path="/candidates" element={<Candidate />} />
-        <Route path="/curriculum/:id" element={<Curriculum />} />
-        <Route path="/register/:id" element={<InfoCandidate />} />
-        <Route path = "/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route
+          path="/candidates"
+          element={
+            <PrivateRoute  allowedRoles={["admin", "recruitment"]}>
+              <Candidate />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/curriculum/:id"
+          element={
+            <PrivateRoute>
+              <Curriculum />
+            </PrivateRoute>
+          }
+        />
+        <Route
+          path="/register/:id"
+          element={
+            <PrivateRoute >
+              <InfoCandidate />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

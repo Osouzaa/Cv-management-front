@@ -101,3 +101,9 @@ export const ContentPassword = styled.div`
 `;
 
 
+
+export const ContentLogo = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
