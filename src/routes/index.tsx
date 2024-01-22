@@ -6,6 +6,7 @@ import Curriculum from "../pages/curriculum";
 import { Register } from "../pages/register";
 import { NotFound } from "../pages/notFound";
 import { InfoCandidate } from "../pages/infoCandidate";
+import { Login } from "../pages/login";
 
 
 const RoutesApp = () => {
@@ -17,6 +18,7 @@ const RoutesApp = () => {
         <Route path="/candidates" element={<Candidate />} />
         <Route path="/curriculum/:id" element={<Curriculum />} />
         <Route path="/register/:id" element={<InfoCandidate />} />
+        <Route path = "/login" element={<Login />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

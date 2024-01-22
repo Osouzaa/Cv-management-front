@@ -1,4 +1,4 @@
-import { ChangeEvent } from "react";
+import { ChangeEvent } from "../../types/types";
 import * as C from "./style";
 
 interface SelectUFProps {
@@ -44,7 +44,7 @@ const SelectUF = ({
     { value: "SE", label: "Sergipe" },
     { value: "TO", label: "Tocantins" },
   ];
-  const handleSelectChange = (event: ChangeEvent<HTMLSelectElement>) => {
+  const handleSelectChange = (event: ChangeEvent) => {
     const value = event.target.value;
     onChange && onChange(value);
   };

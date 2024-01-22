@@ -9,6 +9,7 @@ interface InputFieldProps {
   className?: string;
   disabled?: boolean;
   placeholder?: string;
+  required?: boolean
 }
 
 const InputField = ({
@@ -19,6 +20,7 @@ const InputField = ({
   className,
   disabled,
   placeholder,
+  required
 }: InputFieldProps) => (
   <C.InputWrapper className={className}>
     <C.Label className={className}>{label}</C.Label>
@@ -29,6 +31,7 @@ const InputField = ({
       disabled={disabled}
       placeholder={placeholder}
       className={className}
+      required={required}
     />
   </C.InputWrapper>
 );
