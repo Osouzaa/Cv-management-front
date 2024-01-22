@@ -1,6 +1,8 @@
 import styled from "styled-components";
 
-export const Content = styled.div``;
+export const Content = styled.div`
+  position: relative;
+`;
 
 export const Container = styled.div`
   display: flex;
@@ -12,8 +14,6 @@ export const Container = styled.div`
   img {
     cursor: pointer;
   }
-
- 
 `;
 
 export const Linhaa = styled.div`
@@ -25,6 +25,7 @@ export const Linhaa = styled.div`
 
 export const ContentButton = styled.div`
   display: flex;
+  align-items: center;
   gap: 30px;
 
   button {
@@ -44,10 +45,24 @@ export const ContentButton = styled.div`
   }
 
   button.red {
-    color: #cc1616; // Vermelho
+    color: #cc1616;
   }
 
   button.black {
-    color: #000000; // Preto
+    color: #000000;
   }
+`;
+
+export const ContentName = styled.div`
+  cursor: pointer;
+  background-color: #B67070;
+  width: 50px;
+  height: 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+
+  color: #ffff;
 `;
