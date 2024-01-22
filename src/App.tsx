@@ -5,7 +5,7 @@ const App = () => {
   const location = useLocation();
   return (
     <div className="Content">
-      {location.pathname !== "/login" && <Header />}
+      {location.pathname !== "/" && <Header />}
     </div>
   );
 };
