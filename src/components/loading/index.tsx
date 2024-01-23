@@ -1,4 +1,4 @@
-import React from "react";
+
 import styled, { keyframes } from "styled-components";
 
 const spinAnimation = keyframes`
@@ -12,6 +12,26 @@ const LoadingContainer = styled.div`
   align-items: center;
   justify-content: center;
   height: 500px;
+  width: 100vw;
+
+  @media (min-width: 600px) {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+
+  @media (min-width: 1600px) {
+    margin-left: 22vw;
+    margin-right: 5vw;
+  }
+
+  @media (min-width: 2560px) {
+    margin: 2vw 28vw;
+  }
  
 `;
 

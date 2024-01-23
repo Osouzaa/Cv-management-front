@@ -1,68 +1,75 @@
 import styled from "styled-components";
 
-export const Content = styled.div`
-  position: relative;
-`;
-
 export const Container = styled.div`
+position: relative;
   display: flex;
-  justify-content: space-between;
-  height: 80px;
+  flex-direction: column;
   align-items: center;
-  /* margin: 0 1em; */
+  gap: 2em;
+  width: 340px;
+  height: 100vh;
+  background: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  img {
-    cursor: pointer;
-  }
 `;
 
-export const Linhaa = styled.div`
-  border-bottom: 1px solid #cc1616;
-  box-shadow: 2px 5px 10px 0px #000;
-  width: 1000px;
-  margin-bottom: 20px;
+export const ImageLogo = styled.img`
+  margin: 50px 0;
 `;
 
-export const ContentButton = styled.div`
+export const Content = styled.div`
+  width: 327px;
+  height: 55px;
+  border-radius: 10px;
   display: flex;
   align-items: center;
-  gap: 30px;
-
-  button {
-    width: 224px;
-    height: 38px;
-    border-radius: 10px;
-    background: #fff;
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.2);
-    border: none;
-    text-align: center;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 400;
-    line-height: normal;
-    cursor: pointer;
-  }
-
-  button.red {
-    color: #cc1616;
-  }
-
-  button.black {
-    color: #000000;
-  }
-`;
-
-export const ContentName = styled.div`
+  gap: 0.3em;
+  padding-left: 16px;
   cursor: pointer;
-  background-color: #B67070;
-  width: 50px;
-  height: 50px;
 
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
+  p {
+    color: #000;
 
-  color: #ffff;
+    font-family: Poppins;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+
+    &.active {
+      color: #fff;
+    }
+
+    &.sair {
+      color: #851f2c;
+      font-size: 16px;
+      font-weight: 600;
+    }
+  }
+
+  &.active {
+    background: #851f2c;
+    color: #fff;
+
+    &:hover {
+      background: #851f2c;
+      color: #fff;
+    }
+  }
+
+  &:not(.active):hover {
+    background: #eee;
+  }
+`;
+
+export const SairText = styled.p`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  color: #851f2c;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  padding: 16px;
+  cursor: pointer;
 `;

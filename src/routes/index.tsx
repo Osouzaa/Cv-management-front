@@ -8,6 +8,9 @@ import { NotFound } from "../pages/notFound";
 import { InfoCandidate } from "../pages/infoCandidate";
 import { Login } from "../pages/login";
 import { PrivateRoute } from "./privateRoute";
+import { TelaAdmin } from "../pages/admin";
+
+import { PageStarts } from "../pages/pageStarts";
 
 const RoutesApp = () => {
   return (
@@ -18,7 +21,7 @@ const RoutesApp = () => {
         <Route
           path="/candidates"
           element={
-            <PrivateRoute  allowedRoles={["admin", "recruitment"]}>
+            <PrivateRoute allowedRoles={["admin", "recruitment"]}>
               <Candidate />
             </PrivateRoute>
           }
@@ -34,13 +37,23 @@ const RoutesApp = () => {
         <Route
           path="/register/:id"
           element={
-            <PrivateRoute >
+            <PrivateRoute>
               <InfoCandidate />
             </PrivateRoute>
           }
         />
         <Route path="/" element={<Login />} />
         <Route path="*" element={<NotFound />} />
+
+        <Route
+          path="/admin"
+          element={
+            <PrivateRoute allowedRoles={["admin"]}>
+              <TelaAdmin />
+            </PrivateRoute>
+          }
+        />
+        <Route path="/tutorial" element={<PageStarts />} />
       </Routes>
     </BrowserRouter>
   );

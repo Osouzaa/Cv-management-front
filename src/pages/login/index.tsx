@@ -30,13 +30,13 @@ const Login = () => {
       localStorage.setItem("token", response.data.token);
       setTimeout(() => {
         setLoading(false);
-        navigate("/register");
+        navigate("/tutorial");
       }, 1000);
     } catch (error: any) {
       setTimeout(() => {
         setError("");
         cleanForm();
-      }, 1000);
+      }, 2000);
       if (error.response) {
         setError(error.response.data.message);
       } else if (error.request) {

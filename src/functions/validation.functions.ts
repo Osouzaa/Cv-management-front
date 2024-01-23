@@ -41,7 +41,6 @@ export const validarDados = (dados: any) => {
   if (!telefone) camposVazios.push("telefone");
   if (!email) camposVazios.push("email");
   if (!esta_empregado) camposVazios.push("esta_empregado");
-  if (!empresa_atual) camposVazios.push("empresa_atual");
   if (!experiencia_ramo_automotivo)
     camposVazios.push("experiencia_ramo_automotivo");
   if (!modalidade_atual) camposVazios.push("modalidade_atual");

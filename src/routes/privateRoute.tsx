@@ -21,14 +21,9 @@ const PrivateRoute = ({ children, allowedRoles }: any) => {
 
   const userRole = isAuthenticated ? JSON.parse(atob(token!.split(".")[1])).userRole : null;
 
-  console.log("IsAuthenticated:", isAuthenticated);
-  console.log("UserRole:", userRole);
-
-  // Verifica se o usuário tem uma função permitida
   const hasAllowedRole = allowedRoles ? allowedRoles.includes(userRole) : false;
 
   if (!token) {
-    // Se não houver token, redirecionar para a tela de login
     return <Navigate to="/" />;
   }
 
