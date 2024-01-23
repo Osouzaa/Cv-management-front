@@ -2,14 +2,34 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   max-width: 1000px;
-  margin: 0px auto;
+  margin: 10px auto;
+
+  @media (min-width: 600px) {
+    margin-left: 10vw;
+    margin-right: 10vw;
+  }
+
+  @media (min-width: 1200px) {
+    margin-left: 15vw;
+    margin-right: 15vw;
+  }
+
+  @media (min-width: 1600px) {
+    margin-left: 28vw;
+    margin-right: 5vw;
+  }
+
+  @media (min-width: 2560px) {
+    margin: 2vw 28vw;
+  }
 `;
+
+
 
 export const ContentTitle = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  
 
   img {
     width: 30px;
@@ -47,11 +67,11 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
 
-  &.situacao{
+  &.situacao {
     grid-template-columns: 1fr 1fr;
   }
 
-  &.disponibilidade{
+  &.disponibilidade {
     grid-template-columns: 1fr 1fr;
   }
 

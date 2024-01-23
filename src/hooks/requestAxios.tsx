@@ -14,7 +14,7 @@ const useAxiosCandidate = (url: string, id?: string) => {
 
   const patchConfig = (itemData: any) => {
     setPatch(itemData);
-    console.log("PATCH", itemData);
+
   };
 
   useEffect(() => {
@@ -61,7 +61,7 @@ const useAxiosCandidate = (url: string, id?: string) => {
           });
 
           const result = await axios.get(url);
-          console.log(result.data);
+
           setData(result.data);
         } catch (error: any) {
           console.error("Erro na solicitação PATCH: ", error);

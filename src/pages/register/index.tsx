@@ -78,6 +78,19 @@ const Register: React.FC = () => {
     setNewCandidate({ ...newCandidate, pretensao_salarial: salarioFormatado });
   };
 
+  const handleChangeSalaryPJ = (e: { target: { value: string } }) => {
+    const salarioSemFormato = e.target.value.replace(/[^\d]/g, "");
+    const salarioNumerico = Number(salarioSemFormato);
+    const salarioFormatado = new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+      minimumFractionDigits: 2,
+    }).format(salarioNumerico / 100);
+
+    setNewCandidate({ ...newCandidate,  pretensao_pj: salarioFormatado });
+  };
+
+
   const handleInputChange = (field: keyof Candidate, value: string): void => {
     setNewCandidate({
       ...newCandidate,
@@ -116,8 +129,7 @@ const Register: React.FC = () => {
       // // Função para adicionar data antes da informção da observação.
       // newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
       //   newCandidate.observacao
-      // }`;
-      // console.log(newCandidate.observacao);
+
 
       const formData = new FormData();
 
@@ -151,7 +163,6 @@ const Register: React.FC = () => {
     }
   };
 
-  console.log(newCandidate)
   return (
     <C.Container>
       <C.Form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown}>
@@ -280,7 +291,7 @@ const Register: React.FC = () => {
                   label="Pretensão PJ, valor hora"
                   value={newCandidate.pretensao_pj}
                   onChange={(e) =>
-                    handleInputChange("pretensao_pj", e.target.value)
+                    handleChangeSalaryPJ(e)
                   }
                   className="pretensao"
                 />
