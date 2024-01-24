@@ -10,7 +10,6 @@ export const ContainerGrid = styled.div`
   gap: 30px;
   justify-content: space-around;
   margin: 30px;
-
 `;
 
 export const Content = styled.div`
@@ -36,24 +35,24 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   width: 100vw;
-  margin-top: 5%; 
-  margin-left: 5%; 
+  margin-top: 5%;
+  margin-left: 5%;
 
   @media (min-width: 600px) {
-    margin-top: 2%; 
+    margin-top: 2%;
     margin-left: 10%;
   }
 
   @media (min-width: 1200px) {
-    margin-top: 3%; 
-    margin-left: 5%; 
+    margin-top: 3%;
+    margin-left: 5%;
   }
 
   @media (min-width: 2560px) {
-    margin-top: 1%; 
+    margin-top: 1%;
     margin-left: -15%;
   }
-`
+`;
 export const Title = styled.h4`
   padding: 1em;
   text-align: center;

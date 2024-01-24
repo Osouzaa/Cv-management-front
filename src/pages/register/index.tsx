@@ -126,11 +126,6 @@ const Register: React.FC = () => {
 
   const handleCadastro = async () => {
     try {
-      // // Função para adicionar data antes da informção da observação.
-      // newCandidate.observacao = `${[new Date().toLocaleDateString()]} - ${
-      //   newCandidate.observacao
-
-
       const formData = new FormData();
 
       formData.append("data", JSON.stringify(newCandidate));
