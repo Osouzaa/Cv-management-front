@@ -70,7 +70,7 @@ const Login = () => {
             <C.ContentPassword>
               <InputField
                 label="Senha"
-                type="password"
+                type="password" 
                 required={true}
                 name="password"
                 value={password}
