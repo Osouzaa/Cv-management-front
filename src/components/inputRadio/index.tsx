@@ -5,7 +5,7 @@ interface InputRadioProps {
   label?: string;
   value?: string;
   options?: string[];
-  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; // Altere o tipo de evento para InputRadio
+  onChange?: (e: ChangeEvent<HTMLInputElement>) => void; 
 }
 
 const InputRadio = ({ label, value, options, onChange }: InputRadioProps) => (

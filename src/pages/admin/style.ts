@@ -1,27 +1,111 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
-export const Container = styled.div  `
-    display: flex;
-    justify-content: center;
-    align-items: center;
-
-`
-
-export const StyledTable = styled.table`
-  width: 100%;
-  border-collapse: collapse;
+export const Table = styled.table`
+  width: 75%;
+  border-collapse: separate;
+  border-spacing: 0;
   margin-top: 20px;
+  cursor: pointer;
+
+
+  th, td {
+    border: 1px solid #ddd;
+    padding: 25px;
+    text-align: left;
+  }
+
+
+  th:hover {
+    background-color: #ecf0f1;
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1); 
+  }
+
+  th span {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  th span::before,
+  th span::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background-color: #ddd;
+    margin: 0 10px;
+  }
+
+  th span:hover::before,
+  th span:hover::after {
+    background-color: transparent;
+  }
+
+  th span:hover {
+    cursor: pointer;
+  }
+
+  th span svg {
+    margin-right: 5px;
+  }
+
+  th span::first-child {
+    margin-left: 10px;
+  }
+
+  th span::last-child {
+    margin-right: 10px;
+  }
+
+  @media (min-width: 600px) {
+    margin-top: 1%;
+    margin-left: 10%;
+  }
+
+  @media (min-width: 1200px) {
+    margin-top: -7%;
+    margin-left: 23%;
+  }
+
+  @media (min-width: 2560px) {
+    margin-top: -8%;
+    margin-left: 17.3%;
+    width: 75.4%;
+  }
+
 `;
 
-export const StyledTableHeader = styled.th`
-  background-color: #f2f2f2;
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
+export const TableBody = styled.tbody`
+  tr {
+    transition: background-color 0.3s;
+  }
+
+  tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+
+  td {
+    border: none;
+    border-bottom: 1px solid #ddd;
+  }
+
+  td:first-child {
+    border-left: 1px solid #ddd;
+  }
+
+  td:last-child {
+    border-right: 1px solid #ddd;
+   
+  }
 `;
 
-export const StyledTableData = styled.td`
-  padding: 10px;
-  text-align: left;
-  border: 1px solid #ddd;
+export const CabecalhoTable = styled.tr`
+  background-color: #fff;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+  transition: background-color 0.3s, box-shadow 0.3s;
+
+  th {
+    border: none;
+    
+  }
 `;

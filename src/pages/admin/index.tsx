@@ -1,59 +1,87 @@
-import { useEffect, useState } from "react";
-import { SideBar } from "../../components/sideBar";
-import axios from "axios";
+import React, { useState, useEffect } from "react";
+import { HeaderAdmin } from "../../components/headerAdmin";
+import { InputSearch } from "../../components/inputSearch";
 import * as C from "./style";
+import axios from "axios";
+
+
+interface UserData {
+  id: number;
+  name: string;
+  email: string;
+  registration: string;
+  role: string;
+  isActive: boolean;
+  createdAt: string;
+}
 
 const TelaAdmin = () => {
-  const [data, setData] = useState([]); // Defina um tipo apropriado para o estado
-
-  const token = localStorage.getItem("token"); // Substitua pelo seu token de autenticação
+  const [userData, setUserData] = useState<UserData[]>([]);
+  const [selectedUser, setSelectedUser] = useState<UserData | null>(null);
 
   useEffect(() => {
     const fetchData = async () => {
-      const url = `${import.meta.env.VITE_API_GET_ALL_URL}/`;
-
       try {
-        const response = await axios.get(url, {
+        const token = localStorage.getItem("token");
+
+        if (!token) {
+          console.error("Token não encontrado no localStorage.");
+          return;
+        }
+
+        const config = {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        });
-        setData(response.data);
-  
+        };
+
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_GET_ALL_URL}`,
+          config
+        );
+        setUserData(response.data);
       } catch (error) {
-        console.error("Erro ao obter dados:", error);
+        console.error("Erro ao obter os dados:", error);
       }
     };
 
     fetchData();
-  }, [token]);
+  }, []);
+
+  const handleUserClick = (user: UserData) => {
+    setSelectedUser(user);
+    console.log("Detalhes do Usuário:", user);
+  };
+
   return (
-    <C.Container>
-      <SideBar />
-      <C.StyledTable>
+    <>
+      <HeaderAdmin />
+      <InputSearch />
+      <C.Table>
         <thead>
-          <tr>
-            <C.StyledTableHeader>ID</C.StyledTableHeader>
-            <C.StyledTableHeader>Nome</C.StyledTableHeader>
-            <C.StyledTableHeader>Email</C.StyledTableHeader>
-            <C.StyledTableHeader>Função</C.StyledTableHeader>
-            <C.StyledTableHeader>Editar</C.StyledTableHeader>
-          </tr>
+          <C.CabecalhoTable>
+            <th>Nome</th>
+            <th>E-mail</th>
+            <th>Matricula</th>
+            <th>Setor</th>
+            <th>Status</th>
+            <th>Criado em</th>
+          </C.CabecalhoTable>
         </thead>
-        <tbody>
-          {data &&
-            Array.isArray(data) &&
-            data.map((item) => (
-              <tr key={item.id}>
-                <C.StyledTableData>{item.id}</C.StyledTableData>
-                <C.StyledTableData>{item.name}</C.StyledTableData>
-                <C.StyledTableData>{item.email}</C.StyledTableData>
-                <C.StyledTableData>{item.role}</C.StyledTableData>
-              </tr>
-            ))}
-        </tbody>
-      </C.StyledTable>
-    </C.Container>
+        <C.TableBody>
+          {userData.map((user) => (
+            <tr key={user.id} onClick={() => handleUserClick(user)}>
+              <td>{user.name}</td>
+              <td>{user.email}</td>
+              <td>{user.registration}</td>
+              <td>{user.role}</td>
+              <td>{user.isActive ? "Ativo" : "Inativo"}</td>
+              <td>{user.createdAt}</td>
+            </tr>
+          ))}
+        </C.TableBody>
+      </C.Table>
+    </>
   );
 };
 
