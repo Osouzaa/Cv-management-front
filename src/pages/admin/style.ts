@@ -1,5 +1,9 @@
 import styled from "styled-components";
 
+interface PageButtonProps {
+  $active: boolean;
+}
+
 export const Table = styled.table`
   width: 75%;
   border-collapse: separate;
@@ -7,17 +11,16 @@ export const Table = styled.table`
   margin-top: 20px;
   cursor: pointer;
 
-
-  th, td {
+  th,
+  td {
     border: 1px solid #ddd;
     padding: 25px;
     text-align: left;
   }
 
-
   th:hover {
     background-color: #ecf0f1;
-    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1); 
+    box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
   }
 
   th span {
@@ -71,7 +74,6 @@ export const Table = styled.table`
     margin-left: 17.3%;
     width: 75.4%;
   }
-
 `;
 
 export const TableBody = styled.tbody`
@@ -94,7 +96,6 @@ export const TableBody = styled.tbody`
 
   td:last-child {
     border-right: 1px solid #ddd;
-   
   }
 `;
 
@@ -106,6 +107,32 @@ export const CabecalhoTable = styled.tr`
 
   th {
     border: none;
-    
   }
+`;
+
+export const RegisterUser = styled.button`
+  position: absolute;
+  right: 2.4em;
+  bottom: 2em;
+`;
+
+export const Pagination = styled.div`
+  display: flex;
+  justify-content: center;
+  margin: 2em 0 0 7em;
+  gap: 7px;
+`;
+
+export const PaginationItem = styled.div<PageButtonProps>`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 31px;
+  cursor: pointer;
+  background-color: ${(props) => (props.$active ? "#851f2c" : "#fff")};
+  color: ${(props) => (props.$active ? "#fff" : "#333")};
+  border-radius: 5px;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  border: none;
 `;

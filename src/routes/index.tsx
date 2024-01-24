@@ -11,6 +11,7 @@ import { PrivateRoute } from "./privateRoute";
 import { TelaAdmin } from "../pages/admin";
 
 import { PageStarts } from "../pages/pageStarts";
+import { ModalUser } from "../components/modalUser";
 
 const RoutesApp = () => {
   return (

@@ -8,12 +8,13 @@ interface InputSelectProps {
   value?: string;
   options?: string[];
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
+  className?: string;
 }
 
-const InputSelect = ({ label, value, options, onChange }: InputSelectProps) => (
-  <C.InputWrapper>
+const InputSelect = ({ label, value, options, onChange, className }: InputSelectProps) => (
+  <C.InputWrapper className={className}>
     <C.ContentLabel>{label}</C.ContentLabel>
-    <C.SelectContent>
+    <C.SelectContent className={className}>
       <select
         id={label}
         name={label}
