@@ -10,6 +10,7 @@ import Loading from "../../components/loading";
 import { formatCPF, formatPhoneNumber } from "../../utils/regex";
 import { Fields, renderInfoDetails } from "../../utils/camposEdit";
 import { Candidate } from "../../types/candidate.types";
+import axios from "axios";
 
 const InfoCandidate = () => {
   const { id } = useParams();
@@ -18,6 +19,8 @@ const InfoCandidate = () => {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [editedData, setEditedData] = useState<Candidate>(initialState);
   const [message, setMessage] = useState("");
+
+  console.log(data)
 
   useEffect(() => {
     if (data) {
@@ -93,6 +96,24 @@ const InfoCandidate = () => {
       console.log("Error: ", errorAxios);
     }
   };
+  
+  const handleCV = async () => {
+    try {
+      const response = await axios.get(`http://localhost:3000/v1/candidate/${id}/download-cv`, {
+        responseType: "blob", 
+      });
+      const blob = new Blob([response.data]);
+      const link = document.createElement("a");
+      link.href = window.URL.createObjectURL(blob);
+      link.download = `${data?.profissional} - ${data?.codigoCandidate}.pdf`
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    } catch (error) {
+      console.error("Erro durante o download do currículo:", error);
+    }
+  };
+
 
   return (
     <C.Container>
@@ -107,8 +128,9 @@ const InfoCandidate = () => {
         <button onClick={showProjectForm ? handleSave : toggleEditForm}>
           {showProjectForm ? "Salvar Dados" : "Editar Dados"}
         </button>
+       
       </C.ContentTitle>
-
+          <button onClick={handleCV}>Baixar Curriculo</button>
       <C.ContainerGeneral>
         {data?.profissional ? (
           <div>
@@ -157,6 +179,7 @@ const InfoCandidate = () => {
                   ))}
                 </>
               </C.Content>
+              
             )}
           </div>
         ) : (

@@ -18,6 +18,12 @@ export const ContainerSearch = styled.div`
     margin-left: 21%;
   }
 
+  @media (min-width: 1920px) {
+    margin-top: -5%;
+    margin-left: 16%;
+    width: 75.4%;
+  }
+
   @media (min-width: 2560px) {
     width: 1930px;
     margin-top: -5%;
@@ -49,6 +55,7 @@ export const ContentInput = styled.input`
   box-shadow: 0px 4px 10px 0px rgba(133, 31, 44, 0.09);
   border: none;
   padding-left: 57px;
+  outline: none;
 
   &::placeholder {
     color: #6a6666;

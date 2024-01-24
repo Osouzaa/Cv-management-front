@@ -74,6 +74,12 @@ export const Table = styled.table`
     margin-left: 17.3%;
     width: 75.4%;
   }
+
+  @media (min-width: 1920px) {
+    margin-top: -10%;
+    margin-left: 20.3%;
+    width: 75.4%;
+  }
 `;
 
 export const TableBody = styled.tbody`
