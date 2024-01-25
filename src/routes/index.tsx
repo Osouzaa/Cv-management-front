@@ -11,7 +11,8 @@ import { PrivateRoute } from "./privateRoute";
 import { TelaAdmin } from "../pages/admin";
 
 import { PageStarts } from "../pages/pageStarts";
-import { ModalUser } from "../components/modalUser";
+import { ListCandidates } from "../components/listCandidates";
+
 
 const RoutesApp = () => {
   return (
@@ -55,6 +56,7 @@ const RoutesApp = () => {
           }
         />
         <Route path="/tutorial" element={<PageStarts />} />
+        <Route path="/Lista" element={<ListCandidates />} />
       </Routes>
     </BrowserRouter>
   );
