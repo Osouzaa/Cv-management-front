@@ -78,3 +78,22 @@ export const ContentImage = styled.img`
 
   cursor: pointer;
 `;
+
+export const ContentButton = styled.button`
+  width: 78px;
+  height: 44px;
+  border-radius: 10px;
+  background: #851f2c;
+  color: #fff;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  img {
+    width: 35px;
+    height: 35px;
+  }
+`;
