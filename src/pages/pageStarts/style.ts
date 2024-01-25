@@ -13,11 +13,15 @@ export const Container = styled.div`
 export const CardVideo = styled.div`
   width: 900px;
   height: 360px;
-
   border-radius: 10px;
   background: #fff;
-
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+  @media (min-width: 1920px) {
+    margin-left: 1%;
+    width: 1200px;
+    height: 400px;
+  }
 `;
 
 export const ContentVideo = styled.div`
@@ -82,7 +86,12 @@ export const ContentCard = styled.div`
   height: 201px;
   border-radius: 10px;
   box-shadow: 0px 4px 10px 0px rgba(133, 31, 44, 0.56);
-  display:flex;
+  display: flex;
   justify-content: center;
-  align-items:center;
+  align-items: center;
+
+  @media (min-width: 1920px) {
+    width: 485px;
+    height: 231px;
+  }
 `;

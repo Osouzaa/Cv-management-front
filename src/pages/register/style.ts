@@ -19,6 +19,11 @@ export const Container = styled.div`
     margin-right: 5vw;
   }
 
+  @media (min-width: 1920px) {
+    margin-left: 32vw;
+    margin-top: 4vw;
+  }
+
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }

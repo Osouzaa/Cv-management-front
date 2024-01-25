@@ -128,9 +128,9 @@ const InfoCandidate = () => {
         <button onClick={showProjectForm ? handleSave : toggleEditForm}>
           {showProjectForm ? "Salvar Dados" : "Editar Dados"}
         </button>
-       
+        <button onClick={handleCV} className="CV">Baixar Curriculo</button>
       </C.ContentTitle>
-          <button onClick={handleCV}>Baixar Curriculo</button>
+          
       <C.ContainerGeneral>
         {data?.profissional ? (
           <div>
