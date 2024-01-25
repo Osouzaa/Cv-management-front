@@ -13,8 +13,6 @@ const PageStarts = () => {
         const token = localStorage.getItem("token");
 
         if (token) {
-        
-
           const decodedToken = JSON.parse(atob(token.split(".")[1]));
           const nomeCompleto = decodedToken.userName;
           const primeiroNome = nomeCompleto.split(" ")[0];
