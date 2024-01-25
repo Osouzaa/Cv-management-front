@@ -10,6 +10,8 @@
 
 body {
   background-color: #f2f2f2;
+  user-select: none;
+  overflow-x: hidden;
 }
 
 /* App.css */
