@@ -9,13 +9,14 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
-  const [registration, setRegistration] = useState("");
-  const [password, setPassword] = useState("");
+  const [formData, setFormData] = useState({
+    registration: "",
+    password: "",
+  });
   const [error, setError] = useState("");
 
   const cleanForm = () => {
-    setPassword("");
-    setRegistration("");
+    setFormData({ registration: "", password: "" });
   };
 
   const handleSubmit = async (event: FormEvent) => {
@@ -23,10 +24,10 @@ const Login = () => {
     try {
       setLoading(true);
 
-      const response = await axios.post(import.meta.env.VITE_API_LOGIN_URL, {
-        registration,
-        password,
-      });
+      const response = await axios.post(
+        import.meta.env.VITE_API_LOGIN_URL,
+        formData
+      );
       localStorage.setItem("token", response.data.token);
       setTimeout(() => {
         setLoading(false);
@@ -37,14 +38,12 @@ const Login = () => {
         setError("");
         cleanForm();
       }, 2000);
-      if (error.response) {
-        setError(error.response.data.message);
-      } else if (error.request) {
-        setError("Erro na comunicação com o servidor");
-      } else {
-        setError(error.message);
-      }
 
+      setError(
+        error.response?.data?.message ||
+          "Erro na comunicação com o servidor" ||
+          error.message
+      );
       console.error("Erro na requisição:", error);
       setLoading(false);
     }
@@ -55,32 +54,37 @@ const Login = () => {
       <C.ContentCard>
         <C.ContentCracha></C.ContentCracha>
         <C.ContentLogo>
-          <C.Image src={Logo} alt="" />
+          <C.Image src={Logo} alt="" className={error ? "" : "errorTrue"} />
           {error && <p> {error}</p>}
         </C.ContentLogo>
         <C.ContentForm onSubmit={handleSubmit}>
           <C.ContainerInputs>
             <InputField
-              label="Matricula"
+              label="Matrícula"
               required={true}
               name="matricula"
-              value={registration}
-              onChange={(e) => setRegistration(e.target.value)}
+              value={formData.registration}
+              onChange={(e) =>
+                setFormData({ ...formData, registration: e.target.value })
+              }
             />
             <C.ContentPassword>
               <InputField
                 label="Senha"
-                type="password" 
+                type="password"
                 required={true}
                 name="password"
-                value={password}
-                onChange={(e) => setPassword(e.target.value)}
+                value={formData.password}
+                onChange={(e) =>
+                  setFormData({ ...formData, password: e.target.value })
+                }
               />
             </C.ContentPassword>
           </C.ContainerInputs>
+
           <C.Forgotpassword>Esqueceu a senha?</C.Forgotpassword>
 
-          <C.Buttons type="submit">
+          <C.Buttons type="submit" className={loading ? "loading" : ""}>
             {loading ? <p> Entrando...</p> : <p>Entrar</p>}
           </C.Buttons>
         </C.ContentForm>
