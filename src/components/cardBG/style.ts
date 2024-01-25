@@ -18,6 +18,12 @@ export const CardInfo = styled.div`
 
   display: flex;
   justify-content: space-between;
+
+  @media (min-width: 1920px) {
+    margin-left: 1%;
+    width:  1200px;
+    margin-top: 100px;
+  }
 `;
 
 export const ImageTutorial = styled.img`
