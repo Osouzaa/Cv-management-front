@@ -10,25 +10,24 @@ export const Container = styled.div`
 
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  
   @media (min-width: 600px) {
-    margin-top: 2%; 
-    margin-left: 10%; 
+    margin-top: 2%;
+    margin-left: 10%;
   }
 
   @media (min-width: 1200px) {
-    margin-top: 3%; 
-    margin-left: 26%; 
+    margin-top: 3%;
+    margin-left: 26%;
   }
 
   @media (min-width: 2560px) {
-    margin-top: 2%; 
+    margin-top: 2%;
     margin-left: 25%;
   }
-
 `;
 
 export const ContentTitle = styled.div`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -52,6 +51,12 @@ export const ContentTitle = styled.div`
 
     &:hover {
       background-color: #932725;
+    }
+
+    &.CV {
+      width: 150px;
+      position: absolute;
+      left: 1em;
     }
   }
 `;
