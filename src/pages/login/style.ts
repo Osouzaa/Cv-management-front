@@ -16,7 +16,11 @@ export const ContentCard = styled.div`
 `;
 
 export const Image = styled.img`
-  margin: 2em 0;
+  margin: 2em 0 1em 0;
+
+  &.errorTrue {
+    margin: 2em;
+  }
 `;
 
 export const Container = styled.div`
@@ -82,6 +86,14 @@ export const Buttons = styled.button`
   &:hover {
     background-color: #9f3a3e;
   }
+
+  &.loading {
+    background: #b67070;
+
+    &:disabled {
+      cursor: not-allowed;
+    }
+  }
 `;
 
 export const ContentCracha = styled.div`
@@ -100,10 +112,14 @@ export const ContentPassword = styled.div`
   flex-direction: column;
 `;
 
-
-
 export const ContentLogo = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  p {
+    color: red;
+    width: 100%;
+    margin-bottom: 1em;
+  }
 `;
