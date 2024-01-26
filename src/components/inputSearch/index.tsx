@@ -15,6 +15,14 @@ const InputSearch = ({ onSearch } : any) => {
   const handleSearch = () => {
     onSearch(searchValue);
   };
+  
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value;
+    setSearchValue(value);
+    if (value.trim() === "") {
+      onSearch("");
+    }
+  };
 
   return (
     <C.Container>
@@ -23,7 +31,7 @@ const InputSearch = ({ onSearch } : any) => {
           type="text"
           placeholder="Pesquisar"
           value={searchValue}
-          onChange={(e) => setSearchValue(e.target.value)}
+          onChange={handleChange} 
         />
         <C.ContentImage src={IconLupa} alt="" onClick={handleSearch}/>
         <C.ContentButton onClick={toggleModal}>
