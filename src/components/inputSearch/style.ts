@@ -29,7 +29,7 @@ export const ContainerSearch = styled.div`
     margin-top: -5%;
     margin-left: 10%;
   }
-
+  
   display: flex;
   align-items: center;
   justify-content: center;

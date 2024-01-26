@@ -1,72 +1,67 @@
-import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { useAxiosCandidate } from "../../hooks/requestAxios";
-import { Candidate } from "../../types/candidate.types";
 import * as C from "./style";
+import Loading from "../loading";
 
-const ListCandidates = () => {
-  const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
-  const [modal, setModal] = useState(false);
+interface Candidate {
+  id: string;
+  profissional: string;
+  idade: string;
+  email: string;
+  telefone: string;
+  cidade: string;
+  uf: string;
+  esta_empregado: string;
+  pretensao_salarial: string;
+  tipo_desejado_linkedin: string;
+  nivel_funcao: string;
+}
 
-  const navigate = useNavigate();
+interface TableCandidatesProps {
+  currentData: Candidate[] | null
+  totalPages: number;
+  currentPage: number;
+  handlePageChange: (newPage: number) => void;
+  toggleModal: () => void;
+}
 
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
-
-  const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
-
-  useEffect(() => {
-    if (data) {
-      const indexOfLastItem = currentPage * itemsPerPage;
-      const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const updatedCurrentData = data.slice(
-        indexOfFirstItem,
-        Math.min(indexOfLastItem, data.length)
-      );
-      setCurrentData(updatedCurrentData);
-    }
-  }, [data, currentPage, itemsPerPage]);
-
-  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
-
-  const handlePageChange = (newPage: number) => {
-    setCurrentPage(newPage);
-  };
-
+const ListCandidates = ({
+  currentData,
+}: TableCandidatesProps) => {
   return (
     <C.TableContainer>
       {currentData && currentData.length > 0 ? (
         <C.StyledTable>
           <thead>
             <tr>
-              <C.TableHeader>ID</C.TableHeader>
-              <C.TableHeader>Profissional</C.TableHeader>
-              <C.TableHeader>Idade</C.TableHeader>
-              <C.TableHeader>Email</C.TableHeader>
-              <C.TableHeader>Telefone</C.TableHeader>
-              <C.TableHeader>Cidade</C.TableHeader>
-              <C.TableHeader>Ver mais</C.TableHeader>
+              <C.TableHeaderSpecial>Profissional</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Idade</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Email</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Telefone</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>UF</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Pretensão Salarial</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Vaga Cadastrada</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Nivel</C.TableHeaderSpecial>
+              <C.TableHeaderSpecial>Informações</C.TableHeaderSpecial>
             </tr>
           </thead>
-          <tbody>
+          <C.TableBody>
             {currentData.map((candidate) => (
               <tr key={candidate.id}>
-                <C.TableData>{candidate.id}</C.TableData>
                 <C.TableData>{candidate.profissional}</C.TableData>
-                <C.TableData>{candidate.idade}</C.TableData>
-                <C.TableData>{candidate.email}</C.TableData>
+                <C.TableData className="idade">{candidate.idade}</C.TableData>
+                <C.TableData className="email">{candidate.email}</C.TableData>
                 <C.TableData>{candidate.telefone}</C.TableData>
-                <C.TableData>{candidate.cidade}</C.TableData>
-                <C.TableData className="info">Info</C.TableData>
+                <C.TableData>{candidate.uf}</C.TableData>
+                <C.TableData>{candidate.pretensao_salarial}</C.TableData>
+                <C.TableData>{candidate.tipo_desejado_linkedin}</C.TableData>
+                <C.TableData>{candidate.nivel_funcao}</C.TableData>
+                <C.TableData className="info">Ver mais</C.TableData>
               </tr>
             ))}
-          </tbody>
+          </C.TableBody>
         </C.StyledTable>
       ) : (
-        <p>No candidates to display.</p>
+        <Loading />
       )}
-
-      {/* Pagination controls go here */}
     </C.TableContainer>
   );
 };
