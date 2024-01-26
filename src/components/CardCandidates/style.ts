@@ -8,8 +8,12 @@ export const ContainerGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
-  justify-content: space-around;
-  margin: 30px;
+  justify-content: center;
+  margin: 30px 30px 0;  
+
+  @media (min-width: 1200px) {
+    margin-top: 5%;
+  }
 `;
 
 export const Content = styled.div`
@@ -17,7 +21,7 @@ export const Content = styled.div`
   width: 300px;
   height: 246px;
   border-radius: 20px;
-  background-color: #ffffff;
+  background-color: #f2f2f2;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
 `;
 
@@ -115,15 +119,14 @@ export const Button = styled.button`
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin-top: 0.5em;
   gap: 7px;
-  position: relative;
+  position: fixed;
+  bottom: 4.4em;
+  left: 80%;
+  transform: translateX(-50%);
 `;
 
 export const PageButton = styled.button<PageButtonProps>`
-  position: absolute;
-  bottom: 1em;
-  right: 17em;
   width: 30px;
   height: 31px;
   cursor: pointer;
