@@ -70,14 +70,14 @@ export const Table = styled.table`
   }
 
   @media (min-width: 2560px) {
-    margin-top: -8%;
-    margin-left: 17.3%;
+    margin-top: -3%;
+    margin-left: 16.3%;
     width: 75.4%;
   }
 
   @media (min-width: 1920px) {
-    margin-top: -10%;
-    margin-left: 20.3%;
+    margin-top: -8%;
+    margin-left: 17.3%;
     width: 75.4%;
   }
 `;

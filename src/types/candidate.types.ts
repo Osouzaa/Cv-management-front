@@ -22,8 +22,6 @@ export interface Candidate {
   pretensao_pj: string;
   cnpj: string;
   tipo_cnpj: string;
-  // ultima_empresa: string;
-  // ultimo_salario: string;
   vaga_100_presencial_porto_real_rj: string;
   vaga_100_presencial_goiana_pe: string;
   vaga_100_presencial_betim_mg: string;
@@ -31,5 +29,6 @@ export interface Candidate {
   vaga_hibrida_betim: string;
   home_office: string;
   observacao: string;
-  // status: string;
+  
+
 }

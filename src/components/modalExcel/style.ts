@@ -11,6 +11,9 @@ export const Container = styled.div`
   height: 100%;
   z-index: 10000;
 
+  @media (min-width: 1200px) {
+    left: 6em;
+  }
 
 `;
 

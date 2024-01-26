@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import { HeaderAdmin } from "../../components/headerAdmin";
 import { InputSearch } from "../../components/inputSearch";
 import * as C from "./style";
@@ -21,6 +21,7 @@ const TelaAdmin = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(4);
   const [searchText, setSearchText] = useState("");
+  const [filteredUsers, setFilteredUsers] = useState<UserData[]>([]); 
 
   const roleMapping: Record<string, string> = {
     technique: "Técnico",
@@ -59,17 +60,20 @@ const TelaAdmin = () => {
     fetchData();
   }, []);
 
-  const handleSearch = (text : string) => {
+  const handleSearch = (text: string) => {
     setSearchText(text);
   };
 
+  useEffect(() => {
+    const newFilteredUsers = allUserData.filter((user) =>
+      user.name.toLowerCase().includes(searchText.toLowerCase())
+    );
+    setFilteredUsers(newFilteredUsers);
+  }, [allUserData, searchText]);
+
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
-  const currentUsers = userData.slice(indexOfFirstUser, indexOfLastUser);
-
-  const filteredUsers = allUserData.filter((user) =>
-    user.name.toLowerCase().includes(searchText.toLowerCase())
-  );
+  const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
 
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
@@ -91,7 +95,7 @@ const TelaAdmin = () => {
           </C.CabecalhoTable>
         </thead>
         <C.TableBody>
-          {filteredUsers.map((user) => (
+          {currentUsers.map((user) => (
             <tr
               key={user.id}
               onClick={() => console.log("Detalhes do Usuário:", user)}
@@ -119,7 +123,6 @@ const TelaAdmin = () => {
           )
         )}
       </C.Pagination>
-      
     </>
   );
 };

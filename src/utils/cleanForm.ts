@@ -21,8 +21,6 @@ export const LimparCampos = () => ({
   pretensao_pj: "",
   cnpj: "",
   tipo_cnpj: "",
-  // ultima_empresa: "",
-  // ultimo_salario: "",
   vaga_100_presencial_porto_real_rj: "",
   vaga_100_presencial_goiana_pe: "",
   vaga_100_presencial_betim_mg: "",
@@ -31,4 +29,5 @@ export const LimparCampos = () => ({
   home_office: "",
   observacao: "",
   status: "",
+  isEvaluatedByRecruitment: false,
 });

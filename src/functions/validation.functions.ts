@@ -28,7 +28,6 @@ export const validarDados = (dados: any) => {
     vaga_internacional,
     vaga_hibrida_betim,
     home_office,
-    observacao,
   } = dados;
 
   const camposVazios = [];
@@ -64,8 +63,6 @@ export const validarDados = (dados: any) => {
   if (!vaga_internacional) camposVazios.push("vaga_internacional");
   if (!vaga_hibrida_betim) camposVazios.push("vaga_hibrida_betim");
   if (!home_office) camposVazios.push("home_office");
-  if (!observacao) camposVazios.push("observacao");
-
   if (camposVazios.length > 10) {
     return "Preencha todos os campos.";
   }
