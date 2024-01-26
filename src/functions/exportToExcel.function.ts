@@ -20,10 +20,9 @@ const ExportToExcelButton: React.FC<ExportToExcelButtonProps> = ({
       }
     };
 
-    handleExport(); // Chama a função assim que o componente for renderizado
+    handleExport(); 
   }, [data, fileName]);
 
-  // Não é necessário retornar nenhum elemento JSX aqui
   return null;
 };
 

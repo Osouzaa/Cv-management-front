@@ -87,9 +87,8 @@ const Register: React.FC = () => {
       minimumFractionDigits: 2,
     }).format(salarioNumerico / 100);
 
-    setNewCandidate({ ...newCandidate,  pretensao_pj: salarioFormatado });
+    setNewCandidate({ ...newCandidate, pretensao_pj: salarioFormatado });
   };
-
 
   const handleInputChange = (field: keyof Candidate, value: string): void => {
     setNewCandidate({
@@ -113,19 +112,22 @@ const Register: React.FC = () => {
       return;
     }
 
-    const camposVaziosString = camposValidos.join(", ");
-    setMessage(`Os seguintes campos estão vazios: ${camposVaziosString}`);
-    setTimeout(() => {
-      setMessage("");
-    }, 3000);
-
-    if (camposValidos.length === 0) {
+    if (camposValidos.length > 0) {
+      const camposVaziosString = camposValidos.join(", ");
+      setMessage(`Os seguintes campos estão vazios: ${camposVaziosString}`);
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } else {
       handleCadastro();
     }
   };
 
+
   const handleCadastro = async () => {
     try {
+
+      const token = (!!localStorage.getItem("token"))
       const formData = new FormData();
 
       formData.append("data", JSON.stringify(newCandidate));
@@ -136,6 +138,7 @@ const Register: React.FC = () => {
 
       const newDataWithUpload = {
         ...newCandidate,
+        foi_avaliado_recrutamento: token,
         curriculo: upload,
       };
       await axios.post(import.meta.env.VITE_API_URL, newDataWithUpload, {
@@ -150,6 +153,8 @@ const Register: React.FC = () => {
       handleLimparCampos();
       setView(0);
     } catch (error: any) {
+      console.log("error ", error);
+
       setErrorPost(error.response.data.message);
       setTimeout(() => {
         setErrorPost(null);
@@ -285,9 +290,7 @@ const Register: React.FC = () => {
                 <InputField
                   label="Pretensão PJ, valor hora"
                   value={newCandidate.pretensao_pj}
-                  onChange={(e) =>
-                    handleChangeSalaryPJ(e)
-                  }
+                  onChange={(e) => handleChangeSalaryPJ(e)}
                   className="pretensao"
                 />
               </>
