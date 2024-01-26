@@ -81,13 +81,6 @@ const Header = () => {
         <img src={isBank ? Banco : BancoBlack} alt="Icone de Usuario" />
         <p className={isBank ? "active" : "other"}>Banco de candidatos</p>
       </C.Content>
-      <C.Content className={isTech ? "active" : "other"}>
-        <img
-          src={isTech ? Habilidade : HabilidadeBlack}
-          alt="Icone de Usuario"
-        />
-        <p className={isTech ? "active" : "other"}>Habilidades Técnicas</p>
-      </C.Content>
       {userRole === "admin" && (
         <C.Content className={isAdmin ? "active" : "other"} onClick={() => handleButtonClick('/admin')}>
           <img src={isAdmin ? admin : admin_black} alt="Icone de admin" />
