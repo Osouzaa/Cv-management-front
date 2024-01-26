@@ -1,5 +1,7 @@
 import * as C from "./style";
 import Loading from "../loading";
+import { useAxiosCandidate } from "../../hooks/requestAxios";
+
 
 interface Candidate {
   id: string;
@@ -15,20 +17,15 @@ interface Candidate {
   nivel_funcao: string;
 }
 
-interface TableCandidatesProps {
-  currentData: Candidate[] | null
-  totalPages: number;
-  currentPage: number;
-  handlePageChange: (newPage: number) => void;
-  toggleModal: () => void;
-}
+const ListCandidates = () => {
+  const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
 
-const ListCandidates = ({
-  currentData,
-}: TableCandidatesProps) => {
+  const sortedData = data ? [...data].sort((a, b) => parseInt(a.id) - parseInt(b.id)) : null;
+
+
   return (
     <C.TableContainer>
-      {currentData && currentData.length > 0 ? (
+      {sortedData && sortedData.length > 0 ? (
         <C.StyledTable>
           <thead>
             <tr>
@@ -44,7 +41,7 @@ const ListCandidates = ({
             </tr>
           </thead>
           <C.TableBody>
-            {currentData.map((candidate) => (
+            {sortedData.map((candidate: Candidate) => (
               <tr key={candidate.id}>
                 <C.TableData>{candidate.profissional}</C.TableData>
                 <C.TableData className="idade">{candidate.idade}</C.TableData>

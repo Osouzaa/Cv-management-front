@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React from "react";
 import * as C from "./style";
 import { CardModal } from "../cardModal";
 import Import from "../../image/import.svg";
 import Export from "../../image/export.svg";
 import * as XLSX from "xlsx";
+import axios from "axios";
 
 interface ModalExcelProps {
   isOpen?: boolean;
@@ -25,7 +26,25 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
       XLSX.writeFile(wb, "base_de_candidatos.xlsx");
     }
   };
+  const handleFileSelect = async (files: FileList | null) => {
+    try {
+      if (files && files.length > 0) {
+        const formData = new FormData();
+        formData.append("file", files[0]); 
+  
+        const uploadUrl = import.meta.env.VITE_UPLOAD_CANDIDATES_URL;
+        const response = await axios.post(uploadUrl, formData);
+        console.log("Resposta do servidor:", response.data);
 
+        alert("Dados importados com sucesso")
+      }
+    } catch (error) {
+      // Lida com erros aqui
+      console.error("Erro ao realizar upload:", error);
+    }
+  
+    console.log("Arquivo selecionado:", files);
+  };
 
   return (
     <>
@@ -36,6 +55,7 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
             title="Importe sua base de excel aqui"
             alt="Imagem de importação"
             img={Import}
+            onFileSelect={handleFileSelect}
           />
           <CardModal
             title="Exportar para base de excel"

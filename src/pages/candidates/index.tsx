@@ -29,6 +29,7 @@ const Candidate = () => {
     "bloco"
   );
 
+
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
 
@@ -36,11 +37,16 @@ const Candidate = () => {
 
   useEffect(() => {
     if (data) {
+      const sortedData = data.sort(
+        (a: { id: string }, b: { id: string }) =>
+          parseInt(a.id) - parseInt(b.id)
+      );
+
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-      const updatedCurrentData = data.slice(
+      const updatedCurrentData = sortedData.slice(
         indexOfFirstItem,
-        Math.min(indexOfLastItem, data.length)
+        Math.min(indexOfLastItem, sortedData.length)
       );
       setCurrentData(updatedCurrentData);
     }
@@ -92,15 +98,11 @@ const Candidate = () => {
         )}
 
         {selectedComponent === "list" && (
-          <ListCandidates
-            currentData={currentData}
-            totalPages={totalPages}
-            currentPage={currentPage}
-            handlePageChange={handlePageChange}
-            toggleModal={toggleModal}
-          />
+          <ListCandidates />
         )}
-        {modal && <ModalExcel onClose={toggleModal} dataToExport={currentData}/>}
+        {modal && (
+          <ModalExcel onClose={toggleModal} dataToExport={currentData} />
+        )}
       </C.Container>
     </>
   );

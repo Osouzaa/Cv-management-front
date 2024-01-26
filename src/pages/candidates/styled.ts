@@ -12,6 +12,9 @@ export const Container = styled.div`
   margin-top: 5%;
   margin-left: 5%;
   justify-content: center;
+  align-items: start;
+
+  
 
   @media (min-width: 600px) {
     margin-top: 2%;
@@ -35,7 +38,7 @@ export const ContainerList = styled.div`
   top: -3em;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
   gap: 0.5em;
 
   background-color: #ffffff;
