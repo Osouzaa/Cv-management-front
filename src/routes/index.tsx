@@ -12,6 +12,8 @@ import { TelaAdmin } from "../pages/admin";
 
 import { PageStarts } from "../pages/pageStarts";
 import { ListCandidates } from "../components/listCandidates";
+import RangeSlider from "../components/inputRange";
+import { ModalFilter } from "../components/ModalFilter";
 
 
 const RoutesApp = () => {
@@ -56,7 +58,7 @@ const RoutesApp = () => {
           }
         />
         <Route path="/tutorial" element={<PageStarts />} />
-        <Route path="/Lista" element={<ListCandidates />} />
+        <Route path="/Lista" element={<ModalFilter />} />
       </Routes>
     </BrowserRouter>
   );

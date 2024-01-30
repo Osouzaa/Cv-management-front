@@ -28,7 +28,12 @@ export const Container = styled.div`
 
   @media (min-width: 2560px) {
     margin-top: 3%;
-    margin-left: 20.2%;
+    margin-left: 18.2%;
+  }
+
+  @media (min-width: 1920px) {
+    margin-top: 3%;
+    margin-left: 18.2%;
   }
 `;
 
@@ -66,6 +71,11 @@ export const ContainerList = styled.div`
   @media (min-width: 2560px) {
     right: 2vw;
   }
+
+  
+  @media (min-width: 1920px) {
+    right: 2vw;
+  }
 `;
 
 export const ContainerExcel = styled.div`
@@ -93,6 +103,10 @@ export const ContainerExcel = styled.div`
   }
 
   @media (min-width: 2560px) {
+    right: 12vw;
+  }
+
+  @media (min-width: 1920px) {
     right: 12vw;
   }
 `;
@@ -129,4 +143,45 @@ export const ContainerBloco = styled.div`
   @media (min-width: 2560px) {
     right: 7vw;
   }
+
+  @media (min-width: 1920px) {
+    right: 7vw;
+  }
 `;
+
+
+
+export const ContainerFilter = styled.div`
+  position: absolute;
+  right: 26vw;
+  top: -3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5em;
+
+  background-color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  width: 80px;
+  height: 50px;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid #6b2323;
+    border-bottom: none;
+  }
+
+  img {
+    cursor: pointer;
+  }
+
+
+  @media (min-width: 2560px) {
+    right: 7vw;
+  }
+
+  @media (min-width: 1920px) {
+    right: 17vw;
+  }
+`;
+

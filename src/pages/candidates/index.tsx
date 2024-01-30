@@ -7,6 +7,10 @@ import Excel from "../../image/excel.svg";
 import List_candidates from "../../image/list_candidates.svg";
 import Bloco from "../../image/block.svg";
 import { ModalExcel } from "../../components/modalExcel";
+import Filter from "../../image/icon_filter.svg";
+import RemoveFilter from "../../image/remove_filter.svg";
+import { ModalFilter } from "../../components/ModalFilter";
+import axios from "axios";
 
 interface Candidate {
   id: string;
@@ -25,15 +29,14 @@ interface Candidate {
 const Candidate = () => {
   const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
   const [modal, setModal] = useState(false);
+  const [filter, setFilter] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<"bloco" | "list">(
     "bloco"
   );
-
-
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 6;
-
   const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
+  const [isFiltered, setIsFiltered] = useState(false);
 
   useEffect(() => {
     if (data) {
@@ -41,7 +44,6 @@ const Candidate = () => {
         (a: { id: string }, b: { id: string }) =>
           parseInt(a.id) - parseInt(b.id)
       );
-
       const indexOfLastItem = currentPage * itemsPerPage;
       const indexOfFirstItem = indexOfLastItem - itemsPerPage;
       const updatedCurrentData = sortedData.slice(
@@ -52,7 +54,11 @@ const Candidate = () => {
     }
   }, [data, currentPage, itemsPerPage]);
 
-  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
+  useEffect(() => {
+    setCurrentPage(1); // Resetando a página atual ao filtrar os dados
+  }, [filter]);
+
+  const totalPages = Math.ceil((currentData?.length || 0) / itemsPerPage);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -64,6 +70,53 @@ const Candidate = () => {
 
   const handleIconClick = (component: "list" | "bloco") => {
     setSelectedComponent(component);
+  };
+
+  const toggleFilter = () => {
+    setFilter(!filter);
+  };
+
+  const handleFilterApply = async (filters: any) => {
+    console.log("Filtros:", filters); // Verifica se os filtros estão sendo recebidos corretamente
+
+    const queryString = buildQueryString(filters);
+    console.log("QueryString:", queryString); // Verifica a string de consulta antes da requisição
+
+    try {
+      const response = await axios.get(
+        `${import.meta.env.VITE_API_URL}?${queryString}`
+      );
+      setCurrentData(response.data);
+      setIsFiltered(true);
+    } catch (error) {
+      console.error("Erro ao obter dados filtrados:", error);
+    }
+  };
+  const removeQueryAndFetchData = async () => {
+    try {
+      const response = await axios.get(import.meta.env.VITE_API_URL);
+      setCurrentData(response.data);
+      setFilter(false); // Limpa os filtros
+      setIsFiltered(false);
+    } catch (error) {
+      console.error("Erro ao obter dados sem filtro:", error);
+    }
+  };
+
+
+  const buildQueryString = (filters: any) => {
+    return Object.keys(filters)
+      .map((key) => {
+        if (filters[key] !== "" && filters[key] !== "Não") {
+          return (
+            encodeURIComponent(key) + "=" + encodeURIComponent(filters[key])
+          );
+        } else {
+          return null; 
+        }
+      })
+      .filter((param) => param !== null) 
+      .join("&");
   };
 
   return (
@@ -87,6 +140,14 @@ const Candidate = () => {
           <img src={Bloco} alt="icone de bloco" />
         </C.ContainerBloco>
 
+        <C.ContainerFilter
+          onClick={() =>
+            isFiltered ? removeQueryAndFetchData() : toggleFilter()
+          }
+        >
+          <img src={isFiltered ? RemoveFilter : Filter} alt="icone do Filtro" />
+        </C.ContainerFilter>
+
         {selectedComponent === "bloco" && (
           <CardCandidates
             currentData={currentData}
@@ -98,10 +159,21 @@ const Candidate = () => {
         )}
 
         {selectedComponent === "list" && (
-          <ListCandidates />
+          <ListCandidates
+            currentData={currentData}
+            totalPages={totalPages}
+            currentPage={currentPage}
+            handlePageChange={handlePageChange}
+          />
         )}
         {modal && (
           <ModalExcel onClose={toggleModal} dataToExport={currentData} />
+        )}
+        {filter && (
+          <ModalFilter
+            toggleFilter={toggleFilter}
+            onFilterApply={handleFilterApply}
+          />
         )}
       </C.Container>
     </>
