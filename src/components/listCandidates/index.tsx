@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 import * as C from "./style";
 import Loading from "../loading";
-import { useAxiosCandidate } from "../../hooks/requestAxios";
 
 interface Candidate {
   id: string;
@@ -12,37 +11,36 @@ interface Candidate {
   cidade: string;
   uf: string;
   esta_empregado: string;
-  pretensao_salarial: string;
+  pretensao_salarial: string; // Alterado para number para formatar como dinheiro
   tipo_desejado_linkedin: string;
   nivel_funcao: string;
 }
 
-const ITEMS_PER_PAGE = 12;
+interface ListCandidatesProps {
+  currentData: Candidate[] | null;
+  totalPages: number;
+  currentPage: number;
+  handlePageChange: (newPage: number) => void;
+}
 
-const ListCandidates: React.FC = () => {
-  const { data } = useAxiosCandidate(import.meta.env.VITE_API_URL);
-  const [currentPage, setCurrentPage] = useState<number>(1);
-
-  const dataArray = Array.isArray(data) ? data : [data];
-  const sortedData = data
-    ? [...dataArray].sort((a, b) => parseInt(a.id) - parseInt(b.id))
-    : null;
-
-  const indexOfLastItem = currentPage * ITEMS_PER_PAGE;
-  const indexOfFirstItem = indexOfLastItem - ITEMS_PER_PAGE;
-  const currentItems = sortedData
-  ? sortedData.slice(indexOfFirstItem, indexOfLastItem)
-  : null;
-
-  const totalPages = Math.ceil((sortedData?.length || 0) / ITEMS_PER_PAGE);
-
-  const handlePageChange = (pageNumber: number) => {
-    setCurrentPage(pageNumber);
+const ListCandidates: React.FC<ListCandidatesProps> = ({
+  currentData,
+  totalPages,
+  currentPage,
+  handlePageChange,
+}) => {
+  const formatMoney = (amount: string) => {
+    const numericAmount = parseFloat(amount);
+    if (isNaN(numericAmount)) return ""; 
+    return new Intl.NumberFormat("pt-BR", {
+      style: "currency",
+      currency: "BRL",
+    }).format(numericAmount);
   };
 
   return (
     <C.TableContainer>
-      {sortedData && sortedData.length > 0 ? (
+      {currentData && currentData.length > 0 ? (
         <>
           <C.StyledTable>
             <thead>
@@ -59,14 +57,17 @@ const ListCandidates: React.FC = () => {
               </tr>
             </thead>
             <C.TableBody>
-              {currentItems?.map((candidate: Candidate) => (
+              {currentData.map((candidate: Candidate) => (
                 <tr key={candidate.id}>
                   <C.TableData>{candidate.profissional}</C.TableData>
                   <C.TableData className="idade">{candidate.idade}</C.TableData>
                   <C.TableData className="email">{candidate.email}</C.TableData>
                   <C.TableData>{candidate.telefone}</C.TableData>
                   <C.TableData>{candidate.uf}</C.TableData>
-                  <C.TableData>{candidate.pretensao_salarial}</C.TableData>
+                  <C.TableData>
+                    {formatMoney(candidate.pretensao_salarial)}
+                  </C.TableData>{" "}
+                  {/* Formatar como dinheiro */}
                   <C.TableData>{candidate.tipo_desejado_linkedin}</C.TableData>
                   <C.TableData>{candidate.nivel_funcao}</C.TableData>
                   <C.TableData className="info">Ver mais</C.TableData>
