@@ -13,9 +13,10 @@ import { ChangeEvent as CE } from "react";
 interface ModalFilterProps {
   toggleFilter?: () => void;
   onFilterApply?: (filtro: any) => void;
+  removeQueryAndFetchData?: () => void;
 }
 
-const ModalFilter = ({ toggleFilter, onFilterApply }: ModalFilterProps) => {
+const ModalFilter = ({ toggleFilter, onFilterApply,removeQueryAndFetchData }: ModalFilterProps) => {
   const [minIdade, setMinIdade] = useState(0);
   const [maxIdade, setMaxIdade] = useState(70);
   const [minPretensaoSalarial, setMinPretensaoSalarial] = useState(0);
@@ -42,7 +43,6 @@ const ModalFilter = ({ toggleFilter, onFilterApply }: ModalFilterProps) => {
   const [esta_empregado, setEstaEmpregado] = useState("Não");
 
   const [interesse_imediato, setInteresseImediato] = useState("Não");
-  const [filtro, setFiltro] = useState<any>({});
 
   const handleRangeChangeIdade = (value: any) => {
     setMinIdade(value[0]);
@@ -284,8 +284,8 @@ const ModalFilter = ({ toggleFilter, onFilterApply }: ModalFilterProps) => {
           </div>
         </C.ContentOptions>
         <C.ContentButtons>
-          <button onClick={handleFilter}> Resetar Filtros</button>
           <button onClick={handleFilter}> Filtrar</button>
+          <button onClick={removeQueryAndFetchData}> Limpar Filtros</button>
         </C.ContentButtons>
       </C.Content>
     </C.Container>

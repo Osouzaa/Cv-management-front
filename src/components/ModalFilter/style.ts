@@ -105,8 +105,8 @@ export const ContentButtons = styled.div`
   gap: 13px;
 
   button {
-    width: 250px;
-    height: 40px;
+    width: 200px;
+    height: 50px;
     border-radius: 10px;
     background: #851f2c;
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);

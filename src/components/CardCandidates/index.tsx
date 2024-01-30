@@ -13,9 +13,8 @@ interface Candidate {
   cidade: string;
 }
 
-
 interface CardCandidatesProps {
-  currentData: Candidate[] | null
+  currentData: Candidate[] | null;
   totalPages: number;
   currentPage: number;
   handlePageChange: (newPage: number) => void;
@@ -29,6 +28,7 @@ const CardCandidates = ({
   handlePageChange,
 }: CardCandidatesProps) => {
   const navigate = useNavigate();
+
   return (
     <>
       <C.ContainerGrid>
@@ -77,7 +77,6 @@ const CardCandidates = ({
           </C.PageButton>
         ))}
       </C.Pagination>
-
     </>
   );
 };

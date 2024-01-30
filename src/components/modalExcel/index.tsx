@@ -39,6 +39,7 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
         alert("Dados importados com sucesso")
       }
     } catch (error) {
+      console.error(error)
       // Lida com erros aqui
       console.error("Erro ao realizar upload:", error);
     }
