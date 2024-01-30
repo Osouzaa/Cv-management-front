@@ -34,7 +34,7 @@ const Candidate = () => {
     "bloco"
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 6;
+  const itemsPerPage = selectedComponent === 'bloco' ? 6 : 12;
   const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
   const [isFiltered, setIsFiltered] = useState(false);
 
@@ -55,10 +55,10 @@ const Candidate = () => {
   }, [data, currentPage, itemsPerPage]);
 
   useEffect(() => {
-    setCurrentPage(1); // Resetando a página atual ao filtrar os dados
+    setCurrentPage(1);
   }, [filter]);
 
-  const totalPages = Math.ceil((currentData?.length || 0) / itemsPerPage);
+  const totalPages = Math.ceil((data?.length || 0) / itemsPerPage);
 
   const handlePageChange = (newPage: number) => {
     setCurrentPage(newPage);
@@ -173,6 +173,7 @@ const Candidate = () => {
           <ModalFilter
             toggleFilter={toggleFilter}
             onFilterApply={handleFilterApply}
+            removeQueryAndFetchData={removeQueryAndFetchData}
           />
         )}
       </C.Container>

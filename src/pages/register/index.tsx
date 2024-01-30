@@ -123,11 +123,9 @@ const Register: React.FC = () => {
     }
   };
 
-
   const handleCadastro = async () => {
     try {
-
-      const token = (!!localStorage.getItem("token"))
+      const token = !!localStorage.getItem("token");
       const formData = new FormData();
 
       formData.append("data", JSON.stringify(newCandidate));
@@ -138,9 +136,14 @@ const Register: React.FC = () => {
 
       const newDataWithUpload = {
         ...newCandidate,
+        pretensao_salarial:
+          Number(newCandidate.pretensao_salarial.replace(/[^\d]/g, "")) / 100,
+        pretensao_pj:
+          Number(newCandidate.pretensao_pj.replace(/[^\d]/g, "")) / 100,
         foi_avaliado_recrutamento: token,
         curriculo: upload,
       };
+      console.log(newDataWithUpload.pretensao_pj);
       await axios.post(import.meta.env.VITE_API_URL, newDataWithUpload, {
         headers: {
           "Content-Type": "multipart/form-data",

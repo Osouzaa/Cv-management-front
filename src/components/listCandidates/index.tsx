@@ -31,7 +31,7 @@ const ListCandidates: React.FC<ListCandidatesProps> = ({
 }) => {
   const formatMoney = (amount: string) => {
     const numericAmount = parseFloat(amount);
-    if (isNaN(numericAmount)) return ""; 
+    if (isNaN(numericAmount)) return "";
     return new Intl.NumberFormat("pt-BR", {
       style: "currency",
       currency: "BRL",
@@ -66,8 +66,7 @@ const ListCandidates: React.FC<ListCandidatesProps> = ({
                   <C.TableData>{candidate.uf}</C.TableData>
                   <C.TableData>
                     {formatMoney(candidate.pretensao_salarial)}
-                  </C.TableData>{" "}
-                  {/* Formatar como dinheiro */}
+                  </C.TableData>
                   <C.TableData>{candidate.tipo_desejado_linkedin}</C.TableData>
                   <C.TableData>{candidate.nivel_funcao}</C.TableData>
                   <C.TableData className="info">Ver mais</C.TableData>
