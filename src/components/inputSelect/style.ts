@@ -9,6 +9,10 @@ export const InputWrapper = styled.div`
     margin-top: 10px;
     margin-left: 1.4em;
   }
+
+  &.filter {
+    margin-left: 1em;
+  }
 `;
 
 export const SelectContent = styled.div`
