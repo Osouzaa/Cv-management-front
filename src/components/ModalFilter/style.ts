@@ -17,12 +17,12 @@ export const Content = styled.div`
   border-radius: 10px;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  width: 1000px;
-  height: 651px;
+  width: 1124px;
+  height: 615px;
   position: relative;
   display: grid;
-  grid-template-columns: 291px auto 604px 577px 300px 300px;
-  grid-template-rows: auto auto auto 180px; /* Ajuste nas linhas */
+  grid-template-columns: 291px auto 257px 577px 300px 300px;
+  grid-template-rows: 0 95px 180px 180px; /* Ajuste nas linhas */
   gap: 20px;
   position: relative;
   left: 2em;
@@ -30,9 +30,9 @@ export const Content = styled.div`
 
 export const ContentRange = styled.div`
   grid-column: 1 / span 2;
-  grid-row: 1 / span 2; /* Ajuste na linha */
+  grid-row: 1 / span 3; /* Ajuste na linha */
   width: 291px;
-  height: 273px;
+  height: 293px;
   border-radius: 10px;
   border: 1px solid #b67070;
   background: rgba(217, 217, 217, 0);
@@ -43,59 +43,70 @@ export const ContentRange = styled.div`
   justify-content: center;
 `;
 
+export const ContentCheck = styled.div`
+  margin-top: 24px;
+  grid-column: 3 / span 2; /* Ajuste na coluna */
+  grid-row: 1 / span 3; /* Ajuste na linha */
+
+  width: 271px;
+  height: 293px;
+  border-radius: 10px;
+  border: 1px solid #b67070;
+
+  background: rgba(217, 217, 217, 0);
+`;
+
+
 export const ContentSelect = styled.div`
-  width: 604px;
-  height: 273px;
+  width: 480px;
+  height: 293px;
   border-radius: 10px;
   border: 1px solid #b67070;
   background: rgba(217, 217, 217, 0);
   margin: 24px 0 0 14px;
-  grid-column: 3;
-  grid-row: 1 / span 2; /* Ajuste na linha */
+  grid-column: 4 / span 2; /* Ajuste na coluna */
+  grid-row: 1 / span 3; /* Ajuste na linha */
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
 
   div {
-    width: 95%;
+    width: 98%;
+  }
+`;
+
+export const ContentSelectInput = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  span {
+    color: #000;
+    font-family: Poppins;
+    font-size: 10px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
   }
 `;
 
 export const ContentOptions = styled.div`
-  width: 577px;
-  height: 314px;
+  width: 794px;
+  height: 263px;
   border-radius: 10px;
   border: 1px solid #b67070;
   background: rgba(217, 217, 217, 0);
   margin-left: 20px;
-  grid-column: 1 / span 3;
-  grid-row: 3; /* Ajuste na linha */
+  grid-column: 1 / span 5; /* Ocupa todas as colunas */
+  grid-row: 4; /* Ajuste na linha */
   display: flex;
   align-items: center;
 `;
 
-// export const ContentText = styled.div`
-//   width: 320px;
-//   height: 180px;
-//   border-radius: 10px;
-//   border: 1px solid #b67070;
-//   background: rgba(217, 217, 217, 0);
-//   margin-left: 10px;
-//   grid-column: 4 / span 2; /* Ajuste na coluna e span */
-//   grid-row: 3; /* Ajuste na linha */
-
-//   position: absolute;
-//   left: -21em;
-
-//   div {
-//     width: 95%;
-//   }
-// `;
-
 export const ContentButtons = styled.div`
   position: absolute;
-  bottom: 3em;
-  right: 3em;
+  bottom: 2em;
+  right: 1em;
 
   height: 200px;
   width: 250px;

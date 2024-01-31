@@ -11,9 +11,8 @@ import { PrivateRoute } from "./privateRoute";
 import { TelaAdmin } from "../pages/admin";
 
 import { PageStarts } from "../pages/pageStarts";
-import { ListCandidates } from "../components/listCandidates";
-import RangeSlider from "../components/inputRange";
 import { ModalFilter } from "../components/ModalFilter";
+import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 
 
 const RoutesApp = () => {
@@ -58,7 +57,8 @@ const RoutesApp = () => {
           }
         />
         <Route path="/tutorial" element={<PageStarts />} />
-        <Route path="/Lista" element={<ModalFilter />} />
+        <Route path="/Lista" element={<CandidatesEvaluated />} />
+        <Route path="/aa" element={<ModalFilter />} />
       </Routes>
     </BrowserRouter>
   );

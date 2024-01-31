@@ -50,6 +50,7 @@ const Candidate = () => {
         indexOfFirstItem,
         Math.min(indexOfLastItem, sortedData.length)
       );
+      console.log("Dados a serem definidos como currentData:", updatedCurrentData); // Adicione este log
       setCurrentData(updatedCurrentData);
     }
   }, [data, currentPage, itemsPerPage]);
@@ -77,21 +78,23 @@ const Candidate = () => {
   };
 
   const handleFilterApply = async (filters: any) => {
-    console.log("Filtros:", filters); // Verifica se os filtros estão sendo recebidos corretamente
-
+    console.log("Filtros aplicados:", filters);
+  
     const queryString = buildQueryString(filters);
-    console.log("QueryString:", queryString); // Verifica a string de consulta antes da requisição
-
+    console.log("QueryString:", queryString);
+  
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}?${queryString}`
       );
+      console.log("Dados filtrados obtidos:", response.data); // Adicione este log
       setCurrentData(response.data);
       setIsFiltered(true);
     } catch (error) {
       console.error("Erro ao obter dados filtrados:", error);
     }
   };
+
   const removeQueryAndFetchData = async () => {
     try {
       const response = await axios.get(import.meta.env.VITE_API_URL);
@@ -105,20 +108,23 @@ const Candidate = () => {
 
 
   const buildQueryString = (filters: any) => {
-    return Object.keys(filters)
-      .map((key) => {
-        if (filters[key] !== "" && filters[key] !== "Não") {
-          return (
-            encodeURIComponent(key) + "=" + encodeURIComponent(filters[key])
-          );
-        } else {
-          return null; 
-        }
-      })
-      .filter((param) => param !== null) 
-      .join("&");
-  };
-
+  return Object.keys(filters)
+    .map((key) => {
+      if (
+        filters[key] !== undefined &&
+        filters[key] !== "" &&
+        filters[key] !== "N/A" &&
+        (typeof filters[key] !== "object" || Object.values(filters[key]).some(val => val !== ""))
+      ) {
+        return encodeURIComponent(key) + "=" + encodeURIComponent(filters[key]);
+      } else {
+        return null;
+      }
+    })
+    .filter((param) => param !== null)
+    .join("&");
+};
+  
   return (
     <>
       <C.Container>
@@ -142,10 +148,10 @@ const Candidate = () => {
 
         <C.ContainerFilter
           onClick={() =>
-            isFiltered ? removeQueryAndFetchData() : toggleFilter()
+           toggleFilter()
           }
         >
-          <img src={isFiltered ? RemoveFilter : Filter} alt="icone do Filtro" />
+          <img src={Filter} alt="icone do Filtro" />
         </C.ContainerFilter>
 
         {selectedComponent === "bloco" && (
