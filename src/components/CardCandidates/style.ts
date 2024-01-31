@@ -136,3 +136,11 @@ export const PageButton = styled.button<PageButtonProps>`
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   border: none;
 `;
+
+
+export const Image = styled.img `
+  position: absolute;
+  top: -1em;
+  right: 0;
+
+`
