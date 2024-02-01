@@ -82,6 +82,8 @@ const CardCandidates = ({
             </C.PageButton>
           ))}
       </C.Pagination>
+
+      {currentData?.length === 0 && <h1> SEM CANDIDATOS</h1>}
     </>
   );
 };
