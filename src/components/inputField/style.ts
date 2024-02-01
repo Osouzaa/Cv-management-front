@@ -20,12 +20,12 @@ export const Label = styled.label`
   width: 100%;
 
   &.inputObs {
-    margin-left: .67em;
+    margin-left: 0.67em;
     width:93%;
   }
   &.pretensao {
-    margin-left: .7em;
-    width:93%;
+    margin-left: 0.7em;
+    width: 93%;
   }
 `;
 
@@ -66,12 +66,14 @@ export const Input = styled.input`
   }
 
   &.inputObs {
-    margin-left: .67em;
-    width:93%;
+    margin-left: 0.67em;
+    width: 196%;
+    height: 50px;
+    grid-column: 2 span;
   }
-  
+
   &.pretensao {
-    margin-left: .7em;
-    width:93%;
+    margin-left: 0.7em;
+    width: 93%;
   }
 `;

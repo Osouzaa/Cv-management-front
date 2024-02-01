@@ -45,6 +45,7 @@ const Register: React.FC = () => {
     vaga_100_presencial_porto_real_rj: "",
     vaga_100_presencial_goiana_pe: "",
     vaga_100_presencial_betim_mg: "",
+    vaga_100_presencial_sao_paulo: "",
     vaga_internacional: "",
     vaga_hibrida_betim: "",
     home_office: "",

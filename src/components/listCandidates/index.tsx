@@ -17,10 +17,10 @@ interface Candidate {
 }
 
 interface ListCandidatesProps {
-  currentData: Candidate[] | null;
-  totalPages: number;
-  currentPage: number;
-  handlePageChange: (newPage: number) => void;
+  currentData?: Candidate[] | null;
+  totalPages?: number;
+  currentPage?: number;
+  handlePageChange?: (newPage: number) => void;
 }
 
 const ListCandidates: React.FC<ListCandidatesProps> = ({
@@ -75,15 +75,18 @@ const ListCandidates: React.FC<ListCandidatesProps> = ({
             </C.TableBody>
           </C.StyledTable>
           <C.Pagination>
-            {Array.from({ length: totalPages }).map((_, index) => (
-              <C.PageButton
-                key={index}
-                onClick={() => handlePageChange(index + 1)}
-                $active={currentPage === index + 1}
-              >
-                {index + 1}
-              </C.PageButton>
-            ))}
+            {totalPages &&
+              Array.from({ length: totalPages }).map((_, index) => (
+                <C.PageButton
+                  key={index}
+                  onClick={() =>
+                    handlePageChange && handlePageChange(index + 1)
+                  }
+                  $active={currentPage === index + 1}
+                >
+                  {index + 1}
+                </C.PageButton>
+              ))}
           </C.Pagination>
         </>
       ) : (

@@ -13,14 +13,24 @@ interface ModalExcelProps {
   dataToExport?: any[] | null;
 }
 
+
+
 const ModalExcel: React.FC<ModalExcelProps> = ({
   onClose,
   classname,
   dataToExport,
 }) => {
+
   const handleExportClick = () => {
     if (dataToExport) {
-      const ws = XLSX.utils.json_to_sheet(dataToExport);
+
+      const dataWithCurriculumLink = dataToExport.map(candidate => ({
+        ...candidate,
+        curriculo: `http://localhost:3000/v1/candidate/${candidate.id}/cv`,
+      }));
+
+
+      const ws = XLSX.utils.json_to_sheet(dataWithCurriculumLink);
       const wb = XLSX.utils.book_new();
       XLSX.utils.book_append_sheet(wb, ws, "Sheet 1");
       XLSX.writeFile(wb, "base_de_candidatos.xlsx");
@@ -40,7 +50,6 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
       }
     } catch (error) {
       console.error(error)
-      // Lida com erros aqui
       console.error("Erro ao realizar upload:", error);
     }
   
@@ -71,4 +80,4 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
   );
 };
 
-export { ModalExcel };
+export { ModalExcel }

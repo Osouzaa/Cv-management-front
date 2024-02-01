@@ -45,11 +45,6 @@ export const Fields = [
   { label: "Status", field: "status" },
   { label: "Cidade", field: "cidade" },
 
-  { label: "Ultima Empresa", field: "ultima_empresa" },
-  { label: "Último Salário", field: "ultimo_salario" },
-
-  { label: "Target CLT", field: "target_clt" },
-
   { label: "Observação", field: "observacao" },
   {
     label: "Vaga 100% Presencial Porto Real/RJ",

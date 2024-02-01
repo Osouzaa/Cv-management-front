@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import Logo from "../../image/logoTecnocar .png";
 import * as C from "./style";
 import Loading from "../loading";
+import IconNo from '../../image/no_avaliable.svg'
 
 interface Candidate {
   id: string;
@@ -14,11 +15,12 @@ interface Candidate {
 }
 
 interface CardCandidatesProps {
-  currentData: Candidate[] | null;
-  totalPages: number;
-  currentPage: number;
-  handlePageChange: (newPage: number) => void;
-  toggleModal: () => void;
+  currentData?: Candidate[] | null;
+  totalPages?: number;
+  currentPage?: number;
+  handlePageChange?: (newPage: number) => void;
+  toggleModal?: () => void;
+  availiado?:boolean;
 }
 
 const CardCandidates = ({
@@ -26,6 +28,7 @@ const CardCandidates = ({
   totalPages,
   currentPage,
   handlePageChange,
+  availiado
 }: CardCandidatesProps) => {
   const navigate = useNavigate();
 
@@ -33,9 +36,10 @@ const CardCandidates = ({
     <>
       <C.ContainerGrid>
         {currentData ? (
-          currentData.map((candidate: Candidate) => (
-            <C.Content key={candidate.id}>
+          currentData.map((candidate: Candidate, index: number) => (
+            <C.Content key={`${candidate.id}_${index}`}>
               <C.LogoImage src={Logo} alt="" />
+              {availiado &&  <C.Image src={IconNo}/>}
               <C.Title>{candidate.profissional}</C.Title>
               <C.ContentInfo>
                 <C.InfoCandidate>
@@ -67,16 +71,19 @@ const CardCandidates = ({
       </C.ContainerGrid>
 
       <C.Pagination>
-        {Array.from({ length: totalPages }).map((_, index) => (
-          <C.PageButton
-            key={index}
-            onClick={() => handlePageChange(index + 1)}
-            $active={currentPage === index + 1}
-          >
-            {index + 1}
-          </C.PageButton>
-        ))}
+        {totalPages &&
+          Array.from({ length: totalPages }).map((_, index) => (
+            <C.PageButton
+              key={index}
+              onClick={() => handlePageChange && handlePageChange(index + 1)}
+              $active={currentPage === index + 1}
+            >
+              {index + 1}
+            </C.PageButton>
+          ))}
       </C.Pagination>
+
+      {currentData?.length === 0 && <h1> SEM CANDIDATOS</h1>}
     </>
   );
 };

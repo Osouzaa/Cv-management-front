@@ -34,7 +34,7 @@ const Candidate = () => {
     "bloco"
   );
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = selectedComponent === 'bloco' ? 6 : 12;
+  const itemsPerPage = selectedComponent === "bloco" ? 6 : 12;
   const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
   const [isFiltered, setIsFiltered] = useState(false);
 
@@ -50,6 +50,10 @@ const Candidate = () => {
         indexOfFirstItem,
         Math.min(indexOfLastItem, sortedData.length)
       );
+      console.log(
+        "Dados a serem definidos como currentData:",
+        updatedCurrentData
+      ); // Adicione este log
       setCurrentData(updatedCurrentData);
     }
   }, [data, currentPage, itemsPerPage]);
@@ -77,21 +81,23 @@ const Candidate = () => {
   };
 
   const handleFilterApply = async (filters: any) => {
-    console.log("Filtros:", filters); // Verifica se os filtros estão sendo recebidos corretamente
+    console.log("Filtros aplicados:", filters);
 
     const queryString = buildQueryString(filters);
-    console.log("QueryString:", queryString); // Verifica a string de consulta antes da requisição
+    console.log("QueryString:", queryString);
 
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}?${queryString}`
       );
+      console.log("Dados filtrados obtidos:", response.data); // Adicione este log
       setCurrentData(response.data);
       setIsFiltered(true);
     } catch (error) {
       console.error("Erro ao obter dados filtrados:", error);
     }
   };
+
   const removeQueryAndFetchData = async () => {
     try {
       const response = await axios.get(import.meta.env.VITE_API_URL);
@@ -103,19 +109,24 @@ const Candidate = () => {
     }
   };
 
-
   const buildQueryString = (filters: any) => {
     return Object.keys(filters)
       .map((key) => {
-        if (filters[key] !== "" && filters[key] !== "Não") {
+        if (
+          filters[key] !== undefined &&
+          filters[key] !== "" &&
+          filters[key] !== "N/A" &&
+          (typeof filters[key] !== "object" ||
+            Object.values(filters[key]).some((val) => val !== ""))
+        ) {
           return (
             encodeURIComponent(key) + "=" + encodeURIComponent(filters[key])
           );
         } else {
-          return null; 
+          return null;
         }
       })
-      .filter((param) => param !== null) 
+      .filter((param) => param !== null)
       .join("&");
   };
 
@@ -140,13 +151,15 @@ const Candidate = () => {
           <img src={Bloco} alt="icone de bloco" />
         </C.ContainerBloco>
 
-        <C.ContainerFilter
-          onClick={() =>
-            isFiltered ? removeQueryAndFetchData() : toggleFilter()
-          }
-        >
-          <img src={isFiltered ? RemoveFilter : Filter} alt="icone do Filtro" />
+        <C.ContainerFilter onClick={() => toggleFilter()}>
+          <img src={Filter} alt="icone do Filtro" />
         </C.ContainerFilter>
+
+        {isFiltered && (
+          <C.ContainerNoFilter onClick={removeQueryAndFetchData}>
+            <img src={RemoveFilter} alt="icone do Filtro" />
+          </C.ContainerNoFilter>
+        )}
 
         {selectedComponent === "bloco" && (
           <CardCandidates

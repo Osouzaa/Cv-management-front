@@ -138,19 +138,13 @@ export const FileInputContainer = styled.div`
 
   label {
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     margin-bottom: 3px;
     color: #333;
   }
 
   input {
     display: none;
-  }
-
-  &.Teste {
-    position: absolute;
-    bottom: 5.1em;
-    right: 29.8%;
   }
 
   .custom-file-upload {

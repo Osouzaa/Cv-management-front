@@ -2,7 +2,7 @@ import * as C from "./style";
 import Logo from "../../image/logoTecnocar2.png";
 import InputField from "../../components/inputField";
 import { FormEvent } from "../../types/types";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
@@ -18,6 +18,18 @@ const Login = () => {
   const cleanForm = () => {
     setFormData({ registration: "", password: "" });
   };
+
+  useEffect(() => {
+    const getToken = localStorage.getItem("token");
+
+    if (getToken) {
+      setTimeout(() => {
+        navigate("/register");
+      }, 1000);
+    } else {
+      navigate("/");
+    }
+  }, []);
 
   const handleSubmit = async (event: FormEvent) => {
     event.preventDefault();
