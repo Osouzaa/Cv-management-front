@@ -185,3 +185,37 @@ export const ContainerFilter = styled.div`
   }
 `;
 
+
+export const ContainerNoFilter = styled.div`
+  position: absolute;
+  right: 33vw;
+  top: -3em;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 0.5em;
+
+  background-color: #ffffff;
+  border-radius: 10px 10px 0 0;
+  width: 80px;
+  height: 50px;
+  cursor: pointer;
+
+  &:hover {
+    border: 2px solid #6b2323;
+    border-bottom: none;
+  }
+
+  img {
+    cursor: pointer;
+  }
+
+
+  @media (min-width: 2560px) {
+    right: 7vw;
+  }
+
+  @media (min-width: 1920px) {
+    right: 22vw;
+  }
+`;

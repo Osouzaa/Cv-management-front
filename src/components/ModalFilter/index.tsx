@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import RangeSlider from "../inputRange";
 import * as C from "./style";
 import InputRadio from "../inputRadio";
@@ -14,7 +14,11 @@ interface ModalFilterProps {
   removeQueryAndFetchData?: () => void;
 }
 
-const ModalFilter = ({ removeQueryAndFetchData, onFilterApply, toggleFilter }: ModalFilterProps) => {
+const ModalFilter = ({
+  removeQueryAndFetchData,
+  onFilterApply,
+  toggleFilter,
+}: ModalFilterProps) => {
   const [minIdade, setMinIdade] = useState(0);
   const [maxIdade, setMaxIdade] = useState(70);
   const [minPretensaoSalarial, setMinPretensaoSalarial] = useState(0);
@@ -42,24 +46,29 @@ const ModalFilter = ({ removeQueryAndFetchData, onFilterApply, toggleFilter }: M
   const [home_office, setHomeOffice] = useState("N/A");
   const [vaga_100_presencial_sao_paulo, setVaga_100_presencial_sao_paulo] =
     useState("N/A");
-  const [uf, setUf] = useState<string[]>([]);
+  const [uf, setUf] = useState<string[]>([""]);
 
-  const handleRangeChangeIdade = (value: any) => {
-    setMinIdade(value[0]);
-    setMaxIdade(value[1]);
+  const handleRangeChangeIdade = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setMinIdade(value[0]);
+      setMaxIdade(value[1]);
+    }
   };
 
-  const handleRangeChangePretensaoCLT = (value: any) => {
-    setMinPretensaoSalarial(value[0]);
-    setMaxPretensaoSalarial(value[1]);
+  const handleRangeChangePretensaoCLT = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setMinPretensaoSalarial(value[0]);
+      setMaxPretensaoSalarial(value[1]);
+    }
   };
 
-  const handleRangeChangePretensaoPJ = (value: any) => {
-    setMinPretensaoPJ(value[0]);
-    setMaxPretensaoPJ(value[1]);
+  const handleRangeChangePretensaoPJ = (value: number | number[]) => {
+    if (Array.isArray(value)) {
+      setMinPretensaoPJ(value[0]);
+      setMaxPretensaoPJ(value[1]);
+    }
   };
 
-  
   const handleFilter = () => {
     const filtro = {
       minIdade,
@@ -83,6 +92,9 @@ const ModalFilter = ({ removeQueryAndFetchData, onFilterApply, toggleFilter }: M
       interesse_imediato,
       home_office,
     };
+
+    const filtroJSON = JSON.stringify(filtro);
+    localStorage.setItem("filtros", filtroJSON);
 
     if (onFilterApply) {
       onFilterApply(filtro);
@@ -219,7 +231,7 @@ const ModalFilter = ({ removeQueryAndFetchData, onFilterApply, toggleFilter }: M
               { label: "Minas Gerais - MG", value: "MG" },
               { label: "Rio de Janeiro - RJ", value: "RJ" },
               { label: "Goiana - PE", value: "PE" },
-              { label: "Outros", value: "" },
+              { label: "Outros", value: "N/A" },
             ]}
             onChange={handleLocalidadeChange}
           />

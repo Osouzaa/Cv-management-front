@@ -126,6 +126,12 @@ export const camposRadioLocalizacao: FieldRadio[] = [
     type: "select",
     options: [" ", "Sim", "Não"],
   },
+  {
+    label: "Vaga 100% Presencial São Paulo / SP",
+    field: "vaga_100_presencial_sao_paulo",
+    type: "select",
+    options: [" ", "Sim", "Não"],
+  },
 ];
 
 export const camposDisponibilidadeForm: FieldRadio[] = [
