@@ -1,8 +1,8 @@
-import React, { useState, useCallback } from "react";
+import React, { useState, useCallback, useEffect } from "react";
 import Box from "@mui/material/Box";
 import Slider from "@mui/material/Slider";
 import * as C from "./style";
-import { Typography, Input } from "@mui/material";
+import {  Input } from "@mui/material";
 
 interface RangeSliderProps {
   value: (number | null)[];
@@ -17,6 +17,11 @@ const RangeSlider: React.FC<RangeSliderProps> = (props) => {
   const { max } = props;
   const [value, setValue] = useState<(number | null)[]>(props.value);
 
+  useEffect(() => {
+    // Atualizar o estado quando as props.value mudarem (pode ser útil em certos casos)
+    setValue(props.value);
+  }, [props.value]);
+
   const handleChange = (event: Event, newValue: number | number[]) => {
     setValue(newValue as (number | null)[]);
     if (props.onChange) {
@@ -27,7 +32,7 @@ const RangeSlider: React.FC<RangeSliderProps> = (props) => {
   const handleInputChange = useCallback(
     (index: number) => (event: React.ChangeEvent<HTMLInputElement>) => {
       const newValue =
-        event.target.value === "" ? null : parseInt(event.target.value);
+        event.target.value === "" ? null : parseInt(event.target.value, 10);
       const updatedValue: (number | null)[] = [...value];
       updatedValue[index] = newValue;
       setValue(updatedValue);
@@ -36,7 +41,6 @@ const RangeSlider: React.FC<RangeSliderProps> = (props) => {
         (val) => val !== null
       ) as number[];
 
-      // Chamar props.onChange com o tipo correto
       if (props.onChange) {
         props.onChange(
           filteredValues.length === 1 ? filteredValues[0] : filteredValues

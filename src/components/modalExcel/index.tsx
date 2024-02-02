@@ -44,7 +44,6 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
   
         const uploadUrl = import.meta.env.VITE_UPLOAD_CANDIDATES_URL;
         const response = await axios.post(uploadUrl, formData);
-        console.log("Resposta do servidor:", response.data);
 
         alert("Dados importados com sucesso")
       }
@@ -53,7 +52,6 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
       console.error("Erro ao realizar upload:", error);
     }
   
-    console.log("Arquivo selecionado:", files);
   };
 
   return (

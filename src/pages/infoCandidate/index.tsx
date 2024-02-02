@@ -20,8 +20,6 @@ const InfoCandidate = () => {
   const [editedData, setEditedData] = useState<Candidate>(initialState);
   const [message, setMessage] = useState("");
 
-  console.log(data)
-
   useEffect(() => {
     if (data) {
       setEditedData((prevData) => ({
@@ -92,14 +90,12 @@ const InfoCandidate = () => {
       }, 3000);
       toggleEditForm();
     } catch (error) {
-      console.log("error", error);
-      console.log("Error: ", errorAxios);
     }
   };
   
   const handleCV = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/v1/candidate/${id}/download-cv`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}${id}/download-cv`, {
         responseType: "blob", 
       });
       const blob = new Blob([response.data]);

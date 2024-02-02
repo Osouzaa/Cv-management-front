@@ -9,17 +9,32 @@ interface Option {
 interface ContentCheckLabelProps {
   title: string;
   options: Option[];
-  onChange?: (value: any) => void; 
+  onChange?: (value: string[]) => void; // Modificado para passar um array de valores selecionados
+  checked?: string[]; // Novo estado para armazenar os valores selecionados
 }
 
 const ContentCheckLabel: React.FC<ContentCheckLabelProps> = ({
   title,
   options,
-  onChange, 
+  onChange,
+  checked = [], // Valor padrão como um array vazio
 }) => {
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const { value } = event.target;
+    let newChecked: string[] = [];
+
+    // Verifica se o valor já está selecionado
+    if (checked.includes(value)) {
+      // Se estiver, remove da lista de selecionados
+      newChecked = checked.filter((item) => item !== value);
+    } else {
+      // Caso contrário, adiciona à lista de selecionados
+      newChecked = [...checked, value];
+    }
+
+    // Chama a função onChange com a nova lista de valores selecionados
     if (onChange) {
-      onChange(event.target.value); 
+      onChange(newChecked);
     }
   };
 
@@ -28,12 +43,13 @@ const ContentCheckLabel: React.FC<ContentCheckLabelProps> = ({
       <h3>{title}</h3>
       {options.map((option, index) => (
         <C.ContentInputsOptions key={index} className="content-inputs-options">
-          {/* Adicionando o evento onChange ao input */}
           <input 
             type="checkbox" 
             name={option.value} 
             value={option.value} 
-            onChange={handleChange} // Chamando a função handleChange quando houver uma mudança no input
+            onChange={handleChange}
+            // Verifica se o valor está presente na lista de valores selecionados
+            checked={checked.includes(option.value)}
           />
           <span>{option.label}</span>
         </C.ContentInputsOptions>
@@ -41,5 +57,4 @@ const ContentCheckLabel: React.FC<ContentCheckLabelProps> = ({
     </C.ContentCheckLabel>
   );
 };
-
 export { ContentCheckLabel };
