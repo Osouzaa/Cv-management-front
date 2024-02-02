@@ -95,7 +95,7 @@ const InfoCandidate = () => {
   
   const handleCV = async () => {
     try {
-      const response = await axios.get(`http://localhost:3000/v1/candidate/${id}/download-cv`, {
+      const response = await axios.get(`${import.meta.env.VITE_API_URL}${id}/download-cv`, {
         responseType: "blob", 
       });
       const blob = new Blob([response.data]);
