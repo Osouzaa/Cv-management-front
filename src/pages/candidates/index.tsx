@@ -50,10 +50,6 @@ const Candidate = () => {
         indexOfFirstItem,
         Math.min(indexOfLastItem, sortedData.length)
       );
-      console.log(
-        "Dados a serem definidos como currentData:",
-        updatedCurrentData
-      ); // Adicione este log
       setCurrentData(updatedCurrentData);
     }
   }, [data, currentPage, itemsPerPage]);
@@ -81,16 +77,11 @@ const Candidate = () => {
   };
 
   const handleFilterApply = async (filters: any) => {
-    console.log("Filtros aplicados:", filters);
-
     const queryString = buildQueryString(filters);
-    console.log("QueryString:", queryString);
-
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_API_URL}?${queryString}`
       );
-      console.log("Dados filtrados obtidos:", response.data); // Adicione este log
       setCurrentData(response.data);
       setIsFiltered(true);
     } catch (error) {
@@ -104,6 +95,7 @@ const Candidate = () => {
       setCurrentData(response.data);
       setFilter(false); // Limpa os filtros
       setIsFiltered(false);
+      localStorage.removeItem("filtros");
     } catch (error) {
       console.error("Erro ao obter dados sem filtro:", error);
     }

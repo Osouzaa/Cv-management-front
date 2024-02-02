@@ -1,24 +1,20 @@
-import { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
 import RangeSlider from "../inputRange";
 import * as C from "./style";
 import InputRadio from "../inputRadio";
 import InputSelect from "../inputSelect";
 import { camposSelect } from "../../utils/campoForms";
-import { ChangeEvent } from "../../types/types";
-import { ChangeEvent as CE } from "react";
 import { ContentCheckLabel } from "../inputCheck";
 
 interface ModalFilterProps {
   toggleFilter?: () => void;
   onFilterApply?: (filtro: any) => void;
   removeQueryAndFetchData?: () => void;
+  conhecimentoIngles?: string[];
+  uf?: string[];
 }
 
-const ModalFilter = ({
-  removeQueryAndFetchData,
-  onFilterApply,
-  toggleFilter,
-}: ModalFilterProps) => {
+const ModalFilter = ({ onFilterApply, toggleFilter }: ModalFilterProps) => {
   const [minIdade, setMinIdade] = useState(0);
   const [maxIdade, setMaxIdade] = useState(70);
   const [minPretensaoSalarial, setMinPretensaoSalarial] = useState(0);
@@ -39,33 +35,54 @@ const ModalFilter = ({
   const [vaga_100_presencial_betim_mg, setVaga_100_presencial_betim_mg] =
     useState("N/A");
   const [vaga_internacional, setVagaInternacional] = useState("N/A");
-  const [experiencia_ramo_automotivo, setExperiencia_ramo_automotivo] =
+  const [experiencia_ramo_automotivo, setExperienciaRamoAutomotivo] =
     useState("N/A");
   const [esta_empregado, setEstaEmpregado] = useState("N/A");
   const [interesse_imediato, setInteresseImediato] = useState("N/A");
   const [home_office, setHomeOffice] = useState("N/A");
   const [vaga_100_presencial_sao_paulo, setVaga_100_presencial_sao_paulo] =
     useState("N/A");
-  const [uf, setUf] = useState<string[]>([""]);
+  const [uf, setUf] = useState<string[]>([]);
 
-  const handleRangeChangeIdade = (value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setMinIdade(value[0]);
-      setMaxIdade(value[1]);
+  useEffect(() => {
+    const savedFilters = localStorage.getItem("filtros");
+    if (savedFilters) {
+      const parsedFilters = JSON.parse(savedFilters);
+      setMinIdade(parsedFilters.minIdade);
+      setMaxIdade(parsedFilters.maxIdade);
+      setMinPretensaoSalarial(parsedFilters.minPretensaoSalarial);
+      setMaxPretensaoSalarial(parsedFilters.maxPretensaoSalarial);
+      setMinPretensaoPJ(parsedFilters.minPretensaoPJ);
+      setMaxPretensaoPJ(parsedFilters.maxPretensaoPJ);
+      setConhecimentoIngles(parsedFilters.conhecimento_ingles);
+      setTipo_desejado_linkedin(parsedFilters.tipo_desejado_linkedin);
+      setNivelFuncao(parsedFilters.nivel_funcao);
+      setModalidadeAtual(parsedFilters.modalidade_atual);
+      setFormacao(parsedFilters.formacao);
+      setVaga_100_presencial_porto_real_rj(
+        parsedFilters.vaga_100_presencial_porto_real_rj
+      );
+      setVaga_100_presencial_goiana_pe(
+        parsedFilters.vaga_100_presencial_goiana_pe
+      );
+      setVaga_100_presencial_betim_mg(
+        parsedFilters.vaga_100_presencial_betim_mg
+      );
+      setVagaInternacional(parsedFilters.vaga_internacional);
+      setExperienciaRamoAutomotivo(parsedFilters.experiencia_ramo_automotivo);
+      setEstaEmpregado(parsedFilters.esta_empregado);
+      setInteresseImediato(parsedFilters.interesse_imediato);
+      setHomeOffice(parsedFilters.home_office);
+      setVaga_100_presencial_sao_paulo(
+        parsedFilters.vaga_100_presencial_sao_paulo
+      );
+      setUf(parsedFilters.uf);
     }
-  };
+  }, []);
 
-  const handleRangeChangePretensaoCLT = (value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setMinPretensaoSalarial(value[0]);
-      setMaxPretensaoSalarial(value[1]);
-    }
-  };
-
-  const handleRangeChangePretensaoPJ = (value: number | number[]) => {
-    if (Array.isArray(value)) {
-      setMinPretensaoPJ(value[0]);
-      setMaxPretensaoPJ(value[1]);
+  const closeFilter = () => { 
+    if (toggleFilter) {
+      toggleFilter();
     }
   };
 
@@ -91,6 +108,7 @@ const ModalFilter = ({
       esta_empregado,
       interesse_imediato,
       home_office,
+      vaga_100_presencial_sao_paulo,
     };
 
     const filtroJSON = JSON.stringify(filtro);
@@ -102,87 +120,49 @@ const ModalFilter = ({
     if (toggleFilter) {
       toggleFilter();
     }
-
-    console.log(filtro);
   };
 
-  const formacaoOptions =
-    camposSelect.find((campo) => campo.field === "formacao")?.options || [];
-  const modalidadeOptions =
-    camposSelect.find((campo) => campo.field === "modalidade_atual")?.options ||
-    [];
-  const nivelOptions =
-    camposSelect.find((campo) => campo.field === "nivel_funcao")?.options || [];
-
-  const handleConhecimentoInglesChange = (value: string) => {
-    setConhecimentoIngles((prevConhecimentoIngles) => {
-      if (prevConhecimentoIngles.includes(value)) {
-        return prevConhecimentoIngles.filter((item) => item !== value);
-      } else {
-        return [...prevConhecimentoIngles, value];
-      }
-    });
+  const handleClearFilters = () => {
+    localStorage.removeItem("filtros");
+    setMinIdade(0);
+    setMaxIdade(70);
+    setMinPretensaoSalarial(0);
+    setMaxPretensaoSalarial(20000);
+    setMinPretensaoPJ(0);
+    setMaxPretensaoPJ(200);
+    setConhecimentoIngles([]);
+    setTipo_desejado_linkedin("");
+    setNivelFuncao("");
+    setModalidadeAtual("");
+    setFormacao("");
+    5;
+    setVaga_100_presencial_porto_real_rj("N/A");
+    setVaga_100_presencial_goiana_pe("N/A");
+    setVaga_100_presencial_betim_mg("N/A");
+    setVagaInternacional("N/A");
+    setExperienciaRamoAutomotivo("N/A");
+    setEstaEmpregado("N/A");
+    setInteresseImediato("N/A");
+    setHomeOffice("N/A");
+    setVaga_100_presencial_sao_paulo("N/A");
+    setUf([]);
   };
 
-  const handleLocalidadeChange = (value: string) => {
-    setUf((prevLocalidade) => {
-      if (prevLocalidade.includes(value)) {
-        return prevLocalidade.filter((item) => item !== value);
-      } else {
-        return [...prevLocalidade, value];
-      }
-    });
-  };
+  useEffect(() => {
+    loadSavedFilters();
+  }, []);
 
-  const handleVagaLinkedinChange = (e: ChangeEvent) => {
-    setTipo_desejado_linkedin(e.target.value);
-  };
-
-  const handleNivelFuncaoChange = (e: ChangeEvent) => {
-    setNivelFuncao(e.target.value);
-  };
-
-  const handleModalidadeAtualChange = (e: ChangeEvent) => {
-    setModalidadeAtual(e.target.value);
-  };
-
-  const handleFormacaoChange = (e: ChangeEvent) => {
-    setFormacao(e.target.value);
-  };
-
-  const handleVagaPresencialPortoRealChange = (e: CE<HTMLInputElement>) => {
-    setVaga_100_presencial_porto_real_rj(e.target.value);
-  };
-
-  const handleVagaPresencialGoianaChange = (e: CE<HTMLInputElement>) => {
-    setVaga_100_presencial_goiana_pe(e.target.value);
-  };
-
-  const handleVagaPresencialBetimChange = (e: CE<HTMLInputElement>) => {
-    setVaga_100_presencial_betim_mg(e.target.value);
-  };
-
-  const handleExperienciaRamoAutomotivoChange = (e: CE<HTMLInputElement>) => {
-    setExperiencia_ramo_automotivo(e.target.value);
-  };
-
-  const handleEstaEmpregadoChange = (e: CE<HTMLInputElement>) => {
-    setEstaEmpregado(e.target.value);
-  };
-
-  const handleVagaInternacionalChange = (e: CE<HTMLInputElement>) => {
-    setVagaInternacional(e.target.value);
-  };
-
-  const handleInteresseImediatoChange = (e: CE<HTMLInputElement>) => {
-    setInteresseImediato(e.target.value);
-  };
-  const handleHomeOffice = (e: CE<HTMLInputElement>) => {
-    setHomeOffice(e.target.value);
-  };
-
-  const handleVagaSaoPaulo = (e: CE<HTMLInputElement>) => {
-    setVaga_100_presencial_sao_paulo(e.target.value);
+  const loadSavedFilters = () => {
+    const savedFilters = localStorage.getItem("filtros");
+    if (savedFilters) {
+      const parsedFilters = JSON.parse(savedFilters);
+      setMinIdade(parsedFilters.minIdade);
+      setMaxIdade(parsedFilters.maxIdade);
+      setMinPretensaoSalarial(parsedFilters.minPretensaoSalarial);
+      setMaxPretensaoSalarial(parsedFilters.maxPretensaoSalarial);
+      setMinPretensaoPJ(parsedFilters.minPretensaoPJ);
+      setMaxPretensaoPJ(parsedFilters.maxPretensaoPJ);
+    }
   };
 
   return (
@@ -193,21 +173,36 @@ const ModalFilter = ({
           <RangeSlider
             label="Idade"
             value={[minIdade, maxIdade]}
-            onChange={handleRangeChangeIdade}
+            onChange={(value) => {
+              if (Array.isArray(value)) {
+                setMinIdade(value[0]);
+                setMaxIdade(value[1]);
+              }
+            }}
             max={70}
             title=" anos "
           />
           <RangeSlider
             label="Pretensão Salarial CLT"
             value={[minPretensaoSalarial, maxPretensaoSalarial]}
-            onChange={handleRangeChangePretensaoCLT}
+            onChange={(value) => {
+              if (Array.isArray(value)) {
+                setMinPretensaoSalarial(value[0]);
+                setMaxPretensaoSalarial(value[1]);
+              }
+            }}
             max={20000}
             real="R$"
           />
           <RangeSlider
             label="Pretensão PJ"
             value={[minPretensaoPJ, maxPretensaoPJ]}
-            onChange={handleRangeChangePretensaoPJ}
+            onChange={(value) => {
+              if (Array.isArray(value)) {
+                setMinPretensaoPJ(value[0]);
+                setMaxPretensaoPJ(value[1]);
+              }
+            }}
             max={200}
             real="R$"
           />
@@ -222,7 +217,8 @@ const ModalFilter = ({
               { label: "Básico", value: "Básico" },
               { label: "N/A", value: "N/A" },
             ]}
-            onChange={handleConhecimentoInglesChange}
+            onChange={(value) => setConhecimentoIngles(value)}
+            checked={conhecimento_ingles} // Passando os valores selecionados
           />
           <ContentCheckLabel
             title="Localidade"
@@ -231,9 +227,10 @@ const ModalFilter = ({
               { label: "Minas Gerais - MG", value: "MG" },
               { label: "Rio de Janeiro - RJ", value: "RJ" },
               { label: "Goiana - PE", value: "PE" },
-              { label: "Outros", value: "N/A" },
+              { label: "Outros", value: "outros" },
             ]}
-            onChange={handleLocalidadeChange}
+            onChange={(value) => setUf(value)}
+            checked={uf} // Passando os valores selecionados
           />
         </C.ContentCheck>
         <C.ContentSelect>
@@ -241,15 +238,21 @@ const ModalFilter = ({
             <InputSelect
               label="Nível da Função"
               className="filter"
-              options={nivelOptions}
-              onChange={handleNivelFuncaoChange}
+              options={
+                camposSelect.find((campo) => campo.field === "nivel_funcao")
+                  ?.options || []
+              }
+              onChange={(e) => setNivelFuncao(e.target.value)}
               value={nivel_funcao}
             />
             <InputSelect
               label="Modalidade Atual"
               className="filter"
-              options={modalidadeOptions}
-              onChange={handleModalidadeAtualChange}
+              options={
+                camposSelect.find((campo) => campo.field === "modalidade_atual")
+                  ?.options || []
+              }
+              onChange={(e) => setModalidadeAtual(e.target.value)}
               value={modalidade_atual}
             />
           </C.ContentSelectInput>
@@ -257,14 +260,17 @@ const ModalFilter = ({
             <InputSelect
               label="Formação"
               className="filter"
-              options={formacaoOptions}
-              onChange={handleFormacaoChange}
+              options={
+                camposSelect.find((campo) => campo.field === "formacao")
+                  ?.options || []
+              }
+              onChange={(e) => setFormacao(e.target.value)}
               value={formacao}
             />
             <InputSelect
               label="Vaga Linkedin"
               className="filter"
-              onChange={handleVagaLinkedinChange}
+              onChange={(e) => setTipo_desejado_linkedin(e.target.value)}
               value={tipo_desejado_linkedin}
             />
           </div>
@@ -275,19 +281,21 @@ const ModalFilter = ({
             <InputRadio
               label="Vaga Presencial Porto Real/RJ"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleVagaPresencialPortoRealChange}
+              onChange={(e) =>
+                setVaga_100_presencial_porto_real_rj(e.target.value)
+              }
               value={vaga_100_presencial_porto_real_rj}
             />
             <InputRadio
               label="Vaga Presencial Goiana / PE"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleVagaPresencialGoianaChange}
+              onChange={(e) => setVaga_100_presencial_goiana_pe(e.target.value)}
               value={vaga_100_presencial_goiana_pe}
             />
             <InputRadio
               label="Vaga Presencial Betim / MG"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleVagaPresencialBetimChange}
+              onChange={(e) => setVaga_100_presencial_betim_mg(e.target.value)}
               value={vaga_100_presencial_betim_mg}
             />
           </div>
@@ -295,20 +303,19 @@ const ModalFilter = ({
             <InputRadio
               label="Vaga Presencial São Paulo / SP"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleVagaSaoPaulo}
+              onChange={(e) => setVaga_100_presencial_sao_paulo(e.target.value)}
               value={vaga_100_presencial_sao_paulo}
             />
-
             <InputRadio
               label="Vaga Internacional"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleVagaInternacionalChange}
+              onChange={(e) => setVagaInternacional(e.target.value)}
               value={vaga_internacional}
             />
             <InputRadio
               label="Home Office"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleHomeOffice}
+              onChange={(e) => setHomeOffice(e.target.value)}
               value={home_office}
             />
           </div>
@@ -316,26 +323,27 @@ const ModalFilter = ({
             <InputRadio
               label="Experiencia Ramo Automotivo"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleExperienciaRamoAutomotivoChange}
+              onChange={(e) => setExperienciaRamoAutomotivo(e.target.value)}
               value={experiencia_ramo_automotivo}
             />
             <InputRadio
               label="Esta Empregado"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleEstaEmpregadoChange}
+              onChange={(e) => setEstaEmpregado(e.target.value)}
               value={esta_empregado}
             />
             <InputRadio
               label="Interesse Imediato"
               options={["Sim", "Não", "N/A"]}
-              onChange={handleInteresseImediatoChange}
+              onChange={(e) => setInteresseImediato(e.target.value)}
               value={interesse_imediato}
             />
           </div>
         </C.ContentOptions>
         <C.ContentButtons>
-          <button onClick={handleFilter}> Filtrar</button>
-          <button onClick={removeQueryAndFetchData}> Limpar Filtros</button>
+          <button onClick={handleFilter}>Filtrar</button>
+          <button onClick={handleClearFilters}>Limpar Filtros</button>
+          <button onClick={closeFilter}>Fechar Filtro</button>
         </C.ContentButtons>
       </C.Content>
     </C.Container>

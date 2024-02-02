@@ -20,8 +20,6 @@ const InfoCandidate = () => {
   const [editedData, setEditedData] = useState<Candidate>(initialState);
   const [message, setMessage] = useState("");
 
-  console.log(data)
-
   useEffect(() => {
     if (data) {
       setEditedData((prevData) => ({
@@ -92,8 +90,6 @@ const InfoCandidate = () => {
       }, 3000);
       toggleEditForm();
     } catch (error) {
-      console.log("error", error);
-      console.log("Error: ", errorAxios);
     }
   };
   
