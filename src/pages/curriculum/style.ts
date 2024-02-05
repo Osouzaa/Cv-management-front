@@ -12,7 +12,6 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-
 export const ImageLogo = styled.img`
   position: relative;
   margin-bottom: 20px;
@@ -26,7 +25,7 @@ export const LeftPanel = styled.div`
 
 export const RightPanel = styled.div`
   width: 200px;
-  background: #b67070;
+  background: #851f2c;
 
   overflow: hidden;
 `;
@@ -44,7 +43,18 @@ export const Profissional = styled.h3`
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 1em;
+`;
+
+export const Formacao = styled.h4`
+  color: #6a6666;
+
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  font-family: Poppins;
+  font-size: 17px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 1.3em;
 `;
 
 export const ContainerDados = styled.div`
@@ -65,6 +75,7 @@ export const ContainerDados = styled.div`
 
 export const ContentEmail = styled.div`
   display: flex;
+  align-items: center;
   gap: 5px;
 
   &.endereço {
@@ -136,3 +147,60 @@ export const BolinhaDireita = styled.div`
   top: 50%; /* Ajuste para centralizar verticalmente em relação à linha */
   transform: translateY(-50%);
 `;
+
+export const ContainerThree = styled.div``;
+
+export const SubTitle = styled.h2`
+  color: #6a6666;
+  font-family: Poppins;
+  font-size: 24px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin: 1em 0.8em;
+`;
+export const Vagas = styled.div`
+  width: 100%;
+  margin: 10px 19px;
+  display: flex;
+  justify-content: space-between;
+  gap: 2em;
+
+  span {
+    color: #6a6666;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 600;
+    line-height: normal;
+    margin-right: 10px;
+  }
+`;
+export const VagasItem = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  color: #6a6666;
+
+  &.item_right {
+    margin-right: 2em;
+  }
+`;
+
+export const ContainerFor = styled.div``;
+
+export const ContainerFive = styled.div``;
+
+export const ContainerSix = styled.div`
+  display: flex;
+  justify-content: space-around;
+`;
+
+
+export const ButtonTeste = styled.button `
+position: absolute;
+width: 30p;
+height: 30px;
+background-color: red;
+right: 0;
+`

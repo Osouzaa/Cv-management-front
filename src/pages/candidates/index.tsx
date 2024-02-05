@@ -159,7 +159,6 @@ const Candidate = () => {
             totalPages={totalPages}
             currentPage={currentPage}
             handlePageChange={handlePageChange}
-            toggleModal={toggleModal}
           />
         )}
 
