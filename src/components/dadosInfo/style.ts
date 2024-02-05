@@ -18,8 +18,8 @@ export const Title = styled.p`
 `;
 
 export const Info = styled.div`
-  width: 267px;
-  height: 43px;
+   width: 95%;
+  padding: 8px;
   border-radius: 4px;
   border: 1px solid #ccc;
   background: #f2f2f2;

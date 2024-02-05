@@ -62,7 +62,7 @@ export const Input = styled.input`
   }
 
   &.InfoCandidate {
-    width: 87%;
+    width: 90%;
   }
 
   &.inputObs {

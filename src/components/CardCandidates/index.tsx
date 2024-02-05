@@ -1,9 +1,9 @@
-import { useNavigate } from "react-router-dom";
-
 import Logo from "../../image/logoTecnocar .png";
 import * as C from "./style";
 import Loading from "../loading";
-import IconNo from '../../image/no_avaliable.svg'
+import IconNo from "../../image/no_avaliable.svg";
+import { useState } from "react";
+import { InfoCandidate } from "../infoCandidate";
 
 interface Candidate {
   id: string;
@@ -19,8 +19,7 @@ interface CardCandidatesProps {
   totalPages?: number;
   currentPage?: number;
   handlePageChange?: (newPage: number) => void;
-  toggleModal?: () => void;
-  availiado?:boolean;
+  availiado?: boolean;
 }
 
 const CardCandidates = ({
@@ -28,9 +27,19 @@ const CardCandidates = ({
   totalPages,
   currentPage,
   handlePageChange,
-  availiado
+  availiado,
 }: CardCandidatesProps) => {
-  const navigate = useNavigate();
+  const [modal, setModal] = useState(false);
+  const [userID, setUserID] = useState<number | undefined>();
+
+  const openModal = (id: number) => {
+    setUserID(id);
+    setModal(true); // Open modal
+  };
+
+  const closeModal = () => {
+    setModal(false);
+  };
 
   return (
     <>
@@ -39,7 +48,7 @@ const CardCandidates = ({
           currentData.map((candidate: Candidate, index: number) => (
             <C.Content key={`${candidate.id}_${index}`}>
               <C.LogoImage src={Logo} alt="" />
-              {availiado &&  <C.Image src={IconNo}/>}
+              {availiado && <C.Image src={IconNo} />}
               <C.Title>{candidate.profissional}</C.Title>
               <C.ContentInfo>
                 <C.InfoCandidate>
@@ -58,7 +67,7 @@ const CardCandidates = ({
                 </C.InfoCandidate>
               </C.ContentInfo>
               <C.Button
-                onClick={() => navigate(`/register/${candidate.id}`)}
+                onClick={() => openModal(parseInt(candidate.id))}
                 style={{ marginLeft: "2em" }}
               >
                 Ver Mais
@@ -84,6 +93,10 @@ const CardCandidates = ({
       </C.Pagination>
 
       {currentData?.length === 0 && <h1> SEM CANDIDATOS</h1>}
+
+      {modal && (
+        <InfoCandidate id={userID} toggleModal={closeModal} />
+      )}
     </>
   );
 };
