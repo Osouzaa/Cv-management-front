@@ -79,7 +79,7 @@ export const SairText = styled.p`
 
 export const ListHeader = styled.div`
   height: 200px;
-  width: 390px;;
+  width: 390px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -104,6 +104,7 @@ export const ListHeader = styled.div`
 `;
 
 export const Drop = styled.div`
+  display: none;
   @media (max-width: 450px) {
     display: block;
     position: sticky;
