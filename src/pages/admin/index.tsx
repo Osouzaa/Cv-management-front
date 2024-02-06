@@ -16,7 +16,7 @@ interface UserData {
 }
 
 const TelaAdmin = () => {
-  const [userData, setUserData] = useState<UserData[]>([]);
+  const [_userData, setUserData] = useState<UserData[]>([]);
   const [allUserData, setAllUserData] = useState<UserData[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(4);
@@ -70,6 +70,7 @@ const TelaAdmin = () => {
     );
     setFilteredUsers(newFilteredUsers);
   }, [allUserData, searchText]);
+
 
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
