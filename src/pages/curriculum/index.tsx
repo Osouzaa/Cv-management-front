@@ -143,7 +143,7 @@ const Curriculum = () => {
                 </C.LinhaComBolinhas>
               </C.ContainerThree>
               <C.ContainerFor>
-                <C.SubTitle>Formação</C.SubTitle>
+                <C.SubTitle>Formação Acadêmica</C.SubTitle>
               </C.ContainerFor>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
@@ -151,7 +151,7 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerFive>
-                <C.SubTitle> Experiências </C.SubTitle>
+                <C.SubTitle> Experiência Profissional </C.SubTitle>
               </C.ContainerFive>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
