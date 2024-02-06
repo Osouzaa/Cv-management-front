@@ -9,6 +9,22 @@ export const InputWrapper = styled.div`
     position: absolute;
     left: 30.8em;
     top: -0.35em;
+
+    @media (max-width: 450px) {
+      margin-left: 0;
+      top: 5em;
+      left: 0;
+      width: 100%;
+    }
+  }
+  @media (max-width: 450px) {
+    
+    &.pretensao {
+      margin-left: 0;
+    }
+    &.inputObs {
+      margin-left: 0;
+    }
   }
 
 `;
@@ -21,11 +37,15 @@ export const Label = styled.label`
 
   &.inputObs {
     margin-left: 0.67em;
-    width:93%;
+    width: 93%;
   }
   &.pretensao {
     margin-left: 0.7em;
     width: 93%;
+
+    @media (max-width: 450px) {
+      margin-left: 0;
+    }
   }
 `;
 
@@ -59,6 +79,10 @@ export const Input = styled.input`
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
+
+    @media (max-width: 450px) {
+      width: 100%;
+    }
   }
 
   &.InfoCandidate {
@@ -70,10 +94,20 @@ export const Input = styled.input`
     width: 196%;
     height: 50px;
     grid-column: 2 span;
+
+    @media (max-width: 450px) {
+      width: 100%;
+      margin-left: 0em;
+    }
   }
 
   &.pretensao {
     margin-left: 0.7em;
     width: 93%;
+
+    @media (max-width: 450px) {
+      margin-left: 0;
+      width: 100%;
+    }
   }
 `;

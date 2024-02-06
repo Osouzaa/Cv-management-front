@@ -9,10 +9,14 @@ export const ContainerGrid = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 30px;
   justify-content: center;
-  margin: 30px 30px 0;  
+  margin: 30px 30px 0;
 
   @media (min-width: 1200px) {
     margin-top: 5%;
+  }
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr;
   }
 `;
 
@@ -124,6 +128,10 @@ export const Pagination = styled.div`
   bottom: 4.4em;
   left: 80%;
   transform: translateX(-50%);
+
+  @media (max-width: 450px) {
+    display: none;
+  }
 `;
 
 export const PageButton = styled.button<PageButtonProps>`
@@ -137,10 +145,8 @@ export const PageButton = styled.button<PageButtonProps>`
   border: none;
 `;
 
-
-export const Image = styled.img `
+export const Image = styled.img`
   position: absolute;
   top: -1em;
   right: 0;
-
-`
+`;

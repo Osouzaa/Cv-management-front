@@ -26,7 +26,7 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
 
       const dataWithCurriculumLink = dataToExport.map(candidate => ({
         ...candidate,
-        curriculo: `http://localhost:3000/v1/candidate/${candidate.id}/cv`,
+        curriculo: `${import.meta.env.VITE_API_URL}${candidate.id}/cv`,
       }));
 
 
@@ -43,7 +43,7 @@ const ModalExcel: React.FC<ModalExcelProps> = ({
         formData.append("file", files[0]); 
   
         const uploadUrl = import.meta.env.VITE_UPLOAD_CANDIDATES_URL;
-        const response = await axios.post(uploadUrl, formData);
+        await axios.post(uploadUrl, formData);
 
         alert("Dados importados com sucesso")
       }

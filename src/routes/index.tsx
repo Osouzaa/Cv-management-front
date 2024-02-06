@@ -5,7 +5,6 @@ import { App } from "../App";
 import Curriculum from "../pages/curriculum";
 import { Register } from "../pages/register";
 import { NotFound } from "../pages/notFound";
-import { InfoCandidate } from "../components/infoCandidate";
 import { Login } from "../pages/login";
 import { PrivateRoute } from "./privateRoute";
 import { TelaAdmin } from "../pages/admin";

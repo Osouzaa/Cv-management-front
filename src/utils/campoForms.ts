@@ -5,6 +5,7 @@ interface FieldRadio {
   field: keyof Candidate;
   type?: string;
   options?: string[];
+  class?: string;
 }
 
 export const camposSelect: FieldRadio[] = [
@@ -13,6 +14,7 @@ export const camposSelect: FieldRadio[] = [
     type: "select",
     field: "esta_empregado",
     options: [" ", "Sim", "Não"],
+    class: "esta_empregado"
   },
   {
     label: "Nome da empresa atual",

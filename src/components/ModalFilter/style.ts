@@ -26,6 +26,10 @@ export const Content = styled.div`
   gap: 20px;
   position: relative;
   left: 2em;
+
+  @media (max-width: 450px) {
+    grid-template-columns: 1fr;
+  }
 `;
 
 export const ContentRange = styled.div`

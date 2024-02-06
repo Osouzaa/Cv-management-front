@@ -34,7 +34,7 @@ const CardCandidates = ({
 
   const openModal = (id: number) => {
     setUserID(id);
-    setModal(true); // Open modal
+    setModal(true); 
   };
 
   const closeModal = () => {

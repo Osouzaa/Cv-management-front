@@ -27,9 +27,11 @@ export const Container = styled.div`
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
+  @media (max-width: 391px) {
+    margin-top: 16vw;
+  }
+  
 `;
-
-
 
 export const ContentTitle = styled.div`
   display: flex;
@@ -40,6 +42,10 @@ export const ContentTitle = styled.div`
     width: 30px;
     height: 30px;
     cursor: pointer;
+  }
+
+  @media (max-width: 390px) {
+    align-items: stretch;
   }
 `;
 
@@ -62,6 +68,9 @@ export const Search = styled.div`
 export const Title = styled.h2`
   font-size: 24px;
   color: #333;
+  @media (max-width: 390px) {
+    font-size: 18px;
+  }
 `;
 
 export const Content = styled.div`
@@ -72,16 +81,29 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
 
+
   &.situacao {
     grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr; 
+    }
   }
 
   &.disponibilidade {
     grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr; 
+    }
   }
 
   &.localizacao {
     grid-template-columns: 1fr 1fr;
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr; 
+    }
   }
 `;
 
@@ -135,6 +157,10 @@ export const ContentMessage = styled.div`
 `;
 export const FileInputContainer = styled.div`
   margin: 0 0 20px 34px;
+
+  @media (max-width: 450px) {
+    margin: 0;
+  }
 
   label {
     display: block;

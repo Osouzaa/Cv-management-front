@@ -29,6 +29,11 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media (max-width: 450px) {
+    width: 370px;
+    height: 350px;
+  }
 `;
 
 export const Title = styled.h2`

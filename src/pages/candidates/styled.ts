@@ -14,8 +14,6 @@ export const Container = styled.div`
   justify-content: center;
   align-items: start;
 
-  
-
   @media (min-width: 600px) {
     margin-top: 2%;
     margin-left: 10%;
@@ -34,6 +32,12 @@ export const Container = styled.div`
   @media (min-width: 1920px) {
     margin-top: 3%;
     margin-left: 18.2%;
+  }
+
+  @media (max-width: 450px) {
+    width: 90%;
+    margin-top: 14%;
+    height: 150%;
   }
 `;
 
@@ -72,9 +76,12 @@ export const ContainerList = styled.div`
     right: 2vw;
   }
 
-  
   @media (min-width: 1920px) {
     right: 2vw;
+  }
+
+  @media (max-width: 450px) {
+    display: none;
   }
 `;
 
@@ -108,6 +115,9 @@ export const ContainerExcel = styled.div`
 
   @media (min-width: 1920px) {
     right: 12vw;
+  }
+  @media (max-width: 450px) {
+    right: 25vw;
   }
 `;
 
@@ -147,9 +157,11 @@ export const ContainerBloco = styled.div`
   @media (min-width: 1920px) {
     right: 7vw;
   }
+
+  @media (max-width: 450px) {
+    right: 0vw;
+  }
 `;
-
-
 
 export const ContainerFilter = styled.div`
   position: absolute;
@@ -175,7 +187,6 @@ export const ContainerFilter = styled.div`
     cursor: pointer;
   }
 
-
   @media (min-width: 2560px) {
     right: 7vw;
   }
@@ -183,8 +194,10 @@ export const ContainerFilter = styled.div`
   @media (min-width: 1920px) {
     right: 17vw;
   }
+  @media (max-width: 450px) {
+    right: 50vw;
+  }
 `;
-
 
 export const ContainerNoFilter = styled.div`
   position: absolute;
@@ -209,7 +222,6 @@ export const ContainerNoFilter = styled.div`
   img {
     cursor: pointer;
   }
-
 
   @media (min-width: 2560px) {
     right: 7vw;

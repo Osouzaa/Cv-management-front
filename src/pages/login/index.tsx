@@ -24,7 +24,7 @@ const Login = () => {
 
     if (getToken) {
       setTimeout(() => {
-        navigate("/register");
+        navigate("/tutorial");
       }, 1000);
     } else {
       navigate("/");

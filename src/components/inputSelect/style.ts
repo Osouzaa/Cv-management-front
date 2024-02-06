@@ -13,6 +13,27 @@ export const InputWrapper = styled.div`
   &.filter {
     margin-left: 1em;
   }
+
+  @media (max-width: 450px) {
+    &.mobile {
+      margin-left: 0;
+    }
+
+    &.esta_empregado {
+      margin-bottom: 5.6em;
+      margin-left: 0em;
+    }
+
+    &.pretensao {
+      margin-left: 0;
+    }
+
+    &.localizacao{
+      margin-left: 0;
+    }
+  }
+
+
 `;
 
 export const SelectContent = styled.div`
@@ -56,4 +77,10 @@ export const ContentLabel = styled.div`
   font-size: 14px;
   margin-bottom: 5px;
   color: #333;
+
+  @media (max-width: 391px) {
+    &.mobile {
+      font-size: 13px;
+    }
+  }
 `;

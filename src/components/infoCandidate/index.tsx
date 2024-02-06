@@ -1,4 +1,4 @@
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import * as C from "./style";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import { useState, useEffect } from "react";
@@ -25,7 +25,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
   const [showProjectForm, setShowProjectForm] = useState(false);
   const [editedData, setEditedData] = useState<Candidate>(initialState);
   const [message, setMessage] = useState("");
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (data) {
@@ -64,7 +64,6 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
       }, 3000);
     } catch (error) {
       console.error("Erro ao avaliar candidato:", error);
-      // Se houver erro, você pode tratar de acordo com a necessidade do seu aplicativo
     }
   };
 
@@ -126,19 +125,26 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
           ) : (
             <C.Title>{message}</C.Title>
           )}
-          <div>
-            <button onClick={() => navigate(`/curriculum/${id}`)}>Formar CV</button>
-            <button onClick={toggleModal}>Fechar</button>
-            <button onClick={showProjectForm ? handleSave : toggleEditForm}>
-              {showProjectForm ? "Salvar Dados" : "Editar Dados"}
-            </button>
-            <button onClick={handleCV} className="CV">
-              Baixar Curriculo
-            </button>
-            {data?.foi_avaliado_recrutamento === false && (
-              <button onClick={avaliarCandidato}>Avaliar Candidato</button>
-            )}
-          </div>
+          <C.ContantButtons>
+            <div>
+              <button onClick={() => navigate(`/curriculum/${id}`)}>
+                Formar CV
+              </button>
+              <button onClick={toggleModal}>Fechar</button>
+            </div>
+
+            <div>
+              <button onClick={showProjectForm ? handleSave : toggleEditForm}>
+                {showProjectForm ? "Salvar Dados" : "Editar Dados"}
+              </button>
+              <button onClick={handleCV} className="CV">
+                Baixar Curriculo
+              </button>
+              {data?.foi_avaliado_recrutamento === false && (
+                <button onClick={avaliarCandidato}>Avaliar Candidato</button>
+              )}
+            </div>
+          </C.ContantButtons>
         </C.ContentTitle>
 
         <C.ContainerTwo>
