@@ -95,21 +95,18 @@ export const ListHeader = styled.div`
     font-weight: bold; /* Negrito */
     text-transform: uppercase; /* Transforma o texto em maiúsculas */
     letter-spacing: 1px; /* Espaçamento entre letras */
-  
-    &:hover{
+
+    &:hover {
       border-bottom: 1px solid #495057;
       width: 80%;
     }
-  
   }
 `;
 
 export const Drop = styled.div`
-  display: block;
-  position: sticky; 
-  margin: .3em;
-  @media (min-width: 391px) {
-    display: none; 
-   
+  @media (max-width: 450px) {
+    display: block;
+    position: sticky;
+    margin: 0.3em;
   }
 `;
