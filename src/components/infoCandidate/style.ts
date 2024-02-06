@@ -106,6 +106,14 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: 500;
   margin: 0;
+  
+
+  @media (max-width: 450px ) {
+    position: absolute;
+    background-color: #FFF;
+    width: 100%;
+    
+  }
 `;
 
 export const Content = styled.div`
@@ -172,3 +180,16 @@ export const EditableInput = styled.input`
   outline: none;
   width: 100%;
 `;
+
+export const ContantButtons = styled.div `
+ @media (max-width: 450px) {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+ }
+
+  button {
+  margin: 10px 0;
+ }
+`

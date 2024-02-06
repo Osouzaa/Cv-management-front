@@ -21,13 +21,22 @@ export const CardInfo = styled.div`
 
   @media (min-width: 1920px) {
     margin-left: 1%;
-    width:  1200px;
+    width: 1200px;
     margin-top: 100px;
+  }
+
+  @media (max-width: 390px) {
+    width: 390px;
+    margin-top: 60px;
   }
 `;
 
 export const ImageTutorial = styled.img`
   padding-right: 76px;
+
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
 
 export const ContentCard = styled.div`
@@ -69,5 +78,20 @@ export const ContentCard = styled.div`
     font-weight: 700;
     line-height: normal;
     margin: 0 3px;
+  }
+
+  @media (max-width: 390px) {
+    max-width: 350px;
+    padding-left: 35px;
+    padding-top: 32px;
+    
+
+    h3 {
+      font-size: 16px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 `;

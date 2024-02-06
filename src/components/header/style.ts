@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-position: relative;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -11,6 +11,9 @@ position: relative;
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
 
 export const ImageLogo = styled.img`
@@ -72,4 +75,41 @@ export const SairText = styled.p`
   margin: 0;
   padding: 16px;
   cursor: pointer;
+`;
+
+export const ListHeader = styled.div`
+  height: 200px;
+  width: 390px;;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: #f8f9fa; /* Cor de fundo */
+  border-bottom: 1px solid #ced4da; /* Linha separadora na parte inferior */
+  gap: 10px;
+
+  p {
+    font-size: 14px;
+    margin: 0 15px; /* Margens entre os elementos */
+    color: #495057; /* Cor do texto */
+    font-weight: bold; /* Negrito */
+    text-transform: uppercase; /* Transforma o texto em maiúsculas */
+    letter-spacing: 1px; /* Espaçamento entre letras */
+  
+    &:hover{
+      border-bottom: 1px solid #495057;
+      width: 80%;
+    }
+  
+  }
+`;
+
+export const Drop = styled.div`
+  display: block;
+  position: sticky; 
+  margin: .3em;
+  @media (min-width: 391px) {
+    display: none; 
+   
+  }
 `;

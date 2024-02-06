@@ -243,6 +243,7 @@ const Register: React.FC = () => {
                           e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                         ) => handleInputChange(campo.field, e.target.value)}
                         value={newCandidate[campo.field]}
+                        className={newCandidate.esta_empregado === "Sim" && campo.class ? campo.class : "mobile"}
                       />
                     </>
                   )}
@@ -278,6 +279,7 @@ const Register: React.FC = () => {
                         e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                       ) => handleInputChange(campo.field, e.target.value)}
                       value={newCandidate[campo.field]}
+                      className="pretensao"
                     />
                   </>
                 )}
@@ -320,6 +322,7 @@ const Register: React.FC = () => {
                           e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                         ) => handleInputChange(campo.field, e.target.value)}
                         value={newCandidate[campo.field]}
+                        className="localizacao"
                       />
                     </>
                   )}

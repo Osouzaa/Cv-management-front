@@ -11,7 +11,7 @@ interface Candidate {
   cidade: string;
   uf: string;
   esta_empregado: string;
-  pretensao_salarial: string; // Alterado para number para formatar como dinheiro
+  pretensao_salarial: string; 
   tipo_desejado_linkedin: string;
   nivel_funcao: string;
 }

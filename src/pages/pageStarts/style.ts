@@ -8,6 +8,11 @@ export const Container = styled.div`
   align-items: center;
   gap: 32px;
   margin-left: 19em;
+
+  @media (max-width: 390px) {
+    margin-left: 0;
+
+  }
 `;
 
 export const CardVideo = styled.div`
@@ -21,6 +26,11 @@ export const CardVideo = styled.div`
     margin-left: 1%;
     width: 1200px;
     height: 400px;
+  }
+
+  @media (max-width: 390px) {
+    margin-left: 0;
+    width: 385px;
   }
 `;
 
@@ -73,6 +83,10 @@ export const SVGICON = styled.img`
   width: 261px;
   height: 201px;
   margin: 18px 0 0 40px;
+
+  @media (max-width: 390px) {
+    display: none;
+  }
 `;
 
 export const ContainerVideo = styled.div`
@@ -93,5 +107,9 @@ export const ContentCard = styled.div`
   @media (min-width: 1920px) {
     width: 485px;
     height: 231px;
+  }
+
+  @media (max-width: 390px) {
+    width: 350px;
   }
 `;

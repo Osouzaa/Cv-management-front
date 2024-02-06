@@ -18,11 +18,10 @@ const RangeSlider: React.FC<RangeSliderProps> = (props) => {
   const [value, setValue] = useState<(number | null)[]>(props.value);
 
   useEffect(() => {
-    // Atualizar o estado quando as props.value mudarem (pode ser útil em certos casos)
     setValue(props.value);
   }, [props.value]);
 
-  const handleChange = (event: Event, newValue: number | number[]) => {
+  const handleChange = (_event: Event, newValue: number | number[]) => {
     setValue(newValue as (number | null)[]);
     if (props.onChange) {
       props.onChange(newValue);

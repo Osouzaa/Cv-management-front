@@ -7,7 +7,7 @@ import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import React, { MouseEvent, useEffect } from "react";
+import { MouseEvent, useEffect } from "react";
 
 const Curriculum = () => {
   const { id } = useParams();
@@ -62,7 +62,7 @@ const Curriculum = () => {
 
   return (
     <>
-      <C.ButtonTeste onClick={(e: MouseEvent<HTMLButtonElement>) => saveAsPDF()}>
+      <C.ButtonTeste onClick={(_e: MouseEvent<HTMLButtonElement>) => saveAsPDF()}>
         Salvar como PDF
       </C.ButtonTeste>
       ;

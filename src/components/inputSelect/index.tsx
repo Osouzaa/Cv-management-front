@@ -13,7 +13,7 @@ interface InputSelectProps {
 
 const InputSelect = ({ label, value, options, onChange, className }: InputSelectProps) => (
   <C.InputWrapper className={className}>
-    <C.ContentLabel>{label}</C.ContentLabel>
+    <C.ContentLabel className={className}>{label}</C.ContentLabel>
     <C.SelectContent className={className}>
       <select
         id={label}

@@ -12,6 +12,10 @@ export const ContentImports = styled.div`
   align-items: center;
   justify-content: space-between;
   margin-bottom: 1.5em;
+
+  @media (max-width: 450px) {
+    width: 350px;
+  }
 `;
 
 export const Paragraph = styled.div`
@@ -23,6 +27,10 @@ export const Paragraph = styled.div`
   font-weight: 500;
   line-height: normal;
   margin-left: 17px;
+
+  @media (max-width: 450px) {
+    font-size: 13px;
+  }
 `;
 
 export const Buttons = styled.div`
@@ -42,5 +50,16 @@ export const Buttons = styled.div`
   transition: background 0.4s ease, color 0.3s ease;
   &:hover {
     background-color: #9b3f39;
+  }
+
+  @media (max-width: 450px) {
+    width: 60px;
+    height: 55px;
+
+    img {
+      width: 35px;
+      height: 38px;
+      object-fit: cover;
+    }
   }
 `;

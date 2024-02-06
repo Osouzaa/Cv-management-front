@@ -8,7 +8,6 @@ export const validarDados = (dados: any) => {
     telefone,
     email,
     esta_empregado,
-    empresa_atual,
     experiencia_ramo_automotivo,
     modalidade_atual,
     tipo_desejado_linkedin,
