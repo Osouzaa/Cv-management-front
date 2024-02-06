@@ -9,7 +9,7 @@ export const Container = styled.div`
   gap: 32px;
   margin-left: 19em;
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     margin-left: 0;
 
   }
@@ -28,7 +28,7 @@ export const CardVideo = styled.div`
     height: 400px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     margin-left: 0;
     width: 385px;
   }
@@ -84,7 +84,7 @@ export const SVGICON = styled.img`
   height: 201px;
   margin: 18px 0 0 40px;
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     display: none;
   }
 `;
@@ -109,7 +109,7 @@ export const ContentCard = styled.div`
     height: 231px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     width: 350px;
   }
 `;
