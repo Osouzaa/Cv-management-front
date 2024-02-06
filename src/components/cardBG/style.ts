@@ -25,7 +25,7 @@ export const CardInfo = styled.div`
     margin-top: 100px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     width: 390px;
     margin-top: 60px;
   }
@@ -34,7 +34,7 @@ export const CardInfo = styled.div`
 export const ImageTutorial = styled.img`
   padding-right: 76px;
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     display: none;
   }
 `;
@@ -80,7 +80,7 @@ export const ContentCard = styled.div`
     margin: 0 3px;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     max-width: 350px;
     padding-left: 35px;
     padding-top: 32px;
