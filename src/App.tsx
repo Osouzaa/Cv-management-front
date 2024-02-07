@@ -1,14 +1,14 @@
 import { useLocation } from "react-router-dom";
 import { Header } from "./components/header";
-import "./index.css"; 
+import "./index.css";
 
 const App = () => {
   const location = useLocation();
+  const token = localStorage.getItem("token");
+
   return (
     <div className="Content">
-      {!(location.pathname === "/") && (
-        <Header />
-      )}
+      {token && !(location.pathname === "/") && <Header />}
     </div>
   );
 };

@@ -28,11 +28,9 @@ export const Container = styled.div`
     margin: 2vw 28vw;
   }
   @media (max-width: 450px) {
-    margin-top: 16vw;
+    margin-top: 1vw;
   }
-  @media (max-width: 1390px) {
-    margin-left: 32vw;
-  }
+  
 `;
 
 export const ContentTitle = styled.div`

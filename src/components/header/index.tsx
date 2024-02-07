@@ -40,24 +40,7 @@ const Header = () => {
     }
   };
 
-  if (!token) {
-    return (
-      <C.Container>
-        <C.ImageLogo src={Logo} alt="Logo da empresa Tecnocar engenharia" />
-        <C.Content
-          className="active"
-          onClick={() => handleButtonClick("/register")}
-        >
-          <img src={User} alt="Icone de Usuario" />
-          <p className="active">Cadastro de candidatos</p>
-        </C.Content>
-        <C.Content onClick={() => handleButtonClick("/")}>
-          <img src={User} alt="Icone de Usuario" />
-          <p>Fazer Login</p>
-        </C.Content>
-      </C.Container>
-    );
-  }
+  
 
   return (
     <>
