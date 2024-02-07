@@ -14,7 +14,7 @@ export const camposSelect: FieldRadio[] = [
     type: "select",
     field: "esta_empregado",
     options: [" ", "Sim", "Não"],
-    class: "esta_empregado"
+    class: "esta_empregado",
   },
   {
     label: "Nome da empresa atual",
@@ -77,8 +77,8 @@ export const camposSelect: FieldRadio[] = [
       "Fisioterapia",
       "Letras",
       "Marketing",
-      ],
-    },
+    ],
+  },
   {
     label: "Possui interesse IMEDIATO na ocupação da vaga:",
     field: "interesse_imediato",
@@ -165,6 +165,6 @@ export const camposDisponibilidadeForm: FieldRadio[] = [
     label: "Tipo CPNJ",
     type: "select",
     field: "tipo_cnpj",
-    options: [" ", "Mei", "ME", "Ltda", "Eirelli", "N/A", "Outro"],
+    options: [" ", "Mei", "ME / Eirelli / Ltda"],
   },
 ];
