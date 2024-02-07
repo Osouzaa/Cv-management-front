@@ -4,31 +4,34 @@ export const Container = styled.div`
   max-width: 1000px;
   margin: 10px auto;
 
-  @media (min-width: 600px) {
+  @media (max-width: 600px) {
     margin-left: 10vw;
     margin-right: 10vw;
   }
 
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     margin-left: 15vw;
-    margin-right: 15vw;
+    margin-top: 8%;
   }
 
-  @media (min-width: 1600px) {
+  @media (max-width: 1600px) {
     margin-left: 28vw;
-    margin-right: 5vw;
+    margin-top: 5%;
   }
 
-  @media (min-width: 1920px) {
-    margin-left: 32vw;
-    margin-top: 4vw;
+  @media (max-width: 1920px) {
+    margin-left: 28vw;
+    margin-top: 3vw;
   }
 
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
+  
   @media (max-width: 450px) {
-    margin-top: 1vw;
+    margin-left: 0;
+    margin-top: 15vw;
+    width: 100%;
   }
 `;
 
@@ -43,7 +46,7 @@ export const ContentTitle = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     align-items: stretch;
   }
 `;
@@ -67,7 +70,7 @@ export const Search = styled.div`
 export const Title = styled.h2`
   font-size: 24px;
   color: #333;
-  @media (max-width: 390px) {
+  @media (max-width: 450px) {
     font-size: 18px;
   }
 `;
@@ -80,12 +83,11 @@ export const Content = styled.div`
   justify-content: center;
   width: 100%;
 
-
   &.situacao {
     grid-template-columns: 1fr 1fr;
 
     @media (max-width: 450px) {
-      grid-template-columns: 1fr; 
+      grid-template-columns: 1fr;
     }
   }
 
@@ -93,7 +95,7 @@ export const Content = styled.div`
     grid-template-columns: 1fr 1fr;
 
     @media (max-width: 450px) {
-      grid-template-columns: 1fr; 
+      grid-template-columns: 1fr;
     }
   }
 
@@ -101,7 +103,7 @@ export const Content = styled.div`
     grid-template-columns: 1fr 1fr;
 
     @media (max-width: 450px) {
-      grid-template-columns: 1fr; 
+      grid-template-columns: 1fr;
     }
   }
 `;

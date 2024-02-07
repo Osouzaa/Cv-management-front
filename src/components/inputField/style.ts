@@ -18,13 +18,18 @@ export const InputWrapper = styled.div`
     }
   }
   @media (max-width: 450px) {
-    
     &.pretensao {
       margin-left: 0;
     }
     &.inputObs {
       margin-left: 0;
     }
+  }
+
+  &.pretensao_Clt{
+    position: absolute;
+    bottom: 0;
+    left: 10px;
   }
 
 `;
@@ -109,5 +114,9 @@ export const Input = styled.input`
       margin-left: 0;
       width: 100%;
     }
+  }
+
+  &.pretensao_Clt {
+    width: 46.4%;
   }
 `;
