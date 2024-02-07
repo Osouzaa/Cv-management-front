@@ -30,7 +30,6 @@ export const Container = styled.div`
   @media (max-width: 450px) {
     margin-top: 1vw;
   }
-  
 `;
 
 export const ContentTitle = styled.div`

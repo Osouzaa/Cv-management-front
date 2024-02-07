@@ -39,9 +39,6 @@ const Header = () => {
       navigate("/");
     }
   };
-
-  
-
   return (
     <>
       <C.Drop onClick={() => setDrop(!drop)}>
