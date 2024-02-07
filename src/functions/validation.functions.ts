@@ -20,7 +20,6 @@ export const validarDados = (dados: any) => {
     pretensao_salarial,
     pretensao_pj,
     cnpj,
-    tipo_cnpj,
     vaga_100_presencial_porto_real_rj,
     vaga_100_presencial_goiana_pe,
     vaga_100_presencial_betim_mg,
@@ -52,7 +51,6 @@ export const validarDados = (dados: any) => {
   if (!pretensao_salarial) camposVazios.push("pretensao_salarial");
   if (!pretensao_pj) camposVazios.push("pretensao_pj");
   if (!cnpj) camposVazios.push("cnpj");
-  if (!tipo_cnpj) camposVazios.push("tipo_cnpj");
   if (!vaga_100_presencial_porto_real_rj)
     camposVazios.push("vaga_100_presencial_porto_real_rj");
   if (!vaga_100_presencial_goiana_pe)
