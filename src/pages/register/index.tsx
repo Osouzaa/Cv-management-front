@@ -243,7 +243,11 @@ const Register: React.FC = () => {
                           e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
                         ) => handleInputChange(campo.field, e.target.value)}
                         value={newCandidate[campo.field]}
-                        className={newCandidate.esta_empregado === "Sim" && campo.class ? campo.class : "mobile"}
+                        className={
+                          newCandidate.esta_empregado === "Sim" && campo.class
+                            ? campo.class
+                            : "mobile"
+                        }
                       />
                     </>
                   )}
@@ -272,15 +276,19 @@ const Register: React.FC = () => {
               <div key={index}>
                 {campo.type === "select" && (
                   <>
-                    <InputSelect
-                      label={campo.label}
-                      options={campo.options}
-                      onChange={(
-                        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-                      ) => handleInputChange(campo.field, e.target.value)}
-                      value={newCandidate[campo.field]}
-                      className="pretensao"
-                    />
+                    {/* Verifica se o campo atual não é "Tipo de CNPJ" ou se o valor de "Possui CNPJ ativo?" é "Sim" */}
+                    {(campo.field !== "tipo_cnpj" ||
+                      newCandidate.cnpj === "Sim") && (
+                      <InputSelect
+                        label={campo.label}
+                        options={campo.options}
+                        onChange={(
+                          e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                        ) => handleInputChange(campo.field, e.target.value)}
+                        value={newCandidate[campo.field]}
+                        className="pretensao"
+                      />
+                    )}
                   </>
                 )}
               </div>
@@ -288,16 +296,20 @@ const Register: React.FC = () => {
             {view === 2 && (
               <>
                 <InputField
-                  label="Pretensão salarial no regime CLT "
-                  value={newCandidate.pretensao_salarial}
-                  onChange={(e) => handleChangeSalary(e)}
-                  className="pretensao"
-                />
-                <InputField
                   label="Pretensão PJ, valor hora"
                   value={newCandidate.pretensao_pj}
                   onChange={(e) => handleChangeSalaryPJ(e)}
                   className="pretensao"
+                />
+                <InputField
+                  label="Pretensão salarial no regime CLT"
+                  value={newCandidate.pretensao_salarial}
+                  onChange={(e) => handleChangeSalary(e)}
+                  className={
+                    newCandidate.cnpj === "Não" || newCandidate.cnpj === ""
+                      ? "pretensao_Clt"
+                      : "pretensao"
+                  }
                 />
               </>
             )}
