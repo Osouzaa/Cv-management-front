@@ -55,7 +55,7 @@ export const TableData = styled.td`
   padding: 13px;
   word-break: break-word;
   font-size: 12px;
-  text-align: center;
+  text-align: start;
 
   &.idade {
     text-align: center;
@@ -71,6 +71,7 @@ export const TableData = styled.td`
     color: #007bff;
     cursor: pointer;
     text-decoration: underline;
+    text-align: center;
   }
 
   &.nome {

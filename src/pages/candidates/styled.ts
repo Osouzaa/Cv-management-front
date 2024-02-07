@@ -39,6 +39,12 @@ export const Container = styled.div`
     margin-top: 14%;
     height: 150%;
   }
+
+  @media (max-width: 1280px) {
+    width: 68%;
+    margin-left: 30%;
+    height: 100%;
+  }
 `;
 
 export const ContainerList = styled.div`

@@ -18,6 +18,10 @@ export const ContainerGrid = styled.div`
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: 1280px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 `;
 
 export const Content = styled.div`

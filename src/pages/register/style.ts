@@ -27,10 +27,12 @@ export const Container = styled.div`
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
-  @media (max-width: 391px) {
+  @media (max-width: 450px) {
     margin-top: 16vw;
   }
-  
+  @media (max-width: 1390px) {
+    margin-left: 32vw;
+  }
 `;
 
 export const ContentTitle = styled.div`
