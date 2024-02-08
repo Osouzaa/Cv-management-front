@@ -59,9 +59,7 @@ const useAxiosCandidate = (url: string, id?: string) => {
               "Content-Type": "application/json",
             },
           });
-
           const result = await axios.get(url);
-
           setData(result.data);
         } catch (error: any) {
           console.error("Erro na solicitação PATCH: ", error);
