@@ -13,7 +13,6 @@ import { PageStarts } from "../pages/pageStarts";
 import { ModalFilter } from "../components/ModalFilter";
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 
-
 const RoutesApp = () => {
   return (
     <BrowserRouter>
@@ -31,7 +30,7 @@ const RoutesApp = () => {
         <Route
           path="/curriculum/:id"
           element={
-            <PrivateRoute>
+            <PrivateRoute allowedRoles={["admin", "recruitment", "technique"]}>
               <Curriculum />
             </PrivateRoute>
           }
@@ -47,7 +46,14 @@ const RoutesApp = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/tutorial" element={<PageStarts />} />
+        <Route
+          path="/tutorial"
+          element={
+            <PrivateRoute  allowedRoles={["admin", "recruitment", "technique"]}>
+              <PageStarts />
+            </PrivateRoute>
+          }
+        />
         <Route path="/Lista" element={<CandidatesEvaluated />} />
         <Route path="/aa" element={<ModalFilter />} />
       </Routes>
