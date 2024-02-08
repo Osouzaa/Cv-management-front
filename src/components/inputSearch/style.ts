@@ -24,10 +24,10 @@ export const ContainerSearch = styled.div`
     width: 75.4%;
   }
 
-  @media (min-width: 2560px) {
-    width: 1930px;
-    margin-top: -5%;
-    margin-left: 10%;
+  @media (max-width: 2560px) {
+    width: 1960px;
+    margin-top: -2%;
+    margin-left: 10.4%;
   }
   
   display: flex;
@@ -64,6 +64,11 @@ export const ContentInput = styled.input`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+  }
+
+  @media (max-width: 2560px) {
+    width: 1100px;
+
   }
 `;
 
