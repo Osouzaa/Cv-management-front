@@ -69,8 +69,8 @@ export const Table = styled.table`
     margin-left: 23%;
   }
 
-  @media (min-width: 2560px) {
-    margin-top: -3%;
+  @media (max-width: 2560px) {
+    margin-top: -7%;
     margin-left: 16.3%;
     width: 78%;
   }
