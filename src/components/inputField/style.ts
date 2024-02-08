@@ -14,7 +14,6 @@ export const InputWrapper = styled.div`
       margin-left: 0;
       top: 5em;
       left: 0;
-      width: 100%;
     }
   }
   @media (max-width: 450px) {
@@ -26,12 +25,19 @@ export const InputWrapper = styled.div`
     }
   }
 
-  &.pretensao_Clt{
+  &.pretensao_Clt {
     position: absolute;
     bottom: 0;
     left: 10px;
-  }
+    width: 100%;
 
+    @media (max-width: 450px) {
+      position: relative;
+      margin-left: 0;
+      left: 0;
+      width: 50%;
+    }
+  }
 `;
 export const Label = styled.label`
   display: block;
@@ -47,10 +53,6 @@ export const Label = styled.label`
   &.pretensao {
     margin-left: 0.7em;
     width: 93%;
-
-    @media (max-width: 450px) {
-      margin-left: 0;
-    }
   }
 `;
 
@@ -118,5 +120,10 @@ export const Input = styled.input`
 
   &.pretensao_Clt {
     width: 46.4%;
+
+    @media (max-width: 450px) {
+      width: 100%;
+      margin-left: 0;
+    }
   }
 `;
