@@ -59,26 +59,26 @@ export const Table = styled.table`
     margin-right: 10px;
   }
 
-  @media (min-width: 600px) {
+  @media (max-width: 600px) {
     margin-top: 1%;
     margin-left: 10%;
   }
 
-  @media (min-width: 1200px) {
+  @media (max-width: 1200px) {
     margin-top: -7%;
     margin-left: 23%;
   }
 
-  @media (max-width: 2560px) {
-    margin-top: -7%;
+  @media (min-width: 2511px) {
+    margin-top: -2%;
     margin-left: 16.3%;
     width: 78%;
   }
 
   @media (max-width: 1920px) {
-    margin-top: -8%;
-    margin-left: 28.3%;
-    width: 64%;
+    margin-top: -10%;
+    margin-left: 20.3%;
+    width: 75.4%;
   }
 `;
 
