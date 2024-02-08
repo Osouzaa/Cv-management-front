@@ -56,6 +56,7 @@ const Register: React.FC = () => {
   const [message, setMessage] = useState("");
   const [upload, setUpload] = useState<File | undefined>(undefined);
   const [view, setView] = useState(0);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChangeTelefone = (e: { target: { value: string } }) => {
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);
@@ -103,6 +104,7 @@ const Register: React.FC = () => {
   };
 
   const handleCheckFields = () => {
+    setIsSubmitting(true);
     const camposValidos = validarDados(newCandidate);
 
     if (typeof camposValidos === "string") {
@@ -156,8 +158,9 @@ const Register: React.FC = () => {
       }, 3000);
       handleLimparCampos();
       setView(0);
+      setIsSubmitting(false);
     } catch (error: any) {
-      console.log("error ", error);
+      setIsSubmitting(false);
 
       setErrorPost(error.response.data.message);
       setTimeout(() => {
@@ -171,7 +174,7 @@ const Register: React.FC = () => {
     <C.Container>
       <C.Form onSubmit={(e) => e.preventDefault()} onKeyDown={handleKeyDown}>
         <C.ContentTitle>
-          <C.Search>
+          <C.Search onClick={() => setView(0)}>
             <C.Title>Informações Candidato</C.Title>
             <img src={Menos} alt="" onClick={() => setView(0)} />
           </C.Search>
@@ -225,7 +228,7 @@ const Register: React.FC = () => {
             </>
           )}
         </C.Content>
-        <C.Search>
+        <C.Search onClick={() => setView(1)}>
           <C.Title>Situação Profissisional Atual</C.Title>
           <img src={Menos} alt="" onClick={() => setView(1)} />
         </C.Search>
@@ -266,7 +269,7 @@ const Register: React.FC = () => {
             />
           )}
         </C.Content>
-        <C.Search>
+        <C.Search onClick={() => setView(2)}>
           <C.Title>Disponibilidade e Pretensão</C.Title>
           <img src={Menos} alt="" onClick={() => setView(2)} />
         </C.Search>
@@ -276,7 +279,6 @@ const Register: React.FC = () => {
               <div key={index}>
                 {campo.type === "select" && (
                   <>
-                    {/* Verifica se o campo atual não é "Tipo de CNPJ" ou se o valor de "Possui CNPJ ativo?" é "Sim" */}
                     {(campo.field !== "tipo_cnpj" ||
                       newCandidate.cnpj === "Sim") && (
                       <InputSelect
@@ -296,12 +298,6 @@ const Register: React.FC = () => {
             {view === 2 && (
               <>
                 <InputField
-                  label="Pretensão PJ, valor hora"
-                  value={newCandidate.pretensao_pj}
-                  onChange={(e) => handleChangeSalaryPJ(e)}
-                  className="pretensao"
-                />
-                <InputField
                   label="Pretensão salarial no regime CLT"
                   value={newCandidate.pretensao_salarial}
                   onChange={(e) => handleChangeSalary(e)}
@@ -311,12 +307,18 @@ const Register: React.FC = () => {
                       : "pretensao"
                   }
                 />
+                <InputField
+                  label="Pretensão PJ, valor hora"
+                  value={newCandidate.pretensao_pj}
+                  onChange={(e) => handleChangeSalaryPJ(e)}
+                  className="pretensao"
+                />
               </>
             )}
           </C.Content>
         )}
 
-        <C.Search className="localizacao">
+        <C.Search className="localizacao" onClick={() => setView(3)}>
           <C.Title>Localização e Anexos</C.Title>
           <img src={Menos} alt="" onClick={() => setView(3)} />
         </C.Search>
@@ -379,7 +381,10 @@ const Register: React.FC = () => {
         )}
 
         <C.ContentButton className="ContentButton">
-          <C.SubmitButton onClick={() => handleCheckFields()}>
+          <C.SubmitButton
+            onClick={() => handleCheckFields()}
+            disabled={isSubmitting}
+          >
             Cadastrar
           </C.SubmitButton>
         </C.ContentButton>

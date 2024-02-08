@@ -27,7 +27,7 @@ export const Container = styled.div`
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
-  
+
   @media (max-width: 450px) {
     margin-left: 0;
     margin-top: 15vw;
@@ -52,6 +52,7 @@ export const ContentTitle = styled.div`
 `;
 
 export const Search = styled.div`
+  cursor: pointer;
   display: flex;
   align-items: center;
   gap: 15px;
