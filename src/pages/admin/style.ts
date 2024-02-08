@@ -75,10 +75,10 @@ export const Table = styled.table`
     width: 78%;
   }
 
-  @media (min-width: 1920px) {
+  @media (max-width: 1920px) {
     margin-top: -8%;
-    margin-left: 20.3%;
-    width: 75.4%;
+    margin-left: 28.3%;
+    width: 64%;
   }
 `;
 
@@ -125,7 +125,7 @@ export const RegisterUser = styled.button`
 export const Pagination = styled.div`
   display: flex;
   justify-content: center;
-  margin: 2em 0 0 7em;
+  margin: 2em 0 0 21em;
   gap: 7px;
 `;
 
