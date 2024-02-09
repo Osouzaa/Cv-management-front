@@ -129,6 +129,7 @@ export const DadosInfo = styled.div`
   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   border: 1px solid rgba(255, 255, 255, 0.3);
   padding: 20px;
+  word-wrap: break-word;
 
   /* Adicionando posição relativa para conter o elemento interno */
   position: relative;

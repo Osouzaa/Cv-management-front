@@ -43,22 +43,15 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
 
   const avaliarCandidato = async () => {
     try {
-      // Atualiza o estado local
       setEditedData((prevData) => ({
         ...prevData,
         foi_avaliado_recrutamento: true,
       }));
-
-      // Envia a atualização para o servidor
       await patchConfig({
         ...editedData,
         foi_avaliado_recrutamento: true,
       });
-
-      // Exibe a mensagem de sucesso
       setMessage("Candidato avaliado com sucesso!");
-
-      // Remove a mensagem após alguns segundos
       setTimeout(() => {
         setMessage("");
       }, 3000);
@@ -107,7 +100,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
       const blob = new Blob([response.data]);
       const link = document.createElement("a");
       link.href = window.URL.createObjectURL(blob);
-      link.download = `${data?.profissional} - ${data?.codigoCandidate}.pdf`;
+      link.download = `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`;
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);

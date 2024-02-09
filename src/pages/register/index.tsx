@@ -250,7 +250,6 @@ const Register: React.FC = () => {
                     value={newCandidate[idioma.field]}
                     className="idiomas"
                   />
-                  
                 </div>
               ))}
             </>
@@ -373,26 +372,29 @@ const Register: React.FC = () => {
               {view === 4 && (
                 <>
                   <C.FileInputContainer>
-                    <label htmlFor="upload-curriculo">
-                      Anexe seu currículo
-                    </label>
-                    <input
-                      type="file"
-                      id="upload-curriculo"
-                      onChange={(e) => {
-                        const files = e.target.files;
-                        if (files && files.length > 0) {
-                          setUpload(files[0]);
-                        }
-                      }}
-                      accept=".pdf"
-                    />
-                    <label
-                      className="custom-file-upload"
-                      htmlFor="upload-curriculo"
-                    >
-                      Escolher Arquivo
-                    </label>
+                    <C.ContentUpload>
+                      <label htmlFor="upload-curriculo">
+                        Anexe seu currículo
+                      </label>
+                      <input
+                        type="file"
+                        id="upload-curriculo"
+                        onChange={(e) => {
+                          const files = e.target.files;
+                          if (files && files.length > 0) {
+                            setUpload(files[0]);
+                          }
+                        }}
+                        accept=".pdf"
+                      />
+                      <label
+                        className="custom-file-upload"
+                        htmlFor="upload-curriculo"
+                      >
+                        Escolher Arquivo
+                      </label>
+                    </C.ContentUpload>
+                    {upload && <p> {upload.name}</p>}
                   </C.FileInputContainer>
                   <InputField
                     label="Observação"

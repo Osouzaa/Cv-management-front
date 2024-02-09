@@ -38,6 +38,9 @@ export const renderInfoDetails = [
   { name: "Home Office", key: "home_office" },
   { name: "Vaga Híbrida Betim", key: "vaga_hibrida_betim" },
   { name: "Conhecimento em inglês", key: "conhecimento_ingles" },
+  { name: "Conhecimento em Francês", key: "conhecimento_frances" },
+  { name: "Conhecimento em Italiano", key: "conhecimento_italiano" },
+  { name: "Conhecimento em Espanhol", key: "conhecimento_espanhol" },
   { name: "Registrado em", key: "createdAt", format: "dd/MM/yyyy HH:mm:ss" },
   {
     name: "Ultima Atualização",
@@ -68,7 +71,15 @@ export const renderInfoSections = [
       "Formação",
     ],
   },
-
+  {
+    title: "Conhecimentos em idiomas",
+    keys: [
+      "Conhecimento em inglês",
+      "Conhecimento em Francês",
+      "Conhecimento em Italiano",
+      "Conhecimento em Espanhol",
+    ],
+  },
   {
     title: "Informações Profissionais",
     keys: [
@@ -81,7 +92,6 @@ export const renderInfoSections = [
       "Vaga Internacional",
       "Home Office",
       "Vaga Híbrida Betim",
-      "Conhecimento em inglês",
       "CNPJ",
       "Tipo CNPJ",
       "Empresa Atual",
@@ -99,15 +109,11 @@ export const renderInfoSections = [
   },
   {
     title: "Outras Informações",
-    keys: [
-      "Registrado em",
-      "Ultima Atualização",
-      "Avaliado pelo Recrutamento"
-    ],
+    keys: ["Registrado em", "Ultima Atualização", "Avaliado pelo Recrutamento"],
   },
 ];
 
-export const Fields =  [
+export const Fields = [
   {
     title: "Informações Pessoais",
     fields: [
@@ -122,6 +128,15 @@ export const Fields =  [
     ],
   },
   {
+    title: "Conhecimentos em Idiomas",
+    fields: [
+      "conhecimento_ingles",
+      "conhecimento_frances",
+      "conhecimento_italiano",
+      "conhecimento_espanhol",
+    ],
+  },
+  {
     title: "Informações Profissionais",
     fields: [
       "pretensao_salarial",
@@ -133,7 +148,6 @@ export const Fields =  [
       "vaga_internacional",
       "home_office",
       "vaga_hibrida_betim",
-      "conhecimento_ingles",
       "cnpj",
       "tipo_cnpj",
       "empresa_atual",
@@ -143,11 +157,7 @@ export const Fields =  [
   },
   {
     title: "Sobre a Vaga",
-    fields: [
-      "interesse_imediato",
-      "entrevista_online",
-      "teste_tecnico",
-    ],
+    fields: ["interesse_imediato", "entrevista_online", "teste_tecnico"],
   },
   {
     title: "Observações",
@@ -155,10 +165,6 @@ export const Fields =  [
   },
   {
     title: "Outras Informações",
-    fields: [
-      "createdAt",
-      "updatedAt",
-    ],
+    fields: ["createdAt", "updatedAt"],
   },
-  
 ];

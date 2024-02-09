@@ -110,7 +110,6 @@ export const Content = styled.div`
 
   &.idiomas {
     grid-template-columns: 1fr 1fr;
-    
 
     @media (max-width: 450px) {
       grid-template-columns: 1fr;
@@ -168,7 +167,16 @@ export const ContentMessage = styled.div`
 `;
 export const FileInputContainer = styled.div`
   margin: 0 0 20px 34px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
 
+  p {
+    display: block;
+    font-size: 14px;
+    margin-bottom: 3px;
+    color: #333;
+  }
   @media (max-width: 450px) {
     margin: 0;
   }
@@ -187,7 +195,7 @@ export const FileInputContainer = styled.div`
   .custom-file-upload {
     border: 1px solid #ccc;
     display: inline-block;
-    padding: 8px 12px;
+    padding: 10px 12px;
     cursor: pointer;
     background-color: #f9f9f9;
     border-radius: 4px;
@@ -196,4 +204,11 @@ export const FileInputContainer = styled.div`
       background-color: #e3e3e3;
     }
   }
+`;
+
+export const ContentUpload = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 35%;
 `;
