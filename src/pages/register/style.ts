@@ -107,6 +107,15 @@ export const Content = styled.div`
       grid-template-columns: 1fr;
     }
   }
+
+  &.idiomas {
+    grid-template-columns: 1fr 1fr;
+    
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr;
+    }
+  }
 `;
 
 export const AddressFields = styled.div`

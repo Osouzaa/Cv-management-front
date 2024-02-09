@@ -27,8 +27,8 @@ export const InputWrapper = styled.div`
 
   &.pretensao_Clt {
     position: absolute;
-    bottom: 0;
-    left: 10px;
+    bottom: 38%;
+    left: 51.4%;
     width: 100%;
 
     @media (max-width: 450px) {

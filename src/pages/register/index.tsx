@@ -12,6 +12,7 @@ import {
   camposDisponibilidadeForm,
   camposRadioLocalizacao,
   camposSelect,
+  conhecimentoIdiomas,
 } from "../../utils/campoForms";
 import axios from "axios";
 import { validarDados } from "../../functions/validation.functions";
@@ -38,6 +39,9 @@ const Register: React.FC = () => {
     entrevista_online: "",
     teste_tecnico: "",
     conhecimento_ingles: "",
+    conhecimento_frances: "",
+    conhecimento_italiano: "",
+    conhecimento_espanhol: "",
     pretensao_salarial: "",
     pretensao_pj: "",
     cnpj: "",
@@ -229,11 +233,35 @@ const Register: React.FC = () => {
           )}
         </C.Content>
         <C.Search onClick={() => setView(1)}>
-          <C.Title>Situação Profissisional Atual</C.Title>
+          <C.Title>Nível de conhecimento em Idiomas</C.Title>
           <img src={Menos} alt="" onClick={() => setView(1)} />
         </C.Search>
-        <C.Content className="situacao">
+        <C.Content className="idiomas">
           {view === 1 && (
+            <>
+              {conhecimentoIdiomas.map((idioma, index) => (
+                <div key={index}>
+                  <InputSelect
+                    label={idioma.label}
+                    options={idioma.options}
+                    onChange={(
+                      e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                    ) => handleInputChange(idioma.field, e.target.value)}
+                    value={newCandidate[idioma.field]}
+                    className="idiomas"
+                  />
+                  
+                </div>
+              ))}
+            </>
+          )}
+        </C.Content>
+        <C.Search onClick={() => setView(2)}>
+          <C.Title>Situação Profissisional Atual</C.Title>
+          <img src={Menos} alt="" onClick={() => setView(2)} />
+        </C.Search>
+        <C.Content className="situacao">
+          {view === 2 && (
             <>
               {camposSelect.map((campo, index) => (
                 <div key={index}>
@@ -258,7 +286,7 @@ const Register: React.FC = () => {
               ))}
             </>
           )}
-          {newCandidate.esta_empregado === "Sim" && view === 1 && (
+          {newCandidate.esta_empregado === "Sim" && view === 2 && (
             <InputField
               label="Nome da empresa atual"
               value={newCandidate.empresa_atual}
@@ -269,11 +297,11 @@ const Register: React.FC = () => {
             />
           )}
         </C.Content>
-        <C.Search onClick={() => setView(2)}>
+        <C.Search onClick={() => setView(3)}>
           <C.Title>Disponibilidade e Pretensão</C.Title>
-          <img src={Menos} alt="" onClick={() => setView(2)} />
+          <img src={Menos} alt="" onClick={() => setView(3)} />
         </C.Search>
-        {view === 2 && (
+        {view === 3 && (
           <C.Content className="disponibilidade">
             {camposDisponibilidadeForm.map((campo, index) => (
               <div key={index}>
@@ -295,7 +323,7 @@ const Register: React.FC = () => {
                 )}
               </div>
             ))}
-            {view === 2 && (
+            {view === 3 && (
               <>
                 <InputField
                   label="Pretensão salarial no regime CLT"
@@ -318,11 +346,11 @@ const Register: React.FC = () => {
           </C.Content>
         )}
 
-        <C.Search className="localizacao" onClick={() => setView(3)}>
+        <C.Search className="localizacao" onClick={() => setView(4)}>
           <C.Title>Localização e Anexos</C.Title>
-          <img src={Menos} alt="" onClick={() => setView(3)} />
+          <img src={Menos} alt="" onClick={() => setView(4)} />
         </C.Search>
-        {view === 3 && (
+        {view === 4 && (
           <C.Content className="localizacao">
             <>
               {camposRadioLocalizacao.map((campo, index) => (
@@ -342,7 +370,7 @@ const Register: React.FC = () => {
                   )}
                 </div>
               ))}
-              {view === 3 && (
+              {view === 4 && (
                 <>
                   <C.FileInputContainer>
                     <label htmlFor="upload-curriculo">

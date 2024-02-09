@@ -14,6 +14,10 @@ export const InputWrapper = styled.div`
     margin-left: 1em;
   }
 
+  &.idiomas {
+    margin-bottom:20px;
+  }
+
   @media (max-width: 450px) {
     &.mobile {
       margin-left: 0;
@@ -42,6 +46,7 @@ export const SelectContent = styled.div`
   &.register{
     width: 97.6%;
   }
+
 
   select {
     width: 100%;
