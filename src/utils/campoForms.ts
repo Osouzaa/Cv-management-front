@@ -59,6 +59,7 @@ export const camposSelect: FieldRadio[] = [
     options: [
       " ",
       "Administração",
+      "Analise e Desenvolvimento de Sistemas",
       "Ciência da Computação",
       "Ciências da Informação",
       "Design Gráfico",
@@ -150,12 +151,6 @@ export const camposDisponibilidadeForm: FieldRadio[] = [
     options: [" ", "09:00 as 10:00hs", "12:00 as 13:00hs", "18:00 as 19:00hs"],
   },
   {
-    label: "Nível de idioma para conversação [Inglês]",
-    type: "select",
-    field: "conhecimento_ingles",
-    options: [" ", "Básico", "Intermediário", "Avançado", "Fluente", "N/A"],
-  },
-  {
     label: "Possui CNPJ ativo? ",
     type: "select",
     field: "cnpj",
@@ -168,3 +163,31 @@ export const camposDisponibilidadeForm: FieldRadio[] = [
     options: [" ", "Mei", "ME / Eirelli / Ltda"],
   },
 ];
+
+export const conhecimentoIdiomas: FieldRadio[] = [
+  {
+    label: "Proficiência em Inglês (Conversação)",
+    type: "select",
+    field: "conhecimento_ingles",
+    options: [" ", "Básico", "Intermediário", "Avançado", "Fluente", "N/A"],
+  },
+  {
+    label: "Proficiência em Francês (Conversação)",
+    type: "select",
+    field: "conhecimento_frances",
+    options: [" ", "Básico", "Intermediário", "Avançado", "Fluente", "N/A"],
+  },
+  {
+    label: "Proficiência em Italiano (Conversação)",
+    type: "select",
+    field: "conhecimento_italiano",
+    options: [" ", "Básico", "Intermediário", "Avançado", "Fluente", "N/A"],
+  },
+  {
+    label: "Proficiência em Espanhol (Conversação)",
+    type: "select",
+    field: "conhecimento_espanhol",
+    options: [" ", "Básico", "Intermediário", "Avançado", "Fluente", "N/A"],
+  },
+]
+
