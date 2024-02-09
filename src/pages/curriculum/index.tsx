@@ -55,7 +55,7 @@ const Curriculum = () => {
           }
         }
 
-        pdf.save("curriculum.pdf");
+        pdf.save(`Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`);
       });
     }
   };
