@@ -9,7 +9,7 @@ const App = () => {
 
   setTimeout(
     () => (axios.post(`${import.meta.env.VITE_API_URL}ping`), console.log("aaaa" + Date())),
-    150000
+    200000
   );
 
   return (
