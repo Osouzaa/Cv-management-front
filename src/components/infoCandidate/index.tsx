@@ -39,7 +39,6 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
   const toggleEditForm = () => {
     setShowProjectForm(!showProjectForm);
   };
-  console.log(data);
 
   const avaliarCandidato = async () => {
     try {
@@ -133,6 +132,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
             {data?.foi_avaliado_recrutamento === false && (
               <button onClick={avaliarCandidato}>Avaliar Candidato</button>
             )}
+            <button>Excluir Candidato</button>
           </C.ContantButtons>
         </C.ContentTitle>
 
@@ -187,14 +187,14 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
                                 {field === "telefone" ? (
                                   <C.EditableInput
                                     type="text"
-                                    value={editedData[field]}
+                                    value={editedData[field] || ""}
                                     onChange={handleChangeTelefone}
                                     className="InfoValue Editable"
                                   />
                                 ) : field === "cpf" ? (
                                   <C.EditableInput
                                     type="text"
-                                    value={editedData[field]}
+                                    value={editedData[field] || ""}
                                     onChange={handleChangeCPF}
                                     disabled
                                     className="InfoValue Editable"
@@ -202,7 +202,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
                                 ) : (
                                   <C.EditableInput
                                     type="text"
-                                    value={editedData[field]}
+                                    value={editedData[field] || ""}
                                     onChange={(e) =>
                                       handleInputChange(field, e.target.value)
                                     }

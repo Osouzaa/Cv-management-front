@@ -11,25 +11,21 @@ import admin_black from "../../image/admin_black.svg";
 import icon_black from "../../image/icon_black.svg";
 import icon_white from "../../image/icon_white.svg";
 import DropDown from "../../image/menu_dropDown.svg";
+import icon_tec from "../../image/icon_tec.svg";
+import icon_tec_black from "../../image/icon_tec_black.svg";
 
 import * as C from "./style";
 import { useState } from "react";
 
 const Header = () => {
   const location = useLocation();
-  const isTutorial = location.pathname === "/tutorial";
-  const isRegister = location.pathname === "/register";
-  const isBank = location.pathname === "/candidates";
-  const isRated = location.pathname === "/Lista";
-  const isAdmin = location.pathname === "/admin";
-
-  const [drop, setDrop] = useState(false);
-
   const navigate = useNavigate();
   const token = localStorage.getItem("token");
 
+  const [drop, setDrop] = useState(false);
+
   const userRole = token
-    ? JSON.parse(atob(token!.split(".")[1])).userRole
+    ? JSON.parse(atob(token.split(".")[1])).userRole
     : null;
 
   const handleButtonClick = (path: string) => {
@@ -39,66 +35,123 @@ const Header = () => {
       navigate("/");
     }
   };
+
   return (
     <>
       <C.Drop onClick={() => setDrop(!drop)}>
-        <img src={DropDown} alt="" />
+        <img src={DropDown} alt="Drop down menu" />
       </C.Drop>
       {drop && (
         <C.ListHeader>
-          <p> Tutorial </p>
+          <p>Tutorial</p>
           <p>Cadastro de Candidatos</p>
-          <p> Banco de Candidatos</p>
+          <p>Banco de Candidatos</p>
           <p>Não Avaliados</p>
           {userRole === "admin" && <p>Adminstrador</p>}
           <C.SairText>Sair</C.SairText>
         </C.ListHeader>
       )}
+
       <C.Container>
         <C.ImageLogo src={Logo} alt="Logo da empresa Tecnocar engenharia" />
         <C.Content
-          className={isTutorial ? "active" : "other"}
+          className={location.pathname === "/tutorial" ? "active" : "other"}
           onClick={() => handleButtonClick("/tutorial")}
         >
-          <img src={isTutorial ? Play : PlayBlack} alt="Icone de play" />
-          <p className={isTutorial ? "active" : "other"}>Tutorial</p>
-        </C.Content>
-        <C.Content
-          className={isRegister ? "active" : "other"}
-          onClick={() => handleButtonClick("/register")}
-        >
-          <img src={isRegister ? User : UserBlack} alt="Icone de Usuario" />
-          <p className={isRegister ? "active" : "other"}>
-            Cadastro de candidatos
+          <img
+            src={location.pathname === "/tutorial" ? Play : PlayBlack}
+            alt="Icone de play"
+          />
+          <p className={location.pathname === "/tutorial" ? "active" : "other"}>
+            Tutorial
           </p>
         </C.Content>
-        <C.Content
-          className={isBank ? "active" : "other"}
-          onClick={() => handleButtonClick("/candidates")}
-        >
-          <img src={isBank ? Banco : BancoBlack} alt="Icone de Usuario" />
-          <p className={isBank ? "active" : "other"}>Banco de candidatos</p>
-        </C.Content>
+        {(userRole === "admin" || userRole === "recruitment") && (
+          <>
+            <C.Content
+              className={location.pathname === "/register" ? "active" : "other"}
+              onClick={() => handleButtonClick("/register")}
+            >
+              <img
+                src={location.pathname === "/register" ? User : UserBlack}
+                alt="Icone de Usuario"
+              />
+              <p
+                className={
+                  location.pathname === "/register" ? "active" : "other"
+                }
+              >
+                Cadastro de candidatos
+              </p>
+            </C.Content>
+            <C.Content
+              className={
+                location.pathname === "/candidates" ? "active" : "other"
+              }
+              onClick={() => handleButtonClick("/candidates")}
+            >
+              <img
+                src={location.pathname === "/candidates" ? Banco : BancoBlack}
+                alt="Icone de Banco de Dados"
+              />
+              <p
+                className={
+                  location.pathname === "/candidates" ? "active" : "other"
+                }
+              >
+                Banco de candidatos
+              </p>
+            </C.Content>
+            <C.Content
+              className={location.pathname === "/Lista" ? "active" : "other"}
+              onClick={() => handleButtonClick("/Lista")}
+            >
+              <img
+                src={location.pathname === "/Lista" ? icon_white : icon_black}
+                alt="Icone"
+              />
+              <p
+                className={location.pathname === "/Lista" ? "active" : "other"}
+              >
+                Não avaliados
+              </p>
+            </C.Content>
+          </>
+        )}
 
-        <C.Content
-          className={isRated ? "active" : "other"}
-          onClick={() => handleButtonClick("/Lista")}
-        >
-          <img src={isRated ? icon_white : icon_black} alt="Icone de Usuario" />
-          <p className={isRated ? "active" : "other"}>Não avaliados</p>
-        </C.Content>
+        {(userRole === "technique" || userRole === "admin") && (
+          <C.Content
+            className={location.pathname === "/tech" ? "active" : "other"}
+            onClick={() => handleButtonClick("/tech")}
+          >
+            <img
+              src={location.pathname === "/tech" ? icon_tec : icon_tec_black}
+              alt="Icone de tecnico"
+            />
+            <p className={location.pathname === "/tech" ? "active" : "other"}>
+              Área Tecnica
+            </p>
+          </C.Content>
+        )}
+        
         {userRole === "admin" && (
           <C.Content
-            className={isAdmin ? "active" : "other"}
+            className={location.pathname === "/admin" ? "active" : "other"}
             onClick={() => handleButtonClick("/admin")}
           >
-            <img src={isAdmin ? admin : admin_black} alt="Icone de admin" />
-            <p className={isAdmin ? "active" : "other"}>
+            <img
+              src={location.pathname === "/admin" ? admin : admin_black}
+              alt="Icone de admin"
+            />
+            <p
+              className={
+                location.pathname === "/admin" ? "active" : "other"
+              }
+            >
               Área de Administrador
             </p>
           </C.Content>
         )}
-
         <C.SairText onClick={() => handleButtonClick("/")}>Sair</C.SairText>
       </C.Container>
     </>
