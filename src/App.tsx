@@ -25,7 +25,7 @@ const App = () => {
   // Chamar a função pingAPI a cada minuto
   setInterval(() => {
     pingAPI();
-  }, 60000); // 60000 milissegundos = 1 minuto
+  }, 300000); // 60000 milissegundos = 1 minuto
 
   return (
     <div className="Content">
