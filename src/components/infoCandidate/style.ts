@@ -11,8 +11,7 @@ export const Container = styled.div`
   overflow: auto;
 
   @media (min-width: 600px) {
-    width: 90%;
-    height: auto;
+    width: 100%;
   }
 
   @media (min-width: 1200px) {
@@ -30,7 +29,6 @@ export const Container = styled.div`
 
 export const ContainerTwo = styled.div`
   padding: 20px;
-  padding-top: 0px;
 `;
 export const ModalBG = styled.div`
   width: 100vw;
@@ -183,11 +181,12 @@ export const EditableInput = styled.input`
 export const ContantButtons = styled.div`
   display: flex;
   gap: 10px;
-  @media (max-width: 450px) {
+  @media (max-width: 600px) {
     display: flex;
-    gap: 10px;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 10px;
   }
 
   button {
