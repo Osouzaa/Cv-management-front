@@ -12,6 +12,7 @@ import { TelaAdmin } from "../pages/admin";
 import { PageStarts } from "../pages/pageStarts";
 import { ModalFilter } from "../components/ModalFilter";
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
+import { Technique } from "../pages/technique";
 
 const RoutesApp = () => {
   return (
@@ -36,8 +37,14 @@ const RoutesApp = () => {
           }
         />
         <Route path="/" element={<Login />} />
-        <Route path="*" element={<NotFound />} />
-
+        <Route
+          path="/technique"
+          element={
+            <PrivateRoute>
+              <Technique />
+            </PrivateRoute>
+          }
+        />
         <Route
           path="/admin"
           element={
@@ -49,13 +56,31 @@ const RoutesApp = () => {
         <Route
           path="/tutorial"
           element={
-            <PrivateRoute  allowedRoles={["admin", "recruitment", "technique"]}>
+            <PrivateRoute allowedRoles={["admin", "recruitment", "technique"]}>
               <PageStarts />
             </PrivateRoute>
           }
         />
-        <Route path="/Lista" element={<CandidatesEvaluated />} />
+        <Route
+          path="/Lista"
+          element={
+            <PrivateRoute allowedRoles={["admin", "recruitment"]}>
+              <CandidatesEvaluated />
+            </PrivateRoute>
+          }
+        />
+
+        <Route
+          path="/tech"
+          element={
+            <PrivateRoute allowedRoles={["admin", "technique"]}>
+              <Technique />
+            </PrivateRoute>
+          }
+        />
         <Route path="/aa" element={<ModalFilter />} />
+
+        <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
   );

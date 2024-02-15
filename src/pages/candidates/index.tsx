@@ -28,7 +28,9 @@ interface Candidate {
 
 const Candidate = () => {
   const foi_avaliado_recrutamento = "foi_avaliado_recrutamento=true";
-  const { data } = useAxiosCandidate(`${import.meta.env.VITE_API_URL}?${foi_avaliado_recrutamento}`);
+  const { data } = useAxiosCandidate(
+    `${import.meta.env.VITE_API_URL}?${foi_avaliado_recrutamento}`
+  );
   const [modal, setModal] = useState(false);
   const [filter, setFilter] = useState(false);
   const [selectedComponent, setSelectedComponent] = useState<"bloco" | "list">(
@@ -38,8 +40,6 @@ const Candidate = () => {
   const itemsPerPage = selectedComponent === "bloco" ? 6 : 12;
   const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
   const [isFiltered, setIsFiltered] = useState(false);
-
-
 
 
   useEffect(() => {

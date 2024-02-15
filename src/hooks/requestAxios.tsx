@@ -14,7 +14,6 @@ const useAxiosCandidate = (url: string, id?: string) => {
 
   const patchConfig = (itemData: any) => {
     setPatch(itemData);
-
   };
 
   useEffect(() => {

@@ -35,4 +35,9 @@ export const Container = styled.div`
     margin-top: 3%;
     margin-left: 18.2%;
   }
+
+  h1 {
+    margin-top: 25%;
+    font-size: 32px;
+  }
 `;
