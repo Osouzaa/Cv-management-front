@@ -79,14 +79,14 @@ export const ContentTitle = styled.div`
     width: 150px;
     height: 40px;
     border-radius: 10px;
-    background-color: #FFFFFF;
+    background-color: #ffffff;
     color: #000;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
     font-size: 14px;
     letter-spacing: 0.5px;
     transition: background 0.3s ease;
     margin: 0 1em;
-    border: .5px solid #ccc;
+    border: 0.5px solid #ccc;
 
     &:hover {
       background-color: #932725;
@@ -106,13 +106,11 @@ export const Title = styled.h2`
   font-size: 24px;
   font-weight: 500;
   margin: 0;
-  
 
-  @media (max-width: 450px ) {
+  @media (max-width: 450px) {
     position: absolute;
-    background-color: #FFF;
+    background-color: #fff;
     width: 100%;
-    
   }
 `;
 
@@ -164,7 +162,7 @@ export const InfoName = styled.div`
 
 export const InfoValue = styled.div`
   color: #666;
-  font-size: 16px;
+  font-size: 15px;
 `;
 
 export const ContainerGeneral = styled.div`
@@ -182,15 +180,17 @@ export const EditableInput = styled.input`
   width: 100%;
 `;
 
-export const ContantButtons = styled.div `
- @media (max-width: 450px) {
+export const ContantButtons = styled.div`
   display: flex;
   gap: 10px;
-  align-items: center;
-  justify-content: center;
- }
+  @media (max-width: 450px) {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+  }
 
   button {
-  margin: 10px 0;
- }
-`
+    margin: 10px 0;
+  }
+`;

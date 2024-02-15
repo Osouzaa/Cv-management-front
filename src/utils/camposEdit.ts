@@ -47,6 +47,7 @@ export const renderInfoDetails = [
     key: "updatedAt",
     format: "dd/MM/yyyy HH:mm:ss",
   },
+  {name: "Esta empregado", key: "esta_empregado"},
   { name: "Empresa Atual", key: "empresa_atual" },
   {
     name: "Experiência no Ramo Automotivo",
@@ -94,6 +95,7 @@ export const renderInfoSections = [
       "Vaga Híbrida Betim",
       "CNPJ",
       "Tipo CNPJ",
+      "Esta empregado",
       "Empresa Atual",
       "Experiência no Ramo Automotivo",
       "Modalidade Atual",

@@ -119,24 +119,20 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
             <C.Title>{message}</C.Title>
           )}
           <C.ContantButtons>
-            <div>
-              <button onClick={() => navigate(`/curriculum/${id}`)}>
-                Formar CV
-              </button>
-              <button onClick={toggleModal}>Fechar</button>
-            </div>
+            <button onClick={() => navigate(`/curriculum/${id}`)}>
+              Formar CV
+            </button>
+            <button onClick={toggleModal}>Fechar</button>
 
-            <div>
-              <button onClick={showProjectForm ? handleSave : toggleEditForm}>
-                {showProjectForm ? "Salvar Dados" : "Editar Dados"}
-              </button>
-              <button onClick={handleCV} className="CV">
-                Baixar Curriculo
-              </button>
-              {data?.foi_avaliado_recrutamento === false && (
-                <button onClick={avaliarCandidato}>Avaliar Candidato</button>
-              )}
-            </div>
+            <button onClick={showProjectForm ? handleSave : toggleEditForm}>
+              {showProjectForm ? "Salvar Dados" : "Editar Dados"}
+            </button>
+            <button onClick={handleCV} className="CV">
+              Baixar Curriculo
+            </button>
+            {data?.foi_avaliado_recrutamento === false && (
+              <button onClick={avaliarCandidato}>Avaliar Candidato</button>
+            )}
           </C.ContantButtons>
         </C.ContentTitle>
 
