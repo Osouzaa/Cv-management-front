@@ -56,6 +56,9 @@ export const renderInfoDetails = [
   { name: "Modalidade Atual", key: "modalidade_atual" },
   { name: "Horário da Entrevista Online", key: "entrevista_online" },
   { name: "Horário do Teste Técnico", key: "teste_tecnico" },
+  { name: "Ligação", key: "ligacao" },
+  { name: "Chamadas", key: "chamadas" },
+
 ];
 
 export const renderInfoSections = [
@@ -107,7 +110,7 @@ export const renderInfoSections = [
   },
   {
     title: "Observações",
-    keys: ["Observação"],
+    keys: ["Observação", "Ligação", "Chamadas"],
   },
   {
     title: "Outras Informações",

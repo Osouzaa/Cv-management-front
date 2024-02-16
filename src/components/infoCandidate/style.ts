@@ -60,7 +60,7 @@ export const ContentTitle = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
-  padding: 15px 20px;
+  height: 150px;
   position: sticky;
   top: 0;
   z-index: 1;
@@ -103,7 +103,7 @@ export const Title = styled.h2`
   font-family: "Poppins", sans-serif;
   font-size: 24px;
   font-weight: 500;
-  margin: 0;
+  margin: 0 2em;
 
   @media (max-width: 450px) {
     position: absolute;
@@ -143,8 +143,6 @@ export const DadosInfo = styled.div`
   & > .content {
     box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
-
-  /* Aplicando filtro de desfoque interno */
   & > .content {
     backdrop-filter: blur(5px);
     -webkit-backdrop-filter: blur(5px);
@@ -180,16 +178,25 @@ export const EditableInput = styled.input`
 
 export const ContantButtons = styled.div`
   display: flex;
+  flex-direction: column;
+  align-items: center;
   gap: 10px;
+  transition: 0.5s all;
+
+  button {
+    width: 130px;
+    height: 40px;
+    border-radius: 7px;
+    border: 0.5px solid #851f2c;
+    background: #fff;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    margin: 0 10px;
+  }
   @media (max-width: 600px) {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
-  }
-
-  button {
-    margin: 10px 0;
   }
 `;
