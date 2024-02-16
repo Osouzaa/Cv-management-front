@@ -39,6 +39,7 @@ const CardCandidates = ({
 
   const closeModal = () => {
     setModal(false);
+    location.reload()
   };
 
   return (
