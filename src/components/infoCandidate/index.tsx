@@ -59,6 +59,19 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
     }
   };
 
+  const deletarCandidato = async () => {
+    try {
+      await axios.delete(`${import.meta.env.VITE_API_URL}${id}`);
+      setMessage("Candidato excluido com sucesso!");
+      toggleModal();
+      setTimeout(() => {
+        setMessage("");
+      }, 3000);
+    } catch (error) {
+      console.error("Erro ao excluir candidato:", error);
+    }
+  };
+
   const handleInputChange = (field: keyof Candidate, value: string): void => {
     setEditedData({
       ...editedData,
@@ -132,7 +145,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
             {data?.foi_avaliado_recrutamento === false && (
               <button onClick={avaliarCandidato}>Avaliar Candidato</button>
             )}
-            <button>Excluir Candidato</button>
+            <button onClick={deletarCandidato}>Excluir Candidato</button>
           </C.ContantButtons>
         </C.ContentTitle>
 
