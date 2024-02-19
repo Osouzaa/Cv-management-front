@@ -290,7 +290,7 @@ export const Prevision = styled.div`
 export const Status = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 15px;
 `;
 
 export const InfoInstituion = styled.div`

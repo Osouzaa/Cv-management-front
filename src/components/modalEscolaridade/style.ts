@@ -14,8 +14,8 @@ export const ModalBG = styled.div`
 `;
 export const ContentModal = styled.div`
   margin: 18% auto;
-  width: 408px;
-  height: 542px;
+  width: 500px;
+  height: 480px;
   border-radius: 10px;
   border: 1px solid #6a6666;
   background: #fff;
@@ -24,58 +24,8 @@ export const ContentModal = styled.div`
 
 export const ContentInputs = styled.div`
   display: flex;
-  align-items: center;
   flex-direction: column;
-  gap: 8px;
-
-  button {
-    width: 110px;
-    height: 40px;
-    border-radius: 5px;
-    background: #851f2c;
-    border: none;
-    margin-left: 3.5em;
-    justify-self: flex-end;
-
-    color: #fff;
-    font-family: Poppins;
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: normal;
-  }
-`;
-
-export const ContentLabel = styled.label`
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-
-  color: #000;
-  font-family: Poppins;
-  font-size: 15px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-
-  input {
-    width: 400px;
-    height: 28px;
-    border-radius: 5px;
-    border: 0.5px solid #6a6666;
-    background: rgba(242, 242, 242, 0.13);
-    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-    outline: none;
-    margin-bottom: 15px;
-
-    &.content-button {
-      width: 138px;
-      padding-left: 8px;
-      cursor: pointer;
-      border-radius: 5px;
-      min-height: 32px;
-    }
-  }
+  gap: 10px;
 `;
 
 export const ContentTitle = styled.div`
@@ -85,11 +35,12 @@ export const ContentTitle = styled.div`
   margin-bottom: 17px;
   h1 {
     color: #000;
-    font-family: Poppins;
+    font-family: 'Poppins';
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    margin-bottom: 20px;
   }
 
   button {
@@ -106,4 +57,46 @@ export const ContentTitle = styled.div`
       color: #000;
     }
   }
+`;
+
+export const ContentButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2em;
+
+  button {
+    cursor: pointer;
+    width: 150px;
+    height: 38px;
+    border: none;
+    margin-top: 14px;
+    flex-shrink: 0;
+    border-radius: 5px;
+    background: #851f2c;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+    color: #fff;
+    font-family: 'Poppins';
+    font-size: 13px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+    transition: 1s all;
+
+    &:hover {
+      border-radius: 10px;
+      border: 0.5px solid #851f2c;
+      background: #fff;
+      color: #000;
+    }
+  }
+`;
+
+export const ContentDate = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 16px;
 `;

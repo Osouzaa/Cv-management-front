@@ -15,7 +15,11 @@ export const InputWrapper = styled.div`
   }
 
   &.idiomas {
-    margin-bottom:20px;
+    margin-bottom: 20px;
+  }
+
+  &.escolaridade {
+    margin: 0;
   }
 
   @media (max-width: 450px) {
@@ -32,21 +36,18 @@ export const InputWrapper = styled.div`
       margin-left: 0;
     }
 
-    &.localizacao{
+    &.localizacao {
       margin-left: 0;
     }
   }
-
-
 `;
 
 export const SelectContent = styled.div`
   width: 100%;
 
-  &.register{
+  &.register {
     width: 97.6%;
   }
-
 
   select {
     width: 100%;

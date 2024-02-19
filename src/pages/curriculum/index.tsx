@@ -9,7 +9,8 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
-import { ModalFormacao } from "../../components/modalFormacao";
+import { ModalEscolaridade } from "../../components/modalEscolaridade";
+
 
 const Curriculum = () => {
   const { id } = useParams();
@@ -164,7 +165,7 @@ const Curriculum = () => {
                 {data?.formacoes.map((item: any, index: string) => (
                   <C.ContentFor key={index}>
                     <C.Institution>
-                      <li> {item.escolidade}</li>
+                      <li> {item.escolaridade}</li>
                     </C.Institution>
                     <C.Status>
                       <C.InfoInstituion>
@@ -242,7 +243,7 @@ const Curriculum = () => {
         </C.LeftPanel>
         <C.RightPanel />
       </C.Container>
-      {experiencia && <ModalFormacao togleModal={togleModal} />}
+      {experiencia && <ModalEscolaridade togleModal={togleModal} />}
     </>
   );
 };

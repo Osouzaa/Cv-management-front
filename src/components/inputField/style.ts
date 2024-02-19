@@ -38,6 +38,9 @@ export const InputWrapper = styled.div`
       width: 50%;
     }
   }
+  &.escolaridade {
+    margin-left: 0;
+  }
 `;
 export const Label = styled.label`
   display: block;
@@ -67,6 +70,10 @@ export const Input = styled.input`
   font-size: 14px;
   color: #75757e;
   background-color: #fff;
+
+  &.escolaridade {
+    width: 100%;
+  }
 
   &:focus {
     border-color: #9f3a3e;
