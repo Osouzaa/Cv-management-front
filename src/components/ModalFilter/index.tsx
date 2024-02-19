@@ -135,7 +135,6 @@ const ModalFilter = ({ onFilterApply, toggleFilter }: ModalFilterProps) => {
     setNivelFuncao("");
     setModalidadeAtual("");
     setFormacao("");
-    5;
     setVaga_100_presencial_porto_real_rj("N/A");
     setVaga_100_presencial_goiana_pe("N/A");
     setVaga_100_presencial_betim_mg("N/A");
