@@ -1,11 +1,10 @@
-import { ContentCheckLabel } from "../inputCheck";
+
 import InputField from "../inputField";
-import InputRadio from "../inputRadio";
 import * as C from "./style";
 
-interface IModalProps {
-  togleModal: () => void;
-}
+// interface IModalProps {
+//   togleModal: () => void;
+// }
 
 const ModalExperiencia = () => {
   return (
