@@ -1,3 +1,4 @@
+
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -141,7 +142,7 @@ export const BolinhaDireita = styled.div`
   height: 13px;
   border-radius: 50%;
   right: 10px;
-  top: 50%; /* Ajuste para centralizar verticalmente em relação à linha */
+  top: 50%;
   transform: translateY(-50%);
 `;
 
@@ -245,5 +246,62 @@ export const Period = styled.div`
 
   h4 {
     font-weight: 700;
+  }
+`;
+
+export const ContentFor = styled.div`
+  margin: 0 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+`;
+
+export const Institution = styled.div`
+  color: #5e5656;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+
+  li {
+    padding-left: 10px;
+  }
+`;
+
+export const Prevision = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  color: #5e5656;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 20px;
+
+  span {
+    font-weight: 600;
+    margin-right: 10px;
+  }
+`;
+
+export const Status = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+`;
+
+export const InfoInstituion = styled.div`
+  color: #5e5656;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  span {
+    font-weight: 600;
   }
 `;

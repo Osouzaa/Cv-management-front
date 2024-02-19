@@ -24,7 +24,6 @@ const Curriculum = () => {
     ) as HTMLElement;
     if (container) {
       container.style.width = "260mm";
-      container.style.height = "297mm";
     }
   }, []);
 
@@ -36,20 +35,17 @@ const Curriculum = () => {
     if (container) {
       html2canvas(container, { scale: 2 }).then((canvas) => {
         // Experimente aumentar o scale
-        const imgData = canvas.toDataURL("image/png", 0.8); // Experimente PNG e qualidade diferente
+        const imgData = canvas.toDataURL("image/png", 0.8);
         const pdf = new jsPDF("p", "mm", "a4");
-        const imgWidth = 210; // largura A4
+        const imgWidth = 210;
         const imgHeight = (canvas.height * imgWidth) / canvas.width;
         let heightLeft = imgHeight;
         let position = 0;
 
-        // Adicione a primeira página
         pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
         heightLeft -= imgHeight;
 
-        // Verifique se há altura restante para outra página
         if (heightLeft > 0) {
-          // Adicione mais páginas se houver altura restante
           while (heightLeft >= 0) {
             position = heightLeft - imgHeight;
             pdf.addPage();
@@ -162,10 +158,36 @@ const Curriculum = () => {
                 <C.ContentForTitle>
                   <C.SubTitle>Formação Acadêmica</C.SubTitle>
                   <button onClick={() => togleModal()}>
-                    {!hideImage && <img src={icon_add} alt="" />}{" "}
-                    {/* Renderiza o ícone apenas se hideImage for false */}
+                    {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
+                {data?.formacoes.map((item: any, index: string) => (
+                  <C.ContentFor key={index}>
+                    <C.Institution>
+                      <li> {item.escolidade}</li>
+                    </C.Institution>
+                    <C.Status>
+                      <C.InfoInstituion>
+                        <span>Instiuição</span>: {item.instituicao}
+                      </C.InfoInstituion>
+                      <C.InfoInstituion>
+                        <span>Status</span>: {item.status}
+                      </C.InfoInstituion>
+                      <C.InfoInstituion>
+                        <span>Curso</span>: {item.curso}
+                      </C.InfoInstituion>
+                    </C.Status>
+                    <C.Prevision>
+                      <div>
+                        <span>Inicio:</span> {item.inicio}
+                      </div>
+                      -
+                      <div>
+                        <span>Conclusão:</span> {item.termino_previsao}
+                      </div>
+                    </C.Prevision>
+                  </C.ContentFor>
+                ))}
               </C.ContainerFor>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
