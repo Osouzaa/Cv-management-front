@@ -10,7 +10,7 @@ import { PrivateRoute } from "./privateRoute";
 import { TelaAdmin } from "../pages/admin";
 
 import { PageStarts } from "../pages/pageStarts";
-import { ModalFilter } from "../components/ModalFilter";
+
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 import { Technique } from "../pages/technique";
 
@@ -78,7 +78,6 @@ const RoutesApp = () => {
             </PrivateRoute>
           }
         />
-        <Route path="/aa" element={<ModalFilter />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

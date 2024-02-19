@@ -2,9 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   display: flex;
-
   width: 1000px;
-
   margin: 0px auto;
   background-color: #fff;
   border-radius: 10px;
@@ -26,7 +24,6 @@ export const LeftPanel = styled.div`
 export const RightPanel = styled.div`
   width: 200px;
   background: #851f2c;
-
   overflow: hidden;
 `;
 
@@ -189,6 +186,20 @@ export const VagasItem = styled.div`
 
 export const ContainerFor = styled.div``;
 
+export const ContentForTitle = styled.div`
+  display: flex;
+  align-items: center;
+
+  button {
+    background-color: transparent;
+    border: none;
+    width: 0;
+  }
+  img {
+    cursor: pointer;
+  }
+`;
+
 export const ContainerFive = styled.div``;
 
 export const ContainerSix = styled.div`
@@ -196,11 +207,43 @@ export const ContainerSix = styled.div`
   justify-content: space-around;
 `;
 
+export const ButtonTeste = styled.button`
+  position: absolute;
+  width: 30p;
+  height: 30px;
+  background-color: red;
+  right: 0;
+`;
 
-export const ButtonTeste = styled.button `
-position: absolute;
-width: 30p;
-height: 30px;
-background-color: red;
-right: 0;
-`
+export const ContentFive = styled.div`
+  margin: 0 1.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+`;
+
+export const Period = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #5e5656;
+  font-family: Poppins;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+
+  &.Atividades {
+    margin-bottom: 14px;
+  }
+
+  span {
+    &.empresa {
+      font-weight: 700;
+    }
+  }
+
+  h4 {
+    font-weight: 700;
+  }
+`;

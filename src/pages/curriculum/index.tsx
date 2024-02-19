@@ -7,21 +7,24 @@ import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
 import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
-import { MouseEvent, useEffect } from "react";
+import { MouseEvent, useEffect, useState } from "react";
+import icon_add from "../../image/icon_add.svg";
+import { ModalExperiencia } from "../../components/modalExperiencia";
 
 const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
   const { data } = useAxiosCandidate(url);
+  const [experiencia, setExperiencia] = useState(false);
+  const [hideImage, setHideImage] = useState(false);
 
   useEffect(() => {
-    // Defina a largura e a altura do contêiner para corresponder à folha A4
     const container = document.querySelector(
       ".container-to-pdf"
     ) as HTMLElement;
     if (container) {
-      container.style.width = "260mm"; // largura A4
-      container.style.height = "297mm"; // altura A4
+      container.style.width = "260mm";
+      container.style.height = "297mm";
     }
   }, []);
 
@@ -55,17 +58,30 @@ const Curriculum = () => {
           }
         }
 
-        pdf.save(`Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`);
+        pdf.save(
+          `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`
+        );
       });
+      setHideImage(false);
     }
+  };
+
+  const togleModal = () => {
+    setExperiencia(!experiencia);
   };
 
   return (
     <>
-      <C.ButtonTeste onClick={(_e: MouseEvent<HTMLButtonElement>) => saveAsPDF()}>
+      <C.ButtonTeste
+        onClick={(_e: MouseEvent<HTMLButtonElement>) => {
+          setHideImage(true);
+          setTimeout(() => {
+            saveAsPDF();
+          }, 1000);
+        }}
+      >
         Salvar como PDF
       </C.ButtonTeste>
-      ;
       <C.Container className="container-to-pdf">
         <C.LeftPanel>
           <C.ImageLogo src={Logo} alt="" />
@@ -101,7 +117,7 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerThree>
-                <C.SubTitle> Disponibilidade</C.SubTitle>
+                <C.SubTitle>Disponibilidade</C.SubTitle>
                 <C.Vagas>
                   <C.VagasItem>
                     <div>
@@ -143,7 +159,13 @@ const Curriculum = () => {
                 </C.LinhaComBolinhas>
               </C.ContainerThree>
               <C.ContainerFor>
-                <C.SubTitle>Formação Acadêmica</C.SubTitle>
+                <C.ContentForTitle>
+                  <C.SubTitle>Formação Acadêmica</C.SubTitle>
+                  <button onClick={() => togleModal()}>
+                    {!hideImage && <img src={icon_add} alt="" />}{" "}
+                    {/* Renderiza o ícone apenas se hideImage for false */}
+                  </button>
+                </C.ContentForTitle>
               </C.ContainerFor>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
@@ -151,7 +173,34 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerFive>
-                <C.SubTitle> Experiência Profissional </C.SubTitle>
+                <C.ContentForTitle>
+                  <C.SubTitle> Experiência Profissional </C.SubTitle>
+                  <button onClick={() => togleModal()}>
+                    {!hideImage && <img src={icon_add} alt="" />}
+                  </button>
+                </C.ContentForTitle>
+                {data?.experiencias.map((item: any, index: string) => (
+                  <C.ContentFive key={index}>
+                    <C.Period>
+                      {item.periodo_inicial} -
+                      {item.esta_atualmente === true ? (
+                        <span>Atual</span>
+                      ) : (
+                        item.periodo_final
+                      )}{" "}
+                      - <span className="empresa"> Empresa :</span>
+                      <span>{item.empresa}</span>
+                    </C.Period>
+                    <C.Period>
+                      <h4>Cargo :</h4>
+                      <span>{item.cargo}</span>
+                    </C.Period>
+                    <C.Period className="Atividades">
+                      <h4>Atividades :</h4>
+                      <p>{item.atividades}</p>
+                    </C.Period>
+                  </C.ContentFive>
+                ))}
               </C.ContainerFive>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
@@ -171,6 +220,7 @@ const Curriculum = () => {
         </C.LeftPanel>
         <C.RightPanel />
       </C.Container>
+      {experiencia && <ModalExperiencia togleModal={togleModal} />}
     </>
   );
 };
