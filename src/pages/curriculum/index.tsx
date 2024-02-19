@@ -11,6 +11,7 @@ import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 
+
 const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
@@ -183,7 +184,7 @@ const Curriculum = () => {
                       </div>
                       -
                       <div>
-                        <span>Conclusão:</span> {item.termino_previsao}
+                        <span>Conclusão</span> {item.termino_previsao}
                       </div>
                     </C.Prevision>
                   </C.ContentFor>
