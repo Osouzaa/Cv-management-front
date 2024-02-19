@@ -9,7 +9,7 @@ import html2canvas from "html2canvas";
 import jsPDF from "jspdf";
 import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
-import { ModalExperiencia } from "../../components/modalExperiencia";
+import { ModalFormacao } from "../../components/modalFormacao";
 
 const Curriculum = () => {
   const { id } = useParams();
@@ -183,7 +183,7 @@ const Curriculum = () => {
                       </div>
                       -
                       <div>
-                        <span>Conclusão:</span> {item.termino_previsao}
+                        <span>Conclusão</span> {item.termino_previsao}
                       </div>
                     </C.Prevision>
                   </C.ContentFor>
@@ -242,7 +242,7 @@ const Curriculum = () => {
         </C.LeftPanel>
         <C.RightPanel />
       </C.Container>
-      {experiencia && <ModalExperiencia togleModal={togleModal} />}
+      {experiencia && <ModalFormacao togleModal={togleModal} />}
     </>
   );
 };

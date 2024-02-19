@@ -14,8 +14,8 @@ export const ModalBG = styled.div`
 `;
 export const ContentModal = styled.div`
   margin: 18% auto;
-  width: 408px;
-  height: 542px;
+  width: 500px;
+  height: 277px;
   border-radius: 10px;
   border: 1px solid #6a6666;
   background: #fff;
@@ -25,8 +25,7 @@ export const ContentModal = styled.div`
 export const ContentInputs = styled.div`
   display: flex;
   align-items: center;
-  flex-direction: column;
-  gap: 8px;
+  gap: 18px;
 
   button {
     width: 110px;
@@ -59,7 +58,7 @@ export const ContentLabel = styled.label`
   line-height: normal;
 
   input {
-    width: 400px;
+    width: 230px;
     height: 28px;
     border-radius: 5px;
     border: 0.5px solid #6a6666;
@@ -70,10 +69,10 @@ export const ContentLabel = styled.label`
 
     &.content-button {
       width: 138px;
-      padding-left: 8px;
-      cursor: pointer;
-      border-radius: 5px;
-      min-height: 32px;
+      padding-left: 8px; 
+      cursor: pointer; 
+      border-radius: 5px; 
+      min-height: 32px; 
     }
   }
 `;

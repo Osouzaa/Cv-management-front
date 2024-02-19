@@ -22,8 +22,6 @@ const ContentCheckLabel: React.FC<ContentCheckLabelProps> = ({
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = event.target;
     let newChecked: string[] = [];
-
-    // Verifica se o valor já está selecionado
     if (checked.includes(value)) {
       // Se estiver, remove da lista de selecionados
       newChecked = checked.filter((item) => item !== value);
