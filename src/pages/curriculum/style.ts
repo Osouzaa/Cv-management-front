@@ -1,4 +1,3 @@
-
 import styled from "styled-components";
 
 export const Container = styled.div`
@@ -179,6 +178,7 @@ export const VagasItem = styled.div`
   flex-direction: column;
   gap: 1em;
   color: #6a6666;
+ 
 
   &.item_right {
     margin-right: 2em;
@@ -238,6 +238,10 @@ export const Period = styled.div`
     margin-bottom: 14px;
   }
 
+  &.cargos_empresa {
+    margin-left: 2em;
+  }
+
   span {
     &.empresa {
       font-weight: 700;
@@ -247,13 +251,25 @@ export const Period = styled.div`
   h4 {
     font-weight: 700;
   }
+
+  li {
+    &.title-info {
+      font-weight: 700;
+      font-size: 20px;
+      list-style-type: square;
+    }
+  }
+
+  li::marker {
+    color: #851f2c;
+    font-size: 20px;
+  }
 `;
 
 export const ContentFor = styled.div`
   margin: 0 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 8px;
 `;
 
 export const Institution = styled.div`
@@ -265,26 +281,28 @@ export const Institution = styled.div`
   line-height: normal;
 
   li {
-    padding-left: 10px;
+    padding-left: 15px;
+    list-style-type: square;
+  }
+
+  li::marker {
+    color: #851f2c;
+    font-size: 20px;
   }
 `;
 
 export const Prevision = styled.div`
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 8px;
   color: #5e5656;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 20px;
-
-  span {
-    font-weight: 600;
-    margin-right: 10px;
-  }
+  margin-bottom: 18px;
+  margin-left: 2.2em;
 `;
 
 export const Status = styled.div`
