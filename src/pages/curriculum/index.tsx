@@ -11,7 +11,6 @@ import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 
-
 const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
@@ -35,7 +34,6 @@ const Curriculum = () => {
 
     if (container) {
       html2canvas(container, { scale: 2 }).then((canvas) => {
-        // Experimente aumentar o scale
         const imgData = canvas.toDataURL("image/png", 0.8);
         const pdf = new jsPDF("p", "mm", "a4");
         const imgWidth = 210;
@@ -92,18 +90,18 @@ const Curriculum = () => {
                 <C.ContainerTwo>
                   <C.ContainerDados>
                     <C.ContentEmail>
-                      <img src={Telefone} alt="" />
-                      <span>{data.telefone}</span>
+                      <img src={Telefone} alt="icone de telefone" />
+                      <span>(31) 99262-2572</span>
                     </C.ContentEmail>
                     <C.ContentEmail>
-                      <img src={Email} alt="" />
-                      <span className="Email">{data.email}</span>
+                      <img src={Email} alt="icone de e-mail" />
+                      <span className="Email">recrutamento@tecnocarengenharia.com.br</span>
                     </C.ContentEmail>
                   </C.ContainerDados>
                   <C.ContentEmail className="endereço">
                     <img src={Endereço} alt="" />
                     <span className="endereço">
-                      {data.cidade} - {data.uf}
+                      {data.cidade}/{data.uf}
                     </span>
                   </C.ContentEmail>
                 </C.ContainerTwo>
@@ -165,26 +163,17 @@ const Curriculum = () => {
                 {data?.formacoes.map((item: any, index: string) => (
                   <C.ContentFor key={index}>
                     <C.Institution>
-                      <li> {item.escolaridade}</li>
+                      <li>
+                        {item.instituicao}, {item.curso}.
+                      </li>
                     </C.Institution>
                     <C.Status>
-                      <C.InfoInstituion>
-                        <span>Instiuição</span>: {item.instituicao}
-                      </C.InfoInstituion>
-                      <C.InfoInstituion>
-                        <span>Status</span>: {item.status}
-                      </C.InfoInstituion>
-                      <C.InfoInstituion>
-                        <span>Curso</span>: {item.curso}
-                      </C.InfoInstituion>
+                      <C.InfoInstituion></C.InfoInstituion>
                     </C.Status>
                     <C.Prevision>
                       <div>
-                        <span>Inicio:</span> {item.inicio}
-                      </div>
-                      -
-                      <div>
-                        <span>Conclusão</span> {item.termino_previsao}
+                        <span>Inicio:</span> {item.inicio} -
+                        <span>Conclusão:</span> {item.termino_previsao}
                       </div>
                     </C.Prevision>
                   </C.ContentFor>
@@ -205,21 +194,20 @@ const Curriculum = () => {
                 {data?.experiencias.map((item: any, index: string) => (
                   <C.ContentFive key={index}>
                     <C.Period>
+                      <div>
+                        <li className="title-info">{item.empresa}</li>
+                      </div>
+                    </C.Period>
+                    <C.Period className="cargos_empresa">
+                      <span>{item.cargo},</span>
                       {item.periodo_inicial} -
                       {item.esta_atualmente === true ? (
                         <span>Atual</span>
                       ) : (
                         item.periodo_final
-                      )}{" "}
-                      - <span className="empresa"> Empresa :</span>
-                      <span>{item.empresa}</span>
+                      )}
                     </C.Period>
-                    <C.Period>
-                      <h4>Cargo :</h4>
-                      <span>{item.cargo}</span>
-                    </C.Period>
-                    <C.Period className="Atividades">
-                      <h4>Atividades :</h4>
+                    <C.Period className="Atividades cargos_empresa">
                       <p>{item.atividades}</p>
                     </C.Period>
                   </C.ContentFive>
