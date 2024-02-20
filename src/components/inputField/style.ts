@@ -74,6 +74,9 @@ export const Input = styled.input`
   &.escolaridade {
     width: 100%;
   }
+  &.atividades-profissional {
+    height: 69px;
+  }
 
   &:focus {
     border-color: #9f3a3e;
@@ -134,3 +137,4 @@ export const Input = styled.input`
     }
   }
 `;
+
