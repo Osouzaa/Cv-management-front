@@ -84,6 +84,10 @@ export const ContentLabel = styled.div`
   margin-bottom: 5px;
   color: #333;
 
+  @media (min-width: 451px) and (max-width: 1400px) {
+    font-size: 13px;
+  }
+
   @media (max-width: 391px) {
     &.mobile {
       font-size: 13px;

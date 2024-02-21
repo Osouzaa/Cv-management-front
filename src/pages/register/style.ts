@@ -4,34 +4,39 @@ export const Container = styled.div`
   max-width: 1000px;
   margin: 10px auto;
 
-  @media (max-width: 600px) {
-    margin-left: 10vw;
-    margin-right: 10vw;
+  @media (max-width: 450px) {
+    margin-left: 0;
+    margin-top: 15%;
+    width: 100%;
+  }
+  @media (min-width: 451px) and (max-width: 799px) {
+    margin-left: 0;
+    margin-top: 15%;
+    width: 100%;
   }
 
-  @media (max-width: 1200px) {
-    margin-left: 15vw;
-    margin-top: 8%;
+  @media (min-width: 800px) and (max-width: 909px) {
+    margin-left: 41%;
+    margin-top: 5vw;
+    width: 58%;
   }
 
-  @media (max-width: 1600px) {
+  @media (min-width: 910px) and (max-width: 1300px) {
+    width: 62vw;
+    margin: 2% 35%;
+  }
+
+  @media (min-width: 1301px) and (max-width: 1600px) {
     margin-left: 28vw;
     margin-top: 5%;
   }
 
-  @media (max-width: 1920px) {
+  @media (min-width: 1601px) and (max-width: 1920px) {
     margin-left: 28vw;
     margin-top: 3vw;
   }
-
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
-  }
-
-  @media (max-width: 450px) {
-    margin-left: 0;
-    margin-top: 15vw;
-    width: 100%;
   }
 `;
 
@@ -46,7 +51,7 @@ export const ContentTitle = styled.div`
     cursor: pointer;
   }
 
-  @media (max-width: 450px) {
+  @media (min-width: 450px) and (max-width: 909px) {
     align-items: stretch;
   }
 `;
@@ -69,17 +74,21 @@ export const Search = styled.div`
 `;
 
 export const Title = styled.h2`
-  font-size: 24px;
+  font-size: 23px;
   color: #333;
   @media (max-width: 450px) {
-    font-size: 18px;
+    font-size: 15px;
   }
+
+  @media (min-width: 451px) and (max-width: 909px) {
+    font-size: 15px; 
+    }
 `;
 
 export const Content = styled.div`
   position: relative;
   display: grid;
-  grid-template-columns: 1fr; /* Uma coluna por padrão */
+  grid-template-columns: 1fr;
   gap: 6px;
   justify-content: center;
   width: 100%;
@@ -87,7 +96,7 @@ export const Content = styled.div`
   &.situacao {
     grid-template-columns: 1fr 1fr;
 
-    @media (max-width: 450px) {
+    @media (min-width: 450px) and (max-width: 909px) {
       grid-template-columns: 1fr;
     }
   }
@@ -98,12 +107,18 @@ export const Content = styled.div`
     @media (max-width: 450px) {
       grid-template-columns: 1fr;
     }
+    @media (min-width: 451px) and (max-width: 909px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &.localizacao {
     grid-template-columns: 1fr 1fr;
-
     @media (max-width: 450px) {
+      grid-template-columns: 1fr;
+    }
+
+    @media (min-width: 451px) and (max-width: 909px) {
       grid-template-columns: 1fr;
     }
   }
@@ -112,6 +127,9 @@ export const Content = styled.div`
     grid-template-columns: 1fr 1fr;
 
     @media (max-width: 450px) {
+      grid-template-columns: 1fr;
+    }
+    @media (min-width: 451px) and (max-width: 909px) {
       grid-template-columns: 1fr;
     }
   }

@@ -263,37 +263,38 @@ const Register: React.FC = () => {
           {view === 2 && (
             <>
               {camposSelect.map((campo, index) => (
-                <div key={index}>
+                <div key={index} className="campo-container">
+                  {/* Verifica o tipo de campo e renderiza o componente apropriado */}
                   {campo.type === "select" && (
-                    <>
-                      <InputSelect
-                        label={campo.label}
-                        options={campo.options}
-                        onChange={(
-                          e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
-                        ) => handleInputChange(campo.field, e.target.value)}
-                        value={newCandidate[campo.field]}
-                        className={
-                          newCandidate.esta_empregado === "Sim" && campo.class
-                            ? campo.class
-                            : "mobile"
-                        }
-                      />
-                    </>
+                    <InputSelect
+                      label={campo.label}
+                      options={campo.options}
+                      onChange={(
+                        e: ChangeEvent<HTMLInputElement | HTMLSelectElement>
+                      ) => handleInputChange(campo.field, e.target.value)}
+                      value={newCandidate[campo.field]}
+                      className={
+                        newCandidate.esta_empregado === "Sim" && campo.class
+                          ? campo.class
+                          : "mobile"
+                      }
+                    />
                   )}
+                  {campo.type === "text" &&
+                    campo.field === "empresa_atual" &&
+                    newCandidate.esta_empregado === "Sim" && (
+                      <InputField
+                        label={campo.label}
+                        value={newCandidate[campo.field]}
+                        onChange={(e) =>
+                          handleInputChange(campo.field, e.target.value)
+                        }
+                        className="situacao"
+                      />
+                    )}
                 </div>
               ))}
             </>
-          )}
-          {newCandidate.esta_empregado === "Sim" && view === 2 && (
-            <InputField
-              label="Nome da empresa atual"
-              value={newCandidate.empresa_atual}
-              onChange={(e) =>
-                handleInputChange("empresa_atual", e.target.value)
-              }
-              className="situacao"
-            />
           )}
         </C.Content>
         <C.Search onClick={() => setView(3)}>

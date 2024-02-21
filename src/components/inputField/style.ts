@@ -5,17 +5,6 @@ export const InputWrapper = styled.div`
   margin-left: 1.4em;
   width: 100%;
 
-  &.situacao {
-    position: absolute;
-    left: 30.8em;
-    top: -0.35em;
-
-    @media (max-width: 450px) {
-      margin-left: 0;
-      top: 5em;
-      left: 0;
-    }
-  }
   @media (max-width: 450px) {
     &.pretensao {
       margin-left: 0;
@@ -23,6 +12,11 @@ export const InputWrapper = styled.div`
     &.inputObs {
       margin-left: 0;
     }
+  }
+
+  &.situacao {
+    margin-left: 1.8em;
+    margin-top: -0.2em;
   }
 
   &.pretensao_Clt {
@@ -35,9 +29,18 @@ export const InputWrapper = styled.div`
       position: relative;
       margin-left: 0;
       left: 0;
+
       width: 50%;
     }
+    @media (min-width: 451px) and (max-width: 909px) {
+      position: relative;
+      margin-left: 0;
+      left: 2em;
+      top: 0em;
+      width: 100%;
+    }
   }
+
   &.escolaridade {
     margin-left: 0;
   }
@@ -56,6 +59,10 @@ export const Label = styled.label`
   &.pretensao {
     margin-left: 0.7em;
     width: 93%;
+  }
+
+  @media (min-width: 451px) and (max-width: 1400px) {
+    font-size: 13px;
   }
 `;
 
@@ -91,15 +98,10 @@ export const Input = styled.input`
   }
 
   &.situacao {
-    width: 46.7%;
-    padding: 8px;
     border: 1px solid #ccc;
     border-radius: 4px;
     outline: none;
-
-    @media (max-width: 450px) {
-      width: 100%;
-    }
+    padding: 10px;
   }
 
   &.InfoCandidate {
@@ -116,6 +118,11 @@ export const Input = styled.input`
       width: 100%;
       margin-left: 0em;
     }
+
+    @media (min-width: 451px) and (max-width: 900px) {
+      width: 93%;
+      height: 80px;
+    }
   }
 
   &.pretensao {
@@ -131,10 +138,13 @@ export const Input = styled.input`
   &.pretensao_Clt {
     width: 46.4%;
 
+    @media (min-width: 451px) and (max-width: 909px) {
+      width: 93%;
+    }
+
     @media (max-width: 450px) {
       width: 100%;
       margin-left: 0;
     }
   }
 `;
-
