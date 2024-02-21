@@ -20,7 +20,7 @@ interface CardCandidatesProps {
   currentPage?: number;
   handlePageChange?: (newPage: number) => void;
   availiado?: boolean;
-  onCloseModal : any
+  onCloseModal? : any
 }
 
 const CardCandidates = ({
