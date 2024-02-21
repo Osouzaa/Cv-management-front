@@ -14,6 +14,10 @@ export const Container = styled.div`
   @media (max-width: 450px) {
     display: none;
   }
+
+  @media (max-height: 680px) {
+    overflow-x: scroll;
+  }
 `;
 
 export const ImageLogo = styled.img`
@@ -32,7 +36,6 @@ export const Content = styled.div`
 
   p {
     color: #000;
-
     font-family: Poppins;
     font-size: 20px;
     font-style: normal;
@@ -63,12 +66,18 @@ export const Content = styled.div`
   &:not(.active):hover {
     background: #eee;
   }
+
+  @media (max-height: 680px) {
+    display: flex;
+    align-items: center;
+    height: 55px;
+  }
 `;
 
 export const SairText = styled.p`
-  position: absolute;
+  position: fixed;
   bottom: 0;
-  right: 0;
+  left: 17em;
   color: #851f2c;
   font-size: 16px;
   font-weight: 600;

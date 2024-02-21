@@ -16,6 +16,7 @@ export const TableContainer = styled.div`
     margin-top: 3%;
     margin-left: 20.2%;
   }
+
 `;
 
 export const StyledTable = styled.table`
@@ -79,6 +80,7 @@ export const TableData = styled.td`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
 `;
 
 export const TableDataRow = styled.tr`

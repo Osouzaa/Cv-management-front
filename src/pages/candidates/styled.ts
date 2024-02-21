@@ -14,14 +14,15 @@ export const Container = styled.div`
   justify-content: center;
   align-items: start;
 
-  @media (min-width: 600px) {
-    margin-top: 2%;
-    margin-left: 10%;
+  @media (max-width: 600px) {
+    width: 90%;
+    margin-top: 14%;
+    height: 150%;
   }
 
-  @media (min-width: 1200px) {
-    margin-top: 4%;
-    margin-left: 23.4%;
+  @media (min-width: 601px) and (max-width: 1300px) {
+    margin-left: 29%;
+    width: 70vw;
   }
 
   @media (min-width: 2560px) {
@@ -29,21 +30,15 @@ export const Container = styled.div`
     margin-left: 18.2%;
   }
 
-  @media (min-width: 1920px) {
-    margin-top: 3%;
-    margin-left: 18.2%;
+  @media (max-width: 1920px) {
+    margin-top: 4%;
+    margin-left: 23.2%;
   }
 
   @media (max-width: 450px) {
     width: 90%;
     margin-top: 14%;
     height: 150%;
-  }
-
-  @media (max-width: 1280px) {
-    width: 68%;
-    margin-left: 30%;
-    height: 100%;
   }
 `;
 

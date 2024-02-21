@@ -19,7 +19,7 @@ export const ContainerGrid = styled.div`
     grid-template-columns: 1fr;
   }
 
-  @media (max-width: 1280px) {
+  @media (min-width: 601px) and (max-width: 1300px) {
     grid-template-columns: repeat(2, 1fr);
   }
 `;
