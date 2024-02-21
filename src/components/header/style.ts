@@ -11,7 +11,7 @@ export const Container = styled.div`
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  @media (max-width: 450px) {
+  @media (min-width: 0) and (max-width: 799px) {
     display: none;
   }
 
@@ -67,7 +67,7 @@ export const Content = styled.div`
     background: #eee;
   }
 
-  @media (max-height: 680px) {
+  @media (min-width: 0) and (max-width: 600px) {
     display: flex;
     align-items: center;
     height: 55px;
@@ -114,7 +114,8 @@ export const ListHeader = styled.div`
 
 export const Drop = styled.div`
   display: none;
-  @media (max-width: 450px) {
+
+  @media (min-width: 0) and (max-width: 799px) {
     display: block;
     position: sticky;
     margin: 0.3em;
