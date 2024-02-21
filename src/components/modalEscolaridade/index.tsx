@@ -7,10 +7,10 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 
 interface IModalProps {
-  togleModal: () => void;
+  toggleModal: () => void;
 }
 
-const ModalEscolaridade = ({ togleModal }: IModalProps) => {
+const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
   const { id } = useParams();
   const [formationsList, setFormationsList] = useState<Formations[]>([]);
   const [formations, setFormations] = useState<Formations>({
@@ -23,8 +23,6 @@ const ModalEscolaridade = ({ togleModal }: IModalProps) => {
   });
 
   useEffect(() => {
-    // Aqui você pode carregar os dados do candidato do backend
-    // e definir as formações já existentes em formationsList
     const fetchData = async () => {
       try {
         const response = await axios.get(
@@ -82,7 +80,7 @@ const ModalEscolaridade = ({ togleModal }: IModalProps) => {
       <C.ContentModal>
         <C.ContentTitle>
           <h1>Adicionar Escolaridade</h1>
-          <button onClick={togleModal}> X</button>
+          <button onClick={toggleModal}> X</button>
         </C.ContentTitle>
 
         <C.ContentInputs>
