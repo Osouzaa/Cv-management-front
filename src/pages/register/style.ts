@@ -59,8 +59,8 @@ export const Search = styled.div`
   margin-bottom: 20px;
 
   img {
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
   }
   &.localizacao {

@@ -29,7 +29,13 @@ export const ContainerSearch = styled.div`
     margin-top: 2%;
     margin-left: 10.4%;
   }
-  
+
+  @media (max-width: 1650px) {
+    margin-top: -2%;
+    margin-left: 21%;
+    width: 70%;
+  }
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -68,7 +74,10 @@ export const ContentInput = styled.input`
 
   @media (min-width: 2560px) {
     width: 1100px;
+  }
 
+  @media (max-width: 1650px) {
+    width: 600px;
   }
 `;
 

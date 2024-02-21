@@ -10,8 +10,14 @@ export const Container = styled.div`
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
   overflow: auto;
 
-  @media (min-width: 600px) {
+  @media (max-width: 600px) {
     width: 100%;
+  }
+
+  @media (min-width: 601px) and (max-width: 1300px) {
+    width: 70vw;
+    margin-top: 3%;
+    max-height: 580px;
   }
 
   @media (min-width: 1200px) {

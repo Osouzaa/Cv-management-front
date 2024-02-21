@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const CardInfo = styled.div`
   width: 902px;
   height: 207px;
-  overflow: auto;
   margin-top: 81px;
 
   background: linear-gradient(
@@ -29,6 +28,7 @@ export const CardInfo = styled.div`
     width: 390px;
     margin-top: 60px;
   }
+
 `;
 
 export const ImageTutorial = styled.img`
@@ -41,7 +41,7 @@ export const ImageTutorial = styled.img`
 
 export const ContentCard = styled.div`
   max-width: 570px;
-  max-height: 95px;
+  height: 95px;
 
   display: flex;
   flex-direction: column;

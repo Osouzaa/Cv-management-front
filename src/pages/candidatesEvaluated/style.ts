@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled from "styled-components";
 
 export const Container = styled.div`
   position: relative;
@@ -14,26 +14,24 @@ export const Container = styled.div`
   justify-content: center;
   align-items: start;
 
-  
-
   @media (min-width: 600px) {
     margin-top: 2%;
     margin-left: 10%;
   }
 
-  @media (min-width: 1200px) {
-    margin-top: 4%;
-    margin-left: 23.4%;
+  @media (min-width: 601px) and (max-width: 1300px) {
+    margin-left: 29%;
+    width: 70vw;
   }
-
+  
   @media (min-width: 2560px) {
     margin-top: 3%;
     margin-left: 18.2%;
   }
 
-  @media (min-width: 1920px) {
+  @media (max-width: 1920px) {
     margin-top: 3%;
-    margin-left: 18.2%;
+    margin-left: 23.2%;
   }
 
   h1 {

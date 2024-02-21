@@ -11,7 +11,10 @@ export const Container = styled.div`
 
   @media (max-width: 450px) {
     margin-left: 0;
+  }
 
+  @media (max-width: 1300px) {
+    margin-left: 22em;
   }
 `;
 
@@ -31,6 +34,10 @@ export const CardVideo = styled.div`
   @media (max-width: 450px) {
     margin-left: 0;
     width: 385px;
+  }
+
+  @media (max-height: 650px) {
+    height: 300px;
   }
 `;
 
@@ -77,6 +84,10 @@ export const Description = styled.p`
   font-weight: 400;
   line-height: normal;
   margin-bottom: 18px;
+
+  @media (max-height: 650px) {
+    margin-bottom: 8px;
+  }
 `;
 
 export const SVGICON = styled.img`
@@ -86,6 +97,12 @@ export const SVGICON = styled.img`
 
   @media (max-width: 450px) {
     display: none;
+  }
+
+  @media (max-height: 650px) {
+    width: 201px;
+    height: 180px;
+    margin: 0;
   }
 `;
 
@@ -111,5 +128,9 @@ export const ContentCard = styled.div`
 
   @media (max-width: 450px) {
     width: 350px;
+  }
+
+  @media (max-height: 650px) {
+    height: 150px;
   }
 `;

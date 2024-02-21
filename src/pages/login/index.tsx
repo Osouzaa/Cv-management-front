@@ -1,5 +1,5 @@
 import * as C from "./style";
-import Logo from "../../image/logoTecnocar2.png";
+import Logo from "../../image/logoTecnocar2.svg";
 import InputField from "../../components/inputField";
 import { FormEvent } from "../../types/types";
 import { useState, useEffect } from "react";
