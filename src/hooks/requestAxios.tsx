@@ -1,4 +1,4 @@
-import axios, { AxiosResponse } from "axios";
+import axios from "axios";
 import { useEffect, useState } from "react";
 import { Candidate } from "../types/candidate.types";
 
@@ -18,7 +18,8 @@ const useAxiosCandidate = (url: string, id?: string) => {
 
   const fetchData = async () => {
     try {
-      const result = await axios.get(url);
+      const apiUrl = id ? `${url}/${id}` : url; // Construct apiUrl here
+      const result = await axios.get(apiUrl); // Use apiUrl instead of url
       setData(result.data);
     } catch (error : any) {
       console.error("Error fetching data: ", error);
@@ -28,7 +29,6 @@ const useAxiosCandidate = (url: string, id?: string) => {
 
   useEffect(() => {
     if (url) {
-      const apiUrl = id ? `${url}/${id}` : url;
       fetchData();
     }
   }, [url, id]);
