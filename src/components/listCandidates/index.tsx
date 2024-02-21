@@ -24,6 +24,7 @@ interface ListCandidatesProps {
   totalPages?: number;
   currentPage?: number;
   handlePageChange?: (newPage: number) => void;
+  onCloseModal: any;
 }
 
 const ListCandidates: React.FC<ListCandidatesProps> = ({
@@ -31,6 +32,7 @@ const ListCandidates: React.FC<ListCandidatesProps> = ({
   totalPages,
   currentPage,
   handlePageChange,
+  onCloseModal 
 }) => {
   const formatMoney = (amount: string) => {
     const numericAmount = parseFloat(amount);
@@ -49,6 +51,7 @@ const ListCandidates: React.FC<ListCandidatesProps> = ({
   };
   const closeModal = () => {
     setModal(false);
+    onCloseModal();
   };
 
   return (

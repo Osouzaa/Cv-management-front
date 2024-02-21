@@ -20,6 +20,7 @@ interface CardCandidatesProps {
   currentPage?: number;
   handlePageChange?: (newPage: number) => void;
   availiado?: boolean;
+  onCloseModal : any
 }
 
 const CardCandidates = ({
@@ -28,6 +29,7 @@ const CardCandidates = ({
   currentPage,
   handlePageChange,
   availiado,
+  onCloseModal 
 }: CardCandidatesProps) => {
   const [modal, setModal] = useState(false);
   const [userID, setUserID] = useState<number | undefined>();
@@ -35,11 +37,12 @@ const CardCandidates = ({
   const openModal = (id: number) => {
     setUserID(id);
     setModal(true); 
+    
   };
 
   const closeModal = () => {
     setModal(false);
-    location.reload()
+    onCloseModal()
   };
 
   return (

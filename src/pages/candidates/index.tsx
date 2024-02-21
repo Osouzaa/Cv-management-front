@@ -28,7 +28,7 @@ interface Candidate {
 
 const Candidate = () => {
   const foi_avaliado_recrutamento = "foi_avaliado_recrutamento=true";
-  const { data } = useAxiosCandidate(
+  const { data, refetch } = useAxiosCandidate(
     `${import.meta.env.VITE_API_URL}?${foi_avaliado_recrutamento}`
   );
   const [modal, setModal] = useState(false);
@@ -124,6 +124,10 @@ const Candidate = () => {
       .filter((param) => param !== null)
       .join("&");
   };
+  const handleModalClose = () => {
+    console.log("Modal fechado");
+    refetch();
+  };
 
   return (
     <>
@@ -162,6 +166,7 @@ const Candidate = () => {
             totalPages={totalPages}
             currentPage={currentPage}
             handlePageChange={handlePageChange}
+            onCloseModal={handleModalClose}
           />
         )}
 
@@ -171,6 +176,7 @@ const Candidate = () => {
             totalPages={totalPages}
             currentPage={currentPage}
             handlePageChange={handlePageChange}
+            onCloseModal={handleModalClose}
           />
         )}
         {modal && (
