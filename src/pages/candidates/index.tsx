@@ -41,7 +41,6 @@ const Candidate = () => {
   const [currentData, setCurrentData] = useState<Candidate[] | null>(null);
   const [isFiltered, setIsFiltered] = useState(false);
 
-
   useEffect(() => {
     if (data) {
       const sortedData = data.sort(

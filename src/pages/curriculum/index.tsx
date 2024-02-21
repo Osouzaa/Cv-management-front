@@ -10,11 +10,14 @@ import jsPDF from "jspdf";
 import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
+import { ModalExperiencia } from "../../components/modalExperience";
 
 const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
-  const { data } = useAxiosCandidate(url);
+  const { data, refetch } = useAxiosCandidate(url); // Adicionando refetch para atualizar os dados
+
+  const [escolaridade, setEscolaridade] = useState(false);
   const [experiencia, setExperiencia] = useState(false);
   const [hideImage, setHideImage] = useState(false);
 
@@ -26,6 +29,12 @@ const Curriculum = () => {
       container.style.width = "260mm";
     }
   }, []);
+
+  useEffect(() => {
+    if (!escolaridade && !experiencia) {
+      refetch();
+    }
+  }, [escolaridade, experiencia, refetch]);
 
   const saveAsPDF = () => {
     const container = document.querySelector(
@@ -61,10 +70,13 @@ const Curriculum = () => {
     }
   };
 
-  const togleModal = () => {
-    setExperiencia(!experiencia);
+  const toggleModal = () => {
+    setEscolaridade(!escolaridade);
   };
 
+  const toggleModalExperiencia = () => {
+    setExperiencia(!experiencia);
+  };
   return (
     <>
       <C.ButtonTeste
@@ -156,7 +168,7 @@ const Curriculum = () => {
               <C.ContainerFor>
                 <C.ContentForTitle>
                   <C.SubTitle>Formação Acadêmica</C.SubTitle>
-                  <button onClick={() => togleModal()}>
+                  <button onClick={() => toggleModal()}>
                     {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
@@ -187,7 +199,7 @@ const Curriculum = () => {
               <C.ContainerFive>
                 <C.ContentForTitle>
                   <C.SubTitle> Experiência Profissional </C.SubTitle>
-                  <button onClick={() => togleModal()}>
+                  <button onClick={() => toggleModalExperiencia()}>
                     {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
@@ -231,7 +243,8 @@ const Curriculum = () => {
         </C.LeftPanel>
         <C.RightPanel />
       </C.Container>
-      {experiencia && <ModalEscolaridade togleModal={togleModal} />}
+      {escolaridade && <ModalEscolaridade toggleModal={toggleModal} />}
+      {experiencia && < ModalExperiencia toggleModalExperiencia={toggleModalExperiencia}/>}
     </>
   );
 };

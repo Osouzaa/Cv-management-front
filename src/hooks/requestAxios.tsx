@@ -16,20 +16,20 @@ const useAxiosCandidate = (url: string, id?: string) => {
     setPatch(itemData);
   };
 
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(url);
+      setData(result.data);
+    } catch (error : any) {
+      console.error("Error fetching data: ", error);
+      setError(error.response?.data?.message || "Unknown error");
+    }
+  };
+
   useEffect(() => {
     if (url) {
       const apiUrl = id ? `${url}/${id}` : url;
-      axios
-        .get(apiUrl)
-        .then((response: AxiosResponse<Candidate>) => {
-          setData(response.data);
-        })
-        .catch((error: any) => {
-          console.error("Erro na solicitação GET:", error);
-          if (error.response) {
-            console.error("Detalhes da resposta:", error.response.data);
-          }
-        });
+      fetchData();
     }
   }, [url, id]);
 
@@ -38,11 +38,10 @@ const useAxiosCandidate = (url: string, id?: string) => {
       if (post) {
         try {
           await axios.post(url, post);
-          const result = await axios.get(url);
-          setData(result.data);
+          fetchData();
         } catch (error: any) {
-          console.error("Erro na solicitação POST: ", error);
-          setError(error.response?.data?.message || "Erro desconhecido");
+          console.error("Error posting data: ", error);
+          setError(error.response?.data?.message || "Unknown error");
         }
       }
     };
@@ -58,11 +57,10 @@ const useAxiosCandidate = (url: string, id?: string) => {
               "Content-Type": "application/json",
             },
           });
-          const result = await axios.get(url);
-          setData(result.data);
-        } catch (error: any) {
-          console.error("Erro na solicitação PATCH: ", error);
-          setError(error.response?.data?.message || "Erro desconhecido");
+          fetchData();
+        } catch (error : any) {
+          console.error("Error patching data: ", error);
+          setError(error.response?.data?.message || "Unknown error");
         }
       }
     };
@@ -70,7 +68,11 @@ const useAxiosCandidate = (url: string, id?: string) => {
     patchData();
   }, [url, patch]);
 
-  return { httpConfig, patchConfig, data, errorAxios };
+  const refetch = () => {
+    fetchData();
+  };
+
+  return { httpConfig, patchConfig, data, errorAxios, refetch };
 };
 
 export { useAxiosCandidate };
