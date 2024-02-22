@@ -1,5 +1,3 @@
-// inputSelect.tsx
-
 import { ChangeEvent } from "react";
 import * as C from "./style";
 
@@ -9,9 +7,16 @@ interface InputSelectProps {
   options?: string[];
   onChange?: (e: ChangeEvent<HTMLSelectElement>) => void;
   className?: string;
+  placeholder?: string;
 }
 
-const InputSelect = ({ label, value, options, onChange, className }: InputSelectProps) => (
+const InputSelect = ({
+  label,
+  value,
+  options,
+  onChange,
+  className,
+}: InputSelectProps) => (
   <C.InputWrapper className={className}>
     <C.ContentLabel className={className}>{label}</C.ContentLabel>
     <C.SelectContent className={className}>

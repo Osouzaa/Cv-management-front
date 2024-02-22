@@ -94,7 +94,7 @@ const Curriculum = () => {
             <>
               <C.CardInfo>
                 <span>
-                  {data?.codigoCandidate} - {data.idade} anos - Masculino -{" "}
+                  {data?.codigoCandidate} - {data.idade} anos - {data.genero} -{" "}
                   {data.cidade}/{data.uf}
                 </span>
               </C.CardInfo>
@@ -118,22 +118,11 @@ const Curriculum = () => {
                   </C.ContainerDados>
                 </C.ContainerTwo>
               </C.ContentInfo>
-              <C.Resumo>
-                <p>
-                  Profissional de TI altamente qualificado com mais de 5 anos de
-                  experiência como Analista de Sistemas. Expertise em
-                  desenvolvimento, implementação e manutenção de sistemas de
-                  informação. Proficiente em linguagens de programação como
-                  Java, Python e SQL, com habilidades sólidas em análise de
-                  dados e resolução de problemas. Demonstrou sucesso em liderar
-                  equipes multifuncionais e colaborar efetivamente com
-                  stakeholders para entender requisitos e garantir a entrega de
-                  soluções de software de alta qualidade e dentro do prazo.
-                  Excelente habilidade de comunicação e capacidade comprovada de
-                  traduzir requisitos técnicos em termos compreensíveis para não
-                  técnicos.
-                </p>
-              </C.Resumo>
+              {data.resumoProfissional && (
+                <C.Resumo>
+                  <p>{data.resumoProfissional}</p>
+                </C.Resumo>
+              )}
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
                 <C.Linha />

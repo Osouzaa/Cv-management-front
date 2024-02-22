@@ -54,6 +54,8 @@ const Register: React.FC = () => {
     vaga_hibrida_betim: "",
     home_office: "",
     observacao: "",
+    genero: "",
+    resumoProfissional: "",
   });
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
   const [errorPost, setErrorPost] = useState(null);
@@ -213,6 +215,15 @@ const Register: React.FC = () => {
                   }}
                 />
               ))}
+              <InputSelect
+                label="Gênero"
+                className="genero"
+                value={newCandidate.genero}
+                options={["Selecione seu gênero", "Masculino", "Feminino"]}
+                onChange={(e) =>
+                  setNewCandidate({ ...newCandidate, genero: e.target.value })
+                }
+              />
               <C.AddressFields>
                 <InputField
                   label="Cidade"
@@ -229,6 +240,18 @@ const Register: React.FC = () => {
                   className="UF"
                 />
               </C.AddressFields>
+              <InputField
+                value={newCandidate.resumoProfissional}
+                label="Resumo Profissional"
+                placeholder="Resumo profissional"
+                className="resumoProfissional"
+                onChange={(e) => {
+                  setNewCandidate({
+                    ...newCandidate,
+                    resumoProfissional: e.target.value,
+                  });
+                }}
+              />
             </>
           )}
         </C.Content>

@@ -5,6 +5,10 @@ export const InputWrapper = styled.div`
   margin-left: 1.4em;
   width: 100%;
 
+  &.resumoProfissional{
+    margin-bottom: 20px;
+  }
+
   @media (max-width: 450px) {
     &.pretensao {
       margin-left: 0;
@@ -78,11 +82,17 @@ export const Input = styled.input`
   color: #75757e;
   background-color: #fff;
 
+  &.resumoProfissional {
+   padding-bottom: 54px;
+  }
   &.escolaridade {
     width: 100%;
   }
   &.atividades-profissional {
     height: 69px;
+    word-wrap: break-word;
+    max-width: 600px;
+
   }
 
   &:focus {

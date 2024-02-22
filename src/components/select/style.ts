@@ -4,6 +4,10 @@ export const InputWrapper = styled.div`
   position: relative;
   margin-bottom: 15px;
   margin-left: 2em;
+
+  &.UF{
+    margin-bottom: 0;
+  }
 `;
 
 export const Label = styled.label`

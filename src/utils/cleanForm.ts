@@ -31,5 +31,7 @@ export const LimparCampos = () => ({
   observacao: "",
   status: "",
   isEvaluatedByRecruitment: false,
+  genero: "",
+  resumoProfissional: ""
 
 });

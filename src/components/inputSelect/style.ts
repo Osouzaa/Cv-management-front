@@ -21,6 +21,11 @@ export const InputWrapper = styled.div`
   &.escolaridade {
     margin: 0;
   }
+  &.genero {
+    margin: 0;
+    margin: 5px 1.4em;
+    
+  }
 
   @media (max-width: 450px) {
     &.mobile {
@@ -57,7 +62,7 @@ export const SelectContent = styled.div`
     outline: none;
     box-sizing: border-box;
     font-size: 14px;
-    color: #333;
+    color: #75757e;
     background-color: #fff;
     cursor: pointer;
     transition: border-color 0.3s ease;
@@ -72,6 +77,7 @@ export const SelectContent = styled.div`
 
   select option {
     font-size: 16px;
+    
   }
 `;
 
