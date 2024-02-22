@@ -1,7 +1,6 @@
 import Logo from "../../image/logoTecnocar2.png";
 import Telefone from "../../image/telefone.png";
 import Email from "../../image/email.png";
-import Endereço from "../../image/endereco.png";
 import { useParams } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
