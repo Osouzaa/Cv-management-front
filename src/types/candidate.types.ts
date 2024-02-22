@@ -30,6 +30,8 @@ export interface Candidate {
   vaga_hibrida_betim: string;
   home_office: string;
   observacao: string;
+  genero:string;
+  resumoProfissional: string;
   
 
 }

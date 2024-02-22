@@ -15,15 +15,15 @@ export const Container = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 800px) and (max-width: 909px) {
+  @media (min-width: 800px) and (max-width: 929px) {
     margin-left: 41%;
     margin-top: 5vw;
     width: 58%;
   }
 
-  @media (min-width: 910px) and (max-width: 1300px) {
+  @media (min-width: 930px) and (max-width: 1300px) {
     width: 62vw;
-    margin: 2% 35%;
+    margin: 2% 37%;
   }
 
   @media (min-width: 1301px) and (max-width: 1600px) {
@@ -96,7 +96,7 @@ export const Content = styled.div`
   &.situacao {
     grid-template-columns: 1fr 1fr;
 
-    @media (min-width: 450px) and (max-width: 909px) {
+    @media (min-width: 450px) and (max-width: 929px) {
       grid-template-columns: 1fr;
     }
   }
@@ -107,7 +107,7 @@ export const Content = styled.div`
     @media (max-width: 450px) {
       grid-template-columns: 1fr;
     }
-    @media (min-width: 451px) and (max-width: 909px) {
+    @media (min-width: 451px) and (max-width: 929px) {
       grid-template-columns: 1fr;
     }
   }
