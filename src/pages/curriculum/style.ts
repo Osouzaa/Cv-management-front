@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  display: flex;
   width: 1000px;
   margin: 0px auto;
   background-color: #fff;
@@ -10,58 +9,47 @@ export const Container = styled.div`
   text-align: center;
 `;
 
-export const ImageLogo = styled.img`
-  position: relative;
-  margin-bottom: 20px;
-`;
-
 export const LeftPanel = styled.div`
   flex: 1;
   padding: 20px;
   text-align: left;
 `;
 
-export const RightPanel = styled.div`
-  width: 200px;
-  background: #851f2c;
-  overflow: hidden;
+export const CardInfo = styled.div`
+  margin: 55px 0 15px 28px;
+  width: 90%;
+  border-bottom: 2px solid #851f2c;
+  display: flex;
+  justify-content: flex-end;
 `;
 
 export const ContentInfo = styled.div`
   margin-left: 40px;
 `;
 
+export const ContentLogo = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+`;
+
 export const Profissional = styled.h3`
-  color: #6a6666;
+  color: #313131;
 
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
   font-size: 35px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
 `;
 
-export const Formacao = styled.h4`
-  color: #6a6666;
-
-  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  font-family: Poppins;
-  font-size: 17px;
-  font-style: normal;
-  font-weight: 400;
-  line-height: normal;
-  margin-bottom: 1.3em;
-`;
-
 export const ContainerDados = styled.div`
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 10px;
+  gap: 31px;
+  margin-left: 6px;
 
   span {
-    color: #6a6666;
+    color: #313131;
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -73,12 +61,7 @@ export const ContainerDados = styled.div`
 export const ContentEmail = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
-
-  &.endereço {
-    align-items: center;
-    max-width: 400px;
-  }
+  gap: 7px;
 `;
 
 export const ContainerTwo = styled.div`
@@ -91,7 +74,7 @@ export const ContainerTwo = styled.div`
   }
 
   span {
-    color: #6a6666;
+    color: #313131;
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -102,57 +85,75 @@ export const ContainerTwo = styled.div`
 
 export const Linha = styled.div`
   position: relative;
-  background: #6a6666;
-  width: 95%;
-  margin: 0 auto;
+  background: #313131;
+  width: 90%;
   height: 2px;
   margin-top: 2em;
+  margin-left: 1em;
 `;
 
 export const Bolinha = styled.div`
   position: absolute;
-  background: #6a6666;
+  background: #313131;
   width: 9px;
   height: 9px;
   border-radius: 50%;
-  top: -4.5px; /* Metade da altura para centralizar verticalmente */
+  top: -4.5px;
 `;
 
 export const LinhaComBolinhas = styled.div`
   position: relative;
   margin-top: 40px;
+  margin-left: 24px;
 `;
 
 export const BolinhaEsquerda = styled.div`
   position: absolute;
-  background: #6a6666;
+  background: #313131;
   width: 13px;
   height: 13px;
   border-radius: 50%;
   left: 10px;
-  top: 50%; /* Ajuste para centralizar verticalmente em relação à linha */
+  top: 50%;
   transform: translateY(-50%);
 `;
 
 export const BolinhaDireita = styled.div`
   position: absolute;
-  background: #6a6666;
+  background: #313131;
   width: 13px;
   height: 13px;
   border-radius: 50%;
-  right: 10px;
+  right: 68px;
   top: 50%;
   transform: translateY(-50%);
 `;
 
-export const ContainerThree = styled.div``;
+export const Resumo = styled.div`
+  margin: 30px 0 0 71px;
+  width: 78%;
+
+  p {
+    color: #313131;
+    text-align: justify;
+    font-family: Poppins;
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+  }
+`;
+
+export const ContainerThree = styled.div`
+  margin-left: 54px;
+`;
 
 export const SubTitle = styled.h2`
-  color: #6a6666;
+  color: #313131;
   font-family: Poppins;
   font-size: 24px;
   font-style: normal;
-  font-weight: 400;
+  font-weight: 500;
   line-height: normal;
   margin: 1em 0.8em;
 `;
@@ -164,7 +165,7 @@ export const Vagas = styled.div`
   gap: 2em;
 
   span {
-    color: #6a6666;
+    color: #313131;
     font-family: Poppins;
     font-size: 16px;
     font-style: normal;
@@ -177,15 +178,16 @@ export const VagasItem = styled.div`
   display: flex;
   flex-direction: column;
   gap: 1em;
-  color: #6a6666;
- 
+  color: #313131;
 
   &.item_right {
-    margin-right: 2em;
+    margin-right: 8em;
   }
 `;
 
-export const ContainerFor = styled.div``;
+export const ContainerFor = styled.div`
+  margin-left: 54px;
+`;
 
 export const ContentForTitle = styled.div`
   display: flex;
@@ -201,7 +203,9 @@ export const ContentForTitle = styled.div`
   }
 `;
 
-export const ContainerFive = styled.div``;
+export const ContainerFive = styled.div`
+  margin-left: 54px;
+`;
 
 export const ContainerSix = styled.div`
   display: flex;
@@ -227,7 +231,7 @@ export const Period = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  color: #5e5656;
+  color: #313131;
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
@@ -273,7 +277,7 @@ export const ContentFor = styled.div`
 `;
 
 export const Institution = styled.div`
-  color: #5e5656;
+  color: #313131;
   font-family: Poppins;
   font-size: 18px;
   font-style: normal;
@@ -295,7 +299,7 @@ export const Prevision = styled.div`
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #5e5656;
+  color: #313131;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;
@@ -312,7 +316,7 @@ export const Status = styled.div`
 `;
 
 export const InfoInstituion = styled.div`
-  color: #5e5656;
+  color: #313131;
   font-family: Poppins;
   font-size: 16px;
   font-style: normal;
@@ -322,4 +326,9 @@ export const InfoInstituion = styled.div`
   span {
     font-weight: 600;
   }
+`;
+
+export const ContainerSeven = styled.div`
+  display: flex;
+  justify-content: space-around;
 `;
