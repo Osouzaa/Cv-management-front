@@ -91,14 +91,19 @@ const Curriculum = () => {
       </C.ButtonTeste>
       <C.Container className="container-to-pdf">
         <C.LeftPanel>
-          <C.ImageLogo src={Logo} alt="" />
           {data && (
             <>
+              <C.CardInfo>
+                <span>
+                  {data?.codigoCandidate} - {data.idade} anos - Masculino -{" "}
+                  {data.cidade}/{data.uf}
+                </span>
+              </C.CardInfo>
               <C.ContentInfo>
-                <div>
-                  <C.Profissional>{data.profissional}</C.Profissional>
-                  <C.Formacao>{data.formacao}</C.Formacao>
-                </div>
+                <C.ContentLogo>
+                  <C.Profissional>{data?.codigoCandidate}</C.Profissional>
+                  <img src={Logo} alt="" />
+                </C.ContentLogo>
                 <C.ContainerTwo>
                   <C.ContainerDados>
                     <C.ContentEmail>
@@ -107,17 +112,29 @@ const Curriculum = () => {
                     </C.ContentEmail>
                     <C.ContentEmail>
                       <img src={Email} alt="icone de e-mail" />
-                      <span className="Email">recrutamento@tecnocarengenharia.com.br</span>
+                      <span className="Email">
+                        recrutamento@tecnocarengenharia.com.br
+                      </span>
                     </C.ContentEmail>
                   </C.ContainerDados>
-                  <C.ContentEmail className="endereço">
-                    <img src={Endereço} alt="" />
-                    <span className="endereço">
-                      {data.cidade}/{data.uf}
-                    </span>
-                  </C.ContentEmail>
                 </C.ContainerTwo>
               </C.ContentInfo>
+              <C.Resumo>
+                <p>
+                  Profissional de TI altamente qualificado com mais de 5 anos de
+                  experiência como Analista de Sistemas. Expertise em
+                  desenvolvimento, implementação e manutenção de sistemas de
+                  informação. Proficiente em linguagens de programação como
+                  Java, Python e SQL, com habilidades sólidas em análise de
+                  dados e resolução de problemas. Demonstrou sucesso em liderar
+                  equipes multifuncionais e colaborar efetivamente com
+                  stakeholders para entender requisitos e garantir a entrega de
+                  soluções de software de alta qualidade e dentro do prazo.
+                  Excelente habilidade de comunicação e capacidade comprovada de
+                  traduzir requisitos técnicos em termos compreensíveis para não
+                  técnicos.
+                </p>
+              </C.Resumo>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
                 <C.Linha />
@@ -159,38 +176,7 @@ const Curriculum = () => {
                     </div>
                   </C.VagasItem>
                 </C.Vagas>
-                <C.LinhaComBolinhas>
-                  <C.BolinhaEsquerda />
-                  <C.Linha />
-                  <C.BolinhaDireita />
-                </C.LinhaComBolinhas>
               </C.ContainerThree>
-              <C.ContainerFor>
-                <C.ContentForTitle>
-                  <C.SubTitle>Formação Acadêmica</C.SubTitle>
-                  <button onClick={() => toggleModal()}>
-                    {!hideImage && <img src={icon_add} alt="" />}
-                  </button>
-                </C.ContentForTitle>
-                {data?.formacoes.map((item: any, index: string) => (
-                  <C.ContentFor key={index}>
-                    <C.Institution>
-                      <li>
-                        {item.instituicao}, {item.curso}.
-                      </li>
-                    </C.Institution>
-                    <C.Status>
-                      <C.InfoInstituion></C.InfoInstituion>
-                    </C.Status>
-                    <C.Prevision>
-                      <div>
-                        <span>Inicio:</span> {item.inicio} -
-                        <span>Conclusão:</span> {item.termino_previsao}
-                      </div>
-                    </C.Prevision>
-                  </C.ContentFor>
-                ))}
-              </C.ContainerFor>
               <C.LinhaComBolinhas>
                 <C.BolinhaEsquerda />
                 <C.Linha />
@@ -230,6 +216,37 @@ const Curriculum = () => {
                 <C.Linha />
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
+              <C.ContainerFor>
+                <C.ContentForTitle>
+                  <C.SubTitle>Formação Acadêmica</C.SubTitle>
+                  <button onClick={() => toggleModal()}>
+                    {!hideImage && <img src={icon_add} alt="" />}
+                  </button>
+                </C.ContentForTitle>
+                {data?.formacoes.map((item: any, index: string) => (
+                  <C.ContentFor key={index}>
+                    <C.Institution>
+                      <li>
+                        {item.instituicao}, {item.curso}.
+                      </li>
+                    </C.Institution>
+                    <C.Status>
+                      <C.InfoInstituion></C.InfoInstituion>
+                    </C.Status>
+                    <C.Prevision>
+                      <div>
+                        <span>Inicio:</span> {item.inicio} -
+                        <span>Conclusão:</span> {item.termino_previsao}
+                      </div>
+                    </C.Prevision>
+                  </C.ContentFor>
+                ))}
+              </C.ContainerFor>
+              <C.LinhaComBolinhas>
+                <C.BolinhaEsquerda />
+                <C.Linha />
+                <C.BolinhaDireita />
+              </C.LinhaComBolinhas>
               <C.ContainerSix>
                 <div>
                   <C.SubTitle> Softwares</C.SubTitle>
@@ -238,13 +255,27 @@ const Curriculum = () => {
                   <C.SubTitle> Idiomas</C.SubTitle>
                 </div>
               </C.ContainerSix>
+              <C.LinhaComBolinhas>
+                <C.BolinhaEsquerda />
+                <C.Linha />
+                <C.BolinhaDireita />
+              </C.LinhaComBolinhas>
+              <C.ContainerSeven>
+                <div>
+                  <C.SubTitle> Cursos e Informática</C.SubTitle>
+                </div>
+                <div>
+                  <C.SubTitle> Atividades Extra-curriculares</C.SubTitle>
+                </div>
+              </C.ContainerSeven>
             </>
           )}
         </C.LeftPanel>
-        <C.RightPanel />
       </C.Container>
       {escolaridade && <ModalEscolaridade toggleModal={toggleModal} />}
-      {experiencia && < ModalExperiencia toggleModalExperiencia={toggleModalExperiencia}/>}
+      {experiencia && (
+        <ModalExperiencia toggleModalExperiencia={toggleModalExperiencia} />
+      )}
     </>
   );
 };
