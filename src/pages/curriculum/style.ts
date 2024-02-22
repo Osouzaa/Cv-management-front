@@ -332,3 +332,21 @@ export const ContainerSeven = styled.div`
   display: flex;
   justify-content: space-around;
 `;
+
+export const ContentSix = styled.div`
+  display: flex;
+  flex-direction: column;
+
+  li {
+    list-style-type: square;
+  }
+
+  li::marker {
+    color: #851f2c;
+    font-size: 20px;
+  }
+
+  span {
+    text-transform: capitalize;
+  }
+`;

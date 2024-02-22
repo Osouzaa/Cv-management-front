@@ -2,17 +2,40 @@ import { useState } from "react";
 import InputSelect from "../inputSelect";
 import * as C from "./style";
 import { Softwares } from "../../types/softwares.types";
+import { useEffect } from "react";
+import axios from "axios";
+import { useParams } from "react-router-dom";
 
 interface IModalProps {
   toggleModalSoftware: () => void;
 }
 
 const ModalSoftware = ({ toggleModalSoftware }: IModalProps) => {
+  const { id } = useParams();
   const [softwaresList, setSoftwaresList] = useState<Softwares[]>([]);
   const [software, setSoftware] = useState<Softwares>({
     software: "",
     nivel: "",
   });
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await axios.get(
+          `${import.meta.env.VITE_API_URL}${id}`
+        );
+        const { data } = response;
+        if (data && data.software) {
+          setSoftwaresList(data.software);
+        }
+        console.log("Softwares: ", data.software);
+      } catch (error) {
+        console.error("Erro ao carregar software:", error);
+      }
+    };
+    fetchData();
+  }, [id]);
+
   const handleInputChange = (fieldName: string, value: string) => {
     setSoftware({ ...software, [fieldName]: value });
   };
@@ -25,6 +48,19 @@ const ModalSoftware = ({ toggleModalSoftware }: IModalProps) => {
       software: "",
       nivel: "",
     });
+  };
+
+  const handlePatchExperiencies = async () => {
+    try {
+      const softwareToUpdate = softwaresList.map((software) => ({
+        ...software,
+      }));
+      await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, {
+        software: softwareToUpdate,
+      });
+    } catch (error) {
+      console.log("Error ao enviar os softwares", error);
+    }
   };
 
   return (
@@ -61,7 +97,7 @@ const ModalSoftware = ({ toggleModalSoftware }: IModalProps) => {
             onChange={(e) => handleInputChange("nivel", e.target.value)}
           />
           <C.ContentButtons>
-            {softwaresList.length > 0 && <button>Salvar</button>}
+            {softwaresList.length > 0 && <button onClick={handlePatchExperiencies}>Salvar</button>}
             <button onClick={handleCadastro}>Adicionar</button>
           </C.ContentButtons>
         </C.ContainerModal>

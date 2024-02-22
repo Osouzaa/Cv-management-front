@@ -16,7 +16,6 @@ const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
   const { data, refetch } = useAxiosCandidate(url);
-
   const [escolaridade, setEscolaridade] = useState(false);
   const [experiencia, setExperiencia] = useState(false);
   const [software, setSoftware] = useState(false);
@@ -30,12 +29,6 @@ const Curriculum = () => {
       container.style.width = "260mm";
     }
   }, []);
-
-  useEffect(() => {
-    if (!escolaridade && !experiencia) {
-      refetch();
-    }
-  }, [escolaridade, experiencia, refetch]);
 
   const saveAsPDF = () => {
     const container = document.querySelector(
@@ -73,14 +66,17 @@ const Curriculum = () => {
 
   const toggleModal = () => {
     setEscolaridade(!escolaridade);
+    refetch();
   };
 
   const toggleModalExperiencia = () => {
     setExperiencia(!experiencia);
+    refetch();
   };
 
   const toggleModalSoftware = () => {
     setSoftware(!software);
+    refetch();
   };
   return (
     <>
@@ -242,12 +238,28 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerSix>
-                <C.ContentForTitle>
-                  <C.SubTitle> Softwares</C.SubTitle>
-                  <button onClick={() => toggleModalSoftware()}>
-                    {!hideImage && <img src={icon_add} alt="" />}
-                  </button>
-                </C.ContentForTitle>
+                <div>
+                  <C.ContentForTitle>
+                    <C.SubTitle> Softwares</C.SubTitle>
+                    <button onClick={() => toggleModalSoftware()}>
+                      {!hideImage && <img src={icon_add} alt="" />}
+                    </button>
+                  </C.ContentForTitle>
+                  <C.ContentSix>
+                    {data?.software.map(
+                      (
+                        item: { software: string; nivel: string },
+                        index: number
+                      ) => (
+                        <div key={index}>
+                          <li>
+                            {item.software} - <span>{item.nivel}</span>
+                          </li>
+                        </div>
+                      )
+                    )}
+                  </C.ContentSix>
+                </div>
                 <div>
                   <C.SubTitle> Idiomas</C.SubTitle>
                 </div>
