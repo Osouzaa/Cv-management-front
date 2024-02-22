@@ -10,14 +10,16 @@ import { MouseEvent, useEffect, useState } from "react";
 import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
+import { ModalSoftware } from "../../components/modalSoftwares";
 
 const Curriculum = () => {
   const { id } = useParams();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
-  const { data, refetch } = useAxiosCandidate(url); // Adicionando refetch para atualizar os dados
+  const { data, refetch } = useAxiosCandidate(url);
 
   const [escolaridade, setEscolaridade] = useState(false);
   const [experiencia, setExperiencia] = useState(false);
+  const [software, setSoftware] = useState(false);
   const [hideImage, setHideImage] = useState(false);
 
   useEffect(() => {
@@ -75,6 +77,10 @@ const Curriculum = () => {
 
   const toggleModalExperiencia = () => {
     setExperiencia(!experiencia);
+  };
+
+  const toggleModalSoftware = () => {
+    setSoftware(!software);
   };
   return (
     <>
@@ -236,9 +242,12 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerSix>
-                <div>
+                <C.ContentForTitle>
                   <C.SubTitle> Softwares</C.SubTitle>
-                </div>
+                  <button onClick={() => toggleModalSoftware()}>
+                    {!hideImage && <img src={icon_add} alt="" />}
+                  </button>
+                </C.ContentForTitle>
                 <div>
                   <C.SubTitle> Idiomas</C.SubTitle>
                 </div>
@@ -264,6 +273,7 @@ const Curriculum = () => {
       {experiencia && (
         <ModalExperiencia toggleModalExperiencia={toggleModalExperiencia} />
       )}
+      {software && <ModalSoftware toggleModalSoftware={toggleModalSoftware} />}
     </>
   );
 };

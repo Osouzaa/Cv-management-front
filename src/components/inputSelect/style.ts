@@ -66,10 +66,18 @@ export const SelectContent = styled.div`
     background-color: #fff;
     cursor: pointer;
     transition: border-color 0.3s ease;
+
+    &.software {
+      color: #313131;
+    }
   }
 
   select:hover {
     border-color: #555;
+
+    &.software {
+      border-color: #313131;
+    }
   }
   select::-ms-expand {
     display: none;
