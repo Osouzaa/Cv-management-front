@@ -30,4 +30,6 @@ export const initialState = {
   home_office: "",
   observacao: "",
   status: "",
+  genero: "",
+  resumoProfissional: "",
 };

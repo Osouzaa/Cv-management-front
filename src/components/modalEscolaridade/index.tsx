@@ -32,7 +32,7 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
         if (data && data.formacoes) {
           setFormationsList(data.formacoes);
         }
-        console.log(data)
+        console.log(data);
       } catch (error) {
         console.error("Erro ao carregar formações:", error);
       }
@@ -64,7 +64,7 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
       const formationsToUpdate = formationsList.map((formation) => ({
         ...formation,
         inicio: formation.inicio.substring(0, 4),
-        termino_previsao: formation.termino_previsao.substring(0, 4), 
+        termino_previsao: formation.termino_previsao.substring(0, 4),
       }));
 
       await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, {
@@ -128,11 +128,12 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
               value={formations.termino_previsao}
             />
           </C.ContentDate>
-          <InputField
+          <InputSelect
             label="Status"
             className="escolaridade"
             onChange={(e) => handleInputChange("status", e.target.value)}
             value={formations.status}
+            options={["", "Concluída", "Em Andamento", "Trancada"]}
           />
         </C.ContentInputs>
         <C.ContentButtons>
