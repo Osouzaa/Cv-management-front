@@ -13,9 +13,7 @@ import { PageStarts } from "../pages/pageStarts";
 
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 import { Technique } from "../pages/technique";
-
-
-
+import { ModalSoftware } from "../components/modalSoftwares";
 
 const RoutesApp = () => {
   return (
@@ -81,6 +79,7 @@ const RoutesApp = () => {
             </PrivateRoute>
           }
         />
+        <Route path="/aaa" element={<ModalSoftware />} />
 
         <Route path="*" element={<NotFound />} />
       </Routes>

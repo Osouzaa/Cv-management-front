@@ -21,6 +21,7 @@ const InputSelect = ({
     <C.ContentLabel className={className}>{label}</C.ContentLabel>
     <C.SelectContent className={className}>
       <select
+        className={className}
         id={label}
         name={label}
         value={value}
