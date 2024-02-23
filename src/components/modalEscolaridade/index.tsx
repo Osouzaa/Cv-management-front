@@ -21,6 +21,7 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
     termino_previsao: "",
     curso: "",
   });
+  const [feedbackMessage, setFeedbackMessage] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -46,31 +47,58 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
   };
 
   const handleCadastro = () => {
-    const updatedFormationsList = [...formationsList, formations];
-    setFormationsList(updatedFormationsList);
-    console.log("Dados do formulário:", updatedFormationsList);
-    setFormations({
-      escolaridade: "",
-      status: "",
-      instituicao: "",
-      inicio: "",
-      termino_previsao: "",
-      curso: "",
-    });
+    if (
+      formations.escolaridade &&
+      formations.status &&
+      formations.instituicao &&
+      formations.inicio &&
+      formations.termino_previsao &&
+      formations.curso
+    ) {
+      const updatedFormationsList = [...formationsList, formations];
+      setFormationsList(updatedFormationsList);
+      setFeedbackMessage("Formação adicionada com sucesso!");
+      setFormations({
+        escolaridade: "",
+        status: "",
+        instituicao: "",
+        inicio: "",
+        termino_previsao: "",
+        curso: "",
+      });
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
+    } else {
+      setFeedbackMessage("Por favor, preencha todos os campos obrigatórios.");
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
+    }
   };
 
   const handlePatchFormations = async () => {
     try {
       const formationsToUpdate = formationsList.map((formation) => ({
         ...formation,
-        inicio: formation.inicio.substring(0, 4),
-        termino_previsao: formation.termino_previsao.substring(0, 4),
+        inicio: formation.inicio.substring(0, 7),
+        termino_previsao: formation.termino_previsao.substring(0, 7),
       }));
-
-      await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, {
-        formacoes: formationsToUpdate,
-      });
-      console.log("Formações atualizadas com sucesso!");
+      const hasDifference = formationsList.some(
+        (formation, index) => formation.inicio !== formationsToUpdate[index].inicio
+      );
+  
+      if (hasDifference) {
+        await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, {
+          formacoes: formationsToUpdate,
+        });
+        setFeedbackMessage("Formações adicionadas com sucesso!");
+      } else {
+        setFeedbackMessage("Nenhuma alteração nas formações.");
+      }
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
     } catch (error) {
       console.error("Erro ao atualizar formações:", error);
     }
@@ -82,7 +110,9 @@ const ModalEscolaridade = ({ toggleModal }: IModalProps) => {
           <h1>Adicionar Escolaridade</h1>
           <button onClick={toggleModal}> X</button>
         </C.ContentTitle>
-
+        <C.ContentMessage>
+          {feedbackMessage && <p>{feedbackMessage}</p>}
+        </C.ContentMessage>
         <C.ContentInputs>
           <InputSelect
             label="Selecione a escolaridade"

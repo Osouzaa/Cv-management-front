@@ -11,10 +11,11 @@ import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
 import { ModalSoftware } from "../../components/modalSoftwares";
+import { formatarData } from "../../functions/formatarDate";
 
 const Curriculum = () => {
   const { id } = useParams();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
   const url = `${import.meta.env.VITE_API_URL}${id}`;
   const { data, refetch } = useAxiosCandidate(url);
   const [escolaridade, setEscolaridade] = useState(false);
@@ -23,46 +24,50 @@ const Curriculum = () => {
   const [hideImage, setHideImage] = useState(false);
 
   useEffect(() => {
-    const container = document.querySelector(".container-to-pdf") as HTMLElement;
+    const container = document.querySelector(
+      ".container-to-pdf"
+    ) as HTMLElement;
     if (container) {
       container.style.width = "260mm";
     }
   }, []);
-  
+
   const saveAsPDF = () => {
-    const container = document.querySelector(".container-to-pdf") as HTMLElement;
-  
+    const container = document.querySelector(
+      ".container-to-pdf"
+    ) as HTMLElement;
+
     if (container) {
       const options = { scale: 2 };
-  
+
       html2canvas(container, options).then((canvas) => {
         const imgData = canvas.toDataURL("image/png", 1.0);
         const pdf = new jsPDF("p", "mm", "a4");
-  
+
         const imgWidth = 210; // Largura da página A4
         const imgHeight = canvas.height * (imgWidth / canvas.width); // Altura total do conteúdo
-  
+
         // Altura da página A4
         const pageHeight = 297;
         // Verifica se o conteúdo cabe em uma página
         const fitsInOnePage = imgHeight <= pageHeight;
-        
+
         // Adiciona a imagem à página
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
-  
+
         // Adiciona uma nova página se necessário
         if (!fitsInOnePage) {
           pdf.addPage();
           pdf.addImage(imgData, "PNG", 0, -pageHeight, imgWidth, imgHeight);
         }
-  
+
         pdf.save(
           `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`
         );
       });
     }
   };
-  
+
 
   const toggleModal = () => {
     setEscolaridade(!escolaridade);
@@ -228,8 +233,9 @@ const Curriculum = () => {
                     </C.Status>
                     <C.Prevision>
                       <div>
-                        <span>Inicio:</span> {item.inicio} -
-                        <span>Conclusão:</span> {item.termino_previsao}
+                        <span>
+                          {item.status}, {formatarData(item.termino_previsao)}
+                        </span>
                       </div>
                     </C.Prevision>
                   </C.ContentFor>

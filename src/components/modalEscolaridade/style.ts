@@ -13,6 +13,7 @@ export const ModalBG = styled.div`
   z-index: 10000;
 `;
 export const ContentModal = styled.div`
+  position: relative;
   margin: 18% auto;
   width: 500px;
   height: 480px;
@@ -26,6 +27,7 @@ export const ContentInputs = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
+  margin-top: 20px;
 `;
 
 export const ContentTitle = styled.div`
@@ -35,7 +37,7 @@ export const ContentTitle = styled.div`
   margin-bottom: 17px;
   h1 {
     color: #000;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 25px;
     font-style: normal;
     font-weight: 400;
@@ -78,7 +80,7 @@ export const ContentButtons = styled.div`
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
     color: #fff;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -99,4 +101,17 @@ export const ContentDate = styled.div`
   display: flex;
   align-items: center;
   gap: 16px;
+`;
+
+export const ContentMessage = styled.div`
+  position: absolute;
+  top: 4.2em;
+  width: 90%;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  color: #851f2c;
+  p {
+    margin-bottom: 2em;
+  }
 `;

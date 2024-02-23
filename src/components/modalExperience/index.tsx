@@ -28,6 +28,7 @@ const ModalExperiencia = ({ toggleModalExperiencia }: IModalProps) => {
     periodo_final: "",
     atividades: "",
   });
+  const [feedbackMessage, setFeedbackMessage] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -67,23 +68,43 @@ const ModalExperiencia = ({ toggleModalExperiencia }: IModalProps) => {
       await axios.patch(`${import.meta.env.VITE_API_URL}${id}`, {
         experiencias: experienciesToUpdate,
       });
+      setFeedbackMessage("Experiências profissionais salvas com sucesso!");
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
     } catch (error) {
       console.log("Error ao enviar as experiencias", error);
     }
   };
 
   const handleRegister = () => {
-    const updatedExperienciesList = [...experiencieList, experiencias];
-    setExperiencieList(updatedExperienciesList);
-    console.log("Dados do fómulario:", updatedExperienciesList);
-    setExperiencias({
-      empresa: "",
-      cargo: "",
-      esta_atualmente: false,
-      periodo_inicial: "",
-      periodo_final : "",
-      atividades: "",
-    });
+    if (
+      experiencias.empresa &&
+      experiencias.cargo &&
+      experiencias.periodo_inicial &&
+      experiencias.atividades
+    ) {
+      const updatedExperienciesList = [...experiencieList, experiencias];
+      setExperiencieList(updatedExperienciesList);
+      setFeedbackMessage("Experiência adicionada com sucesso!");
+      console.log("Dados do fómulario:", updatedExperienciesList);
+      setExperiencias({
+        empresa: "",
+        cargo: "",
+        esta_atualmente: false,
+        periodo_inicial: "",
+        periodo_final: "",
+        atividades: "",
+      });
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
+    } else {
+      setFeedbackMessage("Por favor, preencha todos os campos.");
+      setTimeout(() => {
+        setFeedbackMessage("");
+      }, 2000);
+    }
   };
 
   return (
@@ -94,6 +115,9 @@ const ModalExperiencia = ({ toggleModalExperiencia }: IModalProps) => {
           <button onClick={toggleModalExperiencia}> X</button>
         </C.ContentTitle>
         <C.ContainerModal>
+          {feedbackMessage && (
+            <C.FeedbackMessage>{feedbackMessage}</C.FeedbackMessage>
+          )}
           <InputField
             label="Empresa"
             name="empresa"
