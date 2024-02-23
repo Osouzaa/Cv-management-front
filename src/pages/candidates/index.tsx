@@ -96,7 +96,7 @@ const Candidate = () => {
     try {
       const response = await axios.get(import.meta.env.VITE_API_URL);
       setCurrentData(response.data);
-      setFilter(false); // Limpa os filtros
+      setFilter(false); 
       setIsFiltered(false);
       localStorage.removeItem("filtros");
     } catch (error) {

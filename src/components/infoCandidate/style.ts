@@ -31,6 +31,11 @@ export const Container = styled.div`
     margin-left: 20%;
     margin-top: 2%;
   }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    height: 500px;
+    margin-top:0;
+  }
 `;
 
 export const ContainerTwo = styled.div`

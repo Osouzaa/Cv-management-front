@@ -38,6 +38,11 @@ export const Container = styled.div`
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    width: 60vw;
+    margin-top: 0;
+  }
 `;
 
 export const ContentTitle = styled.div`
@@ -81,8 +86,8 @@ export const Title = styled.h2`
   }
 
   @media (min-width: 451px) and (max-width: 909px) {
-    font-size: 15px; 
-    }
+    font-size: 15px;
+  }
 `;
 
 export const Content = styled.div`
@@ -228,5 +233,5 @@ export const ContentUpload = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 35%;
+  width: 43%;
 `;

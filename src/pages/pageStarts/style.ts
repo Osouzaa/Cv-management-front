@@ -16,6 +16,10 @@ export const Container = styled.div`
   @media (max-width: 1300px) {
     margin-left: 22em;
   }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    margin-left: 16em;
+  }
 `;
 
 export const CardVideo = styled.div`
@@ -87,6 +91,10 @@ export const Description = styled.p`
 
   @media (max-height: 650px) {
     margin-bottom: 8px;
+  }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 12px;
   }
 `;
 

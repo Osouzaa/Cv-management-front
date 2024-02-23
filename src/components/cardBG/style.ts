@@ -29,6 +29,10 @@ export const CardInfo = styled.div`
     margin-top: 60px;
   }
 
+  @media (min-height: 0px) and (max-height: 700px) {
+    margin-top: 45px;
+    height: 180px;
+  }
 `;
 
 export const ImageTutorial = styled.img`
@@ -57,6 +61,10 @@ export const ContentCard = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
+    @media (min-height: 0px) and (max-height: 700px) {
+      font-size: 18px;
+    }
   }
 
   p {
@@ -68,6 +76,9 @@ export const ContentCard = styled.div`
     font-style: normal;
     font-weight: 400;
     line-height: normal;
+    @media (min-height: 0px) and (max-height: 700px) {
+      font-size: 14px;
+    }
   }
 
   span {
@@ -84,7 +95,6 @@ export const ContentCard = styled.div`
     max-width: 350px;
     padding-left: 35px;
     padding-top: 32px;
-    
 
     h3 {
       font-size: 16px;

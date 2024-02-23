@@ -16,14 +16,13 @@ export const TableContainer = styled.div`
     margin-top: 3%;
     margin-left: 20.2%;
   }
-
 `;
 
 export const StyledTable = styled.table`
   width: 100%;
   border-collapse: collapse;
   border-spacing: 0;
- 
+
   thead {
     border-radius: 10px;
   }
@@ -37,6 +36,9 @@ export const TableHeader = styled.th`
   font-size: 13px;
   text-align: center;
   border: 1px solid #ddd;
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 10px;
+  }
 `;
 
 export const TableHeaderCentered = styled(TableHeader)`
@@ -80,7 +82,6 @@ export const TableData = styled.td`
     overflow: hidden;
     text-overflow: ellipsis;
   }
-
 `;
 
 export const TableDataRow = styled.tr`

@@ -15,8 +15,10 @@ export const Container = styled.div`
     display: none;
   }
 
-  @media (max-height: 680px) {
-    overflow-x: scroll;
+  @media (min-height: 0px) and (max-height: 700px) {
+    overflow-y: auto;
+    gap: 1.5em;
+    width: 280px;
   }
 `;
 
@@ -42,6 +44,10 @@ export const Content = styled.div`
     font-weight: 300;
     line-height: normal;
 
+    @media (min-height: 0px) and (max-height: 700px) {
+      font-size: 16px;
+    }
+
     &.active {
       color: #fff;
     }
@@ -66,6 +72,10 @@ export const Content = styled.div`
   &:not(.active):hover {
     background: #eee;
   }
+  @media (min-height: 0px) and (max-height: 700px) {
+    width: 260px;
+    height: 40px;
+  }
 
   @media (min-width: 0) and (max-width: 600px) {
     display: flex;
@@ -84,6 +94,11 @@ export const SairText = styled.p`
   margin: 0;
   padding: 16px;
   cursor: pointer;
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 13px;
+    right: 0;
+  }
 `;
 
 export const ListHeader = styled.div`
@@ -93,17 +108,17 @@ export const ListHeader = styled.div`
   flex-direction: column;
   justify-content: center;
   flex-wrap: wrap;
-  background-color: #f8f9fa; /* Cor de fundo */
-  border-bottom: 1px solid #ced4da; /* Linha separadora na parte inferior */
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #ced4da;
   gap: 10px;
 
   p {
     font-size: 14px;
-    margin: 0 15px; /* Margens entre os elementos */
-    color: #495057; /* Cor do texto */
-    font-weight: bold; /* Negrito */
-    text-transform: uppercase; /* Transforma o texto em maiúsculas */
-    letter-spacing: 1px; /* Espaçamento entre letras */
+    margin: 0 15px;
+    color: #495057;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 
     &:hover {
       border-bottom: 1px solid #495057;
