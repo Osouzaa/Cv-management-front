@@ -18,10 +18,13 @@ export const CardInfo = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media (min-width: 1920px) {
+  @media (min-width: 1601px) and (max-width: 1920px) {
     margin-left: 1%;
     width: 1200px;
-    margin-top: 100px;
+  }
+
+  @media (min-width: 930px) and (max-width: 1300px) {
+    width: 62vw;
   }
 
   @media (max-width: 450px) {

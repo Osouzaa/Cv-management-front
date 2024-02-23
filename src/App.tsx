@@ -5,9 +5,14 @@ import "./index.css";
 const App = () => {
   const location = useLocation();
   const token = localStorage.getItem("token");
+
   return (
     <div className="Content">
-      {token && !(location.pathname === "/") && <Header />}
+      {token &&
+        !(
+          location.pathname === "/" ||
+          location.pathname.startsWith("/curriculum/")
+        ) && <Header />}
     </div>
   );
 };

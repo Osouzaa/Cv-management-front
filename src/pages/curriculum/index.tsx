@@ -1,7 +1,7 @@
 import Logo from "../../image/logoTecnocar2.png";
 import Telefone from "../../image/telefone.png";
 import Email from "../../image/email.png";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
 import html2canvas from "html2canvas";
@@ -14,6 +14,7 @@ import { ModalSoftware } from "../../components/modalSoftwares";
 
 const Curriculum = () => {
   const { id } = useParams();
+  const navigate = useNavigate()
   const url = `${import.meta.env.VITE_API_URL}${id}`;
   const { data, refetch } = useAxiosCandidate(url);
   const [escolaridade, setEscolaridade] = useState(false);
@@ -22,47 +23,46 @@ const Curriculum = () => {
   const [hideImage, setHideImage] = useState(false);
 
   useEffect(() => {
-    const container = document.querySelector(
-      ".container-to-pdf"
-    ) as HTMLElement;
+    const container = document.querySelector(".container-to-pdf") as HTMLElement;
     if (container) {
       container.style.width = "260mm";
     }
   }, []);
-
+  
   const saveAsPDF = () => {
-    const container = document.querySelector(
-      ".container-to-pdf"
-    ) as HTMLElement;
-
+    const container = document.querySelector(".container-to-pdf") as HTMLElement;
+  
     if (container) {
-      html2canvas(container, { scale: 2 }).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png", 0.8);
+      const options = { scale: 2 };
+  
+      html2canvas(container, options).then((canvas) => {
+        const imgData = canvas.toDataURL("image/png", 1.0);
         const pdf = new jsPDF("p", "mm", "a4");
-        const imgWidth = 210;
-        const imgHeight = (canvas.height * imgWidth) / canvas.width;
-        let heightLeft = imgHeight;
-        let position = 0;
-
-        pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-        heightLeft -= imgHeight;
-
-        if (heightLeft > 0) {
-          while (heightLeft >= 0) {
-            position = heightLeft - imgHeight;
-            pdf.addPage();
-            pdf.addImage(imgData, "PNG", 0, position, imgWidth, imgHeight);
-            heightLeft -= imgHeight;
-          }
+  
+        const imgWidth = 210; // Largura da página A4
+        const imgHeight = canvas.height * (imgWidth / canvas.width); // Altura total do conteúdo
+  
+        // Altura da página A4
+        const pageHeight = 297;
+        // Verifica se o conteúdo cabe em uma página
+        const fitsInOnePage = imgHeight <= pageHeight;
+        
+        // Adiciona a imagem à página
+        pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
+  
+        // Adiciona uma nova página se necessário
+        if (!fitsInOnePage) {
+          pdf.addPage();
+          pdf.addImage(imgData, "PNG", 0, -pageHeight, imgWidth, imgHeight);
         }
-
+  
         pdf.save(
           `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`
         );
       });
-      setHideImage(false);
     }
   };
+  
 
   const toggleModal = () => {
     setEscolaridade(!escolaridade);
@@ -80,16 +80,19 @@ const Curriculum = () => {
   };
   return (
     <>
-      <C.ButtonTeste
-        onClick={(_e: MouseEvent<HTMLButtonElement>) => {
-          setHideImage(true);
-          setTimeout(() => {
-            saveAsPDF();
-          }, 1000);
-        }}
-      >
-        Salvar como PDF
-      </C.ButtonTeste>
+      <C.ContentButton>
+        <button
+          onClick={(_e: MouseEvent<HTMLButtonElement>) => {
+            setHideImage(true);
+            setTimeout(() => {
+              saveAsPDF();
+            }, 1000);
+          }}
+        >
+          Salvar como PDF
+        </button>
+        <button onClick={() => navigate("/candidates")}> Voltar </button>
+      </C.ContentButton>
       <C.Container className="container-to-pdf">
         <C.LeftPanel>
           {data && (

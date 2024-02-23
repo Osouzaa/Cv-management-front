@@ -30,8 +30,6 @@ export const Content = styled.div`
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
-
- 
 `;
 
 export const ContentRange = styled.div`
@@ -154,6 +152,9 @@ export const CardRecrutamento = styled.div`
   color: #333;
   text-align: center;
 
-  top: -2.8em;
-  left: 2em;
+  top: 5em;
+  left: -6.4em;
+  transform: rotate(-90deg);
+  border: 2px solid #851f2c;
+  border-bottom: none;
 `;

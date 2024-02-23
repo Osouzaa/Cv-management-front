@@ -29,10 +29,14 @@ export const CardVideo = styled.div`
   background: #fff;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
-  @media (min-width: 1920px) {
+  @media (min-width: 1601px) and (max-width: 1920px) {
     margin-left: 1%;
     width: 1200px;
     height: 400px;
+  }
+
+  @media (min-width: 930px) and (max-width: 1300px) {
+    width: 62vw;
   }
 
   @media (max-width: 450px) {
@@ -135,6 +139,10 @@ export const ContentCard = styled.div`
   }
 
   @media (max-width: 450px) {
+    width: 350px;
+  }
+
+  @media (min-width: 930px) and (max-width: 1300px) {
     width: 350px;
   }
 

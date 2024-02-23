@@ -105,6 +105,7 @@ export const LinhaComBolinhas = styled.div`
   position: relative;
   margin-top: 40px;
   margin-left: 24px;
+  margin-bottom: 10px;
 `;
 
 export const BolinhaEsquerda = styled.div`
@@ -348,5 +349,40 @@ export const ContentSix = styled.div`
 
   span {
     text-transform: capitalize;
+  }
+`;
+
+export const ContentButton = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: 14px;
+  margin-right: 14px;
+
+  gap: 2em;
+
+  button {
+    width: 130px;
+    height: 44px;
+    border-radius: 10px;
+    background: #851f2c;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    transition: 1s all;
+
+    &:hover {
+      border-radius: 10px;
+      border: 0.5px solid #851f2c;
+      background: #fff;
+      color: #000;
+    }
+  }
+
+  @media (min-height: 0) and (max-height: 700px) {
+    flex-direction: column;
+    gap: 0.5em;
+    position: absolute;
+    right: 0.5em;
   }
 `;
