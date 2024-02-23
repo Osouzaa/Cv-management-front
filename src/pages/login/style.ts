@@ -13,6 +13,11 @@ export const ContentCard = styled.div`
   align-items: center;
   flex-direction: column;
   z-index: 100;
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    height: 450px;
+    width: 350px;
+  }
 `;
 
 export const Image = styled.img`
@@ -62,6 +67,10 @@ export const Forgotpassword = styled.p`
 
   &:hover {
     text-decoration: underline;
+  }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 12px;
   }
 `;
 

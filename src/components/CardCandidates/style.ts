@@ -31,6 +31,11 @@ export const Content = styled.div`
   border-radius: 20px;
   background-color: #f2f2f2;
   box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    width: 280px;
+    height: 230px;
+  }
 `;
 
 export const LogoImage = styled.img`

@@ -36,6 +36,9 @@ export const ContainerSearch = styled.div`
     width: 70%;
   }
 
+  @media (min-height: 0px) and (max-height: 700px) {
+    margin-top: 2em;
+  }
   display: flex;
   align-items: center;
   justify-content: center;

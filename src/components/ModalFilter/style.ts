@@ -30,11 +30,13 @@ export const Content = styled.div`
   @media (max-width: 450px) {
     grid-template-columns: 1fr;
   }
+
+ 
 `;
 
 export const ContentRange = styled.div`
   grid-column: 1 / span 2;
-  grid-row: 1 / span 3; /* Ajuste na linha */
+  grid-row: 1 / span 3;
   width: 291px;
   height: 293px;
   border-radius: 10px;
@@ -59,7 +61,6 @@ export const ContentCheck = styled.div`
 
   background: rgba(217, 217, 217, 0);
 `;
-
 
 export const ContentSelect = styled.div`
   width: 480px;

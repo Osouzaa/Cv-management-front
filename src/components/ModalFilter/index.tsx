@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import RangeSlider from "../inputRange";
 import * as C from "./style";
-import InputRadio from "../inputRadio";
+import InputRadio from "../inputCheck/inputRadio";
 import InputSelect from "../inputSelect";
 import { camposSelect } from "../../utils/campoForms";
 import { ContentCheckLabel } from "../inputCheck";

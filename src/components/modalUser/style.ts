@@ -1,21 +1,33 @@
 import styled from "styled-components";
 
+export const ModalBG = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 10000;
+`;
+
 export const ContainerModal = styled.div`
   width: 800px;
   height: 620px;
-
   background-color: #ffffff;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
-  position: absolute;
-
-  left: 35%;
-  right: 35%;
-  top: 10%;
-
   border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: start;
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    width: 600px;
+    height: 500px;
+    margin-top: 0;
+  }
 `;
 
 export const ContentTitle = styled.div`
@@ -57,6 +69,6 @@ export const StyledButton = styled.button`
   font-size: 14px;
 
   &:hover {
-    background-color:#961f2c;
+    background-color: #961f2c;
   }
 `;

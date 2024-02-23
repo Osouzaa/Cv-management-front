@@ -10,7 +10,6 @@ export const Table = styled.table`
   border-spacing: 0;
   margin-top: 20px;
   cursor: pointer;
-  
 
   th,
   td {
@@ -65,8 +64,6 @@ export const Table = styled.table`
     margin-left: 10%;
   }
 
-
-
   @media (min-width: 2511px) {
     margin-top: -2%;
     margin-left: 16.3%;
@@ -79,11 +76,15 @@ export const Table = styled.table`
     width: 75.4%;
   }
 
-
   @media (max-width: 1650px) {
     margin-top: -7%;
     margin-left: 25.3%;
     width: 70.4%;
+  }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 12px;
+    margin-top: -5em;
   }
 `;
 

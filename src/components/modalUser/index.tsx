@@ -72,60 +72,64 @@ const ModalUser = ({ onclose }: IModalProps) => {
   };
 
   return (
-    <C.ContainerModal>
-      <C.ContentTitle>
-        <h2>Registro novo usuário</h2>
-        {erroSenha && <p style={{ color: "red" }}>As senhas não coincidem.</p>}
-        {showSuccessMessage && (
-          <p style={{ color: "green" }}>Cadastro concluído com sucesso!</p>
-        )}
-        {showErrorMessage && (
-          <p style={{ color: "red" }}>
-            Erro ao salvar. Por favor, tente novamente.
-          </p>
-        )}
-        {info && <p style={{ color: "red" }}> {info}</p>}
-        <button onClick={onclose}>X</button>
-      </C.ContentTitle>
-      <C.ContentsInputs>
-        <InputField
-          label="Nome do usuário"
-          value={name}
-          onChange={(e) => setNome(e.target.value)}
-        />
-        <InputField
-          label="Matrícula"
-          value={registration}
-          onChange={(e) => setRegistration(e.target.value)}
-        />
-        <InputField
-          label="E-mail"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <InputField
-          label="Senha"
-          type="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        <InputField
-          label="Confirme sua senha"
-          type="password"
-          value={confirmaSenha}
-          onChange={(e) => setConfirmaSenha(e.target.value)}
-        />
+    <C.ModalBG>
+      <C.ContainerModal>
+        <C.ContentTitle>
+          <h2>Registro novo usuário</h2>
+          {erroSenha && (
+            <p style={{ color: "red" }}>As senhas não coincidem.</p>
+          )}
+          {showSuccessMessage && (
+            <p style={{ color: "green" }}>Cadastro concluído com sucesso!</p>
+          )}
+          {showErrorMessage && (
+            <p style={{ color: "red" }}>
+              Erro ao salvar. Por favor, tente novamente.
+            </p>
+          )}
+          {info && <p style={{ color: "red" }}> {info}</p>}
+          <button onClick={onclose}>X</button>
+        </C.ContentTitle>
+        <C.ContentsInputs>
+          <InputField
+            label="Nome do usuário"
+            value={name}
+            onChange={(e) => setNome(e.target.value)}
+          />
+          <InputField
+            label="Matrícula"
+            value={registration}
+            onChange={(e) => setRegistration(e.target.value)}
+          />
+          <InputField
+            label="E-mail"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <InputField
+            label="Senha"
+            type="password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+          <InputField
+            label="Confirme sua senha"
+            type="password"
+            value={confirmaSenha}
+            onChange={(e) => setConfirmaSenha(e.target.value)}
+          />
 
-        <InputSelect
-          options={[" ", "Recrutamento", "Técnico", "Administrador"]}
-          label="Equipe"
-          value={role}
-          onChange={(e) => setRole(e.target.value)}
-          className="register"
-        />
-      </C.ContentsInputs>
-      <C.StyledButton onClick={() => handleSave()}>Cadastrar</C.StyledButton>
-    </C.ContainerModal>
+          <InputSelect
+            options={[" ", "Recrutamento", "Técnico", "Administrador"]}
+            label="Equipe"
+            value={role}
+            onChange={(e) => setRole(e.target.value)}
+            className="register"
+          />
+        </C.ContentsInputs>
+        <C.StyledButton onClick={() => handleSave()}>Cadastrar</C.StyledButton>
+      </C.ContainerModal>
+    </C.ModalBG>
   );
 };
 
