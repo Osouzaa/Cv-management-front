@@ -33,7 +33,7 @@ export const Container = styled.div`
   }
 
   @media (min-height: 0px) and (max-height: 700px) {
-    height: 500px;
+    height: 580px;
     margin-top:0;
   }
 `;

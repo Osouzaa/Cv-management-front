@@ -34,7 +34,7 @@ export const Content = styled.div`
 
   @media (min-height: 0px) and (max-height: 700px) {
     width: 280px;
-    height: 230px;
+    height: 226px;
   }
 `;
 
@@ -102,6 +102,9 @@ export const ContentInfo = styled.div`
 `;
 
 export const InfoCandidate = styled.div`
+  @media (min-height: 0px) and (max-height: 700px) {
+    font-size: 12px;
+  }
   color: #5a5a5a;
 
   font-family: Poppins;

@@ -40,6 +40,10 @@ export const Container = styled.div`
     margin-top: 14%;
     height: 150%;
   }
+
+  @media (min-height: 0px) and (max-height: 700px) {
+   margin-top: 4%;
+  }
 `;
 
 export const ContainerList = styled.div`
