@@ -14,10 +14,10 @@ interface Experiencia {
 }
 
 interface IModalProps {
-  toggleModalExperiencia: () => void;
+  toggleModal: () => void;
 }
 
-const ModalExperiencia = ({ toggleModalExperiencia }: IModalProps) => {
+const ModalExperiencia = ({ toggleModal }: IModalProps) => {
   const { id } = useParams();
   const [experiencieList, setExperiencieList] = useState<Experiencia[]>([]);
   const [experiencias, setExperiencias] = useState<Experiencia>({
@@ -112,7 +112,7 @@ const ModalExperiencia = ({ toggleModalExperiencia }: IModalProps) => {
       <C.ContentModal>
         <C.ContentTitle>
           <h1>Experiencias Profissional</h1>
-          <button onClick={toggleModalExperiencia}> X</button>
+          <button onClick={toggleModal}> X</button>
         </C.ContentTitle>
         <C.ContainerModal>
           {feedbackMessage && (

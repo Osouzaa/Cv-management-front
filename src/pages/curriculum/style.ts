@@ -307,7 +307,7 @@ export const Prevision = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-bottom: 18px;
-  margin-left: 2.2em;
+  margin-left: 2.8em;
 `;
 
 export const Status = styled.div`
@@ -337,6 +337,7 @@ export const ContainerSeven = styled.div`
 export const ContentSix = styled.div`
   display: flex;
   flex-direction: column;
+  gap: 10px;
 
   li {
     list-style-type: square;
@@ -384,5 +385,15 @@ export const ContentButton = styled.div`
     gap: 0.5em;
     position: absolute;
     right: 0.5em;
+  }
+`;
+
+export const ContentIdiomas = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  li {
+    color: #313131;
   }
 `;

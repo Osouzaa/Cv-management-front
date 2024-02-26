@@ -7,10 +7,10 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 
 interface IModalProps {
-  toggleModalSoftware: () => void;
+  toggleModal: () => void;
 }
 
-const ModalSoftware = ({ toggleModalSoftware }: IModalProps) => {
+const ModalSoftware = ({ toggleModal }: IModalProps) => {
   const { id } = useParams();
   const [softwaresList, setSoftwaresList] = useState<Softwares[]>([]);
   const [software, setSoftware] = useState<Softwares>({
@@ -68,7 +68,7 @@ const ModalSoftware = ({ toggleModalSoftware }: IModalProps) => {
       <C.ContentModal>
         <C.ContentTitle>
           <h1>Adicionar Software</h1>
-          <button onClick={toggleModalSoftware}> X</button>
+          <button onClick={toggleModal}> X</button>
         </C.ContentTitle>
         <C.ContainerModal>
           <InputSelect

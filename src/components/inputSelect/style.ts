@@ -24,7 +24,10 @@ export const InputWrapper = styled.div`
   &.genero {
     margin: 0;
     margin: 5px 1.4em;
-    
+  }
+
+  &.cursos {
+    margin-left: 1.4em;
   }
 
   @media (max-width: 450px) {
@@ -53,6 +56,7 @@ export const SelectContent = styled.div`
   &.register {
     width: 97.6%;
   }
+  
 
   select {
     width: 100%;
@@ -85,7 +89,6 @@ export const SelectContent = styled.div`
 
   select option {
     font-size: 16px;
-    
   }
 `;
 
