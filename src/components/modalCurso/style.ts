@@ -98,3 +98,11 @@ export const ContentInputs = styled.div`
   gap: 14px;
   margin-left: .5em;
 `;
+
+
+export const FeedBackMessage = styled.p `
+  display: block;
+  text-align: center;
+  color: #851f2c;
+
+`
