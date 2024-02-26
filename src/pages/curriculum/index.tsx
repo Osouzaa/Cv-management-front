@@ -64,6 +64,7 @@ const Curriculum = () => {
           `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`
         );
       });
+      setHideImage(false);
     }
   };
   const toggleModal = (state: boolean, setState: (state: boolean) => void) => {
@@ -171,7 +172,9 @@ const Curriculum = () => {
               <C.ContainerFive>
                 <C.ContentForTitle>
                   <C.SubTitle> Experiência Profissional </C.SubTitle>
-                  <button onClick={() => toggleModal(experiencia, setExperiencia)}>
+                  <button
+                    onClick={() => toggleModal(experiencia, setExperiencia)}
+                  >
                     {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
@@ -179,7 +182,7 @@ const Curriculum = () => {
                   <C.ContentFive key={index}>
                     <C.Period>
                       <div>
-                        <li className="title-info">{item.empresa}</li>
+                        <p className="title-info">{item.empresa}</p>
                       </div>
                     </C.Period>
                     <C.Period className="cargos_empresa">
@@ -214,9 +217,9 @@ const Curriculum = () => {
                 {data?.formacoes.map((item: any, index: string) => (
                   <C.ContentFor key={index}>
                     <C.Institution>
-                      <li>
+                      <p>
                         {item.instituicao}, {item.curso}.
-                      </li>
+                      </p>
                     </C.Institution>
                     <C.Status>
                       <C.InfoInstituion></C.InfoInstituion>
@@ -251,9 +254,9 @@ const Curriculum = () => {
                         index: number
                       ) => (
                         <div key={index}>
-                          <li>
+                          <p>
                             {item.software} - <span>{item.nivel}</span>
-                          </li>
+                          </p>
                         </div>
                       )
                     )}
@@ -262,17 +265,36 @@ const Curriculum = () => {
                 <div>
                   <C.SubTitle> Idiomas</C.SubTitle>
                   <C.ContentIdiomas>
-                    {data.conhecimento_ingles !== "N/A" && (
-                      <li>Inglês - Nível {data.conhecimento_ingles}.</li>
-                    )}
-                    {data.conhecimento_frances !== "N/A" && (
-                      <li>Francês - Nível {data.conhecimento_frances}.</li>
-                    )}
-                    {data.conhecimento_italiano !== "N/A" && (
-                      <li>Italiano - Nível {data.conhecimento_italiano}.</li>
-                    )}
-                    {data.conhecimento_espanhol !== "N/A" && (
-                      <li>Espanhol - Nível {data.conhecimento_espanhol}.</li>
+                    {data && (
+                      <>
+                        {data.conhecimento_ingles &&
+                          data.conhecimento_ingles.trim() !== "N/A" && (
+                            <p>
+                              Inglês - Nível {data.conhecimento_ingles.trim()}.
+                            </p>
+                          )}
+                        {data.conhecimento_frances &&
+                          data.conhecimento_frances.trim() !== "N/A" && (
+                            <p>
+                              Francês - Nível {data.conhecimento_frances.trim()}
+                              .
+                            </p>
+                          )}
+                        {data.conhecimento_italiano &&
+                          data.conhecimento_italiano.trim() !== "N/A" && (
+                            <p>
+                              Italiano - Nível
+                              {data.conhecimento_italiano.trim()}.
+                            </p>
+                          )}
+                        {data.conhecimento_espanhol &&
+                          data.conhecimento_espanhol.trim() !== "N/A" && (
+                            <p>
+                              Espanhol - Nível
+                              {data.conhecimento_espanhol.trim()}.
+                            </p>
+                          )}
+                      </>
                     )}
                   </C.ContentIdiomas>
                 </div>
@@ -283,21 +305,46 @@ const Curriculum = () => {
                 <C.BolinhaDireita />
               </C.LinhaComBolinhas>
               <C.ContainerSeven>
-                <div>
+                <C.ContainerCursos>
                   <C.ContentForTitle>
                     <C.SubTitle> Cursos </C.SubTitle>
                     <button onClick={() => toggleModal(curso, setCurso)}>
                       {!hideImage && <img src={icon_add} alt="" />}
                     </button>
                   </C.ContentForTitle>
-                </div>
+                  <C.ContentCursos>
+                    {data.cursos.map(
+                      (
+                        item: { curso: string; nivel: string },
+                        index: number
+                      ) => {
+                        return (
+                          <div key={index}>
+                            <p>
+                              {item.curso} - {item.nivel}
+                            </p>
+                          </div>
+                        );
+                      }
+                    )}
+                  </C.ContentCursos>
+                </C.ContainerCursos>
                 <div>
-                <C.ContentForTitle>
+                  <C.ContentForTitle>
                     <C.SubTitle> Atividades Extra - Curriculares </C.SubTitle>
-                    <button onClick={() => toggleModal(atividades, setAtividades)}>
+                    <button
+                      onClick={() => toggleModal(atividades, setAtividades)}
+                    >
                       {!hideImage && <img src={icon_add} alt="" />}
                     </button>
                   </C.ContentForTitle>
+                  <C.ContentAtividade>
+                    {data.Atividades.map((item: any, index: number) => (
+                      <div key={index}>
+                        <p>- {item.name}</p>
+                      </div>
+                    ))}
+                  </C.ContentAtividade>
                 </div>
               </C.ContainerSeven>
             </>
@@ -311,12 +358,18 @@ const Curriculum = () => {
       )}
 
       {experiencia && (
-        <ModalExperiencia toggleModal={() => toggleModal(experiencia, setExperiencia)} />
+        <ModalExperiencia
+          toggleModal={() => toggleModal(experiencia, setExperiencia)}
+        />
       )}
-      {software && <ModalSoftware toggleModal={() => toggleModal(software, setSoftware)} />}
+      {software && (
+        <ModalSoftware toggleModal={() => toggleModal(software, setSoftware)} />
+      )}
       {curso && <ModalCurso toggleModal={() => toggleModal(curso, setCurso)} />}
       {atividades && (
-        <ModalAtividade toggleModal={() => toggleModal(atividades, setAtividades)} />
+        <ModalAtividade
+          toggleModal={() => toggleModal(atividades, setAtividades)}
+        />
       )}
     </>
   );
