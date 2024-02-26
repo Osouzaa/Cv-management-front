@@ -15,7 +15,7 @@ export const ModalBG = styled.div`
 export const ContentModal = styled.div`
   margin: 18% auto;
   width: 488px;
-  height: 203px;
+  height: 230px;
   border-radius: 10px;
   border: 1px solid #6a6666;
   background: #fff;
@@ -77,7 +77,7 @@ export const ContentButtons = styled.div`
 
     color: #fff;
     font-family: "Poppins";
-    font-size: 13px;
+    font-size: 12px;
     font-style: normal;
     font-weight: 500;
     line-height: normal;
@@ -98,3 +98,10 @@ export const ContentInputs = styled.div`
   gap: 14px;
   margin-left: .5em;
 `;
+
+export const FeedBackMessage = styled.p `
+  display: block;
+  text-align: center;
+  color: #851f2c;
+
+`
