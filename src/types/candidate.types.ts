@@ -18,6 +18,9 @@ export interface Candidate {
   entrevista_online: string;
   teste_tecnico: string;
   conhecimento_ingles: string;
+  conhecimento_frances:string;
+  conhecimento_italiano:string;
+  conhecimento_espanhol:string;
   pretensao_salarial: string;
   pretensao_pj: string;
   cnpj: string;

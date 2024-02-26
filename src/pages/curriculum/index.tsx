@@ -12,6 +12,8 @@ import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
 import { ModalSoftware } from "../../components/modalSoftwares";
 import { formatarData } from "../../functions/formatarDate";
+import { ModalAtividade } from "../../components/modalAtividades";
+import { ModalCurso } from "../../components/modalCurso";
 
 const Curriculum = () => {
   const { id } = useParams();
@@ -21,6 +23,8 @@ const Curriculum = () => {
   const [escolaridade, setEscolaridade] = useState(false);
   const [experiencia, setExperiencia] = useState(false);
   const [software, setSoftware] = useState(false);
+  const [curso, setCurso] = useState(false);
+  const [atividades, setAtividades] = useState(false);
   const [hideImage, setHideImage] = useState(false);
 
   useEffect(() => {
@@ -44,18 +48,13 @@ const Curriculum = () => {
         const imgData = canvas.toDataURL("image/png", 1.0);
         const pdf = new jsPDF("p", "mm", "a4");
 
-        const imgWidth = 210; // Largura da página A4
-        const imgHeight = canvas.height * (imgWidth / canvas.width); // Altura total do conteúdo
+        const imgWidth = 210;
+        const imgHeight = canvas.height * (imgWidth / canvas.width);
 
-        // Altura da página A4
         const pageHeight = 297;
-        // Verifica se o conteúdo cabe em uma página
         const fitsInOnePage = imgHeight <= pageHeight;
-
-        // Adiciona a imagem à página
         pdf.addImage(imgData, "PNG", 0, 0, imgWidth, imgHeight);
 
-        // Adiciona uma nova página se necessário
         if (!fitsInOnePage) {
           pdf.addPage();
           pdf.addImage(imgData, "PNG", 0, -pageHeight, imgWidth, imgHeight);
@@ -67,22 +66,11 @@ const Curriculum = () => {
       });
     }
   };
-
-
-  const toggleModal = () => {
-    setEscolaridade(!escolaridade);
+  const toggleModal = (state: boolean, setState: (state: boolean) => void) => {
+    setState(!state);
     refetch();
   };
 
-  const toggleModalExperiencia = () => {
-    setExperiencia(!experiencia);
-    refetch();
-  };
-
-  const toggleModalSoftware = () => {
-    setSoftware(!software);
-    refetch();
-  };
   return (
     <>
       <C.ContentButton>
@@ -183,7 +171,7 @@ const Curriculum = () => {
               <C.ContainerFive>
                 <C.ContentForTitle>
                   <C.SubTitle> Experiência Profissional </C.SubTitle>
-                  <button onClick={() => toggleModalExperiencia()}>
+                  <button onClick={() => toggleModal(experiencia, setExperiencia)}>
                     {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
@@ -217,7 +205,9 @@ const Curriculum = () => {
               <C.ContainerFor>
                 <C.ContentForTitle>
                   <C.SubTitle>Formação Acadêmica</C.SubTitle>
-                  <button onClick={() => toggleModal()}>
+                  <button
+                    onClick={() => toggleModal(escolaridade, setEscolaridade)}
+                  >
                     {!hideImage && <img src={icon_add} alt="" />}
                   </button>
                 </C.ContentForTitle>
@@ -250,7 +240,7 @@ const Curriculum = () => {
                 <div>
                   <C.ContentForTitle>
                     <C.SubTitle> Softwares</C.SubTitle>
-                    <button onClick={() => toggleModalSoftware()}>
+                    <button onClick={() => toggleModal(software, setSoftware)}>
                       {!hideImage && <img src={icon_add} alt="" />}
                     </button>
                   </C.ContentForTitle>
@@ -271,6 +261,20 @@ const Curriculum = () => {
                 </div>
                 <div>
                   <C.SubTitle> Idiomas</C.SubTitle>
+                  <C.ContentIdiomas>
+                    {data.conhecimento_ingles !== "N/A" && (
+                      <li>Inglês - Nível {data.conhecimento_ingles}.</li>
+                    )}
+                    {data.conhecimento_frances !== "N/A" && (
+                      <li>Francês - Nível {data.conhecimento_frances}.</li>
+                    )}
+                    {data.conhecimento_italiano !== "N/A" && (
+                      <li>Italiano - Nível {data.conhecimento_italiano}.</li>
+                    )}
+                    {data.conhecimento_espanhol !== "N/A" && (
+                      <li>Espanhol - Nível {data.conhecimento_espanhol}.</li>
+                    )}
+                  </C.ContentIdiomas>
                 </div>
               </C.ContainerSix>
               <C.LinhaComBolinhas>
@@ -280,21 +284,40 @@ const Curriculum = () => {
               </C.LinhaComBolinhas>
               <C.ContainerSeven>
                 <div>
-                  <C.SubTitle> Cursos e Informática</C.SubTitle>
+                  <C.ContentForTitle>
+                    <C.SubTitle> Cursos </C.SubTitle>
+                    <button onClick={() => toggleModal(curso, setCurso)}>
+                      {!hideImage && <img src={icon_add} alt="" />}
+                    </button>
+                  </C.ContentForTitle>
                 </div>
                 <div>
-                  <C.SubTitle> Atividades Extra-curriculares</C.SubTitle>
+                <C.ContentForTitle>
+                    <C.SubTitle> Atividades Extra - Curriculares </C.SubTitle>
+                    <button onClick={() => toggleModal(atividades, setAtividades)}>
+                      {!hideImage && <img src={icon_add} alt="" />}
+                    </button>
+                  </C.ContentForTitle>
                 </div>
               </C.ContainerSeven>
             </>
           )}
         </C.LeftPanel>
       </C.Container>
-      {escolaridade && <ModalEscolaridade toggleModal={toggleModal} />}
-      {experiencia && (
-        <ModalExperiencia toggleModalExperiencia={toggleModalExperiencia} />
+      {escolaridade && (
+        <ModalEscolaridade
+          toggleModal={() => toggleModal(escolaridade, setEscolaridade)}
+        />
       )}
-      {software && <ModalSoftware toggleModalSoftware={toggleModalSoftware} />}
+
+      {experiencia && (
+        <ModalExperiencia toggleModal={() => toggleModal(experiencia, setExperiencia)} />
+      )}
+      {software && <ModalSoftware toggleModal={() => toggleModal(software, setSoftware)} />}
+      {curso && <ModalCurso toggleModal={() => toggleModal(curso, setCurso)} />}
+      {atividades && (
+        <ModalAtividade toggleModal={() => toggleModal(atividades, setAtividades)} />
+      )}
     </>
   );
 };
