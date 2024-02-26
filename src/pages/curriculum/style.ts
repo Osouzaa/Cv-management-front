@@ -157,6 +157,7 @@ export const SubTitle = styled.h2`
   font-weight: 500;
   line-height: normal;
   margin: 1em 0.8em;
+  text-align: center;
 `;
 export const Vagas = styled.div`
   width: 100%;
@@ -194,6 +195,7 @@ export const ContentForTitle = styled.div`
   display: flex;
   align-items: center;
 
+
   button {
     background-color: transparent;
     border: none;
@@ -211,6 +213,7 @@ export const ContainerFive = styled.div`
 export const ContainerSix = styled.div`
   display: flex;
   justify-content: space-around;
+
 `;
 
 export const ButtonTeste = styled.button`
@@ -244,7 +247,7 @@ export const Period = styled.div`
   }
 
   &.cargos_empresa {
-    margin-left: 2em;
+    margin-left: .5em;
   }
 
   span {
@@ -257,7 +260,7 @@ export const Period = styled.div`
     font-weight: 700;
   }
 
-  li {
+  p {
     &.title-info {
       font-weight: 700;
       font-size: 20px;
@@ -265,10 +268,7 @@ export const Period = styled.div`
     }
   }
 
-  li::marker {
-    color: #851f2c;
-    font-size: 20px;
-  }
+
 `;
 
 export const ContentFor = styled.div`
@@ -285,14 +285,9 @@ export const Institution = styled.div`
   font-weight: 600;
   line-height: normal;
 
-  li {
-    padding-left: 15px;
-    list-style-type: square;
-  }
-
-  li::marker {
-    color: #851f2c;
-    font-size: 20px;
+  p {
+    font-size: 17px;
+    margin-bottom: 5px;
   }
 `;
 
@@ -307,7 +302,7 @@ export const Prevision = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-bottom: 18px;
-  margin-left: 2.8em;
+  margin-left: .5em;
 `;
 
 export const Status = styled.div`
@@ -339,15 +334,9 @@ export const ContentSix = styled.div`
   flex-direction: column;
   gap: 10px;
 
-  li {
-    list-style-type: square;
+  p {
+    font-weight: 500;
   }
-
-  li::marker {
-    color: #851f2c;
-    font-size: 20px;
-  }
-
   span {
     text-transform: capitalize;
   }
@@ -391,9 +380,28 @@ export const ContentButton = styled.div`
 export const ContentIdiomas = styled.div`
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: 10px;
+`;
 
-  li {
-    color: #313131;
+export const ContentCursos = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  p {
+    margin-left: 1em;
   }
+`;
+
+export const ContainerCursos = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+export const ContentAtividade = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  color: #313131;
+  margin-left: 1em;
 `;
