@@ -92,12 +92,12 @@ const ModalCurso = ({ toggleModal }: IModalProps) => {
     }
   };
 
-  const handleDeleteCurso = (chave: string) => {
-    const updatedCursosList = cursosList.filter(
-      (curso) => curso.chave !== chave
-    );
-    setCursosList(updatedCursosList);
-  };
+  // const handleDeleteCurso = (chave: string) => {
+  //   const updatedCursosList = cursosList.filter(
+  //     (curso) => curso.chave !== chave
+  //   );
+  //   setCursosList(updatedCursosList);
+  // };
 
   return (
     <C.ModalBG>
@@ -131,7 +131,7 @@ const ModalCurso = ({ toggleModal }: IModalProps) => {
             )}
             <button onClick={handleRegister}>Adicionar novos cursos</button>
           </C.ContentButtons>
-          <div>
+          {/* <div>
             {cursosList.map((curso) => (
               <div key={curso.chave}>
                 <p>
@@ -142,7 +142,7 @@ const ModalCurso = ({ toggleModal }: IModalProps) => {
                 </button>
               </div>
             ))}
-          </div>
+          </div> */}
         </C.ContainerModal>
       </C.ContentModal>
     </C.ModalBG>

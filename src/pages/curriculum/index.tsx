@@ -263,7 +263,7 @@ const Curriculum = () => {
                   </C.ContentSix>
                 </div>
                 <div>
-                  <C.SubTitle> Idiomas</C.SubTitle>
+                  <C.SubTitle className="idiomas"> Idiomas</C.SubTitle>
                   <C.ContentIdiomas>
                     {data && (
                       <>

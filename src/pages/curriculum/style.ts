@@ -152,12 +152,15 @@ export const ContainerThree = styled.div`
 export const SubTitle = styled.h2`
   color: #313131;
   font-family: Poppins;
-  font-size: 24px;
+  font-size: 20px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: 1em 0.8em;
-  text-align: center;
+  margin: .7em 0.8em;
+
+  &.idiomas {
+    text-align: center;
+  }
 `;
 export const Vagas = styled.div`
   width: 100%;
@@ -195,7 +198,6 @@ export const ContentForTitle = styled.div`
   display: flex;
   align-items: center;
 
-
   button {
     background-color: transparent;
     border: none;
@@ -213,7 +215,6 @@ export const ContainerFive = styled.div`
 export const ContainerSix = styled.div`
   display: flex;
   justify-content: space-around;
-
 `;
 
 export const ButtonTeste = styled.button`
@@ -237,7 +238,7 @@ export const Period = styled.div`
   gap: 5px;
   color: #313131;
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 17px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
@@ -247,7 +248,7 @@ export const Period = styled.div`
   }
 
   &.cargos_empresa {
-    margin-left: .5em;
+    margin-left: 0.5em;
   }
 
   span {
@@ -263,12 +264,10 @@ export const Period = styled.div`
   p {
     &.title-info {
       font-weight: 700;
-      font-size: 20px;
+      font-size: 18px;
       list-style-type: square;
     }
   }
-
-
 `;
 
 export const ContentFor = styled.div`
@@ -280,13 +279,13 @@ export const ContentFor = styled.div`
 export const Institution = styled.div`
   color: #313131;
   font-family: Poppins;
-  font-size: 18px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
 
   p {
-    font-size: 17px;
+    font-size: 16px;
     margin-bottom: 5px;
   }
 `;
@@ -302,7 +301,7 @@ export const Prevision = styled.div`
   font-weight: 400;
   line-height: normal;
   margin-bottom: 18px;
-  margin-left: .5em;
+  margin-left: 0.2em;
 `;
 
 export const Status = styled.div`
