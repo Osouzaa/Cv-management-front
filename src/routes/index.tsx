@@ -13,7 +13,7 @@ import { PageStarts } from "../pages/pageStarts";
 
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 import { Technique } from "../pages/technique";
-import { ModalCurso } from "../components/modalCurso";
+
 
 const RoutesApp = () => {
   return (
@@ -79,8 +79,6 @@ const RoutesApp = () => {
             </PrivateRoute>
           }
         />
-
-        <Route path="/teste" element={<ModalCurso />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>

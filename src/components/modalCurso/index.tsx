@@ -14,6 +14,7 @@ const ModalCurso = ({ toggleModal }: IModalProps) => {
     curso: "",
     nivel: "",
   });
+  console.log(setCursosList)
 
   const handleInputChange = (fieldName: string, value: string) => {
     setCursos({ ...cursos, [fieldName]: value });
