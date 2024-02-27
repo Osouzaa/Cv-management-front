@@ -22,13 +22,19 @@ export const Container = styled.div`
   }
 
   @media (min-width: 930px) and (max-width: 1300px) {
-    width: 62vw;
-    margin: 2% 37%;
+    width: 70%;
+    margin: 2% 28%;
   }
 
-  @media (min-width: 1301px) and (max-width: 1600px) {
-    margin-left: 28vw;
-    margin-top: 5%;
+  @media (min-width: 1301px) and (max-width: 1440px) {
+    margin-left: 25vw;
+    margin-top: 1%;
+    width: 70%;
+  }
+
+  @media (min-width: 1441px) and (max-width: 1600px) {
+    margin-left: 25vw;
+    margin-top: 1%;
   }
 
   @media (min-width: 1601px) and (max-width: 1920px) {
@@ -39,10 +45,6 @@ export const Container = styled.div`
     margin: 2vw 28vw;
   }
 
-  @media (min-height: 0px) and (max-height: 700px) {
-    width: 60vw;
-    margin-top: 0;
-  }
 `;
 
 export const ContentTitle = styled.div`

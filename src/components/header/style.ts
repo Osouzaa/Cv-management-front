@@ -15,15 +15,28 @@ export const Container = styled.div`
     display: none;
   }
 
-  @media (min-height: 0px) and (max-height: 700px) {
+  @media (min-height: 500px) and (max-height: 700px) {
     overflow-y: auto;
     gap: 1.5em;
     width: 280px;
+  }
+
+  @media (min-width: 800px) and (max-width: 1100px) {
+    width: 200px;
+    overflow-y: auto;
+    gap: 1em;
   }
 `;
 
 export const ImageLogo = styled.img`
   margin: 50px 0;
+
+  @media (min-width: 800px) and (max-width: 1100px) {
+    width: 150px;
+    height: 150px;
+    object-fit: contain;
+    margin: 0;
+  }
 `;
 
 export const Content = styled.div`
@@ -57,6 +70,10 @@ export const Content = styled.div`
       font-size: 16px;
       font-weight: 600;
     }
+
+    @media (min-width: 800px) and (max-width: 1100px) {
+      font-size: 12px;
+    }
   }
 
   &.active {
@@ -82,6 +99,16 @@ export const Content = styled.div`
     align-items: center;
     height: 55px;
   }
+
+  @media (min-width: 800px) and (max-width: 1100px) {
+    width: 190px;
+    height: 30px;
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 export const SairText = styled.p`
@@ -98,6 +125,11 @@ export const SairText = styled.p`
   @media (min-height: 0px) and (max-height: 700px) {
     font-size: 13px;
     right: 0;
+  }
+
+  @media (min-width: 800px) and (max-width: 1100px) {
+    left: 0;
+    font-size: 10px;
   }
 `;
 

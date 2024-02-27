@@ -168,8 +168,5 @@ export const Fields = [
     title: "Observações",
     fields: ["observacao"],
   },
-  {
-    title: "Outras Informações",
-    fields: ["createdAt", "updatedAt"],
-  },
+ 
 ];

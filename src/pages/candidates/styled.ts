@@ -20,17 +20,22 @@ export const Container = styled.div`
     height: 150%;
   }
 
-  @media (min-width: 601px) and (max-width: 1300px) {
-    margin-left: 29%;
-    width: 70vw;
+  @media (min-width: 601px) and (max-width: 1199px) {
+    margin-left: 34%;
+    width: 50vw;
   }
 
-  @media (min-width: 2560px) {
+  @media (min-width: 1200px) and (max-width: 1400px) {
+    margin-left: 24%;
+    width: 74vw;
+  }
+
+  @media (min-width: 2000px) and (max-width: 2560px) {
     margin-top: 3%;
     margin-left: 18.2%;
   }
 
-  @media (max-width: 1920px) {
+  @media (min-width: 1600px) and(max-width: 1920px) {
     margin-top: 4%;
     margin-left: 23.2%;
   }
@@ -42,7 +47,7 @@ export const Container = styled.div`
   }
 
   @media (min-height: 0px) and (max-height: 700px) {
-   margin-top: 4%;
+    margin-top: 4%;
   }
 `;
 
@@ -88,6 +93,9 @@ export const ContainerList = styled.div`
   @media (max-width: 450px) {
     display: none;
   }
+  @media (min-width: 601px) and (max-width: 1199px) {
+    right: 0vw;
+  }
 `;
 
 export const ContainerExcel = styled.div`
@@ -123,6 +131,9 @@ export const ContainerExcel = styled.div`
   }
   @media (max-width: 450px) {
     right: 25vw;
+  }
+  @media (min-width: 601px) and (max-width: 1199px) {
+    right: 8vw;
   }
 `;
 
@@ -166,6 +177,10 @@ export const ContainerBloco = styled.div`
   @media (max-width: 450px) {
     right: 0vw;
   }
+
+  @media (min-width: 601px) and (max-width: 1199px) {
+    right: 16vw;
+  }
 `;
 
 export const ContainerFilter = styled.div`
@@ -202,6 +217,10 @@ export const ContainerFilter = styled.div`
   @media (max-width: 450px) {
     right: 50vw;
   }
+  
+  @media (min-width: 601px) and (max-width: 1199px) {
+    right: 24vw;
+  }
 `;
 
 export const ContainerNoFilter = styled.div`
@@ -234,5 +253,10 @@ export const ContainerNoFilter = styled.div`
 
   @media (min-width: 1920px) {
     right: 22vw;
+  }
+
+    
+  @media (min-width: 601px) and (max-width: 1199px) {
+    right: 32vw;
   }
 `;
