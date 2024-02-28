@@ -4,6 +4,7 @@ import Loading from "../loading";
 import IconNo from "../../image/no_avaliable.svg";
 import { useState } from "react";
 import { InfoCandidate } from "../infoCandidate";
+import { ModalInfoCandidate } from "../modalInfoCandidates";
 
 interface Candidate {
   id: string;
@@ -99,7 +100,7 @@ const CardCandidates = ({
       {currentData?.length === 0 && <h1> SEM CANDIDATOS</h1>}
 
       {modal && (
-        <InfoCandidate id={userID} toggleModal={closeModal} />
+        <ModalInfoCandidate id={userID} toggleModal={closeModal} />
       )}
     </>
   );

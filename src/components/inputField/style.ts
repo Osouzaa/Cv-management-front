@@ -5,7 +5,7 @@ export const InputWrapper = styled.div`
   margin-left: 1.4em;
   width: 100%;
 
-  &.resumoProfissional{
+  &.resumoProfissional {
     margin-bottom: 20px;
   }
 
@@ -16,6 +16,16 @@ export const InputWrapper = styled.div`
     &.inputObs {
       margin-left: 0;
     }
+  }
+  &.infoPessoais {
+    margin-left: 0;
+  }
+
+  &.infoPessoaisEdit {
+    margin-left: 0;
+  }
+  &.ramoAutomotivo {
+    margin-left: 0;
   }
 
   &.situacao {
@@ -56,6 +66,11 @@ export const Label = styled.label`
   color: #333;
   width: 100%;
 
+  &.ramoAutomotivo {
+    font-size: 13px;
+    width: 150%;
+  }
+
   &.inputObs {
     margin-left: 0.67em;
     width: 93%;
@@ -82,8 +97,21 @@ export const Input = styled.input`
   color: #75757e;
   background-color: #fff;
 
+  &.infoPessoais {
+    width: 100%;
+  }
+
+  &.infoPessoaisEdit {
+    border: none;
+    border-bottom: 1px solid #ccc;
+  }
+
+  &.obs {
+    padding-bottom: 54px;
+  }
+
   &.resumoProfissional {
-   padding-bottom: 54px;
+    padding-bottom: 54px;
   }
   &.escolaridade {
     width: 100%;
@@ -92,7 +120,6 @@ export const Input = styled.input`
     height: 69px;
     word-wrap: break-word;
     max-width: 600px;
-
   }
 
   &:focus {
