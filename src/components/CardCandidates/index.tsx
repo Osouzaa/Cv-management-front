@@ -3,7 +3,6 @@ import * as C from "./style";
 import Loading from "../loading";
 import IconNo from "../../image/no_avaliable.svg";
 import { useState } from "react";
-import { InfoCandidate } from "../infoCandidate";
 import { ModalInfoCandidate } from "../modalInfoCandidates";
 
 interface Candidate {
