@@ -41,6 +41,11 @@ const Login = () => {
         formData
       );
       localStorage.setItem("token", response.data.token);
+
+
+      const expirationTime = new Date(Date.now() + 24 * 60 * 60 * 1000); 
+      localStorage.setItem("tokenExpiration", expirationTime.toISOString());
+
       setTimeout(() => {
         setLoading(false);
         navigate("/tutorial");
@@ -60,7 +65,6 @@ const Login = () => {
       setLoading(false);
     }
   };
-
   return (
     <C.Container>
       <C.ContentCard>

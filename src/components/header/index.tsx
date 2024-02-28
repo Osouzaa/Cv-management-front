@@ -32,6 +32,7 @@ const Header = () => {
     navigate(path);
     if (path === "/") {
       localStorage.removeItem("token");
+      localStorage.removeItem("tokenExpiration");
       navigate("/");
     }
   };
