@@ -14,7 +14,6 @@ import { PageStarts } from "../pages/pageStarts";
 import { CandidatesEvaluated } from "../pages/candidatesEvaluated";
 import { Technique } from "../pages/technique";
 
-
 const RoutesApp = () => {
   return (
     <BrowserRouter>

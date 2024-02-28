@@ -29,15 +29,14 @@ export const Container = styled.div`
     margin-left: 24%;
     width: 74vw;
   }
+  @media (min-width: 1600px) and (max-width: 1920px) {
+    margin-top: 4%;
+    margin-left: 22.2%;
+  }
 
   @media (min-width: 2000px) and (max-width: 2560px) {
     margin-top: 3%;
     margin-left: 18.2%;
-  }
-
-  @media (min-width: 1600px) and(max-width: 1920px) {
-    margin-top: 4%;
-    margin-left: 23.2%;
   }
 
   @media (max-width: 450px) {
@@ -217,7 +216,7 @@ export const ContainerFilter = styled.div`
   @media (max-width: 450px) {
     right: 50vw;
   }
-  
+
   @media (min-width: 601px) and (max-width: 1199px) {
     right: 24vw;
   }
@@ -255,7 +254,6 @@ export const ContainerNoFilter = styled.div`
     right: 22vw;
   }
 
-    
   @media (min-width: 601px) and (max-width: 1199px) {
     right: 32vw;
   }
