@@ -517,7 +517,7 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
           )}
           {view === 4 && (
             <M.ContentFiveView>
-              <M.ContentFiveViewTwo>
+              {/* <M.ContentFiveViewTwo>
                 <InputField
                   label="Observações"
                   className={
@@ -562,7 +562,7 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   onChange={handleInputChange}
                   name="foi_avaliado_recrutamento"
                 />
-              </M.ContentFiveViewThree>
+              </M.ContentFiveViewThree> */}
             </M.ContentFiveView>
           )}
           <M.Footeer>

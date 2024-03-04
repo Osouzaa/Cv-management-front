@@ -15,7 +15,8 @@ export const ModalBG = styled.div`
 
 export const ContainerModal = styled.div`
   width: 800px;
-  height: 620px;
+  max-height: 620px;
+  height: 70%;
   background-color: #ffffff;
   box-shadow: 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
   border-radius: 10px;
@@ -27,6 +28,10 @@ export const ContainerModal = styled.div`
     width: 600px;
     height: 500px;
     margin-top: 0;
+  }
+
+  &.userOn {
+    height: 60%;
   }
 `;
 
@@ -59,16 +64,51 @@ export const ContentsInputs = styled.div`
 export const StyledButton = styled.button`
   cursor: pointer;
   align-self: flex-end;
-  margin: 1em 1.4em 0 0;
+  margin: 2em 1.4em 0 0;
   background: #851f2c;
   color: #fff;
   border: none;
-  width: 100px;
+  width: 140px;
   height: 40px;
   border-radius: 5px;
   font-size: 14px;
 
+  color: #fff;
+  font-family: Poppins;
+  font-size: 13px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  transition: 1s all;
+
   &:hover {
-    background-color: #961f2c;
+    border-radius: 10px;
+    border: 0.5px solid #851f2c;
+    background: #fff;
+    color: #000;
   }
+`;
+
+export const ContentButton = styled.div`
+  display: flex;
+  justify-content: flex-end;
+`;
+export const ResetPassword = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 2.4em;
+  right: 1.7em;
+  width: 60px;
+  height: 25px;
+  background-color: #b3b3b3;
+  color: #000000;
+  font-size: 12px;
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
+export const ContentPassword = styled.div`
+  position: relative;
 `;

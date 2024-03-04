@@ -1,9 +1,10 @@
-import  { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import { HeaderAdmin } from "../../components/headerAdmin";
 import { InputSearch } from "../../components/inputSearch";
 import * as C from "./style";
 import axios from "axios";
 import { format } from "date-fns";
+import { ModalUser } from "../../components/modalUser";
 
 interface UserData {
   id: number;
@@ -21,7 +22,10 @@ const TelaAdmin = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [usersPerPage] = useState(4);
   const [searchText, setSearchText] = useState("");
-  const [filteredUsers, setFilteredUsers] = useState<UserData[]>([]); 
+  const [filteredUsers, setFilteredUsers] = useState<UserData[]>([]);
+  const [userInfo, setUserInfo] = useState(false);
+  const [userTwo, setUserTwo] = useState({});
+
 
   const roleMapping: Record<string, string> = {
     technique: "Técnico",
@@ -71,7 +75,6 @@ const TelaAdmin = () => {
     setFilteredUsers(newFilteredUsers);
   }, [allUserData, searchText]);
 
-
   const indexOfLastUser = currentPage * usersPerPage;
   const indexOfFirstUser = indexOfLastUser - usersPerPage;
   const currentUsers = filteredUsers.slice(indexOfFirstUser, indexOfLastUser);
@@ -79,6 +82,21 @@ const TelaAdmin = () => {
   const paginate = (pageNumber: number) => {
     setCurrentPage(pageNumber);
   };
+
+  const openModal = (user: {
+    id: number;
+    name: string;
+    email: string;
+    registration: string;
+    role: string;
+  }) => {
+    setUserTwo(user);
+    setUserInfo(true);
+  };
+
+  const closeModal = () => {
+    setUserInfo(false)
+  }
 
   return (
     <>
@@ -97,10 +115,7 @@ const TelaAdmin = () => {
         </thead>
         <C.TableBody>
           {currentUsers.map((user) => (
-            <tr
-              key={user.id}
-              onClick={() => console.log("Detalhes do Usuário:", user)}
-            >
+            <tr key={user.id} onClick={() => openModal(user)}>
               <td>{user.name}</td>
               <td>{user.email}</td>
               <td>{user.registration}</td>
@@ -124,6 +139,8 @@ const TelaAdmin = () => {
           )
         )}
       </C.Pagination>
+
+      {userInfo && <ModalUser user={userTwo} onclose={closeModal}/>}
     </>
   );
 };
