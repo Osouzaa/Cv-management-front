@@ -150,14 +150,10 @@ select {
   appearance: none;
 }
 
-input[type="date"]::placeholder {
-  color: transparent;
-}
-
-input[type="date"]::-webkit-calendar-picker-indicator {
-  background: transparent;
-  position: relative;
-  z-index: 1;
+input[type="date"] {
+  -webkit-appearance: none;
+  /* -moz-appearance: none; */
+  appearance: none;
 }
 
 /* App.css */
