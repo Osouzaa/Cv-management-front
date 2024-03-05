@@ -25,29 +25,42 @@ export const Container = styled.div`
     width: 50vw;
   }
 
-  @media (min-width: 1200px) and (max-width: 1400px) {
-    margin-left: 24%;
-    width: 74vw;
+  @media (min-width: 1200px) and (max-width: 1299px) {
+    margin-left: 30%;
+    width: 65vw;
   }
+
+  @media (min-width: 1300px) and (max-width: 1400px) {
+    margin-left: 26.5%;
+    width: 73vw;
+  }
+
+  @media (min-width: 1401px) and (max-width: 1599px) {
+    margin-left: 26%;
+    width: 73vw;
+  }
+
   @media (min-width: 1600px) and (max-width: 1920px) {
     margin-top: 4%;
     margin-left: 22.2%;
   }
 
-  @media (min-width: 2000px) and (max-width: 2560px) {
+  @media (min-width: 1923px) and (max-width: 2560px) {
     margin-top: 3%;
     margin-left: 18.2%;
-  }
-
-  @media (max-width: 450px) {
-    width: 90%;
-    margin-top: 14%;
-    height: 150%;
   }
 
   @media (min-height: 0px) and (max-height: 700px) {
     margin-top: 4%;
   }
+
+  @media (max-width: 450px) {
+    width: 90%;
+    margin-top: 30%;
+    height: 100%;
+  }
+
+ 
 `;
 
 export const ContainerList = styled.div`

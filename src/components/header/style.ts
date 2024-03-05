@@ -143,6 +143,7 @@ export const ListHeader = styled.div`
   background-color: #f8f9fa;
   border-bottom: 1px solid #ced4da;
   gap: 10px;
+  margin-top: 2em;
 
   p {
     font-size: 14px;
@@ -162,9 +163,16 @@ export const ListHeader = styled.div`
 export const Drop = styled.div`
   display: none;
 
-  @media (min-width: 0) and (max-width: 799px) {
+  @media (min-width: 0) and (max-width: 500px) {
+    width: 100vw;
+    height: 60px;
+    background-color: #f2f2f2;
     display: block;
-    position: sticky;
-    margin: 0.3em;
+    position: fixed;
+    top: 0;
+
+    img {
+      padding: 10px;
+    }
   }
 `;

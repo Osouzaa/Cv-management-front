@@ -43,8 +43,8 @@ export const InputWrapper = styled.div`
       position: relative;
       margin-left: 0;
       left: 0;
-
-      width: 50%;
+      bottom: 18%;
+      width: 100%;
     }
     @media (min-width: 451px) and (max-width: 909px) {
       position: relative;

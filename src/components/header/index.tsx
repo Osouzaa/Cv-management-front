@@ -44,11 +44,17 @@ const Header = () => {
       </C.Drop>
       {drop && (
         <C.ListHeader>
-          <p>Tutorial</p>
-          <p>Cadastro de Candidatos</p>
-          <p>Banco de Candidatos</p>
-          <p>Não Avaliados</p>
-          {userRole === "admin" && <p>Adminstrador</p>}
+          <p onClick={() => handleButtonClick("/tutorial")}>Tutorial</p>
+          <p onClick={() => handleButtonClick("/register")}>
+            Cadastro de Candidatos
+          </p>
+          <p onClick={() => handleButtonClick("/candidates")}>
+            Banco de Candidatos
+          </p>
+          <p onClick={() => handleButtonClick("/Lista")}>Não Avaliados</p>
+          {userRole === "admin" && (
+            <p onClick={() => handleButtonClick("/admin")}>Adminstrador</p>
+          )}
           <C.SairText>Sair</C.SairText>
         </C.ListHeader>
       )}
@@ -134,7 +140,7 @@ const Header = () => {
             </p>
           </C.Content>
         )}
-        
+
         {userRole === "admin" && (
           <C.Content
             className={location.pathname === "/admin" ? "active" : "other"}
@@ -144,11 +150,7 @@ const Header = () => {
               src={location.pathname === "/admin" ? admin : admin_black}
               alt="Icone de admin"
             />
-            <p
-              className={
-                location.pathname === "/admin" ? "active" : "other"
-              }
-            >
+            <p className={location.pathname === "/admin" ? "active" : "other"}>
               Área de Administrador
             </p>
           </C.Content>

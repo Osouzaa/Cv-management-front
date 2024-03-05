@@ -242,7 +242,7 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                         ? editedData.resumoProfissional || ""
                         : `${truncateText(
                             editedData.resumoProfissional || "",
-                            48
+                            40
                           )}`
                     }
                     onChange={handleInputChange}
