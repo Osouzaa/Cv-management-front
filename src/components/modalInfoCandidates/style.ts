@@ -25,10 +25,15 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;
+  overflow: auto;
 
   @media (min-width: 1900px) {
     width: 60%;
     height: 70vh;
+  }
+
+  @media (max-width: 490px) {
+    width: 100%;
   }
 `;
 
@@ -43,6 +48,11 @@ export const Header = styled.header`
   justify-content: space-around;
   align-items: center;
   margin-bottom: 30px;
+
+  @media (max-width: 490px) {
+    flex-direction: column;
+    height: 100vh;
+  }
 `;
 
 export const Linha = styled.div`
@@ -50,6 +60,11 @@ export const Linha = styled.div`
   height: 90%;
   background-color: #851f2c;
   transform: rotate(90);
+
+  @media (max-width: 490px) {
+    width: 90%;
+    height: 1px;
+  }
 `;
 
 export const Name = styled.span`
@@ -64,12 +79,23 @@ export const Name = styled.span`
   @media (min-width: 1900px) {
     font-size: 20px;
   }
+
+  @media (max-width: 490px) {
+    display: block;
+    max-width: 90%;
+    margin: 1em 0;
+  }
 `;
 
 export const ContentInfo = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 5px;
+
+  @media (max-width: 490px) {
+    display: block;
+    margin: 1em 0;
+  }
 
   p {
     color: #000;
@@ -78,6 +104,7 @@ export const ContentInfo = styled.div`
     font-style: normal;
     font-weight: 500;
     line-height: normal;
+
     @media (min-width: 1900px) {
       font-size: 20px;
     }
@@ -122,6 +149,10 @@ export const ContainerButtons = styled.div`
   flex-direction: column;
   gap: 8px;
 
+  @media (max-width: 490px) {
+    margin: 1em 0;
+  }
+
   button {
     width: 10%;
     height: auto;
@@ -158,6 +189,13 @@ export const NavBar = styled.div`
   display: flex;
   justify-content: space-between;
 
+  @media (max-width: 490px) {
+    flex-wrap: wrap;
+    align-items: center;
+    border: none;
+    gap: 0.5em;
+  }
+
   p {
     color: #000;
     font-family: Poppins;
@@ -171,8 +209,15 @@ export const NavBar = styled.div`
       color: #851f2c;
       font-weight: 700;
     }
+
     @media (min-width: 1900px) {
       font-size: 16px;
+    }
+
+    @media (max-width: 490px) {
+      white-space: nowrap;
+      font-size: 13px;
+      border-bottom: 1px solid #851f2c;
     }
   }
 `;
@@ -189,17 +234,25 @@ export const ContentFirstInputs = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 25px;
+
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentSecondInputs = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 25px;
+
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const Footeer = styled.footer`
   position: absolute;
-  bottom: 1em;
+  bottom: 0em;
   right: 1.3em;
   width: 100%;
   height: 8%;
@@ -220,10 +273,20 @@ export const Footeer = styled.footer`
     cursor: pointer;
     transition: 0.5s all;
     margin-right: 2em;
+
+    @media (max-width: 490px) {
+      width: 30%;
+    }
     &:hover {
       background-color: #851f2c;
       color: #ffff;
     }
+  }
+
+  @media (max-width: 490px) {
+    position: static;
+    bottom: 0em;
+    margin: 1em 0;
   }
 `;
 
@@ -231,6 +294,10 @@ export const ContentThreeInputs = styled.div`
   display: flex;
   align-items: center;
   gap: 25px;
+
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentTwoView = styled.div`
@@ -243,11 +310,17 @@ export const ContentTwoViewContainer = styled.div`
   margin-top: 50px;
   display: flex;
   gap: 25px;
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentTwoViewContainerThree = styled.div`
   display: flex;
   gap: 25px;
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentThreeView = styled.div`
@@ -261,11 +334,17 @@ export const ContentThreeViewContainer = styled.div`
   margin-top: 40px;
   display: flex;
   gap: 25px;
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentThreeViewContainerThree = styled.div`
   display: flex;
   gap: 25px;
+  @media (max-width: 490px) {
+    flex-direction: column;
+  }
 `;
 
 export const ContentFourView = styled.div`
@@ -273,6 +352,11 @@ export const ContentFourView = styled.div`
   gap: 50px;
   align-items: center;
   width: 90%;
+  
+  @media (max-width: 490px) {
+    flex-direction: column;
+    gap: 10px;
+  }
 `;
 export const ContentFourViewTwo = styled.div`
   width: 100%;

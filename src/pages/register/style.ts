@@ -44,7 +44,6 @@ export const Container = styled.div`
   @media (min-width: 2560px) {
     margin: 2vw 28vw;
   }
-
 `;
 
 export const ContentTitle = styled.div`
@@ -106,6 +105,10 @@ export const Content = styled.div`
     @media (min-width: 450px) and (max-width: 929px) {
       grid-template-columns: 1fr;
     }
+
+    @media (max-width: 450px) {
+      grid-template-columns: 1fr;
+    }
   }
 
   &.disponibilidade {
@@ -144,7 +147,7 @@ export const Content = styled.div`
 
 export const AddressFields = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Duas colunas para cidade e UF */
+  grid-template-columns: 1fr 1fr;
   gap: 6px;
   justify-content: center;
 `;

@@ -206,7 +206,6 @@ const ModalUser = ({ onclose, user }: IModalProps) => {
         </C.ContentsInputs>
         <C.ContentButton>
           {user && (
-            // Botão para desativar ou reativar usuário
             <C.StyledButton onClick={toggleUserStatus}>
               {user.isActive ? "Desativar Usuário" : "Ativar Usuário"}
             </C.StyledButton>

@@ -17,9 +17,13 @@ export const Container = styled.div`
     margin-left: 22em;
   }
 
-  @media (min-height: 0px) and (max-height: 700px) {
-    margin-left: 16em;
+  @media (max-width: 390px) {
+    margin-left: 0em;
   }
+
+  /* @media (min-height: 0px) and (max-height: 700px) {
+    margin-left: 16em;
+  } */
 `;
 
 export const CardVideo = styled.div`
