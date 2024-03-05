@@ -152,8 +152,8 @@ select {
 
 input[type="date"] {
   -webkit-appearance: none;
-  /* -moz-appearance: none; */
-  appearance: none;
+  -moz-appearance: none;
+  appearance: auto;
 }
 
 /* App.css */
