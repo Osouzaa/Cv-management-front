@@ -150,6 +150,12 @@ select {
   appearance: none;
 }
 
+input[type="date"] {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
 /* App.css */
 
 .Content {
