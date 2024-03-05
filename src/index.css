@@ -151,8 +151,8 @@ select {
 }
 
 input[type="date"] {
-  -webkit-appearance: none;
-  -moz-appearance: none;
+  -webkit-appearance: auto;
+  -moz-appearance: auto;
   appearance: auto;
 }
 
