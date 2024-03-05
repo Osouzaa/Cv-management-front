@@ -9,12 +9,12 @@ export const Container = styled.div`
   gap: 32px;
   margin-left: 19em;
 
-  @media (max-width: 450px) {
-    margin-left: 0;
-  }
-
   @media (max-width: 1300px) {
     margin-left: 22em;
+  }
+
+  @media (max-width: 450px) {
+    margin-left: 0;
   }
 
   @media (max-width: 390px) {

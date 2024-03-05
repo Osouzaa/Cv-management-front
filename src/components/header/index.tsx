@@ -30,6 +30,7 @@ const Header = () => {
 
   const handleButtonClick = (path: string) => {
     navigate(path);
+    setDrop(false)
     if (path === "/") {
       localStorage.removeItem("token");
       localStorage.removeItem("tokenExpiration");
