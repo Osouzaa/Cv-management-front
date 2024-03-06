@@ -10,7 +10,7 @@ interface Experiencia {
   esta_atualmente: boolean;
   periodo_inicial: string;
   periodo_final: string;
-  atividades: string;
+  atividades: string[]; // Agora atividades é um array de strings
 }
 
 interface IModalProps {
@@ -26,7 +26,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
     esta_atualmente: false,
     periodo_inicial: "",
     periodo_final: "",
-    atividades: "",
+    atividades: [],
   });
   const [feedbackMessage, setFeedbackMessage] = useState<string>("");
 
@@ -56,7 +56,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
       type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
     setExperiencias((prevState) => ({
       ...prevState,
-      [name]: newValue,
+      [name]: name === "atividades" ? value.split(",") : newValue,
     }));
   };
 
@@ -82,7 +82,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
       experiencias.empresa &&
       experiencias.cargo &&
       experiencias.periodo_inicial &&
-      experiencias.atividades
+      experiencias.atividades.length > 0 // Verifica se há pelo menos uma atividade
     ) {
       const updatedExperienciesList = [...experiencieList, experiencias];
       setExperiencieList(updatedExperienciesList);
@@ -94,7 +94,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
         esta_atualmente: false,
         periodo_inicial: "",
         periodo_final: "",
-        atividades: "",
+        atividades: [],
       });
       setTimeout(() => {
         setFeedbackMessage("");
@@ -166,7 +166,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
           <InputField
             label="Atividades Profissional"
             name="atividades"
-            value={experiencias.atividades}
+            value={experiencias.atividades.join(".")} 
             onChange={handleChange}
             className="escolaridade atividades-profissional"
           />
