@@ -62,7 +62,7 @@ const Register: React.FC = () => {
   const [message, setMessage] = useState("");
   const [upload, setUpload] = useState<File | undefined>(undefined);
   const [view, setView] = useState(0);
-  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [_isSubmitting, setIsSubmitting] = useState(false);
 
   const handleChangeTelefone = (e: { target: { value: string } }) => {
     const formattedPhoneNumber = formatPhoneNumber(e.target.value);

@@ -4,7 +4,7 @@ import * as M from "./style";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import { Candidate } from "../../types/candidate.types";
 import { initialState } from "../../utils/initialState";
-import { formatarData, formatarDataPT, formatarDataPTModal } from "../../functions/formatarDate";
+import {  formatarDataPTModal } from "../../functions/formatarDate";
 import { ModalResumo } from "../modalResumo";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
