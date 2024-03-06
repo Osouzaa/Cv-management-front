@@ -16,7 +16,7 @@ export const LeftPanel = styled.div`
 `;
 
 export const CardInfo = styled.div`
-  margin: 55px 0 15px 28px;
+  margin: 15px 0 15px 28px;
   width: 90%;
   border-bottom: 2px solid #851f2c;
   display: flex;
@@ -88,7 +88,7 @@ export const Linha = styled.div`
   background: #313131;
   width: 90%;
   height: 2px;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-left: 1em;
 `;
 
@@ -103,9 +103,13 @@ export const Bolinha = styled.div`
 
 export const LinhaComBolinhas = styled.div`
   position: relative;
-  margin-top: 40px;
+  margin-top: 21px;
   margin-left: 24px;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+
+  &.softwares_ati{
+    margin-top: 4em;
+  }
 `;
 
 export const BolinhaEsquerda = styled.div`
@@ -131,14 +135,14 @@ export const BolinhaDireita = styled.div`
 `;
 
 export const Resumo = styled.div`
-  margin: 30px 0 0 71px;
+  margin: 20px 0 0 71px;
   width: 78%;
 
   p {
     color: #313131;
     text-align: justify;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 14px;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -156,7 +160,7 @@ export const SubTitle = styled.h2`
   font-style: normal;
   font-weight: 500;
   line-height: normal;
-  margin: .7em 0.8em;
+  margin: 0.7em 0.8em;
 
   &.idiomas {
     text-align: center;
@@ -164,7 +168,7 @@ export const SubTitle = styled.h2`
 `;
 export const Vagas = styled.div`
   width: 100%;
-  margin: 10px 19px;
+  margin: 5px 19px;
   display: flex;
   justify-content: space-between;
   gap: 2em;
@@ -172,7 +176,7 @@ export const Vagas = styled.div`
   span {
     color: #313131;
     font-family: Poppins;
-    font-size: 16px;
+    font-size: 15px;
     font-style: normal;
     font-weight: 600;
     line-height: normal;
@@ -182,11 +186,11 @@ export const Vagas = styled.div`
 export const VagasItem = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1em;
+  gap: 0.5em;
   color: #313131;
 
   &.item_right {
-    margin-right: 8em;
+    margin-right: 12em;
   }
 `;
 
@@ -235,16 +239,20 @@ export const ContentFive = styled.div`
 export const Period = styled.div`
   display: flex;
   align-items: center;
-  gap: 5px;
+  gap: 3px;
   color: #313131;
   font-family: Poppins;
-  font-size: 17px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  max-width: 90%;
 
   &.Atividades {
     margin-bottom: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
   }
 
   &.cargos_empresa {
@@ -270,6 +278,8 @@ export const Period = styled.div`
   }
 `;
 
+export const ContentPeriod = styled.div``;
+
 export const ContentFor = styled.div`
   margin: 0 1.5em;
   display: flex;
@@ -286,7 +296,7 @@ export const Institution = styled.div`
 
   p {
     font-size: 16px;
-    margin-bottom: 5px;
+    margin-bottom: 2px;
   }
 `;
 
@@ -296,11 +306,11 @@ export const Prevision = styled.div`
   gap: 8px;
   color: #313131;
   font-family: Poppins;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-  margin-bottom: 18px;
+  margin-bottom: 14px;
   margin-left: 0.2em;
 `;
 
@@ -326,6 +336,14 @@ export const InfoInstituion = styled.div`
 export const ContainerSeven = styled.div`
   display: flex;
   justify-content: space-around;
+  width: 100%;
+
+  div {
+    &.atividades {
+
+      width: 40%;
+    }
+  }
 `;
 
 export const ContentSix = styled.div`
@@ -335,6 +353,7 @@ export const ContentSix = styled.div`
 
   p {
     font-weight: 500;
+    font-size: 14px;
   }
   span {
     text-transform: capitalize;
@@ -381,20 +400,27 @@ export const ContentIdiomas = styled.div`
   flex-direction: column;
   justify-content: center;
   gap: 10px;
+
+  p {
+    font-size: 14px;
+  }
 `;
 
 export const ContentCursos = styled.div`
+
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
   p {
     margin-left: 1em;
+    font-size: 13px;
   }
 `;
 
 export const ContainerCursos = styled.div`
   display: flex;
   flex-direction: column;
+  margin-left: 2em;
 `;
 
 export const ContentAtividade = styled.div`
@@ -403,4 +429,14 @@ export const ContentAtividade = styled.div`
   gap: 10px;
   color: #313131;
   margin-left: 1em;
+
+  p {
+    font-size: 13px;
+  }
+`;
+
+export const Icons = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 1.5em;
 `;

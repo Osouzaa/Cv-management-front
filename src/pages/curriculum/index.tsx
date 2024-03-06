@@ -1,6 +1,7 @@
 import Logo from "../../image/logoTecnocar2.png";
 import Telefone from "../../image/telefone.png";
 import Email from "../../image/email.png";
+import Icon_Menos from "../../image/icon_menos.svg";
 import { useNavigate, useParams } from "react-router-dom";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import * as C from "./style";
@@ -11,7 +12,7 @@ import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
 import { ModalSoftware } from "../../components/modalSoftwares";
-import { formatarData } from "../../functions/formatarDate";
+import { formatarData, formatarDataPT } from "../../functions/formatarDate";
 import { ModalAtividade } from "../../components/modalAtividades";
 import { ModalCurso } from "../../components/modalCurso";
 
@@ -45,7 +46,7 @@ const Curriculum = () => {
       const options = { scale: 2 };
 
       html2canvas(container, options).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png", 1.0);
+        const imgData = canvas.toDataURL("image/png", 0.5);
         const pdf = new jsPDF("p", "mm", "a4");
 
         const imgWidth = 210;
@@ -61,7 +62,7 @@ const Curriculum = () => {
         }
 
         pdf.save(
-          `Tecnocar - ${data?.profissional} - ${data?.codigoCandidate}.pdf`
+          `Tecnocar - ${data?.codigoCandidate} - ${data?.idade} anos - ${data?.genero} - ${data?.cidade}/${data?.uf}.pdf`
         );
       });
       setHideImage(false);
@@ -140,16 +141,6 @@ const Curriculum = () => {
                       {data.vaga_100_presencial_goiana_pe}
                     </div>
                     <div>
-                      <span>Vaga Hibrida Betim:</span>
-                      {data.vaga_hibrida_betim}
-                    </div>
-                    <div>
-                      <span>Home Office</span>
-                      {data.home_office}
-                    </div>
-                  </C.VagasItem>
-                  <C.VagasItem className="item_right">
-                    <div>
                       <span>Vaga 100% Presencial Porto Real/RJ:</span>
                       {data.vaga_100_presencial_porto_real_rj}
                     </div>
@@ -157,9 +148,32 @@ const Curriculum = () => {
                       <span>Vaga 100% Presencial São Paulo/SP</span>
                       {data.vaga_100_presencial_sao_paulo}
                     </div>
+
+                    <div>
+                      <span>Home Office</span>
+                      {data.home_office}
+                    </div>
+                  </C.VagasItem>
+                  <C.VagasItem className="item_right">
+                    <div>
+                      <span>Vaga Hibrida Betim:</span>
+                      {data.vaga_hibrida_betim}
+                    </div>
+                    <div>
+                      <span>Vaga Hibrida Goiana:</span>
+                      Não
+                    </div>
+                    <div>
+                      <span>Vaga Hibrida Porto Real:</span>
+                      Não
+                    </div>
+                    <div>
+                      <span>Vaga Hibrida São Paulo:</span>
+                      Não
+                    </div>
                     <div>
                       <span>Vaga Internacional:</span>
-                      {data.vaga_internacional}
+                      Sim
                     </div>
                   </C.VagasItem>
                 </C.Vagas>
@@ -187,15 +201,27 @@ const Curriculum = () => {
                     </C.Period>
                     <C.Period className="cargos_empresa">
                       <span>{item.cargo},</span>
-                      {item.periodo_inicial} -
+                      {formatarDataPT(item.periodo_inicial)} -
                       {item.esta_atualmente === true ? (
                         <span>Atual</span>
                       ) : (
-                        item.periodo_final
+                        <span>{formatarDataPT(item.periodo_final)}</span>
                       )}
                     </C.Period>
                     <C.Period className="Atividades cargos_empresa">
-                      <p>{item.atividades}</p>
+                      {Array.isArray(item.atividades) ? (
+                        item.atividades.map(
+                          (atividade: string, indexAtividade: number) => (
+                            <C.ContentAtividade>
+                              <div key={indexAtividade}>
+                                <li>{atividade}</li>
+                              </div>
+                            </C.ContentAtividade>
+                          )
+                        )
+                      ) : (
+                        <p>{item.atividades}</p>
+                      )}
                     </C.Period>
                   </C.ContentFive>
                 ))}
@@ -218,7 +244,7 @@ const Curriculum = () => {
                   <C.ContentFor key={index}>
                     <C.Institution>
                       <p>
-                        {item.instituicao}, {item.curso}.
+                        {item.instituicao}, {item.curso} 
                       </p>
                     </C.Institution>
                     <C.Status>
@@ -234,7 +260,7 @@ const Curriculum = () => {
                   </C.ContentFor>
                 ))}
               </C.ContainerFor>
-              <C.LinhaComBolinhas>
+              <C.LinhaComBolinhas className="softwares_ati">
                 <C.BolinhaEsquerda />
                 <C.Linha />
                 <C.BolinhaDireita />
@@ -308,9 +334,11 @@ const Curriculum = () => {
                 <C.ContainerCursos>
                   <C.ContentForTitle>
                     <C.SubTitle> Cursos </C.SubTitle>
-                    <button onClick={() => toggleModal(curso, setCurso)}>
-                      {!hideImage && <img src={icon_add} alt="" />}
-                    </button>
+                    <C.Icons>
+                      <button onClick={() => toggleModal(curso, setCurso)}>
+                        {!hideImage && <img src={icon_add} alt="" />}
+                      </button>
+                    </C.Icons>
                   </C.ContentForTitle>
                   <C.ContentCursos>
                     {data.cursos.map(
@@ -329,14 +357,17 @@ const Curriculum = () => {
                     )}
                   </C.ContentCursos>
                 </C.ContainerCursos>
-                <div>
+
+                <div className="atividades">
                   <C.ContentForTitle>
-                    <C.SubTitle> Atividades Extra - Curriculares </C.SubTitle>
-                    <button
-                      onClick={() => toggleModal(atividades, setAtividades)}
-                    >
-                      {!hideImage && <img src={icon_add} alt="" />}
-                    </button>
+                    <C.SubTitle> Habilidades e Competencias </C.SubTitle>
+                    <C.Icons>
+                      <button
+                        onClick={() => toggleModal(atividades, setAtividades)}
+                      >
+                        {!hideImage && <img src={icon_add} alt="" />}
+                      </button>
+                    </C.Icons>
                   </C.ContentForTitle>
                   <C.ContentAtividade>
                     {data.Atividades.map((item: any, index: number) => (

@@ -144,7 +144,7 @@ body {
   /* overflow-x: hidden; */
 }
 
-select {
+/* select {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
@@ -154,7 +154,7 @@ input[type="date"] {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-}
+} */
 
 /* App.css */
 

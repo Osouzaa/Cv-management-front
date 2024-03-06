@@ -435,10 +435,7 @@ const Register: React.FC = () => {
         )}
 
         <C.ContentButton className="ContentButton">
-          <C.SubmitButton
-            onClick={() => handleCheckFields()}
-            disabled={isSubmitting}
-          >
+          <C.SubmitButton onClick={() => handleCheckFields()}>
             Cadastrar
           </C.SubmitButton>
         </C.ContentButton>

@@ -84,6 +84,9 @@ const ModalSoftware = ({ toggleModal }: IModalProps) => {
               "SAP",
               "SolidWorks",
               "TCAE",
+              "Excel",
+  
+
             ]}
             className="software"
             value={software.software}

@@ -4,7 +4,7 @@ import * as M from "./style";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import { Candidate } from "../../types/candidate.types";
 import { initialState } from "../../utils/initialState";
-import { formatarDataPT } from "../../functions/formatarDate";
+import { formatarData, formatarDataPT, formatarDataPTModal } from "../../functions/formatarDate";
 import { ModalResumo } from "../modalResumo";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -113,11 +113,11 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                 Idade: <span>{data?.idade} anos</span>
               </p>
               <p>
-                Registrado desde: <span>{formatarDataPT(data?.createdAt)}</span>
+                Registrado desde: <span>{formatarDataPTModal(data?.createdAt)}</span>
               </p>
               <p>
                 Ultima atualização:{" "}
-                <span>{formatarDataPT(data?.updatedAt)}</span>
+                <span>{formatarDataPTModal(data?.updatedAt)}</span>
               </p>
             </M.ContentInfo>
             <M.Linha />
