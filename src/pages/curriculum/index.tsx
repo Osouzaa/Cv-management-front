@@ -11,7 +11,7 @@ import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
 import { ModalSoftware } from "../../components/modalSoftwares";
-import { formatarData, formatarDataPT } from "../../functions/formatarDate";
+import { converterData, formatarData, formatarDataPT, formatarDataPTModal } from "../../functions/formatarDate";
 import { ModalAtividade } from "../../components/modalAtividades";
 import { ModalCurso } from "../../components/modalCurso";
 
@@ -45,7 +45,7 @@ const Curriculum = () => {
       const options = { scale: 2 };
 
       html2canvas(container, options).then((canvas) => {
-        const imgData = canvas.toDataURL("image/png", 0.5);
+        const imgData = canvas.toDataURL("image/jpeg", 0.1);
         const pdf = new jsPDF("p", "mm", "a4");
 
         const imgWidth = 210;
@@ -131,7 +131,7 @@ const Curriculum = () => {
                 <C.SubTitle>Disponibilidade</C.SubTitle>
                 <C.Vagas>
                   <C.VagasItem>
-                    <div>
+                    {/* <div>
                       <span>Vaga 100% Presencial Betim/MG:</span>
                       {data.vaga_100_presencial_betim_mg}
                     </div>
@@ -146,34 +146,34 @@ const Curriculum = () => {
                     <div>
                       <span>Vaga 100% Presencial São Paulo/SP</span>
                       {data.vaga_100_presencial_sao_paulo}
-                    </div>
+                    </div> */}
 
                     <div>
                       <span>Home Office</span>
                       {data.home_office}
                     </div>
                   </C.VagasItem>
-                  <C.VagasItem className="item_right">
-                    <div>
+                   <C.VagasItem className="item_right">
+                     <div>
                       <span>Vaga Hibrida Betim:</span>
                       {data.vaga_hibrida_betim}
-                    </div>
-                    <div>
+                    </div> 
+                    {/* <div>
                       <span>Vaga Hibrida Goiana:</span>
                       Não
                     </div>
                     <div>
                       <span>Vaga Hibrida Porto Real:</span>
                       Não
-                    </div>
-                    <div>
+                    </div> */ }
+                     {/* <div>
                       <span>Vaga Hibrida São Paulo:</span>
-                      Não
-                    </div>
-                    <div>
-                      <span>Vaga Internacional:</span>
                       Sim
-                    </div>
+                    </div> */}
+                   {/* <div>
+                      <span>Vaga Internacional:</span>
+                      Não
+                    </div> */}
                   </C.VagasItem>
                 </C.Vagas>
               </C.ContainerThree>
@@ -252,7 +252,7 @@ const Curriculum = () => {
                     <C.Prevision>
                       <div>
                         <span>
-                          {item.status}, {formatarData(item.termino_previsao)}
+                          {item.status}, {converterData(item.termino_previsao)}
                         </span>
                       </div>
                     </C.Prevision>
@@ -348,7 +348,7 @@ const Curriculum = () => {
                         return (
                           <div key={index}>
                             <p>
-                              {item.curso} - {item.nivel}
+                              {item.curso}
                             </p>
                           </div>
                         );
@@ -359,7 +359,7 @@ const Curriculum = () => {
 
                 <div className="atividades">
                   <C.ContentForTitle>
-                    <C.SubTitle> Habilidades e Competencias </C.SubTitle>
+                    <C.SubTitle> Habilidades e Competências </C.SubTitle>
                     <C.Icons>
                       <button
                         onClick={() => toggleModal(atividades, setAtividades)}

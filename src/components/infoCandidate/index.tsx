@@ -120,7 +120,7 @@ const InfoCandidate = ({ id, toggleModal }: IModalProps) => {
       console.error("Erro durante o download do currículo:", error);
     }
   };
-
+  
   return (
     <C.ModalBG>
       <C.Container>

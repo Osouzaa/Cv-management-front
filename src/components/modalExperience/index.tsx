@@ -56,7 +56,7 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
       type === "checkbox" ? (e.target as HTMLInputElement).checked : value;
     setExperiencias((prevState) => ({
       ...prevState,
-      [name]: name === "atividades" ? value.split(",") : newValue,
+      [name]: name === "atividades" ? value.split(".") : newValue, // Separar as atividades por ponto (".")
     }));
   };
 
@@ -163,8 +163,16 @@ const ModalExperiencia = ({ toggleModal }: IModalProps) => {
               className="escolaridade"
             />
           )}
-          <InputField
+          {/* <InputField
             label="Atividades Profissional"
+            name="atividades"
+            value={experiencias.atividades.join(".")} 
+            onChange={handleChange}
+            className="escolaridade atividades-profissional"
+          /> */}
+          <C.ContentLabel htmlFor="textarea">Atividades</C.ContentLabel>
+          <C.TextArea
+            id="textarea"
             name="atividades"
             value={experiencias.atividades.join(".")} 
             onChange={handleChange}
