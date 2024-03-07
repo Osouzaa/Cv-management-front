@@ -365,6 +365,8 @@ export const ContentFourViewTwo = styled.div`
   flex-direction: column;
   flex-wrap: wrap;
   gap: 15px;
+
+
 `;
 
 export const ContentFourViewThree = styled.div`

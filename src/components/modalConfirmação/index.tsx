@@ -10,6 +10,7 @@ const ModalConfirmação = ({ id, closeModal }: IModalProps) => {
   const deletarCandidato = async () => {
     try {
       await axios.delete(`${import.meta.env.VITE_API_URL}${id}`);
+      closeModal();
     } catch (error) {
       console.error("Erro ao excluir candidato:", error);
     }
@@ -21,8 +22,8 @@ const ModalConfirmação = ({ id, closeModal }: IModalProps) => {
 
         <C.Message>Esta ação será irreversível.</C.Message>
         <C.ContentButton>
-          <button onClick={closeModal}>Cancelar</button>
           <button onClick={deletarCandidato}>Apagar</button>
+          <button onClick={closeModal}>Cancelar</button>
         </C.ContentButton>
       </C.Container>
     </C.ModalBG>

@@ -4,7 +4,7 @@ import * as M from "./style";
 import { useAxiosCandidate } from "../../hooks/requestAxios";
 import { Candidate } from "../../types/candidate.types";
 import { initialState } from "../../utils/initialState";
-import {  formatarDataPTModal } from "../../functions/formatarDate";
+import { formatarDataPTModal } from "../../functions/formatarDate";
 import { ModalResumo } from "../modalResumo";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
@@ -113,7 +113,8 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                 Idade: <span>{data?.idade} anos</span>
               </p>
               <p>
-                Registrado desde: <span>{formatarDataPTModal(data?.createdAt)}</span>
+                Registrado desde:{" "}
+                <span>{formatarDataPTModal(data?.createdAt)}</span>
               </p>
               <p>
                 Ultima atualização:{" "}
@@ -405,7 +406,9 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   onChange={handleInputChange}
                   name="vaga_100_presencial_porto_real_rj"
                   className={
-                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                    editMode
+                      ? "infoPessoaisEdit alwaysActive"
+                      : "infoPessoais infoTwo alwaysActive"
                   }
                 />
                 <InputField
@@ -415,7 +418,9 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   onChange={handleInputChange}
                   name="vaga_100_presencial_goiana_pe"
                   className={
-                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                    editMode
+                      ? "infoPessoaisEdit alwaysActive"
+                      : "infoPessoais infoTwo alwaysActive"
                   }
                 />
                 <InputField
@@ -425,7 +430,9 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   onChange={handleInputChange}
                   name="vaga_100_presencial_betim_mg"
                   className={
-                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                    editMode
+                      ? "infoPessoaisEdit alwaysActive"
+                      : "infoPessoais infoTwo alwaysActive"
                   }
                 />
                 <InputField
@@ -435,11 +442,55 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   onChange={handleInputChange}
                   name="vaga_100_presencial_sao_paulo"
                   className={
-                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                    editMode
+                      ? "infoPessoaisEdit alwaysActive"
+                      : "infoPessoais infoTwo alwaysActive"
                   }
                 />
               </M.ContentFourViewTwo>
               <M.ContentFourViewThree>
+                <InputField
+                  label="Vaga Híbrida Porto Real"
+                  value={editedData.vaga_hibrida_porto_real_rj || ""}
+                  disabled={!editMode}
+                  onChange={handleInputChange}
+                  name="vaga_hibrida_porto_real_rj"
+                  className={
+                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                  }
+                />
+                <InputField
+                  label="Vaga Híbrida Goiana"
+                  value={editedData.vaga_hibrida_goiana_pe || ""}
+                  disabled={!editMode}
+                  onChange={handleInputChange}
+                  name="vaga_hibrida_goiana_pe"
+                  className={
+                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                  }
+                />
+                <InputField
+                  label="Vaga Híbrida Betim"
+                  value={editedData.vaga_hibrida_betim || ""}
+                  disabled={!editMode}
+                  onChange={handleInputChange}
+                  name="vaga_hibrida_betim"
+                  className={
+                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                  }
+                />
+                <InputField
+                  label="Vaga Híbrida São Paulo"
+                  value={editedData.vaga_hibrida_sao_paulo || ""}
+                  disabled={!editMode}
+                  onChange={handleInputChange}
+                  name="vaga_hibrida_sao_paulo"
+                  className={
+                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
+                  }
+                />
+              </M.ContentFourViewThree>
+              <M.ContentFourViewFour>
                 <InputField
                   label="Vaga Internacional"
                   value={editedData.vaga_internacional || ""}
@@ -461,16 +512,6 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                   }
                 />
                 <InputField
-                  label="Vaga Híbrida Betim"
-                  value={editedData.vaga_hibrida_betim || ""}
-                  disabled={!editMode}
-                  onChange={handleInputChange}
-                  name="vaga_hibrida_betim"
-                  className={
-                    editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
-                  }
-                />
-                <InputField
                   label="Vaga desejada"
                   value={editedData.tipo_desejado_linkedin || ""}
                   disabled={!editMode}
@@ -480,7 +521,7 @@ const ModalInfoCandidate = ({ id, toggleModal }: IModalProps) => {
                     editMode ? "infoPessoaisEdit" : "infoPessoais infoTwo"
                   }
                 />
-              </M.ContentFourViewThree>
+              </M.ContentFourViewFour>
               <M.ContentFourViewFour>
                 <InputField
                   label="Interesse Imediato a Vaga"
