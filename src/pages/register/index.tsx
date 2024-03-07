@@ -52,8 +52,10 @@ const Register: React.FC = () => {
     vaga_100_presencial_sao_paulo: "",
     vaga_internacional: "",
     vaga_hibrida_betim: "",
+    vaga_hibrida_sao_paulo: "",
+    vaga_hibrida_goiana_pe: "",
+    vaga_hibrida_porto_real_rj: "",
     home_office: "",
-    observacao: "",
     genero: "",
     resumoProfissional: "",
   });
@@ -420,14 +422,6 @@ const Register: React.FC = () => {
                     </C.ContentUpload>
                     {upload && <p> {upload.name}</p>}
                   </C.FileInputContainer>
-                  <InputField
-                    label="Observação"
-                    className="inputObs"
-                    value={newCandidate.observacao}
-                    onChange={(e) =>
-                      handleInputChange("observacao", e.target.value)
-                    }
-                  />
                 </>
               )}
             </>

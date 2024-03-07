@@ -35,6 +35,7 @@ export const Title = styled.h3`
   line-height: 32px; /* 133.333% */
   letter-spacing: 0.1px;
   margin-bottom: 24px;
+  text-align: center;
 `;
 
 export const Message = styled.p`
@@ -60,12 +61,18 @@ export const ContentButton = styled.div`
     transition: background-color 0.3s ease;
 
     &:first-child {
-      background-color: #bdbdbd;
+      background-color: #c7c7c7;
       color: #fff;
+      transition: .5s all;
+
+      &:hover {
+        background-color: #851f2c;
+        color: #000;
+      }
     }
 
     &:last-child {
-      background-color: #851f2c;
+      background-color: #4099ff;
       color: #fff;
     }
 

@@ -131,49 +131,77 @@ const Curriculum = () => {
                 <C.SubTitle>Disponibilidade</C.SubTitle>
                 <C.Vagas>
                   <C.VagasItem>
-                    {/* <div>
-                      <span>Vaga 100% Presencial Betim/MG:</span>
-                      {data.vaga_100_presencial_betim_mg}
-                    </div>
-                    <div>
-                      <span>Vaga 100% Presencial Goiana/PE:</span>
-                      {data.vaga_100_presencial_goiana_pe}
-                    </div>
-                    <div>
-                      <span>Vaga 100% Presencial Porto Real/RJ:</span>
-                      {data.vaga_100_presencial_porto_real_rj}
-                    </div>
-                    <div>
-                      <span>Vaga 100% Presencial São Paulo/SP</span>
-                      {data.vaga_100_presencial_sao_paulo}
-                    </div> */}
+                    {data.vaga_100_presencial_betim_mg === "Sim" && (
+                      <div>
+                        <span>Vaga 100% Presencial Betim/MG:</span>
+                        {data.vaga_100_presencial_betim_mg}
+                      </div>
+                    )}
 
-                    <div>
-                      <span>Home Office</span>
-                      {data.home_office}
-                    </div>
+                    {data.vaga_100_presencial_goiana_pe === "Sim" && (
+                      <div>
+                        <span>Vaga 100% Presencial Goiana/PE:</span>
+                        {data.vaga_100_presencial_goiana_pe}
+                      </div>
+                    )}
+
+                    {data.vaga_100_presencial_porto_real_rj === "Sim" && (
+                      <div>
+                        <span>Vaga 100% Presencial Porto Real/RJ:</span>
+                        {data.vaga_100_presencial_porto_real_rj}
+                      </div>
+                    )}
+
+                    {data.vaga_100_presencial_sao_paulo === "Sim" && (
+                      <div>
+                        <span>Vaga 100% Presencial São Paulo/SP:</span>
+                        {data.vaga_100_presencial_sao_paulo}
+                      </div>
+                    )}
+
+                    {data.home_office === "Sim" && (
+                      <div>
+                        <span>Home Office:</span>
+                        {data.home_office}
+                      </div>
+                    )}
                   </C.VagasItem>
-                   <C.VagasItem className="item_right">
-                     <div>
-                      <span>Vaga Hibrida Betim:</span>
-                      {data.vaga_hibrida_betim}
-                    </div> 
-                    {/* <div>
-                      <span>Vaga Hibrida Goiana:</span>
-                      Não
-                    </div>
-                    <div>
-                      <span>Vaga Hibrida Porto Real:</span>
-                      Não
-                    </div> */ }
-                     {/* <div>
-                      <span>Vaga Hibrida São Paulo:</span>
-                      Sim
-                    </div> */}
-                   {/* <div>
-                      <span>Vaga Internacional:</span>
-                      Não
-                    </div> */}
+
+                  <C.VagasItem className="item_right">
+                    {data.vaga_hibrida_betim === "Sim" && (
+                      <div>
+                        <span>Vaga Híbrida Betim:</span>
+                        {data.vaga_hibrida_betim}
+                      </div>
+                    )}
+
+                    {data.vaga_hibrida_goiana_pe === "Sim" && (
+                      <div>
+                        <span>Vaga Híbrida Goiana:</span>
+                        {data.vaga_hibrida_goiana_pe}
+                      </div>
+                    )}
+
+                    {data.vaga_hibrida_porto_real_rj === "Sim" && (
+                      <div>
+                        <span>Vaga Híbrida Porto Real:</span>
+                        {data.vaga_hibrida_porto_real_rj}
+                      </div>
+                    )}
+
+                    {data.vaga_hibrida_sao_paulo === "Sim" && (
+                      <div>
+                        <span>Vaga Híbrida São Paulo:</span>
+                        {data.vaga_hibrida_sao_paulo}
+                      </div>
+                    )}
+
+                    {data.vaga_internacional === "Sim" && (
+                      <div>
+                        <span>Vaga Internacional:</span>
+                        {data.vaga_internacional}
+                      </div>
+                    )}
                   </C.VagasItem>
                 </C.Vagas>
               </C.ContainerThree>
@@ -243,7 +271,7 @@ const Curriculum = () => {
                   <C.ContentFor key={index}>
                     <C.Institution>
                       <p>
-                        {item.instituicao}, {item.curso} 
+                        {item.instituicao}, {item.curso}
                       </p>
                     </C.Institution>
                     <C.Status>
@@ -347,9 +375,7 @@ const Curriculum = () => {
                       ) => {
                         return (
                           <div key={index}>
-                            <p>
-                              {item.curso}
-                            </p>
+                            <p>{item.curso}</p>
                           </div>
                         );
                       }

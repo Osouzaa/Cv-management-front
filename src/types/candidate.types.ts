@@ -18,9 +18,9 @@ export interface Candidate {
   entrevista_online: string;
   teste_tecnico: string;
   conhecimento_ingles: string;
-  conhecimento_frances:string;
-  conhecimento_italiano:string;
-  conhecimento_espanhol:string;
+  conhecimento_frances: string;
+  conhecimento_italiano: string;
+  conhecimento_espanhol: string;
   pretensao_salarial: string;
   pretensao_pj: string;
   cnpj: string;
@@ -31,10 +31,10 @@ export interface Candidate {
   vaga_100_presencial_sao_paulo: string;
   vaga_internacional: string;
   vaga_hibrida_betim: string;
+  vaga_hibrida_sao_paulo: string;
+  vaga_hibrida_goiana_pe: string;
+  vaga_hibrida_porto_real_rj: string;
   home_office: string;
-  observacao: string;
-  genero:string;
+  genero: string;
   resumoProfissional: string;
-  
-
 }

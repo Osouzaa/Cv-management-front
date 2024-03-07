@@ -79,6 +79,10 @@ export const Label = styled.label`
     margin-left: 0.7em;
     width: 93%;
   }
+  &.alwaysActive {
+    width: 120%;
+    font-size: 13px;
+  }
 
   @media (min-width: 451px) and (max-width: 1400px) {
     font-size: 13px;
