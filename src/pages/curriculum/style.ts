@@ -103,12 +103,12 @@ export const Bolinha = styled.div`
 
 export const LinhaComBolinhas = styled.div`
   position: relative;
-  margin-top: 21px;
+  /* margin-top: 21px; */
   margin-left: 24px;
   margin-bottom: 0px;
 
   &.softwares_ati{
-    margin-top: 4em;
+    margin-top: -1em;
   }
 `;
 
@@ -161,6 +161,7 @@ export const SubTitle = styled.h2`
   font-weight: 500;
   line-height: normal;
   margin: 0.7em 0.8em;
+  margin-bottom: .3em;
 
   &.idiomas {
     text-align: center;
@@ -233,7 +234,7 @@ export const ContentFive = styled.div`
   margin: 0 1.5em;
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  /* gap: 5px; */
 `;
 
 export const Period = styled.div`

@@ -21,12 +21,11 @@ export const ContentModal = styled.div`
   background: #fff;
   padding: 18px 36px;
 `;
-export const ContainerModal = styled.div  `
+export const ContainerModal = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
-
-`
+`;
 export const ContentTitle = styled.div`
   display: flex;
   align-items: center;
@@ -106,7 +105,7 @@ export const ContentButtons = styled.div`
     box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 
     color: #fff;
-    font-family: 'Poppins';
+    font-family: "Poppins";
     font-size: 13px;
     font-style: normal;
     font-weight: 500;
@@ -122,9 +121,23 @@ export const ContentButtons = styled.div`
   }
 `;
 
-export const FeedbackMessage = styled.p `
+export const FeedbackMessage = styled.p`
   display: block;
   text-align: center;
   color: #851f2c;
+`;
 
-`
+export const ContentLabel = styled.label`
+  display: block;
+  font-size: 14px;
+  margin: 5px 0px;
+  color: #333;
+  width: 100%;
+`;
+
+export const TextArea = styled.textarea`
+  width: 100%;
+  height: 60px;
+  resize: none;
+  border: 1px solid #333;
+`;
