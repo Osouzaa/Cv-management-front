@@ -11,7 +11,7 @@ import icon_add from "../../image/icon_add.svg";
 import { ModalEscolaridade } from "../../components/modalEscolaridade";
 import { ModalExperiencia } from "../../components/modalExperience";
 import { ModalSoftware } from "../../components/modalSoftwares";
-import { converterData, formatarData, formatarDataPT, formatarDataPTModal } from "../../functions/formatarDate";
+import { converterData, formatarDataPT } from "../../functions/formatarDate";
 import { ModalAtividade } from "../../components/modalAtividades";
 import { ModalCurso } from "../../components/modalCurso";
 
